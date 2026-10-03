@@ -1,0 +1,38 @@
+{
+  "bsh": [
+    {
+      "id": "DE__510P",
+      "name": "Husum, Schleuse",
+      "region": "Nordsee",
+      "files": {
+        "2026": "data/DE__510P2026.json"
+      },
+      "pegelnr": "9530020",
+      "waterUuid": null
+    },
+    {
+      "id": "DE__632P",
+      "name": "Wyk, Föhr",
+      "region": "Nordsee",
+      "files": {
+        "2026": "data/DE__632P2026.json"
+      },
+      "pegelnr": null,
+      "waterUuid": null
+    },
+    {
+      "id": "KIEL_HOLTENAU",
+      "name": "Kiel-Holtenau",
+      "region": "Ostsee",
+      "files": {},
+      "pegelnr": "9610066",
+      "waterUuid": "3ad4013f-644b-47f5-a641-44b332bfecb2"
+    }
+  ],
+  "availableYears": [
+    2026
+  ],
+  "version": "v6",
+  "autoYears": true,
+  "note": "BSH-Jahre werden aus data/catalog.json erkannt; PEGELONLINE-Stationen werden dynamisch geladen."
+}

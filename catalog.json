@@ -1,0 +1,52 @@
+{
+  "generatedBy": "TidenUhr BSH updater v13",
+  "years": [
+    2026
+  ],
+  "stations": [
+    {
+      "id": "DE__510P",
+      "name": "Husum, Schleuse",
+      "files": {
+        "2026": "data/DE__510P2026.json"
+      },
+      "years": [
+        2026
+      ],
+      "waterPegelNr": "9530020",
+      "pegelonlineNumber": "9530020",
+      "region": "Nordsee"
+    },
+    {
+      "id": "DE__632P",
+      "name": "Wyk, Föhr",
+      "files": {
+        "2026": "data/DE__632P2026.json"
+      },
+      "years": [
+        2026
+      ],
+      "region": "Nordsee"
+    }
+  ],
+  "updatedFiles": [
+    {
+      "file": "DE__510P2026.txt",
+      "status": "OK",
+      "station": "Husum, Schleuse",
+      "pegelNr": "DE__510P",
+      "year": 2026,
+      "events": 1410,
+      "warnings": []
+    },
+    {
+      "file": "DE__632P2026.txt",
+      "status": "OK",
+      "station": "Wyk, Föhr",
+      "pegelNr": "DE__632P",
+      "year": 2026,
+      "events": 1360,
+      "warnings": []
+    }
+  ]
+}

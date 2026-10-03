@@ -1,0 +1,56 @@
+{
+  "version": 13,
+  "description": "Langfristiges Stationsschema: Nordsee-Gezeiten und Ostsee-Wasserstand/Vorhersage werden getrennt behandelt.",
+  "matching": [
+    "uuid",
+    "waterPegelNr",
+    "name"
+  ],
+  "known": [
+    {
+      "name": "Husum, Schleuse",
+      "region": "Nordsee",
+      "bshPegelNr": "DE__510P",
+      "pegelonlineNumber": "9530020",
+      "bshYears": [
+        2026
+      ],
+      "stationType": "tide",
+      "sources": {
+        "bshTide": true,
+        "bshWaterForecast": true,
+        "pegelonlineMeasurement": true,
+        "pegelonlineForecast": true
+      }
+    },
+    {
+      "name": "Wyk, Föhr",
+      "region": "Nordsee",
+      "bshPegelNr": "DE__632P",
+      "bshYears": [
+        2026
+      ],
+      "stationType": "tide",
+      "sources": {
+        "bshTide": true,
+        "bshWaterForecast": true,
+        "pegelonlineMeasurement": false,
+        "pegelonlineForecast": false
+      }
+    },
+    {
+      "name": "Kiel-Holtenau",
+      "region": "Ostsee",
+      "pegelonlineNumber": "9610066",
+      "pegelonlineUuid": "3ad4013f-644b-47f5-a641-44b332bfecb2",
+      "bshYears": [],
+      "stationType": "waterlevel",
+      "sources": {
+        "bshTide": false,
+        "bshWaterForecast": true,
+        "pegelonlineMeasurement": true,
+        "pegelonlineForecast": true
+      }
+    }
+  ]
+}
