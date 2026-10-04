@@ -1,4 +1,4 @@
-const CACHE='tiden-v46-19-2026';
+const CACHE='tiden-v46-20-2026';
 const ASSETS=[
   './',
   './index.html',
