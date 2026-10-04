@@ -194,9 +194,47 @@ async function refreshDatabase(){
 }
 
 let mapRegion='all';
+
+// Eigene Kartenklassifizierung: Die Kartenschalter dürfen nicht von der
+// allgemeinen Stationslogik abhängen. PEGELONLINE liefert bei vielen Pegeln
+// keinen expliziten Text "Nordsee/Ostsee", deshalb werden Gewässername,
+// Stationsname und – als letzte Absicherung – die geografische Lage kombiniert.
+function mapCoastRegion(s){
+ const b=s?.bsh||null;
+ const text=norm([
+   s?.water?.longname,s?.water?.shortname,s?.region,s?.longname,
+   s?.shortname,s?.name,b?.region,b?.name
+ ].filter(Boolean).join(' '));
+
+ const balticWords=['ostsee','kiel','kieler foerde','kieler foerde','schlei',
+   'schleimuende','flensburg','flensburger foerde','eckernfoerde','fehmarn',
+   'heiligenhafen','luebeck','travemuende','travemunde','wismar','rostock',
+   'warnow','stralsund','greifswald','usedom','ruegen','rugen','bodden',
+   'stettiner haff'];
+ const northWords=['nordsee','elbe','unterelbe','eider','weser','unterweser',
+   'ems','unterems','osterems','jade','wattenmeer','husum','foehr','fohr',
+   'nordfriesland','ostfriesland','wilhelmshaven','cuxhaven','brunsbuettel',
+   'brunsbuttel','borkum','norderney','juist','emden','leer'];
+
+ if(balticWords.some(k=>text.includes(k))) return 'Ostsee';
+ if(northWords.some(k=>text.includes(k))) return 'Nordsee';
+
+ const lat=Number(s?.latitude), lon=Number(s?.longitude);
+ if(Number.isFinite(lat)&&Number.isFinite(lon)){
+   // Deutsche Ostseeküste: westlich bis Flensburger Förde, südlich bis
+   // Kiel/Lübecker Raum. Die beiden Teilbereiche verhindern, dass z.B.
+   // Hamburg/Elbe fälschlich als Ostsee erscheint.
+   if((lon>=9.15 && lat>=54.55) || (lon>=9.75 && lat>=54.15)) return 'Ostsee';
+   // Nordsee einschließlich Elbe/Eider/Weser/Ems.
+   if(lon<=9.75 && lat>=53.0 && lat<=55.2) return 'Nordsee';
+ }
+ return 'Weitere Gewässer';
+}
+
 function mapStations(){
  const arr=po.filter(isCoastalStation).filter(x=>Number.isFinite(Number(x.latitude))&&Number.isFinite(Number(x.longitude)));
- return mapRegion==='north'?arr.filter(x=>stationRegion(x)==='Nordsee'):mapRegion==='baltic'?arr.filter(x=>stationRegion(x)==='Ostsee'):arr;
+ if(mapRegion==='all') return arr;
+ return arr.filter(x=>mapCoastRegion(x)===(mapRegion==='north'?'Nordsee':'Ostsee'));
 }
 function renderMap(){
  const host=$('map'); if(!host)return;
