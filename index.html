@@ -364,22 +364,59 @@ async function selectStation(id){
 let currentBsh=null, modeForSelection=null;
 function parseBshTxtText(text, filename='BSH-TXT'){
  const get=(patterns,def='')=>{for(const re of patterns){const m=text.match(re);if(m)return m[1].trim()}return def};
- const pegel=get([/^A03#.*?#\s*([^#]+?)\s*#/m,/PegelNr\.:\s*([^\s#]+)\s*/m,/Pegelnummer\s*:\s*([^\s#]+)\s*/m]);
- const station=get([/^A04#.*?#\s*([^#]+?)\s*#/m,/GT-Name:\s*([^\r\n#]+)/m,/Standort\s+([^\r\n#]+)/m],filename.replace(/\.txt$/i,''));
- const ym=get([/^A06#.*?#\s*(\d{4})\s*#/m,/GT-Jahr:\s*(\d{4})/m]);
- const tz=get([/^A11#.*?#\s*([^#]+?)\s*#/m,/Zeitzone:\s*([^\r\n]+)/m]);
- const ref=get([/^C03#.*?#\s*([^#]+?)\s*#/m,/Höhenniveau:\s*([^\r\n]+)/m]);
- const unit=get([/^C05#.*?#\s*([^#]+?)\s*#/m,/EinheitHöhe:\s*([^\r\n]+)/m],'m');
- // Echtes BSH-VB2-Format: Das Feld zwischen Pegelnummer und H/N kann je nach Datensatz
- // leer oder numerisch belegt sein (z.B. '# #H#' bzw. '#2#H#'). Der Wochentag folgt
- // danach als eigenes Feld. Deshalb werden die Felder gezielt bis zum H/N-Kennzeichen
- // und anschließend bis Datum/Uhrzeit gelesen, statt auf eine feste Feldbelegung zu vertrauen.
- const pat=/^VB2#[^#]*#[^#]*#([HN])#[^#]*#\s*(\d{1,2})\.\s*(\d{1,2})\.(\d{4})#\s*(\d{1,2}):(\d{2})#\s*(-?\d+(?:[\.,]\d+)?)/gm;
- const events=[]; let m; while((m=pat.exec(text))){const [_,typ,d,mo,yr,h,mi,ht]=m; events.push({datetime:`${yr}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}T${String(h).padStart(2,'0')}:${mi}`,type:typ==='H'?'HW':'NW',height:Number(ht.replace(',','.'))});}
- events.sort((a,b)=>a.datetime.localeCompare(b.datetime)); const seen=new Set(); const unique=events.filter(e=>{const k=e.datetime+'|'+e.type+'|'+e.height;if(seen.has(k))return false;seen.add(k);return true});
+ const pegel=get([/^A03#.*?#\s*([^#]+?)\s*#/m,/PegelNr\.\:\s*([^\s#]+)\s*/m,/Pegelnummer\s*:\s*([^\s#]+)\s*/m]);
+ const station=get([/^A04#.*?#\s*([^#]+?)\s*#/m,/GT-Name\:\s*([^\r\n#]+)/m,/Standort\s+([^\r\n#]+)/m],filename.replace(/\.txt$/i,''));
+ const ym=get([/^A06#.*?#\s*(\d{4})\s*#/m,/GT-Jahr\:\s*(\d{4})/m]);
+ const tz=get([/^A11#.*?#\s*([^#]+?)\s*#/m,/Zeitzone\:\s*([^\r\n]+)/m]);
+ const ref=get([/^C03#.*?#\s*([^#]+?)\s*#/m,/Höhenniveau\:\s*([^\r\n]+)/m]);
+ const unit=get([/^C05#.*?#\s*([^#]+?)\s*#/m,/EinheitHöhe\:\s*([^\r\n]+)/m],'m');
+
+ // Robuster BSH-VB2-Parser:
+ // Nicht von einer festen Feldanzahl zwischen Pegelnummer und H/N abhängen.
+ // BSH verwendet dort je nach Datensatz z.B. ein leeres oder numerisches Feld.
+ // Wir suchen deshalb H/N als eigenes #-Feld und danach Datum, Uhrzeit und Höhe.
+ const dateRe=/^(\d{1,2})\.\s*(\d{1,2})\.(\d{4})$/;
+ const timeRe=/^(\d{1,2}):(\d{2})$/;
+ const heightRe=/^-?\d+(?:[\.,]\d+)?$/;
+ const events=[];
+ for(const line of String(text||'').split(/\r?\n/)){
+   if(!/^VB2#/i.test(line)) continue;
+   const parts=line.split('#');
+   let hi=-1;
+   for(let i=1;i<parts.length;i++){
+     const v=parts[i].trim();
+     if(v==='H'||v==='N'){hi=i;break;}
+   }
+   if(hi<0) continue; // K/sonstige VB2-Zeilen bleiben außen vor.
+
+   let di=-1, d=null, mo=null, yr=null, ti=null, mi=null, height=null;
+   for(let i=hi+1;i<Math.min(parts.length,hi+8);i++){
+     const v=parts[i].trim();
+     const dm=v.match(dateRe);
+     if(dm){di=i;d=Number(dm[1]);mo=Number(dm[2]);yr=Number(dm[3]);break;}
+   }
+   if(di<0) continue;
+   for(let i=di+1;i<Math.min(parts.length,di+4);i++){
+     const tm=parts[i].trim().match(timeRe);
+     if(tm){ti=Number(tm[1]);mi=Number(tm[2]);break;}
+   }
+   if(ti===null) continue;
+   const timeIndex=parts.findIndex((v,i)=>i>di && timeRe.test(v.trim()) && Number(v.trim().split(':')[0])===ti && Number(v.trim().split(':')[1])===mi);
+   if(timeIndex<0) continue;
+   for(let i=timeIndex+1;i<Math.min(parts.length,timeIndex+4);i++){
+     const v=parts[i].trim();
+     if(heightRe.test(v)){height=Number(v.replace(',','.'));break;}
+   }
+   if(!Number.isFinite(height)) continue;
+   events.push({datetime:`${yr}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}T${String(ti).padStart(2,'0')}:${String(mi).padStart(2,'0')}`,type:parts[hi].trim()==='H'?'HW':'NW',height});
+ }
+ events.sort((a,b)=>a.datetime.localeCompare(b.datetime));
+ const seen=new Set();
+ const unique=events.filter(e=>{const k=e.datetime+'|'+e.type+'|'+e.height;if(seen.has(k))return false;seen.add(k);return true});
  const year=ym?Number(ym):(unique[0]?Number(unique[0].datetime.slice(0,4)):null);
  return {station,pegelNr:pegel,year,timezone:tz,reference:ref||'PNP',unit,source:'BSH',events:unique,eventCount:unique.length,filename};
 }
+
 function localBshKey(id,year){return `tiden.bsh.import.${id}.${year}`}
 function loadLocalBsh(id,year){try{const j=JSON.parse(localStorage.getItem(localBshKey(id,year))||'null');return j&&Array.isArray(j.events)&&j.events.length?j:null}catch{return null}}
 function refreshImportedBshCatalog(id){
