@@ -905,7 +905,7 @@ async function loadBshYear(){
      if(data.length){ meta.eventCount=data.length; meta.reference='SKN'; syncDateToData(); $('bshSourceStatus').textContent=`Datenquelle: BSH-Online-Tabelle · ${currentBsh.name} · ${data.length} HW/NW-Ereignisse (${selectedYear}).`; $('bshSourceStatus').className='small ok'; render(); renderQuality(); return; }
      throw Error('Keine HW/NW-Zeilen gefunden');
    }catch(e){
-     data=[]; meta=null; $('bshSourceStatus').textContent=`Datenquelle nicht geladen: BSH-Online-Tabelle für ${currentBsh.name} ist im Browser nicht abrufbar. Es werden keine Onlinewerte vorgetäuscht.`; $('bshSourceStatus').className='small warn'; render(); renderQuality();
+     data=[]; meta=null; $('bshSourceStatus').textContent=`Keine Gezeitendaten geladen: Für ${currentBsh.name} ist keine passende lokale BSH-TXT-Jahresdatei importiert, und die BSH-Online-Tabelle ist im Browser nicht abrufbar. Bitte die Hoch-/Niedrigwasser-TXT-Datei genau dieses Pegels importieren. Die Messwerte von PEGELONLINE sind davon unabhängig.`; $('bshSourceStatus').className='small warn'; render(); renderQuality();
      return;
    }
  }
