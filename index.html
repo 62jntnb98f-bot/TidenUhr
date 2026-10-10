@@ -178,6 +178,9 @@ function stationNameCore(v){
 function findPoForBsh(b){
  const waterUuid=b.waterUuid||b.uuid||null;
  if(waterUuid){const byU=po.find(x=>x.uuid===waterUuid);if(byU)return byU;}
+ // Gemeinsame kanonische ID vor Namens-/Nummernvergleich prüfen.
+ const bCanonical=canonicalBshId(b);
+ if(bCanonical){const byCanonical=po.find(x=>canonicalBshId(x)===bCanonical);if(byCanonical)return byCanonical;}
  const nums=[b.waterPegelNr,b.pegelnummer,b.pegelnr,b.pegelonlineNumber,b.importedPegelNr].map(String).filter(x=>x&&x!=='undefined');
  const byN=po.find(x=>nums.includes(String(x.number||''))); if(byN)return byN;
  const bn=stationNameCore(b.name);
@@ -189,6 +192,11 @@ function findPoForBsh(b){
  return po.find(x=>{const pn=stationNameCore(x.longname||x.shortname||x.name);return bn.length>4&&(pn.includes(bn)||bn.includes(pn));})||null;
 }
 function findBshForPo(p){
+ // Kartenpunkte stammen aus PEGELONLINE, während die Tidezeiten aus dem
+ // BSH-Katalog kommen. Zuerst über die kanonische Stationskennung verknüpfen,
+ // damit Kiel-Holtenau trotz abweichender Nummern/Namenszusätze gefunden wird.
+ const pCanonical=canonicalBshId(p);
+ if(pCanonical){const byCanonical=bshCatalog.find(x=>canonicalBshId(x)===pCanonical);if(byCanonical)return byCanonical;}
  const n=String(p.number||'');
  const byN=bshCatalog.find(x=>[x.waterPegelNr,x.pegelnummer,x.pegelnr,x.pegelonlineNumber,x.importedPegelNr].map(String).includes(n));
  if(byN)return byN;
@@ -755,12 +763,8 @@ function canonicalBshId(idOrRecord){
  if(rawId==='DE_3020P'||rawId==='KIEL-HOLTENAU')return 'KIEL-HOLTENAU';
  const src=typeof idOrRecord==='string'?bshCatalog.find(x=>x.id===idOrRecord)||EMBEDDED_BSH_CATALOG.find(x=>x.id===idOrRecord):idOrRecord;
  const name=norm(src?.name||src?.station||'');
- const num=String(src?.waterPegelNr||src?.pegelonlineNumber||src?.pegelNr||src?.pegelnummer||src?.pegelnr||src?.importedPegelNr||'');
+ const num=String(src?.waterPegelNr||src?.pegelonlineNumber||src?.pegelNr||src?.pegelnummer||src?.pegelnr||src?.importedPegelNr||src?.number||'');
  const uuid=String(src?.waterUuid||src?.uuid||'');
- const fileHint=String(src?.filename||src?.fileName||src?.sourceFile||'');
- // Die BSH-Datei DE_3020P2026_hwnw.txt kennzeichnet Kiel-Holtenau auch dann,
- // wenn die Kopfzeile keine Pegelnummer oder keinen Stationsnamen enthält.
- if(/(?:^|[^A-Z0-9])DE[_-]?3020P(?:\d{4})?(?:[_\-.]|$)/i.test(fileHint))return 'KIEL-HOLTENAU';
  // Alle bekannten Darstellungen von Kiel-Holtenau müssen auf genau EINEN
  // BSH-Katalogeintrag zeigen. Das ist absichtlich auch namensbasiert, damit
  // alte Katalogvarianten wie „Kiel, Holtenau, Ostsee“ keinen zweiten Eintrag
@@ -823,21 +827,8 @@ async function importBshFile(file){
  const text=await file.text(); const d=parseBshTxtText(text,file.name);
  if(!d.events.length) throw Error('Keine HW/NW-Datensätze gefunden. Bitte die BSH-TXT-Datei „Hoch-/Niedrigwasser“ auswählen.');
  if(!d.year) throw Error('Jahr konnte aus der BSH-Datei nicht gelesen werden.');
- // Dateiname als zusätzliche Stationskennung verwenden; andere Stationen werden
- // dadurch nicht beeinflusst. Die Ereignisliste selbst bleibt unverändert.
- d.filename=String(file.name||d.filename||'');
- if(/(?:^|[^A-Z0-9])DE[_-]?3020P(?:\d{4})?(?:[_\-.]|$)/i.test(d.filename)){
-   if(!d.pegelNr || /^(?:DE_?3020P|9610066)$/i.test(d.pegelNr))d.pegelNr='DE_3020P';
-   if(!d.station || /DE[_-]?3020P/i.test(d.station))d.station='Kiel-Holtenau';
- }
  const {id,b,sourceId}=ensureImportedBshStation(d);
- const serialized=JSON.stringify(d);
- storageSet(localBshKey(id,d.year),serialized);
- // Sofort prüfen, dass der vollständige Import im Browser-Speicher liegt.
- let saved=null; try{saved=JSON.parse(localStorage.getItem(localBshKey(id,d.year))||'null')}catch(_){}
- if(!saved||!Array.isArray(saved.events)||saved.events.length!==d.events.length){
-   throw Error(`Der BSH-Import konnte nicht vollständig gespeichert werden (${d.events.length} Ereignisse erwartet). Bitte freien Speicher schaffen und erneut importieren.`);
- }
+ storageSet(localBshKey(id,d.year),JSON.stringify(d));
  // Bestehende Alt-Imports unter der BSH-Pegelkennung bleiben als Fallback erhalten.
  if(sourceId!==id && localStorage.getItem(localBshKey(sourceId,d.year))){}
  storageSet('tiden.lastBshImport',JSON.stringify({id,sourceId,year:d.year,filename:d.filename||file.name}));
