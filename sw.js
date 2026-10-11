@@ -1,5 +1,8 @@
-const CACHE='tiden-v46-22-2026';
-const ASSETS=[
+/* TidenUhr Service Worker v46.58
+   Navigation: network-first; cache is only the offline fallback.
+   LocalStorage (BSH imports and favorites) is not touched by this worker. */
+const CACHE = 'tiden-v46-58-2026';
+const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
@@ -8,42 +11,56 @@ const ASSETS=[
   './data/DE__632P2026.json'
 ];
 
-self.addEventListener('install',event=>{
-  event.waitUntil(
-    caches.open(CACHE)
-      .then(c=>c.addAll(ASSETS))
-      .then(()=>self.skipWaiting())
-  );
+self.addEventListener('install', event => {
+  event.waitUntil((async () => {
+    const cache = await caches.open(CACHE);
+    // Cache available shell assets, but do not let a missing optional asset block installation.
+    await Promise.all(ASSETS.map(async asset => {
+      try {
+        const response = await fetch(new Request(asset, { cache: 'reload' }));
+        if (response.ok) await cache.put(new Request(asset), response);
+      } catch (_) {}
+    }));
+    await self.skipWaiting();
+  })());
 });
 
-self.addEventListener('activate',event=>{
-  event.waitUntil(
-    caches.keys()
-      .then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))
-      .then(()=>self.clients.claim())
-  );
+self.addEventListener('activate', event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(keys.filter(key => key.startsWith('tiden-') && key !== CACHE).map(key => caches.delete(key)));
+    await self.clients.claim();
+  })());
 });
 
-self.addEventListener('fetch',event=>{
-  if(event.request.method!=='GET') return;
-  const url=new URL(event.request.url);
+self.addEventListener('fetch', event => {
+  const request = event.request;
+  if (request.method !== 'GET') return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
 
-  if(event.request.mode==='navigate' || url.pathname.endsWith('/index.html')){
-    event.respondWith(
-      fetch(event.request,{cache:'no-store'})
-        .then(response=>{
-          const copy=response.clone();
-          caches.open(CACHE).then(c=>c.put('./index.html',copy));
-          return response;
-        })
-        .catch(()=>caches.match('./index.html'))
-    );
+  const isNavigation = request.mode === 'navigate' || url.pathname.endsWith('/index.html') || url.pathname.endsWith('/');
+  if (isNavigation) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE);
+      try {
+        const response = await fetch(request, { cache: 'no-store' });
+        if (response && response.ok) {
+          // Cache the current page for offline use, but always return the network response first.
+          await cache.put('./index.html', response.clone());
+        }
+        return response;
+      } catch (_) {
+        return (await cache.match('./index.html')) || (await cache.match('./')) || Response.error();
+      }
+    })());
     return;
   }
 
-  if(url.origin===self.location.origin){
-    event.respondWith(
-      caches.match(event.request).then(cached=>cached||fetch(event.request))
-    );
-  }
+  // For same-origin assets, prefer cached files and fetch uncached files normally.
+  event.respondWith((async () => {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    return fetch(request);
+  })());
 });
