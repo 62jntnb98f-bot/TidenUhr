@@ -102,7 +102,7 @@
 }
 #updateNotice{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:9999;max-width:680px;margin:0 auto;background:#0b3954;color:#fff;border-radius:14px;padding:14px;box-shadow:0 6px 24px #0003;font-size:14px;line-height:1.4}#updateNotice .updateActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}#updateNotice button{border:0;border-radius:9px;padding:10px 12px;font:inherit;font-weight:600;cursor:pointer}#updateNotice .updatePrimary{background:#fff;color:#0b3954}#updateNotice .updateSecondary{background:#315b70;color:#fff}#updateNotice[hidden]{display:none!important}
 </style><script>
-const TIDENUHR_VERSION="46.64";
+const TIDENUHR_VERSION="46.65";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, F\u00F6hr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
@@ -1253,9 +1253,17 @@ $('bshImportBtn').onclick=async()=>{try{await importBshFile($('bshFile').files[0
  }else render();
 };$('year').onchange=async()=>{
  selectedYear=Number($('year').value);
- // Das gewählte Kalenderjahr bleibt maßgeblich; beim Jahreswechsel das Datum
- // nur dann anpassen, wenn es noch zu einem anderen Jahr gehört.
- if($('date').value && Number($('date').value.slice(0,4))!==selectedYear)$('date').value=`${selectedYear}-01-01`;
+ // Jahresfeld und Kalenderdatum immer synchronisieren. Monat/Tag beibehalten,
+ // sofern dieses Datum im Zieljahr existiert; sonst auf den 1. Januar wechseln.
+ const oldDate=$('date').value;
+ if(oldDate){
+   const parts=oldDate.split('-').map(Number);
+   const month=parts[1]||1, day=parts[2]||1;
+   const candidate=`${selectedYear}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+   const check=new Date(`${candidate}T12:00:00`);
+   const valid=check.getFullYear()===selectedYear && check.getMonth()+1===month && check.getDate()===day;
+   $('date').value=valid?candidate:`${selectedYear}-01-01`;
+ }else $('date').value=`${selectedYear}-01-01`;
  await loadBshYear();
 };$('range').onchange=loadHistory;$('favBtn').onclick=()=>{if(!current)return;const id=favoriteId();if(!id)return;let arr=getFavorites();const ix=arr.findIndex(f=>f.mode===mode&&f.id===id);if(ix>=0)arr.splice(ix,1);else{const station=modeForSelection||current;arr.push({mode,id,name:modeForSelection?.name||label(current),region:modeForSelection?stationRegion(modeForSelection):stationRegion(current)});}saveFavorites(arr);syncFavorite();};$('favListBtn').onclick=toggleFavoriteMenu;setInterval(tick,1000); setInterval(updateClock,1000);setInterval(loadWater,60000);
 applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();loadCatalog().then(()=>{let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode');if(saved){mode=sm||'all';$('tabAll').classList.toggle('active',mode==='all');$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');renderList();selectStation(saved)}renderFavorites();});
