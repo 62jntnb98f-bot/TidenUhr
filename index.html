@@ -102,7 +102,7 @@
 }
 #updateNotice{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:9999;max-width:680px;margin:0 auto;background:#0b3954;color:#fff;border-radius:14px;padding:14px;box-shadow:0 6px 24px #0003;font-size:14px;line-height:1.4}#updateNotice .updateActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}#updateNotice button{border:0;border-radius:9px;padding:10px 12px;font:inherit;font-weight:600;cursor:pointer}#updateNotice .updatePrimary{background:#fff;color:#0b3954}#updateNotice .updateSecondary{background:#315b70;color:#fff}#updateNotice[hidden]{display:none!important}
 </style><script>
-const TIDENUHR_VERSION="46.63";
+const TIDENUHR_VERSION="46.64";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, F\u00F6hr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
@@ -940,7 +940,12 @@ async function removeBshImport(){
  // Nach dem Entfernen auf die normale/default Station zurückkehren.
  await selectStation('KIEL-HOLTENAU');
 }
+let bshYearLoadToken=0;
 async function loadBshYear(){
+ const loadToken=++bshYearLoadToken;
+ const requestedStationId=currentBsh?.id||null;
+ const requestedYear=Number(selectedYear);
+ const requestIsCurrent=()=>loadToken===bshYearLoadToken&&currentBsh?.id===requestedStationId&&Number(selectedYear)===requestedYear;
  if(!currentBsh||!selectedYear){data=[];meta=null;render();renderQuality();return}
  const imported=loadLocalBsh(currentBsh.id,selectedYear); if(imported){meta=imported;data=imported.events||[]; syncDateToData(); $('bshSourceStatus').textContent=`Datenquelle: Lokale BSH-TXT-Datei · ${imported.filename||'importierte Datei'} · ${imported.station||currentBsh.name} · ${data.length} HW/NW-Ereignisse (${selectedYear}).`; $('bshSourceStatus').className='small ok'; render(); renderQuality(); return;}
  // v46.62: Gebündelte Kiel-Jahresdatei im GitHub-Hauptverzeichnis laden.
@@ -948,13 +953,16 @@ async function loadBshYear(){
  if(currentBsh.id==='KIEL-HOLTENAU' && Number(selectedYear)===2026){
    try{
      const r=await fetch('./KIEL-HOLTENAU2026.json',{cache:'no-store'});
+     if(!requestIsCurrent()) return;
      if(!r.ok) throw Error('HTTP '+r.status);
      const j=await r.json();
+     if(!requestIsCurrent()) return;
      if(!j||!Array.isArray(j.events)||!j.events.length) throw Error('Keine HW/NW-Ereignisse');
      meta=j; data=j.events; syncDateToData();
      $('bshSourceStatus').textContent=`Datenquelle: eingebundene BSH-Jahresdatei · ${j.station||currentBsh.name} · ${data.length} HW/NW-Ereignisse (${selectedYear}).`;
      $('bshSourceStatus').className='small ok'; render(); renderQuality(); return;
    }catch(e){
+     if(!requestIsCurrent()) return;
      // Falls die Jahresdatei fehlt oder nicht lesbar ist, mit dem bisherigen BSH-Webpfad fortfahren.
    }
  }
@@ -967,8 +975,10 @@ async function loadBshYear(){
    $('bshSourceStatus').className='small'; render(); renderQuality();
    try{
      const r=await fetch(currentBsh.bshUrl,{cache:'no-store'});
+     if(!requestIsCurrent()) return;
      if(!r.ok) throw Error('HTTP '+r.status);
      const html=await r.text();
+     if(!requestIsCurrent()) return;
      const doc=new DOMParser().parseFromString(html,'text/html');
      const rows=[...doc.querySelectorAll('table tr')];
      const out=[]; let previousDate='';
@@ -992,6 +1002,7 @@ async function loadBshYear(){
      $('bshSourceStatus').textContent=`Datenquelle: BSH-Webtabelle · ${events.length} HW/NW-Ereignisse (${selectedYear}). Bitte Werte prüfen; bei Fehlern die BSH-TXT-Datei importieren.`;
      $('bshSourceStatus').className='small ok'; render(); renderQuality(); return;
    }catch(e){
+     if(!requestIsCurrent()) return;
      data=[]; meta=null;
      $('bshSourceStatus').textContent=`BSH-Webtabelle für ${currentBsh.name} konnte nicht automatisch gelesen werden. Bitte „BSH Text importieren“ verwenden.`;
      $('bshSourceStatus').className='small warn'; render(); renderQuality(); return;
@@ -1002,13 +1013,16 @@ async function loadBshYear(){
  // die Jahresdaten werden nicht mehr als großer Datenblock in index.html gespeichert.
  try{
    const r=await fetch(file,{cache:'no-store'});
+   if(!requestIsCurrent()) return;
    if(!r.ok) throw Error('HTTP '+r.status);
    const j=await r.json();
+   if(!requestIsCurrent()) return;
    if(!j||!Array.isArray(j.events)||!j.events.length) throw Error('Keine HW/NW-Ereignisse');
    meta=j; data=j.events; syncDateToData();
    $('bshSourceStatus').textContent=`Datenquelle: separate BSH-Jahresdatei · ${j.station||currentBsh.name} · ${data.length} HW/NW-Ereignisse (${selectedYear}).`;
    $('bshSourceStatus').className='small ok'; render(); renderQuality();
  }catch(e){
+   if(!requestIsCurrent()) return;
    data=[]; meta=null;
    $('bshSourceStatus').textContent=`Keine BSH-Daten für ${currentBsh.name} ${selectedYear} geladen. Bitte die passende BSH-TXT-Datei importieren.`;
    $('bshSourceStatus').className='small warn'; render(); renderQuality();
