@@ -3295,16 +3295,22 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         body: data
       });
       let result = {};
-      try { result = await response.json(); } catch (_) {}
+      const responseText = await response.text();
+      try { result = responseText ? JSON.parse(responseText) : {}; } catch (_) {}
       if (response.ok && result.archived === true) {
         setStatus("Datei wurde im privaten Online-Archiv gespeichert. Die Archivübersicht bei Bedarf aktualisieren.");
         form.reset();
+      } else if (response.status === 0) {
+        setStatus("Keine gültige Serverantwort erhalten. Bitte Verbindung prüfen; der Archivstatus ist unbestätigt.");
       } else {
-        setStatus((result.error || ("Archivierung fehlgeschlagen (HTTP " + response.status + ").")) +
-          (result.archived === false ? " Es wurde nichts archiviert." : ""));
+        const detail = result.error || (responseText && responseText.length < 240 ? responseText : "");
+        setStatus((detail || ("Archivierung fehlgeschlagen (HTTP " + response.status + ").")) +
+          (result.archived === false ? " Es wurde nichts archiviert." : " Archivstatus bitte im Katalog prüfen."));
       }
-    } catch (_) {
-      setStatus("Online-Archiv momentan nicht erreichbar. Es wurde kein erfolgreicher Archivvorgang bestätigt.");
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error || "unbekannter Netzwerkfehler");
+      console.warn("BSH-Archiv Upload-Verbindung fehlgeschlagen:", message);
+      setStatus("Browser konnte keine lesbare Antwort vom Online-Archiv erhalten (möglicher Netzwerk-/CORS-Fehler). Details stehen in der Safari-Webkonsole. Es wurde kein erfolgreicher Archivvorgang bestätigt.");
     } finally {
       turnstileToken = "";
       if (window.turnstile && widgetId !== null) {
