@@ -3041,6 +3041,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
   if (!card || !search || !year || !status || !results || !refresh) return;
 
   const api = "https://hqdoufaiuslwnqwnrltc.supabase.co/functions/v1/bsh-archiv-katalog";
+  const deleteApi = "https://hqdoufaiuslwnqwnrltc.supabase.co/functions/v1/bsh-archiv-delete";
   let timer = null;
   let requestNumber = 0;
 
@@ -3109,6 +3110,65 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
           "font-size:.85rem;opacity:.8");
         addText(box, "div", item.archiv_status,
           "display:inline-block;margin-top:7px;padding:2px 9px;border:1px solid #9aaab5;border-radius:20px;font-size:.8rem");
+
+        const actions = document.createElement("div");
+        actions.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;margin-top:10px";
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.textContent = "Datei löschen";
+        deleteButton.style.cssText = "border:0;border-radius:8px;padding:9px 12px;background:#f1dddd;color:#8b2e2e;cursor:pointer";
+        deleteButton.addEventListener("click", async () => {
+          if (!item.id) {
+            status.textContent = "Löschen nicht möglich: Die Archiv-ID fehlt. Bitte Katalog aktualisieren.";
+            return;
+          }
+          const details = [
+            "Soll diese Archivdatei endgültig aus dem privaten Archiv gelöscht werden?",
+            "",
+            "Station: " + (item.station_name || "unbekannt"),
+            "Pegel: " + (item.station_code || "unbekannt"),
+            "Datenjahr: " + (item.datenjahr || "unbekannt"),
+            "Datei: " + (item.original_dateiname || "unbekannt"),
+            "",
+            "Die Datei und der zugehörige Archiveintrag werden gelöscht."
+          ].join("\\n");
+          if (!window.confirm(details)) return;
+          const token = window.prompt("Admin-Token für die Archivlöschung eingeben. Das Token wird nicht gespeichert:");
+          if (!token) {
+            status.textContent = "Löschen abgebrochen: Kein Admin-Token eingegeben.";
+            return;
+          }
+          deleteButton.disabled = true;
+          deleteButton.textContent = "Löschen läuft …";
+          status.style.color = "";
+          status.textContent = "Löschung wird vom Server geprüft …";
+          try {
+            const response = await fetch(deleteApi, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "x-archiv-admin-token": token
+              },
+              body: JSON.stringify({ id: item.id }),
+              cache: "no-store"
+            });
+            const result = await response.json().catch(() => ({}));
+            if (!response.ok || result.deleted !== true) {
+              throw new Error(result.error || ("HTTP " + response.status));
+            }
+            status.style.color = "";
+            status.textContent = "Archivdatei wurde gelöscht. Die Übersicht wird aktualisiert …";
+            await loadCatalog();
+          } catch (error) {
+            status.style.color = "#ff9999";
+            status.textContent = "Löschen fehlgeschlagen: " + (error && error.message ? error.message : "Serverfehler");
+          } finally {
+            deleteButton.disabled = false;
+            deleteButton.textContent = "Datei löschen";
+          }
+        });
+        actions.appendChild(deleteButton);
+        box.appendChild(actions);
 
         results.appendChild(box);
       }
