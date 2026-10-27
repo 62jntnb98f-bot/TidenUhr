@@ -1423,6 +1423,30 @@ body.light-mode .tabs button.favorites-open::first-letter {
 .datePickerTrigger .datePickerValue{font-weight:600;font-size:13px;white-space:nowrap}
 .datePickerTrigger>span[aria-hidden="true"]{font-size:11px}
 @media(max-width:600px){.datePickerWrap{width:142px}.datePickerTrigger{font-size:12px;padding:4px 6px}.datePickerTrigger .datePickerValue{font-size:12px}}
+
+/* Definitive Fix: Datumsfeld darf nicht auf die gesamte Zeilenbreite wachsen */
+.card > .row > .datePickerWrap{
+  flex:0 0 154px !important;
+  width:154px !important;
+  min-width:154px !important;
+  max-width:154px !important;
+  align-self:flex-start;
+}
+.card > .row > .datePickerWrap > .datePickerTrigger{
+  display:flex !important;
+  width:154px !important;
+  min-width:154px !important;
+  max-width:154px !important;
+  min-height:34px !important;
+  height:34px !important;
+  padding:4px 7px !important;
+  font-size:13px !important;
+}
+.card > .row > .datePickerWrap .datePickerValue{font-size:13px !important;font-weight:600}
+@media(max-width:600px){
+ .card > .row > .datePickerWrap{flex-basis:142px !important;width:142px !important;min-width:142px !important;max-width:142px !important}
+ .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
+}
 </style><script>
 const TIDENUHR_VERSION="47.01";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, F\u00F6hr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
