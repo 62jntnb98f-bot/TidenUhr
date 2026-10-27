@@ -1612,14 +1612,13 @@ async function checkForPublishedUpdate(){
 function applyVersion(){ document.title='TidenUhr v'+TIDENUHR_VERSION+' · index.html'; const v=document.querySelector('[data-app-version]'); if(v) v.textContent=TIDENUHR_VERSION; }
 const localDate=()=>{let d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)};
 function syncDateToData(){
- // Ein vom Nutzer gewähltes Datum hat Vorrang, sofern es zum aktuell gewählten Datenjahr gehört.
- // So bleibt z.B. der 17.01.2027 beim Laden/Fehlen von Jahresdaten sichtbar.
- const selected=$('date').value;
- const today=localDate();
- // Das aktuelle Kalenderjahr soll immer mit dem heutigen Datum starten,
- // auch wenn der letzte Import aus einem anderen Jahr stammt.
- if(Number(today.slice(0,4))===Number(selectedYear)){ $('date').value=today; return; }
+ // Ein vom Nutzer gewähltes Datum hat Vorrang, sofern es zum ausgewählten Datenjahr gehört.
+ // Nicht bei jeder Neuladung auf heute zurückspringen: sonst kann die Tagesauswahl
+ // im Kalender (z.B. 28.10.) nicht übernommen werden.
+ const selected=String($('date').value||'');
  if(selected && Number(selected.slice(0,4))===Number(selectedYear)) return;
+ const today=localDate();
+ if(Number(today.slice(0,4))===Number(selectedYear)){ $('date').value=today; return; }
  const first=data.find(e=>e&&e.datetime&&Number(String(e.datetime).slice(0,4))===Number(selectedYear));
  if(first) $('date').value=String(first.datetime).slice(0,10);
 }
