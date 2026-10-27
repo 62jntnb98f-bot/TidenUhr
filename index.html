@@ -302,21 +302,21 @@ body.map-is-fullscreen{overflow:hidden}
 .techInfoBody{padding:4px 0 8px;line-height:1.45}
 
 
-/* BSH-Archiv: eigenständige monochrome Vollbildansicht */
+/* BSH-Archiv: Vollbildansicht mit getrenntem Kopf- und Scrollbereich */
 #bshArchiveCard[open] {
   position: fixed !important;
   inset: 0 !important;
   z-index: 20000 !important;
-  display: block !important;
+  display: flex !important;
+  flex-direction: column !important;
   margin: 0 !important;
   padding: calc(10px + env(safe-area-inset-top)) 16px
-           calc(20px + env(safe-area-inset-bottom)) !important;
+           calc(10px + env(safe-area-inset-bottom)) !important;
   width: 100vw !important;
   height: 100vh !important;
   height: 100dvh !important;
-  max-height: none !important;
-  overflow-y: auto !important;
-  overflow-x: hidden !important;
+  max-height: 100dvh !important;
+  overflow: hidden !important;
   background: #111 !important;
   color: #f5f5f5 !important;
   border: 0 !important;
@@ -325,14 +325,24 @@ body.map-is-fullscreen{overflow:hidden}
   color-scheme: dark !important;
 }
 #bshArchiveCard[open] > .sectionSummary {
-  position: sticky !important;
-  top: 0 !important;
+  position: relative !important;
+  top: auto !important;
   z-index: 2;
+  flex: 0 0 auto !important;
   background: #111 !important;
   color: #f5f5f5 !important;
   border-bottom: 1px solid #ddd !important;
+  padding-bottom: 8px;
 }
 #bshArchiveCard[open] .sectionBody {
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  margin-top: 8px !important;
+  padding-bottom: 8px;
   background: #111 !important;
   color: #f5f5f5 !important;
 }
