@@ -302,13 +302,13 @@ body.map-is-fullscreen{overflow:hidden}
 .techInfoBody{padding:4px 0 8px;line-height:1.45}
 
 
-/* BSH-Archiv: Vollbildansicht mit getrenntem Kopf- und Scrollbereich */
+/* BSH-Archiv: Vollbildansicht mit festem Kopf und eigenem Scrollbereich */
 #bshArchiveCard[open] {
   position: fixed !important;
   inset: 0 !important;
   z-index: 20000 !important;
-  display: flex !important;
-  flex-direction: column !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
   margin: 0 !important;
   padding: calc(10px + env(safe-area-inset-top)) 16px
            calc(10px + env(safe-area-inset-bottom)) !important;
@@ -335,9 +335,9 @@ body.map-is-fullscreen{overflow:hidden}
   padding-bottom: 8px;
 }
 #bshArchiveCard[open] .sectionBody {
-  flex: 1 1 auto !important;
   min-height: 0 !important;
-  overflow-y: auto !important;
+  height: 100% !important;
+  overflow-y: scroll !important;
   overflow-x: hidden !important;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
