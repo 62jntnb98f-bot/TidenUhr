@@ -1557,7 +1557,7 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 <details class="card"><summary class="sectionSummary">📈 Wasserstandsverlauf</summary><div class="sectionBody"><div class="row"><div class="grow"><div class="small">Gemessene Wasserstands-Rohdaten von PEGELONLINE</div></div><select id="range" class="year"><option value="P1D">24 Stunden</option><option value="P3D">3 Tage</option><option value="P7D">7 Tage</option><option value="P14D">14 Tage</option><option value="P30D">30 Tage</option></select></div><div id="chart" class="compactChart"></div><div id="chartInfo" class="small compactChartInfo"></div></div></details>
 <details class="card"><summary class="sectionSummary">🗂️ Datenstatus</summary><div class="sectionBody"><div id="quality" class="small">Wird geprüft …</div></div></details>
 <details class="card"><summary class="sectionSummary">🗃️ Stationsdatenbank</summary><div class="sectionBody"><div class="small" id="dbInfo">BSH-Stationen werden geladen …</div></div></details>
-<details class="card" id="bshImportCard"><summary class="sectionSummary bshSummary"><span><span style="display:block">📥 BSH-Dateien importieren</span><span class="small" style="display:block;font-weight:400;margin-top:4px">BSH-Hoch-/Niedrigwasserdatei auswählen und lokal importieren.</span></span></summary><div class="sectionBody"><button class="guideToggle" id="bshGuideToggle" type="button" aria-expanded="false" aria-controls="bshGuideText">▸ Import-Anleitung anzeigen</button><div class="small" id="bshGuideText" hidden style="margin-top:4px;padding:8px;background:#f4f8fa;border-radius:8px">Laden Sie auf der BSH-Webseite die echte „Txt-Datei Hoch-/Niedrigwasser“ für die gewünschte Station und das passende Jahr herunter. Wählen Sie diese Textdatei anschließend über „BSH-TXT-Datei auswählen“ aus und starten Sie den Import. Die Station und Pegelnummer werden direkt aus der BSH-Datei erkannt. Die Datei wird nur lokal in diesem Browser gespeichert; es werden keine Tidewerte berechnet oder verändert. Zum Ausblenden der Hinweise tippen Sie erneut auf „Import-Anleitung ausblenden“.</div><div class="bshImportRow" style="margin-top:5px"><label class="bshFileBox" title="BSH-TXT-Datei auswählen"><span class="bshFileLabel">Datei auswählen</span><input id="bshFile" type="file" accept=".txt,text/plain" class="bshFileInput" aria-label="BSH-TXT-Datei auswählen"></label><button class="btn" id="bshImportBtn" type="button" title="BSH-TXT-Datei importieren">Importieren</button><button class="btn" id="bshRemoveBtn" type="button" disabled title="Ausgewählte bzw. zuletzt importierte BSH-Datei entfernen">✕ Entfernen</button></div><div class="small" id="bshImportInfo" style="margin-top:8px"></div></div></details>
+<details class="card" id="bshImportCard"><summary class="sectionSummary bshSummary"><span><span style="display:block">📥 BSH-Dateien importieren</span><span class="small" style="display:block;font-weight:400;margin-top:4px">BSH-Hoch-/Niedrigwasserdatei auswählen und lokal importieren.</span></span></summary><div class="sectionBody"><button class="guideToggle" id="bshGuideToggle" type="button" aria-expanded="false" aria-controls="bshGuideText">▸ Import-Anleitung anzeigen</button><div class="small" id="bshGuideText" hidden style="margin-top:4px;padding:8px;background:#f4f8fa;border-radius:8px">Laden Sie auf der BSH-Webseite die echte „Txt-Datei Hoch-/Niedrigwasser“ für die gewünschte Station und das passende Jahr herunter. Wählen Sie diese Textdatei anschließend über „BSH-TXT-Datei auswählen“ aus und starten Sie den Import. Die Station und Pegelnummer werden direkt aus der BSH-Datei erkannt. Die Datei wird nur lokal in diesem Browser gespeichert; es werden keine Tidewerte berechnet oder verändert. Zum Ausblenden der Hinweise tippen Sie erneut auf „Import-Anleitung ausblenden“.</div><div class="bshImportRow" style="margin-top:5px"><label class="bshFileBox" title="BSH-TXT-Datei auswählen"><span class="bshFileLabel">Datei auswählen</span><input id="bshFile" type="file" accept=".txt,text/plain" class="bshFileInput" aria-label="BSH-TXT-Datei auswählen"></label><button class="btn" id="bshImportBtn" type="button" title="BSH-TXT-Datei importieren">Importieren</button><button class="btn" id="bshRemoveBtn" type="button" disabled title="Ausgewählte bzw. zuletzt importierte BSH-Datei entfernen">✕ Entfernen</button><button class="btn" id="bshArchiveSelectedBtn" type="button" title="Ausgewählte BSH-Datei für die Archivierung vorbereiten">Archivieren</button></div><div class="small" id="bshImportInfo" style="margin-top:8px"></div></div></details>
 <details class="card" id="bshArchiveCard">
 <summary class="sectionSummary">
 <span>
@@ -2953,6 +2953,37 @@ $('nearbyPlace').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();findNearby
 
 function setListMode(m){mode=m;['tabAll','tabBsh','tabPo','tabNorth','tabBaltic'].forEach(id=>$(id)?.classList.remove('active'));const ids={all:'tabAll',bsh:'tabBsh',po:'tabPo',north:'tabNorth',baltic:'tabBaltic'};$(ids[m])?.classList.add('active');renderList();}
 $('bshGuideToggle').onclick=()=>{const text=$('bshGuideText'),open=text.hidden;text.hidden=!open;$('bshGuideToggle').textContent=open?'▾ Import-Anleitung ausblenden':'▸ Import-Anleitung anzeigen';$('bshGuideToggle').setAttribute('aria-expanded',String(open))};
+$('bshArchiveSelectedBtn').onclick=()=>{
+  const selected=$('bshFile').files[0];
+  const archiveCard=$('bshArchiveCard');
+  const archiveFile=$('bshArchiveUploadFile');
+  const archiveForm=$('bshArchiveUploadForm');
+  const archiveStatus=$('bshArchiveUploadStatus');
+  if(!selected){
+    $('bshImportInfo').textContent='Bitte zuerst eine BSH-Datei auswählen, die archiviert werden soll.';
+    $('bshFile').click();
+    return;
+  }
+  if(!archiveCard||!archiveFile||!archiveForm){
+    $('bshImportInfo').textContent='Die Archivierungsfunktion ist derzeit nicht verfügbar.';
+    return;
+  }
+  try{
+    const transfer=new DataTransfer();
+    transfer.items.add(selected);
+    archiveFile.files=transfer.files;
+  }catch(error){
+    $('bshImportInfo').textContent='Die Datei konnte nicht automatisch an das Archivformular übergeben werden. Bitte im BSH-Archiv erneut auswählen.';
+    archiveCard.open=true;
+    archiveCard.scrollIntoView({behavior:'smooth',block:'start'});
+    return;
+  }
+  archiveCard.open=true;
+  $('bshArchiveConsent').checked=false;
+  archiveCard.scrollIntoView({behavior:'smooth',block:'start'});
+  document.getElementById('bshArchiveUpload').scrollIntoView({behavior:'smooth',block:'end'});
+  archiveStatus.textContent='Datei vorbereitet. Bitte die Sicherheitsprüfung abschließen und der Archivierung ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
+};
 $('bshRemoveStatusBtn').onclick=removeBshImport;$('bshImportBtn').onclick=async()=>{try{await importBshFile($('bshFile').files[0])}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('bshFile').addEventListener('change',()=>{$('bshRemoveBtn').disabled=!$('bshFile').files.length&&!localStorage.getItem('tiden.lastBshImport')});$('bshRemoveBtn').onclick=async()=>{try{await removeBshImport()}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('tabAll').onclick=()=>setListMode('all');$('tabBsh').onclick=()=>setListMode('bsh');$('tabPo').onclick=()=>setListMode('po');$('tabNorth').onclick=()=>setListMode('north');$('tabBaltic').onclick=()=>setListMode('baltic');function syncSearchClear(){const has=!!$('search').value.trim();$('searchClear').classList.toggle('visible',has);$('searchClear').hidden=!has} $('search').oninput=()=>{renderList();syncSearchClear()};syncSearchClear();$('searchClear').onclick=()=>{$('search').value='';syncSearchClear();$('search').focus();renderList()};/* v47.01: custom calendar combines month and year selection while preserving existing date-change logic */
 (function initIntegratedDatePicker(){
  const byId=id=>document.getElementById(id),input=byId('date'),trigger=byId('datePickerTrigger'),pop=byId('datePickerPopover');if(!input||!trigger||!pop)return;
