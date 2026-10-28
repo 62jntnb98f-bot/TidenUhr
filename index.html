@@ -1817,6 +1817,13 @@ async function checkBshTxtDirectDownload(){
      status.textContent='Die BSH-TXT-Datei für '+candidate.name+' ('+year+') ist bereits im Archiv vorhanden; es wird kein doppelter Download angeboten.';
      status.className='small';return;
    }
+   // Kiel-Holtenau Ostsee bietet laut BSH-Seite keinen direkten HW/NW-TXT-Download.
+   // Erst nach der Archivprüfung abfangen, damit vorhandene Archivdaten Vorrang haben.
+   if(code==='3020P'||candidate.id==='KIEL-HOLTENAU'){
+     status.textContent='Für Kiel-Holtenau Ostsee stellt der BSH keinen direkten Hoch-/Niedrigwasser-TXT-Download bereit. Beobachtungsdaten finden Sie auf der BSH-Seite unter „Weitere Daten“ bei PegelOnline.';
+     status.className='small warn';
+     return;
+   }
    const url=new URL('https://filebox.bsh.de/index.php/s/SbJ3z5NBkpOZloY/download');
    url.searchParams.set('path','/vb_hwnw/deu'+year);
    url.searchParams.set('files','DE__'+code+year+'.txt');
@@ -2769,6 +2776,10 @@ window.importBshArchiveText = async function(text, filename){
 };
 async function removeBshImport(){
  const fileInput=$('bshFile');
+ // Vor dem Entfernen die vorherige Stationsauswahl sichern, damit Kiel-Holtenau
+ // nicht unabhängig von der vorherigen Auswahl erzwungen wird.
+ let previousStation=null;
+ try{previousStation=JSON.parse(localStorage.getItem('tiden.preImportStation')||'null')}catch(_){}
  // Das Dateifeld wird immer geleert; zusätzlich wird der zuletzt importierte
  // lokale BSH-Datensatz entfernt, damit der Import nicht dauerhaft aktiv bleibt.
  let last=null;
@@ -2795,12 +2806,16 @@ async function removeBshImport(){
  if(fileInput) fileInput.value='';
  $('bshRemoveBtn').disabled=true;$('bshRemoveStatusBtn').style.display='none';
  $('bshImportInfo').innerHTML='<span class="ok">✓ BSH-Datei entfernt. Der lokale Import wurde zurückgesetzt.</span>';
- mode='all';
- $('tabAll').classList.add('active');
- $('tabBsh').classList.remove('active');
+ const restoreMode=['all','bsh','po'].includes(previousStation?.mode)?previousStation.mode:'all';
+ mode=restoreMode;
+ $('tabAll').classList.toggle('active',mode==='all');
+ $('tabBsh').classList.toggle('active',mode==='bsh');
+ $('tabPo').classList.toggle('active',mode==='po');
  renderList();
- // Nach dem Entfernen auf die normale/default Station zurückkehren.
- await selectStation('KIEL-HOLTENAU');
+ // Frühere Auswahl wiederherstellen. Nur wenn keine frühere Auswahl gespeichert
+ // ist, bleibt Kiel-Holtenau die normale Startstation.
+ const restoreId=previousStation?.id||'KIEL-HOLTENAU';
+ await selectStation(restoreId);
  // v46.97: selectStation/loadBshYear kann noch einen alten Importzustand in den
  // Arbeitsspeicher übernehmen. Nach Abschluss deshalb die Tide-Datenanzeige sicher leeren.
  data=[];
