@@ -112,7 +112,28 @@
 #coastMapCard.map-fullscreen .utilityBar{position:sticky;top:38px;z-index:7;background:#fff;padding:6px 0}
 #coastMapCard.map-fullscreen #mapInfo{padding-bottom:8px}
 body.map-is-fullscreen{overflow:hidden}
-.mapPopup{position:absolute;left:10px;bottom:10px;z-index:6;max-width:min(360px,calc(100% - 20px));background:#fff;color:#102a43;border:2px solid #0b3954;border-radius:12px;padding:10px 12px;box-shadow:0 3px 14px #0003;font-size:15px;line-height:1.35;display:none;pointer-events:none}.mapPopup.visible{display:block}.mapPopup strong{display:block;font-size:16px;margin-bottom:3px}.mapPopup .mapPopupWater{font-size:18px;font-weight:750}.mapdot circle{transition:fill .08s ease}.mapdot .mapHit{r:20}.mapdot.active circle:not(.mapHit){r:9;fill:#d73521;stroke:#fff;stroke-width:3}.mapdot text{font-size:13px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
+.mapPopup{position:absolute;left:10px;bottom:10px;z-index:6;max-width:min(360px,calc(100% - 20px));background:#fff;color:#102a43;border:2px solid #0b3954;border-radius:12px;padding:10px 12px;box-shadow:0 3px 14px #0003;font-size:15px;line-height:1.35;display:none;pointer-events:none}/* Vergrößerte Küstenkarte: ausgewählten Pegel im sichtbaren iPhone-Bildschirm halten */
+#coastMapCard.map-fullscreen .mapPopup {
+  position: fixed !important;
+  left: 16px !important;
+  right: auto !important;
+  bottom: calc(env(safe-area-inset-bottom) + 84px) !important;
+  z-index: 10005 !important;
+  width: max-content !important;
+  max-width: calc(100vw - 32px) !important;
+  max-height: 32vh !important;
+  overflow: auto !important;
+  pointer-events: none !important;
+}
+@media (max-width: 600px) {
+  #coastMapCard.map-fullscreen .mapPopup {
+    left: 12px !important;
+    bottom: calc(env(safe-area-inset-bottom) + 82px) !important;
+    max-width: calc(100vw - 24px) !important;
+    font-size: 15px !important;
+  }
+}
+.mapPopup.visible{display:block}.mapPopup strong{display:block;font-size:16px;margin-bottom:3px}.mapPopup .mapPopupWater{font-size:18px;font-weight:750}.mapdot circle{transition:fill .08s ease}.mapdot .mapHit{r:20}.mapdot.active circle:not(.mapHit){r:9;fill:#d73521;stroke:#fff;stroke-width:3}.mapdot text{font-size:13px;font-weight:700;paint-order:stroke;stroke:#fff;stroke-width:3px;stroke-linejoin:round}
 @media(max-width:600px){.mapbox{height:300px}#coastMapCard.map-fullscreen{padding:calc(6px + env(safe-area-inset-top)) 6px calc(6px + env(safe-area-inset-bottom))!important}#coastMapCard.map-fullscreen .mapbox{height:calc(100dvh - 125px);min-height:420px}#coastMapCard.map-fullscreen .utilityBar{gap:5px;flex-wrap:wrap}#coastMapCard.map-fullscreen .utilityBar .btn{flex:1 1 30%;padding:10px 6px;min-height:46px;font-size:15px}#coastMapCard.map-fullscreen .mapcontrols button{width:46px;height:46px;font-size:25px}.mapPopup{left:8px;bottom:8px;padding:10px 12px;font-size:16px}.mapPopup strong{font-size:17px}.mapPopup .mapPopupWater{font-size:20px}}
 
 /* v46.93: dynamische Breiten für die drei Übersichtskarten; Flut/Ebbe und Uhrzeit bleiben zusammen */
