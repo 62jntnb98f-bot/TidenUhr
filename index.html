@@ -2473,6 +2473,9 @@ async function selectStation(id){
  $('gaugeLink').href=(modeForSelection?.po?.number||current.number)?`https://pegelonline.wsv.de/gast/stammdaten?pegelnr=${encodeURIComponent(modeForSelection?.po?.number||current.number)}`:'#';
  $('bshLink').href=currentBsh?.bshUrl||'https://gezeiten.bsh.de/kiel_holtenau'; $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
  data=[];meta=null;selectedYear=null;poCurrent=null;
+ // Vorherige Quellenanzeige beim Stationswechsel zurücksetzen.
+ $('bshSourceStatus').textContent='';
+ $('bshSourceStatus').className='small';
  let bsh=modeForSelection?.bsh || (mode==='bsh'?current:findBshForPo(current));
  let poStation=modeForSelection?.po || (mode==='bsh'?findPoForBsh(current):current);
  // Robuste Zuordnung: zuerst die zusammengeführte Station, danach Nummer und Name.
@@ -2480,6 +2483,10 @@ async function selectStation(id){
  // Keine zusätzliche Teilstring-Zuordnung: unbekannte Pegel bleiben ohne BSH-Station.
  if(bsh){currentBsh=bsh}else{currentBsh=null}
  if(poStation){poCurrent=poStation}
+ if(!bsh){
+   $('bshSourceStatus').textContent='Für diese Pegelstelle ist keine BSH-Tidequelle zugeordnet.';
+   $('bshSourceStatus').className='small';
+ }
  updateSources(); syncFavorite(); renderQuality();
  if(bsh){
    // v46.70: beim Wiederöffnen der Home-Bildschirm-App lokale Importjahre erneut aus localStorage lesen.
