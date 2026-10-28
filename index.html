@@ -3271,6 +3271,7 @@ $('date').onchange=async()=>{
  if(!chosenDate || !Number.isFinite(dateYear)||dateYear<1900||dateYear>2200){render();return;}
  // Kalenderdatum ist bei direkter Auswahl maßgeblich: Jahr und Datensatz folgen ihm.
  selectedYear=dateYear;
+ updateBshTxtDownload();
  let yearOption=[...$('year').options].find(o=>Number(o.value)===dateYear);
  if(!yearOption){
    yearOption=document.createElement('option');
@@ -3282,6 +3283,7 @@ $('date').onchange=async()=>{
  await loadBshYear();
 };$('year').onchange=async()=>{
  selectedYear=Number($('year').value);
+ updateBshTxtDownload();
  // Beim Wechsel ins aktuelle Kalenderjahr stets auf heute zurückspringen.
  // Für andere Jahre Monat/Tag beibehalten, sofern das Datum gültig ist.
  const today=localDate();
