@@ -1790,10 +1790,20 @@ async function checkBshTxtDirectDownload(){
  const check=$('bshTxtCheck'),link=$('bshTxtDownload');
  const poStation=modeForSelection?.po||(mode==='po'?current:poCurrent);
  const year=Number(selectedYear);
- if(!check||!poStation||!/^\d{4}$/.test(String(year)))return;
- check.disabled=true;check.textContent='BSH-Datei wird geprüft …';
- if(link){link.hidden=true;link.removeAttribute('href');}
  const status=$('bshSourceStatus');
+ if(!check||!status)return;
+ if(link){link.hidden=true;link.removeAttribute('href');}
+ if(!poStation){
+   status.textContent='Die Prüfung kann nicht starten: Für die aktuelle Auswahl wurde keine PEGELONLINE-Messstelle erkannt. Bitte die Pegelstelle im Küstenverzeichnis erneut auswählen.';
+   status.className='small warn';
+   return;
+ }
+ if(!/^\d{4}$/.test(String(year))){
+   status.textContent='Die Prüfung kann nicht starten: Es ist noch kein gültiges Datenjahr ausgewählt. Bitte zuerst ein Jahr auswählen und erneut prüfen.';
+   status.className='small warn';
+   return;
+ }
+ check.disabled=true;check.textContent='BSH-Datei wird geprüft …';
  try{
    let candidate=currentBsh||findBshForPo(poStation);
    const items=await getBshArchiveCatalog();
