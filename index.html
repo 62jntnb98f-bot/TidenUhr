@@ -1568,7 +1568,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
 #tideSourceLabel{font-size:10px;line-height:1.25}
 #bshInfo{font-size:10px;line-height:1.25}
 #events .event{font-size:12px;padding:4px 0;grid-template-columns:48px 1fr 60px;gap:5px}
-@media(max-width:520px){.datePickerPopover{position:fixed!important;right:auto!important;top:auto;left:10px;width:min(215px,calc(100vw - 20px));max-width:calc(100vw - 20px);box-sizing:border-box;padding:6px}.datePickerYear{max-width:60px}}
+@media(max-width:520px){.datePickerPopover{width:min(215px,calc(100vw - 16px));padding:6px}.datePickerYear{max-width:60px}}
 
 /* Schmale Datumsanzeige: nur umrahmtes Datum mit Kalenderpfeil */
 .datePickerWrap{flex:0 0 auto;width:154px;min-width:0}
@@ -1722,14 +1722,12 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 <div id="bshArchiveStatus" class="small" role="status" aria-live="polite" style="margin-top:12px">Archiv wird beim Öffnen geladen …</div>
 <div id="bshArchiveResults" style="margin-top:10px"></div>
 
-<details id="bshArchiveUpload" style="margin-top:18px;border:1px solid #bdcbd5;border-radius:12px;padding:0">
-  <summary style="cursor:pointer;padding:12px;font-weight:650">📤 BSH-Datei ins private Online-Archiv hochladen</summary>
-  <div style="padding:0 12px 12px">
+<div id="bshArchiveUpload" style="margin-top:18px;padding:12px;border:1px solid #bdcbd5;border-radius:12px">
+  <h3 style="margin:0 0 8px">📤 BSH-Datei ins private Online-Archiv hochladen</h3>
   <p class="small">Die ausgewählte BSH-TXT-Datei wird nach ausdrücklicher Zustimmung und erfolgreicher Sicherheitsprüfung im privaten Online-Archiv gespeichert.</p>
   <form id="bshArchiveUploadForm">
     <label for="bshArchiveUploadFile" style="display:block;margin:10px 0 6px">BSH-TXT-Datei auswählen</label>
     <input id="bshArchiveUploadFile" name="file" type="file" accept=".txt,text/plain" required>
-    <button id="bshArchiveDirectButton" class="btn" type="button" disabled style="margin-top:10px">Ausgewählte BSH-Downloadquelle direkt archivieren</button>
     <div style="margin-top:12px">
       <div id="bshArchiveTurnstile"></div>
     </div>
@@ -1741,8 +1739,7 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
     <button id="bshArchiveUploadButton" class="btn" type="submit" disabled style="margin-top:12px">Datei ins Online-Archiv hochladen</button>
     <div id="bshArchiveUploadStatus" class="small" role="status" aria-live="polite" style="margin-top:10px">Sicherheitsprüfung wird geladen …</div>
   </form>
-  </div>
-</details>
+</div>
 
 </div>
 </details>
@@ -1799,7 +1796,6 @@ async function checkBshTxtDirectDownload(){
  const status=$('bshSourceStatus');
  if(!check||!status)return;
  if(link){link.hidden=true;link.removeAttribute('href');}
- window.tidenuhrBshDirectUrl='';
  if(!poStation){
    status.textContent='Die Prüfung kann nicht starten: Für die aktuelle Auswahl wurde keine PEGELONLINE-Messstelle erkannt. Bitte die Pegelstelle im Küstenverzeichnis erneut auswählen.';
    status.className='small warn';
@@ -1811,18 +1807,8 @@ async function checkBshTxtDirectDownload(){
    return;
  }
  check.disabled=true;check.textContent='BSH-Datei wird geprüft …';
- let directUrl=null;
  try{
    let candidate=currentBsh||findBshForPo(poStation);
-   // Verifizierte Zuordnung aus dem offiziellen BSH-Stationsverzeichnis:
-   // „Eider-Sperrwerk, Außenpegel“ hat bshnr 664P.
-   // Nur den eindeutig benannten Pegel zuordnen; keine Teilstring-/Nähe-Suche.
-   if(!candidate){
-     const poName=norm(poStation.longname||poStation.shortname||poStation.name||'');
-     if(/eider/.test(poName)&&/sperrwerk/.test(poName)&&(/aussenpegel/.test(poName)||/(^| )ap($| )/.test(poName))){
-       candidate={id:'DE__664P',name:'Eider-Sperrwerk, Außenpegel',archiveStationCode:'664P'};
-     }
-   }
    const items=await getBshArchiveCatalog();
    const targetName=norm(poStation.longname||poStation.shortname||poStation.name||'');
    const sameName=items.filter(x=>norm(x.station_name||'')===targetName&&targetName.length>4);
@@ -1854,11 +1840,6 @@ async function checkBshTxtDirectDownload(){
    const url=new URL('https://filebox.bsh.de/index.php/s/SbJ3z5NBkpOZloY/download');
    url.searchParams.set('path','/vb_hwnw/deu'+year);
    url.searchParams.set('files','DE__'+code+year+'.txt');
-   directUrl=url.href;
-   window.tidenuhrBshDirectUrl=url.href;
-   // Den direkten BSH-Link bereits vor dem Prüfabruf anbieten. Safari kann
-   // den Dateiabruf ggf. wegen fehlender CORS-Freigabe nicht per fetch lesen.
-   if(link){link.href=url.href;link.download='DE__'+code+year+'.txt';link.hidden=false;}
    const response=await fetch(url.href,{method:'GET',cache:'no-store'});
    if(!response.ok)throw Error('BSH-Server antwortet mit HTTP '+response.status);
    const txt=await response.text();
@@ -1868,13 +1849,7 @@ async function checkBshTxtDirectDownload(){
    status.textContent='BSH-Direktdatei gefunden: '+(parsed.station||candidate.name)+' · '+year+'. Sie ist für dieses Jahr noch nicht im Archiv eingetragen.';
    status.className='small ok';
  }catch(e){
-   const err=String(e?.message||e);
-   if(directUrl&&link&&/load failed|failed to fetch|networkerror|network error/i.test(err)){
-     link.href=directUrl;link.hidden=false;
-     status.textContent='Der BSH-Download-Link wurde erstellt. Safari kann den Dateiinhalt hier nicht automatisch prüfen (CORS-/Netzwerkbeschränkung). Die Datei lässt sich über „BSH-TXT herunterladen“ direkt laden; die automatische Inhaltsprüfung ist in diesem Browser nicht verfügbar.';
-   }else{
-     status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+err;
-   }
+   status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+(e?.message||e);
    status.className='small warn';
  }finally{
    check.disabled=false;check.textContent='BSH-TXT-Direktdownload erneut prüfen';
@@ -3360,13 +3335,13 @@ $('bshArchiveSelectedBtn').onclick=()=>{
 };
 $('bshRemoveStatusBtn').onclick=removeBshImport;$('bshImportBtn').onclick=async()=>{try{await importBshFile($('bshFile').files[0])}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('bshFile').addEventListener('change',()=>{$('bshRemoveBtn').disabled=!$('bshFile').files.length&&!localStorage.getItem('tiden.lastBshImport')});$('bshRemoveBtn').onclick=async()=>{try{await removeBshImport()}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('tabAll').onclick=()=>setListMode('all');$('tabBsh').onclick=()=>setListMode('bsh');$('tabPo').onclick=()=>setListMode('po');$('tabNorth').onclick=()=>setListMode('north');$('tabBaltic').onclick=()=>setListMode('baltic');function syncSearchClear(){const has=!!$('search').value.trim();$('searchClear').classList.toggle('visible',has);$('searchClear').hidden=!has} $('search').oninput=()=>{renderList();syncSearchClear()};syncSearchClear();$('searchClear').onclick=()=>{$('search').value='';syncSearchClear();$('search').focus();renderList()};/* v47.01: custom calendar combines month and year selection while preserving existing date-change logic */
 (function initIntegratedDatePicker(){
- const byId=id=>document.getElementById(id),input=byId('date'),trigger=byId('datePickerTrigger'),pop=byId('datePickerPopover');if(!input||!trigger||!pop)return;const popHome=pop.parentNode,popNext=pop.nextSibling;
+ const byId=id=>document.getElementById(id),input=byId('date'),trigger=byId('datePickerTrigger'),pop=byId('datePickerPopover');if(!input||!trigger||!pop)return;
  let view=new Date((input.value||new Date().toISOString().slice(0,10))+'T12:00:00');if(Number.isNaN(view.getTime()))view=new Date();
  const months=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],weekdays=['MO','DI','MI','DO','FR','SA','SO'];const pad=n=>String(n).padStart(2,'0'),iso=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
  function syncTrigger(){if(input.value){const d=new Date(input.value+'T12:00:00');byId('datePickerValue').textContent=d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});view=new Date(d.getFullYear(),d.getMonth(),1,12)}else byId('datePickerValue').textContent='Datum wählen'}
  function syncYears(){const sel=byId('datePickerYear'),source=byId('year'),ys=new Set();for(let y=view.getFullYear()-8;y<=view.getFullYear()+8;y++)ys.add(y);if(source)Array.from(source.options).forEach(o=>{const y=Number(o.value);if(Number.isFinite(y)&&y>1900&&y<2201)ys.add(y)});sel.innerHTML=Array.from(ys).sort((a,b)=>a-b).map(y=>'<option value="'+y+'">'+y+'</option>').join('');sel.value=String(view.getFullYear())}
  function render(){syncYears();byId('datePickerMonth').textContent=months[view.getMonth()];const grid=byId('datePickerGrid');grid.innerHTML='';weekdays.forEach(w=>{const el=document.createElement('div');el.className='datePickerWeekday';el.textContent=w;grid.appendChild(el)});const first=new Date(view.getFullYear(),view.getMonth(),1,12),offset=(first.getDay()+6)%7,days=new Date(view.getFullYear(),view.getMonth()+1,0,12).getDate();for(let i=0;i<offset;i++)grid.appendChild(document.createElement('span'));const today=typeof localDate==='function'?localDate():new Date().toISOString().slice(0,10);for(let n=1;n<=days;n++){const d=new Date(view.getFullYear(),view.getMonth(),n,12),b=document.createElement('button');b.type='button';b.className='datePickerDay'+(iso(d)===input.value?' selected':'')+(iso(d)===today?' today':'');b.textContent=String(n);b.setAttribute('aria-label',d.toLocaleDateString('de-DE',{dateStyle:'full'}));b.onclick=()=>{input.value=iso(d);input.dispatchEvent(new Event('change',{bubbles:true}));syncTrigger();close()};grid.appendChild(b)}}
- function open(){const value=input.value||(typeof localDate==='function'?localDate():new Date().toISOString().slice(0,10));view=new Date(value+'T12:00:00');if(Number.isNaN(view.getTime()))view=new Date();view.setDate(1);render();if(pop.parentNode!==document.body)document.body.appendChild(pop);pop.hidden=false;pop.style.position='fixed';pop.style.right='auto';pop.style.bottom='auto';pop.style.transform='none';pop.style.margin='0';const r=trigger.getBoundingClientRect(),vv=window.visualViewport,vw=vv?vv.width:(document.documentElement.clientWidth||window.innerWidth),vh=vv?vv.height:(document.documentElement.clientHeight||window.innerHeight),ox=vv?vv.offsetLeft:0,oy=vv?vv.offsetTop:0,margin=10,gap=8;const mobile=vw<600,pw=Math.max(0,Math.min(mobile?Math.min(320,vw-2*margin):215,vw-2*margin));pop.style.width=pw+'px';pop.style.maxWidth=(vw-2*margin)+'px';pop.style.boxSizing='border-box';pop.style.maxHeight=Math.max(180,vh-2*margin)+'px';pop.style.overflowY='auto';let left=r.left+ox;if(left+pw>ox+vw-margin)left=r.right+ox-pw;left=Math.max(ox+margin,Math.min(left,ox+vw-pw-margin));pop.style.left=left+'px';pop.style.right='auto';const ph=Math.min(pop.offsetHeight,vh-2*margin);let top=r.bottom+oy+gap;const spaceBelow=oy+vh-margin-(r.bottom+oy+gap),spaceAbove=r.top+oy-gap-(oy+margin);if(ph>spaceBelow&&spaceAbove>spaceBelow)top=r.top+oy-gap-ph;top=Math.max(oy+margin,Math.min(top,oy+vh-ph-margin));pop.style.top=top+'px';trigger.setAttribute('aria-expanded','true')}function close(){pop.hidden=true;trigger.setAttribute('aria-expanded','false');if(popHome&&pop.parentNode!==popHome){if(popNext&&popNext.parentNode===popHome)popHome.insertBefore(pop,popNext);else popHome.appendChild(pop)}}
+ function open(){const value=input.value||(typeof localDate==='function'?localDate():new Date().toISOString().slice(0,10));view=new Date(value+'T12:00:00');if(Number.isNaN(view.getTime()))view=new Date();view.setDate(1);render();pop.hidden=false;trigger.setAttribute('aria-expanded','true')}function close(){pop.hidden=true;trigger.setAttribute('aria-expanded','false')}
  trigger.addEventListener('click',()=>pop.hidden?open():close());byId('datePickerPrev').onclick=()=>{view.setMonth(view.getMonth()-1);render()};byId('datePickerNext').onclick=()=>{view.setMonth(view.getMonth()+1);render()};byId('datePickerYear').onchange=()=>{view.setFullYear(Number(byId('datePickerYear').value));render()};byId('datePickerToday').onclick=()=>{input.value=typeof localDate==='function'?localDate():new Date().toISOString().slice(0,10);input.dispatchEvent(new Event('change',{bubbles:true}));syncTrigger();close()};input.addEventListener('change',()=>{syncTrigger();if(!pop.hidden)render()});document.addEventListener('click',e=>{if(!pop.hidden&&!pop.contains(e.target)&&!trigger.contains(e.target))close()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!pop.hidden)close()});syncTrigger();
 })();
 
@@ -3606,11 +3581,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
       }
       const duplicateGroups = [...countsByStationYear.values()].filter(count => count > 1).length;
       const duplicateExtraRecords = [...countsByStationYear.values()].reduce((sum, count) => sum + Math.max(0, count - 1), 0);
-      const items = [...rawItems].sort((a, b) => {
-        const ya = Number(a.datenjahr) || 0, yb = Number(b.datenjahr) || 0;
-        if (ya !== yb) return yb - ya;
-        return String(a.station_name || "").localeCompare(String(b.station_name || ""), "de");
-      });
+      const items = rawItems;
       status.textContent =
         `${items.length} archivierte Datei${items.length === 1 ? "" : "en"} angezeigt.`;
       if (duplicateExtraRecords > 0) {
@@ -3618,79 +3589,32 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         status.textContent += ` WARNUNG: ${duplicateExtraRecords} zusätzliche Einträge in ${duplicateGroups} Station-Jahr-Gruppe(n). Einträge werden nicht zusammengeführt. Bitte die unerwünschte Datei anhand von Dateiname und Erstellungsdatum prüfen und einzeln mit Token löschen.`;
       }
 
-      let activeYear = null;
-      let activeYearDetails = null;
-      let activeYearList = null;
-      const yearCounts = new Map();
       for (const item of items) {
-        const key = String(item.datenjahr || "Unbekanntes Jahr");
-        yearCounts.set(key, (yearCounts.get(key) || 0) + 1);
-      }
-      for (const item of items) {
-        const yearKey = String(item.datenjahr || "Unbekanntes Jahr");
-        if (yearKey !== activeYear) {
-          activeYear = yearKey;
-          activeYearDetails = document.createElement("details");
-          activeYearDetails.open = year.value ? year.value === yearKey : yearKey === String(Math.max(...items.map(x => Number(x.datenjahr) || 0)));
-          activeYearDetails.style.cssText = "border:1px solid #667784;border-radius:12px;margin:10px 0;overflow:hidden";
-          const yearSummary = document.createElement("summary");
-          yearSummary.style.cssText = "cursor:pointer;padding:11px 12px;font-weight:700;display:flex;gap:8px;align-items:center";
-          const yearLabel = document.createElement("span");
-          yearLabel.style.cssText = "flex:1";
-          yearLabel.textContent = "Datenjahr " + yearKey;
-          yearSummary.appendChild(yearLabel);
-          const yearCount = document.createElement("span");
-          yearCount.style.cssText = "font-size:.85rem;font-weight:500;opacity:.8";
-          yearCount.textContent = (yearCounts.get(yearKey) || 0) + " Dateien";
-          yearSummary.appendChild(yearCount);
-          activeYearDetails.appendChild(yearSummary);
-          activeYearList = document.createElement("div");
-          activeYearList.style.cssText = "padding:0 8px 6px";
-          activeYearDetails.appendChild(activeYearList);
-          results.appendChild(activeYearDetails);
-        }
-        const box = document.createElement("details");
-        box.style.cssText = "border:1px solid #cbd5e1;border-radius:10px;padding:0;margin:6px 0;overflow-wrap:anywhere";
-        const summary = document.createElement("summary");
-        summary.style.cssText = "cursor:pointer;list-style:none;padding:10px 12px;font-weight:650;font-size:.94rem;display:flex;align-items:center;gap:8px";
-        const summaryName = document.createElement("span");
-        summaryName.style.cssText = "flex:1;min-width:0;overflow-wrap:anywhere";
-        summaryName.textContent = item.station_name || "Unbekannte Station";
-        summary.appendChild(summaryName);
-        const summaryMeta = document.createElement("span");
-        summaryMeta.style.cssText = "font-size:.82rem;font-weight:500;opacity:.8;white-space:nowrap";
-        summaryMeta.textContent = String(item.station_code || "—") + " · " + String(item.datenjahr || "—");
-        summary.appendChild(summaryMeta);
-        const arrow = document.createElement("span");
-        arrow.textContent = "›";
-        arrow.style.cssText = "font-size:1.2rem;opacity:.7";
-        summary.appendChild(arrow);
-        box.appendChild(summary);
-        const detail = document.createElement("div");
-        detail.style.cssText = "padding:0 12px 12px;overflow-wrap:anywhere";
+        const box = document.createElement("div");
+        box.style.cssText = "border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:9px 0;overflow-wrap:anywhere";
 
-        addText(detail, "div", item.station_name,
-          "font-weight:650;font-size:.94rem;margin-bottom:3px");
-        addText(detail, "div",
+        addText(box, "div", item.station_name,
+          "font-weight:650;font-size:1rem;margin-bottom:3px");
+        addText(box, "div",
           `Pegel ${item.station_code} · Datenjahr ${item.datenjahr}`,
           "font-size:.9rem;opacity:.8;margin-bottom:5px");
-        addText(detail, "div", item.original_dateiname,
+        addText(box, "div", item.original_dateiname,
           "font-size:.9rem;margin-bottom:5px");
         if ((countsByStationYear.get(stationYearKey(item)) || 0) > 1) {
-          addText(detail, "div",
+          addText(box, "div",
             "DUPLIKAT-HINWEIS: Für diese Pegelstelle und dieses Datenjahr gibt es mehrere Archiveinträge. Dieser Datensatz bleibt eigenständig; bitte Dateiname und Erstellungsdatum prüfen, bevor du ihn löschst.",
             "font-size:.88rem;color:#b45309;border:1px solid #b45309;border-radius:8px;padding:8px;margin:6px 0");
         }
         if (item.erstellt_am) {
-          addText(detail, "div", "Erstellt am: " + item.erstellt_am,
+          addText(box, "div", "Erstellt am: " + item.erstellt_am,
             "font-size:.85rem;opacity:.8;margin-bottom:5px");
         }
-        addText(detail, "div", `Aufbewahrung bis: ${item.aufbewahren_bis}`,
+        addText(box, "div", `Aufbewahrung bis: ${item.aufbewahren_bis}`,
           "font-size:.85rem;opacity:.8");
-        addText(detail, "div", item.archiv_status,
+        addText(box, "div", item.archiv_status,
           "display:inline-block;margin-top:7px;padding:2px 9px;border:1px solid #9aaab5;border-radius:20px;font-size:.8rem");
 
-        const deleteFeedback = addText(detail, "div", "", "font-size:.9rem;margin-top:8px;white-space:pre-wrap;overflow-wrap:anywhere");
+        const deleteFeedback = addText(box, "div", "", "font-size:.9rem;margin-top:8px;white-space:pre-wrap;overflow-wrap:anywhere");
         const actions = document.createElement("div");
         actions.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;margin-top:10px";
         const deleteButton = document.createElement("button");
@@ -3809,10 +3733,9 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         });
         actions.appendChild(importButton);
         actions.appendChild(deleteButton);
-        detail.appendChild(actions);
-        box.appendChild(detail);
+        box.appendChild(actions);
 
-        activeYearList.appendChild(box);
+        results.appendChild(box);
       }
 
       if (items.length === 0) {
@@ -3946,10 +3869,8 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
   function setStatus(message) {
     status.textContent = message;
   }
-  const directButton = document.getElementById("bshArchiveDirectButton");
   function updateButton() {
     button.disabled = !(turnstileToken && fileInput.files.length && consent.checked);
-    if (directButton) directButton.disabled = !(turnstileToken && consent.checked && window.tidenuhrBshDirectUrl);
   }
 
   window.tidenuhrArchiveTurnstileLoaded = function () {
@@ -3980,36 +3901,6 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
 
   fileInput.addEventListener("change", updateButton);
   consent.addEventListener("change", updateButton);
-
-  if (directButton) directButton.addEventListener("click", async function () {
-    updateButton();
-    if (directButton.disabled) {
-      setStatus("Bitte zuerst die BSH-TXT-Direktdownload-Prüfung ausführen, die ausdrückliche Zustimmung erteilen und die Sicherheitsprüfung abschließen.");
-      return;
-    }
-    directButton.disabled = true;
-    setStatus("BSH-Datei wird serverseitig abgerufen und für das private Online-Archiv geprüft …");
-    const data = new FormData();
-    data.set("sourceUrl", window.tidenuhrBshDirectUrl);
-    data.set("consent", "true");
-    data.set("consentTextVersion", "bsh-archiv-consent-v1");
-    data.set("cf-turnstile-response", turnstileToken);
-    try {
-      const response = await fetch("https://hqdoufaiuslwnqwnrltc.supabase.co/functions/v1/bsh-archiv-upload-online", { method: "POST", body: data });
-      const responseText = await response.text();
-      let result = {};
-      try { result = responseText ? JSON.parse(responseText) : {}; } catch (_) {}
-      if (response.ok && result.archived === true) {
-        setStatus("BSH-Datei erfolgreich serverseitig abgerufen und im privaten Online-Archiv gespeichert (" + result.stationCode + ", " + result.dataYear + ").");
-      } else {
-        setStatus(result.error || ("Archivierung fehlgeschlagen (HTTP " + response.status + "). Es wurde kein Erfolg bestätigt."));
-      }
-    } catch (error) {
-      setStatus("Die Verbindung zum Online-Archiv ist fehlgeschlagen. Bitte den Archivkatalog prüfen; der Speichervorgang ist nicht bestätigt.");
-    } finally {
-      updateButton();
-    }
-  });
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
