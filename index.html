@@ -1722,8 +1722,9 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 <div id="bshArchiveStatus" class="small" role="status" aria-live="polite" style="margin-top:12px">Archiv wird beim Öffnen geladen …</div>
 <div id="bshArchiveResults" style="margin-top:10px"></div>
 
-<div id="bshArchiveUpload" style="margin-top:18px;padding:12px;border:1px solid #bdcbd5;border-radius:12px">
-  <h3 style="margin:0 0 8px">📤 BSH-Datei ins private Online-Archiv hochladen</h3>
+<details id="bshArchiveUpload" style="margin-top:18px;border:1px solid #bdcbd5;border-radius:12px;padding:0">
+  <summary style="cursor:pointer;padding:12px;font-weight:650">📤 BSH-Datei ins private Online-Archiv hochladen</summary>
+  <div style="padding:0 12px 12px">
   <p class="small">Die ausgewählte BSH-TXT-Datei wird nach ausdrücklicher Zustimmung und erfolgreicher Sicherheitsprüfung im privaten Online-Archiv gespeichert.</p>
   <form id="bshArchiveUploadForm">
     <label for="bshArchiveUploadFile" style="display:block;margin:10px 0 6px">BSH-TXT-Datei auswählen</label>
@@ -1740,7 +1741,8 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
     <button id="bshArchiveUploadButton" class="btn" type="submit" disabled style="margin-top:12px">Datei ins Online-Archiv hochladen</button>
     <div id="bshArchiveUploadStatus" class="small" role="status" aria-live="polite" style="margin-top:10px">Sicherheitsprüfung wird geladen …</div>
   </form>
-</div>
+  </div>
+</details>
 
 </div>
 </details>
@@ -3604,7 +3606,11 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
       }
       const duplicateGroups = [...countsByStationYear.values()].filter(count => count > 1).length;
       const duplicateExtraRecords = [...countsByStationYear.values()].reduce((sum, count) => sum + Math.max(0, count - 1), 0);
-      const items = rawItems;
+      const items = [...rawItems].sort((a, b) => {
+        const ya = Number(a.datenjahr) || 0, yb = Number(b.datenjahr) || 0;
+        if (ya !== yb) return yb - ya;
+        return String(a.station_name || "").localeCompare(String(b.station_name || ""), "de");
+      });
       status.textContent =
         `${items.length} archivierte Datei${items.length === 1 ? "" : "en"} angezeigt.`;
       if (duplicateExtraRecords > 0) {
@@ -3612,7 +3618,37 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         status.textContent += ` WARNUNG: ${duplicateExtraRecords} zusätzliche Einträge in ${duplicateGroups} Station-Jahr-Gruppe(n). Einträge werden nicht zusammengeführt. Bitte die unerwünschte Datei anhand von Dateiname und Erstellungsdatum prüfen und einzeln mit Token löschen.`;
       }
 
+      let activeYear = null;
+      let activeYearDetails = null;
+      let activeYearList = null;
+      const yearCounts = new Map();
       for (const item of items) {
+        const key = String(item.datenjahr || "Unbekanntes Jahr");
+        yearCounts.set(key, (yearCounts.get(key) || 0) + 1);
+      }
+      for (const item of items) {
+        const yearKey = String(item.datenjahr || "Unbekanntes Jahr");
+        if (yearKey !== activeYear) {
+          activeYear = yearKey;
+          activeYearDetails = document.createElement("details");
+          activeYearDetails.open = Boolean(year.value && year.value === yearKey) || (!year.value && yearCounts.size > 0 && yearKey === String(Math.max(...items.map(x => Number(x.datenjahr) || 0)));
+          activeYearDetails.style.cssText = "border:1px solid #667784;border-radius:12px;margin:10px 0;overflow:hidden";
+          const yearSummary = document.createElement("summary");
+          yearSummary.style.cssText = "cursor:pointer;padding:11px 12px;font-weight:700;display:flex;gap:8px;align-items:center";
+          const yearLabel = document.createElement("span");
+          yearLabel.style.cssText = "flex:1";
+          yearLabel.textContent = "Datenjahr " + yearKey;
+          yearSummary.appendChild(yearLabel);
+          const yearCount = document.createElement("span");
+          yearCount.style.cssText = "font-size:.85rem;font-weight:500;opacity:.8";
+          yearCount.textContent = (yearCounts.get(yearKey) || 0) + " Dateien";
+          yearSummary.appendChild(yearCount);
+          activeYearDetails.appendChild(yearSummary);
+          activeYearList = document.createElement("div");
+          activeYearList.style.cssText = "padding:0 8px 6px";
+          activeYearDetails.appendChild(activeYearList);
+          results.appendChild(activeYearDetails);
+        }
         const box = document.createElement("details");
         box.style.cssText = "border:1px solid #cbd5e1;border-radius:10px;padding:0;margin:6px 0;overflow-wrap:anywhere";
         const summary = document.createElement("summary");
@@ -3776,7 +3812,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         detail.appendChild(actions);
         box.appendChild(detail);
 
-        results.appendChild(box);
+        activeYearList.appendChild(box);
       }
 
       if (items.length === 0) {
