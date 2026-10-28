@@ -334,6 +334,42 @@ body.map-is-fullscreen{overflow:hidden}
   border-bottom: 1px solid #ddd !important;
   padding-bottom: 8px;
 }
+/* iPhone-Safari: Grid-Elemente dürfen keine intrinsische Mindestbreite erzwingen */
+#bshArchiveCard[open] {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  overflow-x: clip !important;
+}
+#bshArchiveCard[open] > .sectionSummary,
+#bshArchiveCard[open] > .sectionBody {
+  grid-column: 1 / -1 !important;
+  justify-self: stretch !important;
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+#bshArchiveCard[open] .sectionBody {
+  overflow-x: hidden !important;
+}
+#bshArchiveCard[open] .sectionBody > div,
+#bshArchiveCard[open] #bshArchiveResults > div,
+#bshArchiveCard[open] #bshArchiveUpload,
+#bshArchiveCard[open] #bshArchiveUploadForm,
+#bshArchiveCard[open] #bshArchiveUploadForm > * {
+  min-width: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+#bshArchiveCard[open] #bshArchiveUploadForm input[type="file"] {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+  font-size: 14px !important;
+}
+#bshArchiveCard[open] #bshArchiveUploadForm label {
+  overflow-wrap: anywhere !important;
+}
 /* BSH-Archiv: Root an den Viewport binden; alle Nachfahren gegen horizontales Überlaufen sichern */
 #bshArchiveCard[open] {
   width: auto !important;
