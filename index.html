@@ -1814,7 +1814,7 @@ async function checkBshTxtDirectDownload(){
    // Nur den eindeutig benannten Pegel zuordnen; keine Teilstring-/Nähe-Suche.
    if(!candidate){
      const poName=norm(poStation.longname||poStation.shortname||poStation.name||'');
-     if(/eider/.test(poName)&&/sperrwerk/.test(poName)&&/aussenpegel/.test(poName)){
+     if(/eider/.test(poName)&&/sperrwerk/.test(poName)&&(/aussenpegel/.test(poName)||/(^| )ap($| )/.test(poName))){
        candidate={id:'DE__664P',name:'Eider-Sperrwerk, Außenpegel',archiveStationCode:'664P'};
      }
    }
