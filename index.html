@@ -2476,11 +2476,11 @@ async function selectStation(id){
  // Vorherige Quellenanzeige beim Stationswechsel zurücksetzen.
  $('bshSourceStatus').textContent='';
  $('bshSourceStatus').className='small';
- let bsh=modeForSelection?.bsh || (mode==='bsh'?current:findBshForPo(current));
- let poStation=modeForSelection?.po || (mode==='bsh'?findPoForBsh(current):current);
- // Robuste Zuordnung: zuerst die zusammengeführte Station, danach Nummer und Name.
- if(!bsh && current) bsh=findBshForPo(current);
- // Keine zusätzliche Teilstring-Zuordnung: unbekannte Pegel bleiben ohne BSH-Station.
+ // Bei einer Auswahl aus der zusammengeführten Liste ist bsh:null eine bewusste
+ // Aussage: dieser PEGELONLINE-Pegel hat keine BSH-Zuordnung. Nicht erneut raten,
+ // sonst kann eine vorherige/falsche BSH-Quelle (z. B. Husum) hängen bleiben.
+ let bsh=modeForSelection ? (modeForSelection.bsh||null) : (mode==='bsh'?current:findBshForPo(current));
+ let poStation=modeForSelection ? (modeForSelection.po||null) : (mode==='bsh'?findPoForBsh(current):current);
  if(bsh){currentBsh=bsh}else{currentBsh=null}
  if(poStation){poCurrent=poStation}
  if(!bsh){
