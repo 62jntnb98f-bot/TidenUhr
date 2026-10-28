@@ -2734,8 +2734,12 @@ async function importBshFile(file){
  // Vor dem Import merken wir uns die aktuelle Station, damit ein späteres Entfernen
  // des Imports wieder auf die vorherige/default Station zurückkehren kann.
  if(!localStorage.getItem('tiden.preImportStation')){
-   const sid=localStorage.getItem('tiden.station.id')||'KIEL-HOLTENAU';
-   const sm=localStorage.getItem('tiden.station.mode')||'all';
+   // Die sichtbare Stationsauswahl hat Vorrang vor gespeicherten Werten:
+   // Küstenverzeichnis-/Favoriten-Auswahlen können den lokalen Schlüssel ändern,
+   // bevor ein Archivimport startet.
+   const liveId=modeForSelection?.key||((mode==='bsh')?current?.id:((mode==='po')?current?.uuid:null));
+   const sid=liveId||localStorage.getItem('tiden.station.id')||'KIEL-HOLTENAU';
+   const sm=modeForSelection?'all':(localStorage.getItem('tiden.station.mode')||mode||'all');
    storageSet('tiden.preImportStation',JSON.stringify({id:sid,mode:sm}));
  }
  const text=await file.text(); const d=parseBshTxtText(text,file.name);
