@@ -1809,6 +1809,15 @@ async function checkBshTxtDirectDownload(){
  check.disabled=true;check.textContent='BSH-Datei wird geprüft …';
  try{
    let candidate=currentBsh||findBshForPo(poStation);
+   // Verifizierte Zuordnung aus dem offiziellen BSH-Stationsverzeichnis:
+   // „Eider-Sperrwerk, Außenpegel“ hat bshnr 664P.
+   // Nur den eindeutig benannten Pegel zuordnen; keine Teilstring-/Nähe-Suche.
+   if(!candidate){
+     const poName=norm(poStation.longname||poStation.shortname||poStation.name||'');
+     if(/eider/.test(poName)&&/sperrwerk/.test(poName)&&/aussenpegel/.test(poName)){
+       candidate={id:'DE__664P',name:'Eider-Sperrwerk, Außenpegel',archiveStationCode:'664P'};
+     }
+   }
    const items=await getBshArchiveCatalog();
    const targetName=norm(poStation.longname||poStation.shortname||poStation.name||'');
    const sameName=items.filter(x=>norm(x.station_name||'')===targetName&&targetName.length>4);
