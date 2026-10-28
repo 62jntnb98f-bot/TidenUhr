@@ -1601,7 +1601,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.01";
+const TIDENUHR_VERSION="47.02";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, F\u00F6hr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
@@ -1756,6 +1756,88 @@ async function poFetch(path,options={}){
  throw last||Error('PEGELONLINE nicht erreichbar');
 }
 let bshCatalog=[],po=[],mode='all',current=null,data=[],meta=null,selectedYear=null,poCurrent=null,coastalOnly=true;
+
+const BSH_ARCHIVE_API='https://hqdoufaiuslwnqwnrltc.supabase.co/functions/v1';
+let bshArchiveCatalogCache=null,bshArchiveCatalogPromise=null;
+async function getBshArchiveCatalog(){
+ if(bshArchiveCatalogCache)return bshArchiveCatalogCache;
+ if(bshArchiveCatalogPromise)return bshArchiveCatalogPromise;
+ bshArchiveCatalogPromise=(async()=>{
+   const r=await fetch(BSH_ARCHIVE_API+'/bsh-archiv-katalog?limit=100',{method:'GET',headers:{Accept:'application/json'},cache:'no-store'});
+   if(!r.ok)throw Error('BSH-Archivkatalog HTTP '+r.status);
+   const j=await r.json();
+   if(!j||!Array.isArray(j.items))throw Error('Ungültige Antwort des BSH-Archivkatalogs');
+   bshArchiveCatalogCache=j.items.filter(x=>x&&x.id&&x.station_code&&Number.isFinite(Number(x.datenjahr))&&x.archiv_status==='archiviert');
+   return bshArchiveCatalogCache;
+ })().catch(e=>{bshArchiveCatalogPromise=null;throw e});
+ return bshArchiveCatalogPromise;
+}
+function archiveStationId(code){
+ const c=String(code||'').trim().replace(/^DE__?/i,'').toUpperCase();
+ return c==='3020P'?'KIEL-HOLTENAU':'DE__'+c;
+}
+function archiveCodeForBsh(b){
+ const id=String(b?.id||'').trim().toUpperCase();
+ if(id==='KIEL-HOLTENAU'||id==='DE_3020P')return '3020P';
+ const match=id.match(/^DE__?([A-Z0-9]+)$/);
+ if(match)return match[1];
+ return String(b?.archiveStationCode||b?.pegelNr||b?.pegelnummer||b?.pegelnr||'').trim().replace(/^DE__?/i,'').toUpperCase();
+}
+function archiveRecordsForStation(b,items){
+ const code=archiveCodeForBsh(b);
+ let records=items.filter(x=>String(x.station_code||'').trim().toUpperCase()===code);
+ if(!records.length){
+   const target=norm(b?.name||'');
+   if(target.length>4)records=items.filter(x=>norm(x.station_name||'')===target);
+ }
+ return records;
+}
+async function addArchiveStationsToCatalog(){
+ let items;
+ try{items=await getBshArchiveCatalog()}catch(e){console.warn('BSH-Archivkatalog nicht verfügbar:',e);return}
+ const grouped=new Map();
+ for(const item of items){
+   const code=String(item.station_code||'').trim().toUpperCase();
+   if(!code)continue;
+   const id=archiveStationId(code);
+   let b=grouped.get(id);
+   if(!b){b=bshCatalog.find(x=>x.id===id)||{id,name:item.station_name||id,region:mapCoastRegion({name:item.station_name||id}),files:{},years:[],bshAvailable:true,archiveStationCode:code};grouped.set(id,b)}
+   b.name=b.name||item.station_name||id;
+   b.archiveStationCode=code;
+   b.archiveAvailable=true;
+   b.years=[...new Set([...(b.years||[]).map(Number),Number(item.datenjahr)].filter(Number.isFinite))].sort((a,b)=>a-b);
+   b.files=b.files||{};
+ }
+ for(const [id,b] of grouped){
+   const existing=bshCatalog.findIndex(x=>x.id===id);
+   if(existing>=0)bshCatalog[existing]={...bshCatalog[existing],...b,files:{...(bshCatalog[existing].files||{}),...(b.files||{})},years:[...new Set([...(bshCatalog[existing].years||[]).map(Number),...(b.years||[]).map(Number)])].sort((a,b)=>a-b)};
+   else bshCatalog.push(b);
+ }
+ dedupeBshCatalog();
+}
+async function loadBshArchiveYear(bsh,year,requestIsCurrent){
+ const items=await getBshArchiveCatalog();
+ if(!requestIsCurrent())return null;
+ const records=archiveRecordsForStation(bsh,items).filter(x=>Number(x.datenjahr)===Number(year));
+ if(!records.length)return null;
+ // Bei doppelten Station/Jahr-Einträgen den zuletzt erstellten Datensatz bevorzugen.
+ records.sort((a,b)=>String(b.erstellt_am||'').localeCompare(String(a.erstellt_am||''))||String(a.id).localeCompare(String(b.id)));
+ const chosen=records[0];
+ const url=new URL(BSH_ARCHIVE_API+'/bsh-archiv-download');
+ url.searchParams.set('id',chosen.id);
+ const response=await fetch(url.href,{method:'GET',headers:{Accept:'application/octet-stream'},cache:'no-store'});
+ if(!requestIsCurrent())return null;
+ if(!response.ok)throw Error('BSH-Archivdownload HTTP '+response.status);
+ const txt=await response.text();
+ if(!requestIsCurrent())return null;
+ const parsed=parseBshTxtText(txt,chosen.original_dateiname||('DE__'+chosen.station_code+year+'.txt'));
+ if(!parsed||!Array.isArray(parsed.events)||!parsed.events.length)throw Error('Keine HW/NW-Datensätze in der archivierten BSH-Datei');
+ const events=parsed.events.filter(e=>String(e.datetime||'').slice(0,4)===String(year));
+ if(!events.length)throw Error('Keine HW/NW-Ereignisse für '+year+' in der Archivdatei');
+ parsed.events=events;parsed.year=Number(year);parsed.station=chosen.station_name||parsed.station;parsed.filename=chosen.original_dateiname||parsed.filename;parsed.source='Supabase BSH-Archiv';
+ return {parsed,events,record:chosen};
+}
+
 const $=id=>document.getElementById(id); const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 // Quota-sichere Speicherung: zuerst entbehrliche API-Caches entfernen, niemals BSH-Importe/Favoriten löschen.
 function pruneStorageCaches(){
@@ -2253,7 +2335,9 @@ async function loadCatalog(){
    $('status').textContent='BSH-Katalog aus integrierten Projektdaten geladen.';
  }
  restoreImportedBshStations();
- // Sofort rendern: Husum/Wyk und lokal gespeicherte Importe müssen auch bei blockiertem Netzwerk auswählbar sein.
+ // Archivstationen und -jahre aus dem produktiven Supabase-BSH-Archiv ergänzen.
+ await addArchiveStationsToCatalog();
+ // Sofort rendern: eingebettete Stationen und Archivstationen bleiben auch bei Netzwerkproblemen auswählbar.
  renderList(); refreshDatabase();
  try{
    const cached=localStorage.getItem('tiden.po.catalog');
@@ -2395,7 +2479,9 @@ async function selectStation(id){
  if(bsh){
    // v46.70: beim Wiederöffnen der Home-Bildschirm-App lokale Importjahre erneut aus localStorage lesen.
    refreshImportedBshCatalog(bsh.id);
-   const years=[...new Set([...(bsh.years||[]).map(Number),...Object.keys(bsh.files||{}).map(Number)])].filter(Number.isFinite).sort((a,c)=>a-c);
+   let archiveYears=[];
+   try{archiveYears=archiveRecordsForStation(bsh,await getBshArchiveCatalog()).map(x=>Number(x.datenjahr)).filter(Number.isFinite)}catch(e){console.warn('BSH-Archivjahre konnten nicht geladen werden:',e)}
+   const years=[...new Set([...(bsh.years||[]).map(Number),...Object.keys(bsh.files||{}).map(Number),...archiveYears])].filter(Number.isFinite).sort((a,c)=>a-c);
    let preferredYear=null;
    try{
      const last=JSON.parse(localStorage.getItem('tiden.lastBshImport')||'null');
@@ -2668,6 +2754,19 @@ async function loadBshYear(){
  data=[]; meta=null;
  $('bshSourceStatus').textContent=`Keine lokale BSH-TXT-Datei für ${currentBsh.name} ${selectedYear} importiert. Suche nach einer eingebundenen Jahresdatei …`;
  $('bshSourceStatus').className='small'; render(); renderQuality();
+ // Zuerst das produktive Supabase-BSH-Archiv verwenden, sofern für Station/Jahr vorhanden.
+ try{
+   const archived=await loadBshArchiveYear(currentBsh,selectedYear,requestIsCurrent);
+   if(!requestIsCurrent())return;
+   if(archived){
+     meta=archived.parsed;data=archived.events;syncDateToData();
+     $('bshSourceStatus').textContent=`Datenquelle: Supabase-BSH-Archiv · ${archived.parsed.filename||'BSH-TXT'} · ${archived.parsed.station||currentBsh.name} · ${data.length} HW/NW-Ereignisse (${selectedYear}).`;
+     $('bshSourceStatus').className='small ok';render();renderQuality();return;
+   }
+ }catch(e){
+   if(!requestIsCurrent())return;
+   console.warn('Supabase-BSH-Archiv konnte nicht geladen werden; bisherige Datenpfade werden fortgesetzt:',e);
+ }
  // v46.70: Gebündelte Kiel-Jahresdatei im GitHub-Hauptverzeichnis laden.
  // Der Dateiname liegt absichtlich neben index.html, damit kein data/-Ordner nötig ist.
  if(currentBsh.id==='KIEL-HOLTENAU' && Number(selectedYear)===2026){
