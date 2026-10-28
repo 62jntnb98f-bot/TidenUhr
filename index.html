@@ -3631,7 +3631,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         if (yearKey !== activeYear) {
           activeYear = yearKey;
           activeYearDetails = document.createElement("details");
-          activeYearDetails.open = Boolean(year.value && year.value === yearKey) || (!year.value && yearCounts.size > 0 && yearKey === String(Math.max(...items.map(x => Number(x.datenjahr) || 0)));
+          activeYearDetails.open = year.value ? year.value === yearKey : yearKey === String(Math.max(...items.map(x => Number(x.datenjahr) || 0)));
           activeYearDetails.style.cssText = "border:1px solid #667784;border-radius:12px;margin:10px 0;overflow:hidden";
           const yearSummary = document.createElement("summary");
           yearSummary.style.cssText = "cursor:pointer;padding:11px 12px;font-weight:700;display:flex;gap:8px;align-items:center";
