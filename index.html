@@ -2477,10 +2477,7 @@ async function selectStation(id){
  let poStation=modeForSelection?.po || (mode==='bsh'?findPoForBsh(current):current);
  // Robuste Zuordnung: zuerst die zusammengeführte Station, danach Nummer und Name.
  if(!bsh && current) bsh=findBshForPo(current);
- if(!bsh && current){
-   const cn=norm(current.longname||current.shortname||current.name);
-   bsh=bshCatalog.find(x=>{const bn=norm(x.name);return cn.length>4&&(bn.includes(cn)||cn.includes(bn));})||null;
- }
+ // Keine zusätzliche Teilstring-Zuordnung: unbekannte Pegel bleiben ohne BSH-Station.
  if(bsh){currentBsh=bsh}else{currentBsh=null}
  if(poStation){poCurrent=poStation}
  updateSources(); syncFavorite(); renderQuality();
