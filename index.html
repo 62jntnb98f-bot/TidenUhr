@@ -3470,9 +3470,27 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
       if (currentRequest !== requestNumber) return;
       if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
 
-      const items = Array.isArray(data.items) ? data.items : [];
+      const rawItems = Array.isArray(data.items) ? data.items : [];
+      // Anzeige-Dubletten derselben BSH-Pegelstelle und desselben Datenjahres
+      // zusammenfassen. Die Archivdatensätze selbst werden nicht verändert.
+      // Bei mehreren Einträgen bleibt der zuletzt erstellte Datensatz sichtbar.
+      const latestByStationYear = new Map();
+      for (const item of rawItems) {
+        const code = String(item.station_code || "").trim().toUpperCase();
+        const dataYear = String(item.datenjahr || "").trim();
+        const key = code && dataYear ? code + "|" + dataYear : "id|" + String(item.id || Math.random());
+        const previous = latestByStationYear.get(key);
+        if (!previous ||
+            String(item.erstellt_am || "").localeCompare(String(previous.erstellt_am || "")) > 0) {
+          latestByStationYear.set(key, item);
+        }
+      }
+      const items = [...latestByStationYear.values()];
       status.textContent =
-        `${data.total ?? items.length} archivierte Datei${(data.total ?? items.length) === 1 ? "" : "en"} gefunden.`;
+        `${items.length} archivierte Datei${items.length === 1 ? "" : "en"} angezeigt.`;
+      if (items.length < rawItems.length) {
+        status.textContent += ` (${rawItems.length - items.length} doppelte Stations-/Jahreseinträge in der Anzeige zusammengefasst; Archivdaten unverändert.)`;
+      }
 
       for (const item of items) {
         const box = document.createElement("div");
