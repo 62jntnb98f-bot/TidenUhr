@@ -334,6 +334,37 @@ body.map-is-fullscreen{overflow:hidden}
   border-bottom: 1px solid #ddd !important;
   padding-bottom: 8px;
 }
+/* iPhone: Suchfeld und Jahresfilter umbrechen, statt rechts aus dem Display zu laufen */
+@media (max-width: 600px) {
+  #bshArchiveCard[open] .sectionBody > div:first-child {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 110px !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #bshArchiveCard[open] .sectionBody > div:first-child > div {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+  #bshArchiveCard[open] #bshArchiveSearch {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  #bshArchiveCard[open] #bshArchiveYear {
+    width: 110px !important;
+    min-width: 0 !important;
+  }
+  #bshArchiveCard[open] #bshArchiveRefresh {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+  }
+  #bshArchiveCard[open] #bshArchiveResults > div {
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow-wrap: anywhere !important;
+  }
+}
 /* BSH-Archiv: auf die Displaybreite begrenzen, besonders auf iPhone/Safari */
 #bshArchiveCard[open] {
   box-sizing: border-box !important;
