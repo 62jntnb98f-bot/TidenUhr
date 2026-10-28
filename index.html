@@ -1807,6 +1807,7 @@ async function checkBshTxtDirectDownload(){
    return;
  }
  check.disabled=true;check.textContent='BSH-Datei wird geprüft …';
+ let directUrl=null;
  try{
    let candidate=currentBsh||findBshForPo(poStation);
    // Verifizierte Zuordnung aus dem offiziellen BSH-Stationsverzeichnis:
@@ -1849,6 +1850,10 @@ async function checkBshTxtDirectDownload(){
    const url=new URL('https://filebox.bsh.de/index.php/s/SbJ3z5NBkpOZloY/download');
    url.searchParams.set('path','/vb_hwnw/deu'+year);
    url.searchParams.set('files','DE__'+code+year+'.txt');
+   directUrl=url.href;
+   // Den direkten BSH-Link bereits vor dem Prüfabruf anbieten. Safari kann
+   // den Dateiabruf ggf. wegen fehlender CORS-Freigabe nicht per fetch lesen.
+   if(link){link.href=url.href;link.download='DE__'+code+year+'.txt';link.hidden=false;}
    const response=await fetch(url.href,{method:'GET',cache:'no-store'});
    if(!response.ok)throw Error('BSH-Server antwortet mit HTTP '+response.status);
    const txt=await response.text();
@@ -1858,7 +1863,13 @@ async function checkBshTxtDirectDownload(){
    status.textContent='BSH-Direktdatei gefunden: '+(parsed.station||candidate.name)+' · '+year+'. Sie ist für dieses Jahr noch nicht im Archiv eingetragen.';
    status.className='small ok';
  }catch(e){
-   status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+(e?.message||e);
+   const err=String(e?.message||e);
+   if(directUrl&&link&&/load failed|failed to fetch|networkerror|network error/i.test(err)){
+     link.href=directUrl;link.hidden=false;
+     status.textContent='Der BSH-Link wurde erstellt, aber Safari konnte den Dateiinhalt nicht zur Prüfung lesen (mögliche CORS-/Netzwerkbeschränkung). Tippe auf „BSH-Originaltabelle“, um den direkten Download selbst zu öffnen.';
+   }else{
+     status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+err;
+   }
    status.className='small warn';
  }finally{
    check.disabled=false;check.textContent='BSH-TXT-Direktdownload erneut prüfen';
