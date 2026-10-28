@@ -1728,6 +1728,7 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
   <form id="bshArchiveUploadForm">
     <label for="bshArchiveUploadFile" style="display:block;margin:10px 0 6px">BSH-TXT-Datei auswählen</label>
     <input id="bshArchiveUploadFile" name="file" type="file" accept=".txt,text/plain" required>
+    <button id="bshArchiveDirectButton" class="btn" type="button" disabled style="margin-top:10px">Ausgewählte BSH-Downloadquelle direkt archivieren</button>
     <div style="margin-top:12px">
       <div id="bshArchiveTurnstile"></div>
     </div>
@@ -1796,6 +1797,7 @@ async function checkBshTxtDirectDownload(){
  const status=$('bshSourceStatus');
  if(!check||!status)return;
  if(link){link.hidden=true;link.removeAttribute('href');}
+ window.tidenuhrBshDirectUrl='';
  if(!poStation){
    status.textContent='Die Prüfung kann nicht starten: Für die aktuelle Auswahl wurde keine PEGELONLINE-Messstelle erkannt. Bitte die Pegelstelle im Küstenverzeichnis erneut auswählen.';
    status.className='small warn';
@@ -1851,6 +1853,7 @@ async function checkBshTxtDirectDownload(){
    url.searchParams.set('path','/vb_hwnw/deu'+year);
    url.searchParams.set('files','DE__'+code+year+'.txt');
    directUrl=url.href;
+   window.tidenuhrBshDirectUrl=url.href;
    // Den direkten BSH-Link bereits vor dem Prüfabruf anbieten. Safari kann
    // den Dateiabruf ggf. wegen fehlender CORS-Freigabe nicht per fetch lesen.
    if(link){link.href=url.href;link.download='DE__'+code+year+'.txt';link.hidden=false;}
@@ -3889,8 +3892,10 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
   function setStatus(message) {
     status.textContent = message;
   }
+  const directButton = document.getElementById("bshArchiveDirectButton");
   function updateButton() {
     button.disabled = !(turnstileToken && fileInput.files.length && consent.checked);
+    if (directButton) directButton.disabled = !(turnstileToken && consent.checked && window.tidenuhrBshDirectUrl);
   }
 
   window.tidenuhrArchiveTurnstileLoaded = function () {
@@ -3921,6 +3926,36 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
 
   fileInput.addEventListener("change", updateButton);
   consent.addEventListener("change", updateButton);
+
+  if (directButton) directButton.addEventListener("click", async function () {
+    updateButton();
+    if (directButton.disabled) {
+      setStatus("Bitte zuerst die BSH-TXT-Direktdownload-Prüfung ausführen, die ausdrückliche Zustimmung erteilen und die Sicherheitsprüfung abschließen.");
+      return;
+    }
+    directButton.disabled = true;
+    setStatus("BSH-Datei wird serverseitig abgerufen und für das private Online-Archiv geprüft …");
+    const data = new FormData();
+    data.set("sourceUrl", window.tidenuhrBshDirectUrl);
+    data.set("consent", "true");
+    data.set("consentTextVersion", "bsh-archiv-consent-v1");
+    data.set("cf-turnstile-response", turnstileToken);
+    try {
+      const response = await fetch("https://hqdoufaiuslwnqwnrltc.supabase.co/functions/v1/bsh-archiv-upload-online", { method: "POST", body: data });
+      const responseText = await response.text();
+      let result = {};
+      try { result = responseText ? JSON.parse(responseText) : {}; } catch (_) {}
+      if (response.ok && result.archived === true) {
+        setStatus("BSH-Datei erfolgreich serverseitig abgerufen und im privaten Online-Archiv gespeichert (" + result.stationCode + ", " + result.dataYear + ").");
+      } else {
+        setStatus(result.error || ("Archivierung fehlgeschlagen (HTTP " + response.status + "). Es wurde kein Erfolg bestätigt."));
+      }
+    } catch (error) {
+      setStatus("Die Verbindung zum Online-Archiv ist fehlgeschlagen. Bitte den Archivkatalog prüfen; der Speichervorgang ist nicht bestätigt.");
+    } finally {
+      updateButton();
+    }
+  });
 
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
