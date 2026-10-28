@@ -1937,11 +1937,9 @@ function findPoForBsh(b){
  const byN=po.find(x=>nums.includes(String(x.number||''))); if(byN)return byN;
  const bn=stationNameCore(b.name);
  const byExact=po.find(x=>stationNameCore(x.longname||x.shortname||x.name)===bn&&bn.length>4); if(byExact)return byExact;
- if(Number.isFinite(Number(b.latitude))&&Number.isFinite(Number(b.longitude))){
-   const byCoord=po.find(x=>Number.isFinite(Number(x.latitude))&&Number.isFinite(Number(x.longitude))&&Math.abs(Number(x.latitude)-Number(b.latitude))<0.08&&Math.abs(Number(x.longitude)-Number(b.longitude))<0.12);
-   if(byCoord)return byCoord;
- }
- return po.find(x=>{const pn=stationNameCore(x.longname||x.shortname||x.name);return bn.length>4&&(pn.includes(bn)||bn.includes(pn));})||null;
+ // Keine Zuordnung allein über Nähe oder Teilstrings: benachbarte Pegel
+ // können eigenständige Messstellen sein und dürfen nicht verwechselt werden.
+ return null;
 }
 function findBshForPo(p){
  // Kartenpunkte stammen aus PEGELONLINE, während die Tidezeiten aus dem
@@ -1954,11 +1952,9 @@ function findBshForPo(p){
  if(byN)return byN;
  const pn=stationNameCore(p.longname||p.shortname||p.name);
  const byExact=bshCatalog.find(x=>stationNameCore(x.name)===pn&&pn.length>4); if(byExact)return byExact;
- if(Number.isFinite(Number(p.latitude))&&Number.isFinite(Number(p.longitude))){
-   const byCoord=bshCatalog.find(x=>Number.isFinite(Number(x.latitude))&&Number.isFinite(Number(x.longitude))&&Math.abs(Number(x.latitude)-Number(p.latitude))<0.08&&Math.abs(Number(x.longitude)-Number(p.longitude))<0.12);
-   if(byCoord)return byCoord;
- }
- return bshCatalog.find(x=>{const bn=stationNameCore(x.name);return pn.length>4&&(bn.includes(pn)||pn.includes(bn));})||null;
+ // Keine Zuordnung allein über räumliche Nähe oder Teilstrings:
+ // ein PEGELONLINE-Pegel ohne eindeutige BSH-Kennung bleibt ein Wasserpegel.
+ return null;
 }
 function mergeStations(){
  // BSH und PEGELONLINE werden über eine kanonische Stationsidentität
