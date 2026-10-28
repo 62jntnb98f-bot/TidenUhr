@@ -1601,7 +1601,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.02";
+const TIDENUHR_VERSION="47.03";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, F\u00F6hr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
@@ -1814,6 +1814,18 @@ async function addArchiveStationsToCatalog(){
    else bshCatalog.push(b);
  }
  dedupeBshCatalog();
+}
+async function loadOfficialBshTxtYear(bsh,year,requestIsCurrent){
+ const code=archiveCodeForBsh(bsh);
+ if(!/^[A-Z0-9]{3,12}$/.test(code))return null;
+ const base='https'+':'+'/'+'/filebox.bsh.de/index.php/s/SbJ3z5NBkpOZloY/download';
+ const url=new URL(base);url.searchParams.set('path','/vb_hwnw/deu'+Number(year));url.searchParams.set('files','DE__'+code+Number(year)+'.txt');
+ const response=await fetch(url.href,{method:'GET',cache:'no-store'});if(!requestIsCurrent())return null;if(!response.ok)throw Error('BSH-TXT HTTP '+response.status);
+ const txt=await response.text();if(!requestIsCurrent())return null;
+ const parsed=parseBshTxtText(txt,'DE__'+code+Number(year)+'.txt');
+ if(!parsed||!Array.isArray(parsed.events)||!parsed.events.length)throw Error('Keine HW/NW-Datensätze im BSH-TXT');
+ const events=parsed.events.filter(e=>String(e.datetime||'').slice(0,4)===String(year));if(!events.length)throw Error('Keine Ereignisse für das Jahr');
+ parsed.events=events;parsed.year=Number(year);parsed.station=parsed.station||bsh.name;parsed.source='BSH-Originaldownload';return {parsed,events};
 }
 async function loadBshArchiveYear(bsh,year,requestIsCurrent){
  const items=await getBshArchiveCatalog();
@@ -2767,6 +2779,12 @@ async function loadBshYear(){
    if(!requestIsCurrent())return;
    console.warn('Supabase-BSH-Archiv konnte nicht geladen werden; bisherige Datenpfade werden fortgesetzt:',e);
  }
+ // Falls kein Archivdatensatz vorliegt, offiziellen BSH-TXT-Direktdownload versuchen.
+ try{
+   const official=await loadOfficialBshTxtYear(currentBsh,selectedYear,requestIsCurrent);
+   if(!requestIsCurrent())return;
+   if(official){meta=official.parsed;data=official.events;syncDateToData();$('bshSourceStatus').textContent=`Datenquelle: offizieller BSH-TXT-Download · ${official.parsed.station||currentBsh.name} · ${data.length} HW/NW-Ereignisse (${selectedYear}).`; $('bshSourceStatus').className='small ok';render();renderQuality();return;}
+ }catch(e){if(!requestIsCurrent())return;console.warn('BSH-TXT-Direktdownload nicht verfügbar; bestehende Datenpfade werden fortgesetzt:',e)}
  // v46.70: Gebündelte Kiel-Jahresdatei im GitHub-Hauptverzeichnis laden.
  // Der Dateiname liegt absichtlich neben index.html, damit kein data/-Ordner nötig ist.
  if(currentBsh.id==='KIEL-HOLTENAU' && Number(selectedYear)===2026){
