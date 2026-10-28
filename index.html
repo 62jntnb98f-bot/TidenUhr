@@ -334,6 +334,36 @@ body.map-is-fullscreen{overflow:hidden}
   border-bottom: 1px solid #ddd !important;
   padding-bottom: 8px;
 }
+/* BSH-Archiv: Root an den Viewport binden; alle Nachfahren gegen horizontales Überlaufen sichern */
+#bshArchiveCard[open] {
+  width: auto !important;
+  max-width: none !important;
+  box-sizing: border-box !important;
+  left: 0 !important;
+  right: 0 !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+#bshArchiveCard[open] *,
+#bshArchiveCard[open] *::before,
+#bshArchiveCard[open] *::after {
+  box-sizing: border-box !important;
+}
+#bshArchiveCard[open] .sectionSummary,
+#bshArchiveCard[open] .sectionBody,
+#bshArchiveCard[open] .sectionBody > *,
+#bshArchiveCard[open] #bshArchiveResults,
+#bshArchiveCard[open] #bshArchiveResults > *,
+#bshArchiveCard[open] #bshArchiveUpload {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+#bshArchiveCard[open] .sectionBody,
+#bshArchiveCard[open] #bshArchiveResults > * {
+  overflow-wrap: anywhere !important;
+  word-break: normal !important;
+}
 /* iPhone: Suchfeld und Jahresfilter umbrechen, statt rechts aus dem Display zu laufen */
 @media (max-width: 600px) {
   #bshArchiveCard[open] .sectionBody > div:first-child {
