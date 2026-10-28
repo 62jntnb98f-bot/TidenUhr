@@ -3613,31 +3613,48 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
       }
 
       for (const item of items) {
-        const box = document.createElement("div");
-        box.style.cssText = "border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:9px 0;overflow-wrap:anywhere";
+        const box = document.createElement("details");
+        box.style.cssText = "border:1px solid #cbd5e1;border-radius:10px;padding:0;margin:6px 0;overflow-wrap:anywhere";
+        const summary = document.createElement("summary");
+        summary.style.cssText = "cursor:pointer;list-style:none;padding:10px 12px;font-weight:650;font-size:.94rem;display:flex;align-items:center;gap:8px";
+        const summaryName = document.createElement("span");
+        summaryName.style.cssText = "flex:1;min-width:0;overflow-wrap:anywhere";
+        summaryName.textContent = item.station_name || "Unbekannte Station";
+        summary.appendChild(summaryName);
+        const summaryMeta = document.createElement("span");
+        summaryMeta.style.cssText = "font-size:.82rem;font-weight:500;opacity:.8;white-space:nowrap";
+        summaryMeta.textContent = String(item.station_code || "—") + " · " + String(item.datenjahr || "—");
+        summary.appendChild(summaryMeta);
+        const arrow = document.createElement("span");
+        arrow.textContent = "›";
+        arrow.style.cssText = "font-size:1.2rem;opacity:.7";
+        summary.appendChild(arrow);
+        box.appendChild(summary);
+        const detail = document.createElement("div");
+        detail.style.cssText = "padding:0 12px 12px;overflow-wrap:anywhere";
 
-        addText(box, "div", item.station_name,
-          "font-weight:650;font-size:1rem;margin-bottom:3px");
-        addText(box, "div",
+        addText(detail, "div", item.station_name,
+          "font-weight:650;font-size:.94rem;margin-bottom:3px");
+        addText(detail, "div",
           `Pegel ${item.station_code} · Datenjahr ${item.datenjahr}`,
           "font-size:.9rem;opacity:.8;margin-bottom:5px");
-        addText(box, "div", item.original_dateiname,
+        addText(detail, "div", item.original_dateiname,
           "font-size:.9rem;margin-bottom:5px");
         if ((countsByStationYear.get(stationYearKey(item)) || 0) > 1) {
-          addText(box, "div",
+          addText(detail, "div",
             "DUPLIKAT-HINWEIS: Für diese Pegelstelle und dieses Datenjahr gibt es mehrere Archiveinträge. Dieser Datensatz bleibt eigenständig; bitte Dateiname und Erstellungsdatum prüfen, bevor du ihn löschst.",
             "font-size:.88rem;color:#b45309;border:1px solid #b45309;border-radius:8px;padding:8px;margin:6px 0");
         }
         if (item.erstellt_am) {
-          addText(box, "div", "Erstellt am: " + item.erstellt_am,
+          addText(detail, "div", "Erstellt am: " + item.erstellt_am,
             "font-size:.85rem;opacity:.8;margin-bottom:5px");
         }
-        addText(box, "div", `Aufbewahrung bis: ${item.aufbewahren_bis}`,
+        addText(detail, "div", `Aufbewahrung bis: ${item.aufbewahren_bis}`,
           "font-size:.85rem;opacity:.8");
-        addText(box, "div", item.archiv_status,
+        addText(detail, "div", item.archiv_status,
           "display:inline-block;margin-top:7px;padding:2px 9px;border:1px solid #9aaab5;border-radius:20px;font-size:.8rem");
 
-        const deleteFeedback = addText(box, "div", "", "font-size:.9rem;margin-top:8px;white-space:pre-wrap;overflow-wrap:anywhere");
+        const deleteFeedback = addText(detail, "div", "", "font-size:.9rem;margin-top:8px;white-space:pre-wrap;overflow-wrap:anywhere");
         const actions = document.createElement("div");
         actions.style.cssText = "display:flex;gap:8px;flex-wrap:wrap;margin-top:10px";
         const deleteButton = document.createElement("button");
@@ -3756,7 +3773,8 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
         });
         actions.appendChild(importButton);
         actions.appendChild(deleteButton);
-        box.appendChild(actions);
+        detail.appendChild(actions);
+        box.appendChild(detail);
 
         results.appendChild(box);
       }
