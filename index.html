@@ -1601,7 +1601,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.03";
+const TIDENUHR_VERSION="47.04";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, F\u00F6hr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
@@ -3478,7 +3478,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
       for (const item of rawItems) {
         const code = String(item.station_code || "").trim().toUpperCase();
         const dataYear = String(item.datenjahr || "").trim();
-        const key = code && dataYear ? code + "|" + dataYear : "id|" + String(item.id || Math.random());
+        const key = code && dataYear ? code + "|" + dataYear : "id|" + String(item.id || (item.station_name || "") + "|" + (item.original_dateiname || ""));
         const previous = latestByStationYear.get(key);
         if (!previous ||
             String(item.erstellt_am || "").localeCompare(String(previous.erstellt_am || "")) > 0) {
