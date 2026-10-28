@@ -1789,7 +1789,10 @@ function updateBshTxtDownload(){
 async function checkBshTxtDirectDownload(){
  const check=$('bshTxtCheck'),link=$('bshTxtDownload');
  const poStation=modeForSelection?.po||(mode==='po'?current:poCurrent);
- const year=Number(selectedYear);
+ // Wenn für eine PEGELONLINE-only-Station kein BSH-Jahr gesetzt ist,
+ // das aktuell gewählte Datum als Prüfjahr verwenden.
+ const dateYear=Number(String($('date')?.value||'').slice(0,4));
+ const year=Number(selectedYear)||dateYear;
  const status=$('bshSourceStatus');
  if(!check||!status)return;
  if(link){link.hidden=true;link.removeAttribute('href');}
