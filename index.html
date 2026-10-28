@@ -1866,7 +1866,7 @@ async function checkBshTxtDirectDownload(){
    const err=String(e?.message||e);
    if(directUrl&&link&&/load failed|failed to fetch|networkerror|network error/i.test(err)){
      link.href=directUrl;link.hidden=false;
-     status.textContent='Der BSH-Link wurde erstellt, aber Safari konnte den Dateiinhalt nicht zur Prüfung lesen (mögliche CORS-/Netzwerkbeschränkung). Tippe auf „BSH-Originaltabelle“, um den direkten Download selbst zu öffnen.';
+     status.textContent='Der BSH-Download-Link wurde erstellt. Safari kann den Dateiinhalt hier nicht automatisch prüfen (CORS-/Netzwerkbeschränkung). Die Datei lässt sich über „BSH-TXT herunterladen“ direkt laden; die automatische Inhaltsprüfung ist in diesem Browser nicht verfügbar.';
    }else{
      status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+err;
    }
