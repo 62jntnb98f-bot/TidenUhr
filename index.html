@@ -1730,12 +1730,12 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
   <div style="padding:0 12px 12px">
   <p class="small">Die ausgewählte BSH-TXT-Datei wird nach ausdrücklicher Zustimmung und erfolgreicher Sicherheitsprüfung im privaten Online-Archiv gespeichert.</p>
   <div style="margin:10px 0">
-    <button id="bshArchiveDirectDownload" class="btn" type="button">BSH-TXT-Direktdownload öffnen ↓</button>
-    <div id="bshArchiveDirectDownloadInfo" class="small" role="status" aria-live="polite" style="margin-top:6px">Zuerst oben bei der Pegelauswahl den BSH-TXT-Direktdownload prüfen. Danach kann der Link hier geöffnet werden.</div>
+    <button id="bshArchiveDirectDownload" class="btn" type="button">Geprüfte BSH-Datei direkt ins Archiv übernehmen</button>
+    <div id="bshArchiveDirectDownloadInfo" class="small" role="status" aria-live="polite" style="margin-top:6px">Zuerst oben bei der Pegelauswahl den BSH-TXT-Direktdownload prüfen. Danach kann die Datei nach Sicherheitsprüfung und ausdrücklicher Zustimmung direkt von BSH ins Online-Archiv übernommen werden.</div>
   </div>
   <form id="bshArchiveUploadForm">
-    <label for="bshArchiveUploadFile" style="display:block;margin:10px 0 6px">BSH-TXT-Datei auswählen</label>
-    <input id="bshArchiveUploadFile" name="file" type="file" accept=".txt,text/plain" required>
+    <label for="bshArchiveUploadFile" style="display:block;margin:10px 0 6px">Optional: vorhandene BSH-TXT-Datei manuell auswählen</label>
+    <input id="bshArchiveUploadFile" name="file" type="file" accept=".txt,text/plain">
     <div style="margin-top:12px">
       <div id="bshArchiveTurnstile"></div>
     </div>
@@ -1744,7 +1744,7 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
       <span>Ich stimme ausdrücklich zu, dass die ausgewählte BSH-Datei zur Prüfung und Speicherung im privaten Online-Archiv übertragen wird.</span>
     </label>
     <input type="hidden" name="consentTextVersion" value="bsh-archiv-consent-v1">
-    <button id="bshArchiveUploadButton" class="btn" type="submit" disabled style="margin-top:12px">Datei ins Online-Archiv hochladen</button>
+    <button id="bshArchiveUploadButton" class="btn" type="submit" disabled style="margin-top:12px">Datei ins Online-Archiv übernehmen</button>
     <div id="bshArchiveUploadStatus" class="small" role="status" aria-live="polite" style="margin-top:10px">Sicherheitsprüfung wird geladen …</div>
   </form>
   </div>
@@ -3416,20 +3416,20 @@ $('bshTxtDownload')?.addEventListener('click',prepareBshArchiveAfterDirectDownlo
 $('bshArchiveDirectDownload')?.addEventListener('click',()=>{
  const url=String(window.tidenuhrBshDirectUrl||'').trim();
  const info=$('bshArchiveDirectDownloadInfo');
+ const uploadStatus=$('bshArchiveUploadStatus');
+ const card=$('bshArchiveCard'),upload=$('bshArchiveUpload');
+ const consent=$('bshArchiveConsent'),file=$('bshArchiveUploadFile');
  if(!url){
    if(info)info.textContent='Noch kein Direktdownload-Link vorhanden. Bitte oben bei der ausgewählten Pegelstelle das gewünschte Jahr einstellen und „BSH-TXT-Direktdownload prüfen“ ausführen.';
    return;
  }
- const card=$('bshArchiveCard'),upload=$('bshArchiveUpload');
  if(card)card.open=true;
  if(upload)upload.open=true;
- const file=$('bshArchiveUploadFile'),consent=$('bshArchiveConsent');
- const uploadStatus=$('bshArchiveUploadStatus');
  if(file)file.value='';
  if(consent){consent.checked=false;consent.dispatchEvent(new Event('change',{bubbles:true}));}
- if(uploadStatus)uploadStatus.textContent='Der BSH-Direktdownload wird geöffnet. Nach dem Download bitte die Datei unten manuell auswählen, die Sicherheitsprüfung abschließen und der Archivierung ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
- if(info)info.textContent='Direktdownload geöffnet. Nach Abschluss des Downloads die passende BSH-TXT-Datei unten auswählen.';
- window.open(url,'_blank','noopener,noreferrer');
+ if(info)info.textContent='Der geprüfte BSH-Link ist für den direkten Serverabruf vorbereitet. Bitte die Sicherheitsprüfung abschließen, der Archivierung ausdrücklich zustimmen und anschließend „Datei ins Online-Archiv übernehmen“ drücken.';
+ if(uploadStatus)uploadStatus.textContent='Bereit für den direkten Abruf von BSH. Es wird erst nach abgeschlossener Sicherheitsprüfung und ausdrücklicher Zustimmung archiviert.';
+ if(upload)upload.scrollIntoView({behavior:'smooth',block:'start'});
 });
 $('date').onchange=async()=>{
  const chosenDate=String($('date').value||'');
@@ -3975,7 +3975,8 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
     status.textContent = message;
   }
   function updateButton() {
-    button.disabled = !(turnstileToken && fileInput.files.length && consent.checked);
+    const directUrl = String(window.tidenuhrBshDirectUrl || "").trim();
+    button.disabled = !(turnstileToken && (fileInput.files.length || directUrl) && consent.checked);
   }
 
   window.tidenuhrArchiveTurnstileLoaded = function () {
@@ -4010,13 +4011,23 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
   form.addEventListener("submit", async function (event) {
     event.preventDefault();
     updateButton();
+    const directUrl = String(window.tidenuhrBshDirectUrl || "").trim();
+    const hasFile = !!(fileInput.files && fileInput.files.length);
     if (button.disabled) {
-      setStatus("Bitte Datei auswählen, Sicherheitsprüfung abschließen und Zustimmung erteilen.");
+      setStatus("Bitte zuerst den BSH-Direktdownload prüfen oder eine TXT-Datei auswählen, die Sicherheitsprüfung abschließen und ausdrücklich zustimmen.");
       return;
     }
     button.disabled = true;
-    setStatus("Datei wird sicher an das private Online-Archiv übertragen …");
+    setStatus(directUrl && !hasFile
+      ? "Die geprüfte BSH-Datei wird serverseitig abgerufen und für das Online-Archiv geprüft …"
+      : "Datei wird sicher an das private Online-Archiv übertragen …");
     const data = new FormData(form);
+    if (directUrl && !hasFile) {
+      data.delete("file");
+      data.set("sourceUrl", directUrl);
+    } else {
+      data.delete("sourceUrl");
+    }
     data.set("cf-turnstile-response", turnstileToken);
 
     try {
