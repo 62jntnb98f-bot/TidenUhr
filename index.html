@@ -1824,9 +1824,9 @@ async function checkBshTxtDirectDownload(){
  let directUrl=null;
  try{
    let candidate=selectedBsh||(poStation?findBshForPo(poStation):null);
-   // Eindeutige Zuordnung für Büsum anhand der PEGELONLINE-Messstellennummer.
-   // BSH-Dateikennung DE__505P; die TXT-Dateien heißen DE__505P<Jahr>.txt.
-   // Diese Sonderzuordnung betrifft nur die Direktdownload-Prüfung.
+   // Verifizierte Sonderzuordnung Büsum: PEGELONLINE 9510095 entspricht
+   // der offiziellen BSH-Dateikennung 505P. Andere Stationen werden nicht
+   // anhand ähnlicher Namen oder vermuteter Nummern zugeordnet.
    if(!candidate&&String(poStation?.number||'').trim()==='9510095'){
      candidate={id:'DE__505P',name:'Büsum, Schleuse',archiveStationCode:'505P',waterPegelNr:'9510095',pegelonlineNumber:'9510095'};
    }
@@ -1897,11 +1897,18 @@ async function checkBshTxtDirectDownload(){
  }
 }
 function archiveCodeForBsh(b){
+ // Stationskennung aus sämtlichen gängigen Feldern des BSH-Stationsverzeichnisses
+ // lesen. So funktionieren neue Nordsee- und Ostsee-Pegel ohne feste
+ // Büsum-Sonderbehandlung, sofern die offizielle BSH-Kennung mitgeliefert wird.
  const id=String(b?.id||'').trim().toUpperCase();
  if(id==='KIEL-HOLTENAU'||id==='DE_3020P')return '3020P';
  const match=id.match(/^DE__?([A-Z0-9]+)$/);
  if(match)return match[1];
- return String(b?.archiveStationCode||b?.pegelNr||b?.pegelnummer||b?.pegelnr||'').trim().replace(/^DE__?/i,'').toUpperCase();
+ const raw=[
+   b?.archiveStationCode,b?.bshnr,b?.bshNr,b?.bshNumber,b?.stationCode,
+   b?.station_code,b?.downloadCode,b?.pegelNr,b?.pegelnummer,b?.pegelnr
+ ].find(v=>String(v??'').trim()!=='');
+ return String(raw||'').trim().replace(/^DE__?/i,'').toUpperCase();
 }
 function archiveRecordsForStation(b,items){
  const code=archiveCodeForBsh(b);
