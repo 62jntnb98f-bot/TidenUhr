@@ -2480,6 +2480,11 @@ function mapCoastRegion(s){
  // mehr verwendet. Dadurch können z.B. ROGÄTZ, TANGERMÜNDE, WITTENBERGE
  // oder GROPPENBRUCH nicht allein wegen "ELBE"/"EMS" als Küste erscheinen.
  const b=s?.bsh||s||null;
+ // Explizite BSH-Region hat Vorrang: sonst kann z. B. Wyk, Föhr
+ // durch den Küstenfilter als „Weitere Gewässer“ ausgeblendet werden.
+ const bshRegion=norm(b?.region||'');
+ if(bshRegion==='nordsee') return 'Nordsee';
+ if(bshRegion==='ostsee') return 'Ostsee';
  const water=norm(s?.water?.longname||s?.po?.water?.longname||b?.water?.longname||'');
  const waterShort=norm(s?.water?.shortname||s?.po?.water?.shortname||b?.water?.shortname||'');
  const stationText=norm([s?.longname,s?.shortname,s?.name,b?.name].filter(Boolean).join(' '));
