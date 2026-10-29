@@ -1691,7 +1691,7 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 <div class="priorityTile"><div class="priorityLabel">Aktueller Wasserstand</div><div class="priorityValue" id="priorityWater">–</div><div class="prioritySub" id="priorityWaterTime">Messwert</div></div>
 <div class="priorityTile"><div class="priorityLabel">Nächstes Hochwasser</div><div class="priorityValue" id="priorityHigh">–</div><div class="prioritySub" id="priorityHighSub">BSH-Vorausberechnung</div><div class="priorityNext" id="priorityHighNext"></div></div>
 <div class="priorityTile"><div class="priorityLabel">Nächstes Niedrigwasser</div><div class="priorityValue" id="priorityLow">–</div><div class="prioritySub" id="priorityLowSub">BSH-Vorausberechnung</div><div class="priorityNext" id="priorityLowNext"></div></div>
-</div><div style="height:8px"></div><div class="grid2"><div><div class="small">Aktueller Wasserstand</div><div class="big" id="water">–</div><div class="small" id="waterTime">–</div><div class="source">Quelle: PEGELONLINE / WSV</div></div><div><div class="small">Nächste Tide</div><div id="next">–</div><div class="countdown"><div class="countDays" id="countDays">–</div><div class="big" id="countTime">–</div></div><div class="small" id="nextHeight">–</div><div class="source">Quelle: BSH</div></div></div><div class="sourcebar"><span>BSH: Vorausberechnung</span><span>PEGELONLINE: Messung</span><span>Rohdaten: WSV</span><a id="bshLink" class="btn" target="_blank" rel="noopener noreferrer" href="https://gezeiten.bsh.de/kiel_holtenau" onclick="event.stopPropagation(); window.open(this.href, '_blank', 'noopener,noreferrer'); return false;">BSH-Originaltabelle ↗</a><button id="bshTxtCheck" class="btn" type="button" hidden>BSH-TXT-Direktdownload prüfen</button><a id="bshTxtDownload" class="btn" target="_blank" rel="noopener noreferrer" href="#" hidden>BSH-TXT herunterladen ↓</a></div>
+</div><div style="height:8px"></div><div class="grid2"><div><div class="small">Aktueller Wasserstand</div><div class="big" id="water">–</div><div class="small" id="waterTime">–</div><div class="source">Quelle: PEGELONLINE / WSV</div></div><div><div class="small">Nächste Tide</div><div id="next">–</div><div class="countdown"><div class="countDays" id="countDays">–</div><div class="big" id="countTime">–</div></div><div class="small" id="nextHeight">–</div><div class="source">Quelle: BSH</div></div></div><div class="sourcebar"><span>BSH: Vorausberechnung</span><span>PEGELONLINE: Messung</span><span>Rohdaten: WSV</span><a id="bshLink" class="btn" target="_blank" rel="noopener noreferrer" href="https://gezeiten.bsh.de/" onclick="event.stopPropagation(); window.open(this.href, '_blank', 'noopener,noreferrer'); return false;">BSH-Originaltabelle ↗</a><button id="bshTxtCheck" class="btn" type="button" hidden>BSH-TXT-Direktdownload prüfen</button><a id="bshTxtDownload" class="btn" target="_blank" rel="noopener noreferrer" href="#" hidden>BSH-TXT herunterladen ↓</a></div>
 <div id="status" class="small" style="margin-top:10px"></div><div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px"><div id="bshSourceStatus" class="small" style="flex:1;min-width:180px"></div><button id="bshRemoveStatusBtn" type="button" style="display:none;padding:4px 8px;border:1px solid #9aa5ad;border-radius:7px;background:transparent;color:inherit;font-size:12px;cursor:pointer">Datei entfernen</button></div></div>
 <div class="card"><div class="row"><div class="grow"><b>Gezeitenübersicht</b><div class="small">BSH HW/NW-Vorausberechnung</div><div class="small" id="tideSourceLabel" style="margin-top:4px">BSH-Datenquelle wird ermittelt …</div></div><div class="yearPicker" aria-label="Jahr auswählen" hidden><button class="yearStep" id="yearPrev" type="button" aria-label="Vorheriges Jahr" title="Vorheriges Jahr">‹</button><label class="srOnly" for="year">Jahr auswählen</label><select id="year" class="year" aria-label="Ausgewähltes Jahr"></select><button class="yearStep" id="yearNext" type="button" aria-label="Nächstes Jahr" title="Nächstes Jahr">›</button></div><div class="datePickerWrap"><button type="button" id="datePickerTrigger" class="datePickerTrigger" aria-haspopup="dialog" aria-expanded="false"><span class="datePickerValue" id="datePickerValue">Datum wählen</span><span aria-hidden="true">▾</span></button><input id="date" type="date" class="srOnly" tabindex="-1" aria-hidden="true"><div id="datePickerPopover" class="datePickerPopover" role="dialog" aria-label="Datum auswählen" hidden><div class="datePickerHead"><button type="button" id="datePickerPrev" class="datePickerNav" aria-label="Vorheriger Monat">‹</button><div id="datePickerMonth" class="datePickerMonth">Monat</div><select id="datePickerYear" class="datePickerYear" aria-label="Jahr auswählen"></select><button type="button" id="datePickerNext" class="datePickerNav" aria-label="Nächster Monat">›</button></div><div class="datePickerGrid" id="datePickerGrid"></div><div class="datePickerFoot"><button type="button" id="datePickerToday">Heute</button></div></div></div></div><div id="events" style="margin-top:10px"></div><div class="small" id="bshInfo" style="margin-top:8px"></div></div>
 <details class="card"><summary class="sectionSummary">📍 Stationen in meiner Nähe</summary><div class="sectionBody"><div class="small">Standortfreigabe verwenden, um Küstenpegel nach Entfernung zu sortieren. Wenn die Browser-Ortung nicht funktioniert, kann alternativ ein Ort oder eine deutsche PLZ eingegeben werden.</div><button class="btn" id="nearbyBtn" style="margin-top:10px">📍 Standortsuche starten</button><div style="margin-top:10px"><div class="small">Oder Ort / PLZ eingeben:</div><div class="row" style="margin-top:6px;align-items:stretch;flex-wrap:wrap"><input id="nearbyPlace" class="search grow" type="search" placeholder="z. B. Schleswig oder 24837" autocomplete="postal-code" enterkeyhint="search"><button class="btn" id="nearbyPlaceBtn" type="button">Ort suchen</button></div><div class="small" style="margin-top:4px">Ortssuche über OpenStreetMap / Nominatim.</div></div><div id="nearby" class="small" style="margin-top:10px">Noch keine Standortsuche gestartet.</div></div></details>
@@ -1786,7 +1786,8 @@ function updateBshTxtDownload(){
  if(link){link.hidden=true;link.removeAttribute('href');link.removeAttribute('download');}
  if(check){
    const poStation=modeForSelection?.po||(mode==='po'?current:poCurrent);
-   check.hidden=!poStation;
+   // BSH-only stations (z. B. Wyk, Föhr) müssen den Direktdownload ebenfalls anbieten.
+   check.hidden=!(currentBsh||poStation);
    check.disabled=false;
    check.textContent='BSH-TXT-Direktdownload prüfen';
  }
@@ -1794,6 +1795,7 @@ function updateBshTxtDownload(){
 async function checkBshTxtDirectDownload(){
  const check=$('bshTxtCheck'),link=$('bshTxtDownload');
  const poStation=modeForSelection?.po||(mode==='po'?current:poCurrent);
+ const selectedBsh=currentBsh||(modeForSelection?.bsh||null)||(mode==='bsh'?current:null);
  // Wenn für eine PEGELONLINE-only-Station kein BSH-Jahr gesetzt ist,
  // das aktuell gewählte Datum als Prüfjahr verwenden.
  const dateYear=Number(String($('date')?.value||'').slice(0,4));
@@ -1802,8 +1804,8 @@ async function checkBshTxtDirectDownload(){
  if(!check||!status)return;
  if(link){link.hidden=true;link.removeAttribute('href');}
  window.tidenuhrBshDirectUrl='';
- if(!poStation){
-   status.textContent='Die Prüfung kann nicht starten: Für die aktuelle Auswahl wurde keine PEGELONLINE-Messstelle erkannt. Bitte die Pegelstelle im Küstenverzeichnis erneut auswählen.';
+ if(!poStation&&!selectedBsh){
+   status.textContent='Die Prüfung kann nicht starten: Es wurde keine BSH- oder PEGELONLINE-Messstelle erkannt. Bitte die Pegelstelle erneut auswählen.';
    status.className='small warn';
    return;
  }
@@ -1815,7 +1817,7 @@ async function checkBshTxtDirectDownload(){
  check.disabled=true;check.textContent='BSH-Datei wird geprüft …';
  let directUrl=null;
  try{
-   let candidate=currentBsh||findBshForPo(poStation);
+   let candidate=selectedBsh||(poStation?findBshForPo(poStation):null);
    // Verifizierte Zuordnung aus dem offiziellen BSH-Stationsverzeichnis:
    // „Eider-Sperrwerk, Außenpegel“ hat bshnr 664P.
    // Nur den eindeutig benannten Pegel zuordnen; keine Teilstring-/Nähe-Suche.
@@ -1826,7 +1828,7 @@ async function checkBshTxtDirectDownload(){
      }
    }
    const items=await getBshArchiveCatalog();
-   const targetName=norm(poStation.longname||poStation.shortname||poStation.name||'');
+   const targetName=norm(poStation?.longname||poStation?.shortname||poStation?.name||'');
    const sameName=items.filter(x=>norm(x.station_name||'')===targetName&&targetName.length>4);
    if(!candidate&&sameName.length){
      const code=String(sameName[0].station_code||'').trim().toUpperCase();
@@ -2582,7 +2584,7 @@ async function selectStation(id){
  storageSet('tiden.station.id',id);storageSet('tiden.station.mode',modeForSelection? 'all':mode);
  $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?[(modeForSelection.bsh?'BSH':null),(modeForSelection.po?'PEGELONLINE':null)].filter(Boolean).join(' · '):mode==='bsh'?'BSH · '+(current.pegelNr||current.pegelnr||''):'PEGELONLINE · '+(current.water?.longname||'');
  $('gaugeLink').href=(modeForSelection?.po?.number||current.number)?`https://pegelonline.wsv.de/gast/stammdaten?pegelnr=${encodeURIComponent(modeForSelection?.po?.number||current.number)}`:'#';
- $('bshLink').href=currentBsh?.bshUrl||'https://gezeiten.bsh.de/kiel_holtenau'; $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
+ $('bshLink').href=currentBsh?.bshUrl||'https://gezeiten.bsh.de/'; $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
  data=[];meta=null;selectedYear=null;poCurrent=null;
  // Vorherige Quellenanzeige beim Stationswechsel zurücksetzen.
  $('bshSourceStatus').textContent='';
