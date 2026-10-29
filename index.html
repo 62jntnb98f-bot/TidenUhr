@@ -1820,6 +1820,12 @@ async function checkBshTxtDirectDownload(){
  let directUrl=null;
  try{
    let candidate=selectedBsh||(poStation?findBshForPo(poStation):null);
+   // Eindeutige Zuordnung für Büsum anhand der PEGELONLINE-Messstellennummer.
+   // BSH-Dateikennung DE__505P; die TXT-Dateien heißen DE__505P<Jahr>.txt.
+   // Diese Sonderzuordnung betrifft nur die Direktdownload-Prüfung.
+   if(!candidate&&String(poStation?.number||'').trim()==='9510095'){
+     candidate={id:'DE__505P',name:'Büsum, Schleuse',archiveStationCode:'505P',waterPegelNr:'9510095',pegelonlineNumber:'9510095'};
+   }
    // Verifizierte Zuordnung aus dem offiziellen BSH-Stationsverzeichnis:
    // „Eider-Sperrwerk, Außenpegel“ hat bshnr 664P.
    // Nur den eindeutig benannten Pegel zuordnen; keine Teilstring-/Nähe-Suche.
