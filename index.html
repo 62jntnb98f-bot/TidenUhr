@@ -1799,7 +1799,9 @@ async function checkBshTxtDirectDownload(){
  // Wenn für eine PEGELONLINE-only-Station kein BSH-Jahr gesetzt ist,
  // das aktuell gewählte Datum als Prüfjahr verwenden.
  const dateYear=Number(String($('date')?.value||'').slice(0,4));
- const year=Number(selectedYear)||dateYear;
+ // Das sichtbare Kalenderdatum ist maßgeblich. selectedYear kann nach
+ // Stationswechseln noch auf dem zuvor geladenen Archivjahr stehen.
+ const year=dateYear||Number(selectedYear);
  const status=$('bshSourceStatus');
  if(!check||!status)return;
  if(link){link.hidden=true;link.removeAttribute('href');}
@@ -1843,9 +1845,9 @@ async function checkBshTxtDirectDownload(){
      status.textContent='Für diese Station ist keine gültige BSH-Dateikennung vorhanden.';
      status.className='small warn';return;
    }
-   const archived=items.some(x=>String(x.station_code||'').trim().toUpperCase()===code&&Number(x.datenjahr)===year&&x.archiv_status==='archiviert');
-   if(archived){
-     status.textContent='Die BSH-TXT-Datei für '+candidate.name+' ('+year+') ist bereits im Archiv vorhanden; es wird kein doppelter Download angeboten.';
+   const archivedItem=items.find(x=>String(x.station_code||'').trim().toUpperCase()===code&&Number(x.datenjahr)===year&&x.archiv_status==='archiviert');
+   if(archivedItem){
+     status.textContent='Für '+candidate.name+' ist bereits eine BSH-TXT-Datei für genau das Jahr '+year+' im Archiv vorhanden ('+(archivedItem.original_dateiname||('Pegel '+code))+'). Ein Eintrag aus einem anderen Jahr verhindert den Download nicht.';
      status.className='small';return;
    }
    // Kiel-Holtenau Ostsee bietet laut BSH-Seite keinen direkten HW/NW-TXT-Download.
