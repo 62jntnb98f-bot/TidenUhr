@@ -1729,6 +1729,10 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
   <summary style="cursor:pointer;padding:12px;font-weight:650">📤 BSH-Datei ins private Online-Archiv hochladen</summary>
   <div style="padding:0 12px 12px">
   <p class="small">Die ausgewählte BSH-TXT-Datei wird nach ausdrücklicher Zustimmung und erfolgreicher Sicherheitsprüfung im privaten Online-Archiv gespeichert.</p>
+  <div style="margin:10px 0">
+    <button id="bshArchiveDirectDownload" class="btn" type="button">BSH-TXT-Direktdownload öffnen ↓</button>
+    <div id="bshArchiveDirectDownloadInfo" class="small" role="status" aria-live="polite" style="margin-top:6px">Zuerst oben bei der Pegelauswahl den BSH-TXT-Direktdownload prüfen. Danach kann der Link hier geöffnet werden.</div>
+  </div>
   <form id="bshArchiveUploadForm">
     <label for="bshArchiveUploadFile" style="display:block;margin:10px 0 6px">BSH-TXT-Datei auswählen</label>
     <input id="bshArchiveUploadFile" name="file" type="file" accept=".txt,text/plain" required>
@@ -3409,6 +3413,24 @@ function prepareBshArchiveAfterDirectDownload(){
  upload.scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('bshTxtDownload')?.addEventListener('click',prepareBshArchiveAfterDirectDownload);
+$('bshArchiveDirectDownload')?.addEventListener('click',()=>{
+ const url=String(window.tidenuhrBshDirectUrl||'').trim();
+ const info=$('bshArchiveDirectDownloadInfo');
+ if(!url){
+   if(info)info.textContent='Noch kein Direktdownload-Link vorhanden. Bitte oben bei der ausgewählten Pegelstelle das gewünschte Jahr einstellen und „BSH-TXT-Direktdownload prüfen“ ausführen.';
+   return;
+ }
+ const card=$('bshArchiveCard'),upload=$('bshArchiveUpload');
+ if(card)card.open=true;
+ if(upload)upload.open=true;
+ const file=$('bshArchiveUploadFile'),consent=$('bshArchiveConsent');
+ const uploadStatus=$('bshArchiveUploadStatus');
+ if(file)file.value='';
+ if(consent){consent.checked=false;consent.dispatchEvent(new Event('change',{bubbles:true}));}
+ if(uploadStatus)uploadStatus.textContent='Der BSH-Direktdownload wird geöffnet. Nach dem Download bitte die Datei unten manuell auswählen, die Sicherheitsprüfung abschließen und der Archivierung ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
+ if(info)info.textContent='Direktdownload geöffnet. Nach Abschluss des Downloads die passende BSH-TXT-Datei unten auswählen.';
+ window.open(url,'_blank','noopener,noreferrer');
+});
 $('date').onchange=async()=>{
  const chosenDate=String($('date').value||'');
  const dateYear=Number(chosenDate.slice(0,4));
