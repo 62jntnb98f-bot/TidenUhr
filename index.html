@@ -2653,7 +2653,10 @@ function renderList(){
  document.querySelectorAll('.stationitem[data-id]').forEach(x=>{x.setAttribute('role','button');x.setAttribute('tabindex','0')});
  $('dbInfo').textContent=`${arr.length} Stationen im aktuellen Bereich · PEGELONLINE ${po.length} Messstellen · BSH ${bshCatalog.length} Tide-Stationen`;
 }
+let stationSelectionToken=0;
 async function selectStation(id){
+ const selectionToken=++stationSelectionToken;
+ const selectionIsCurrent=()=>selectionToken===stationSelectionToken;
  try{
  if(mode==='po'){
    current=po.find(s=>s.uuid===id);
@@ -2699,6 +2702,7 @@ async function selectStation(id){
    refreshImportedBshCatalog(bsh.id);
    let archiveYears=[];
    try{archiveYears=archiveRecordsForStation(bsh,await getBshArchiveCatalog()).map(x=>Number(x.datenjahr)).filter(Number.isFinite)}catch(e){console.warn('BSH-Archivjahre konnten nicht geladen werden:',e)}
+   if(!selectionIsCurrent())return;
    const years=[...new Set([...(bsh.years||[]).map(Number),...Object.keys(bsh.files||{}).map(Number),...archiveYears])].filter(Number.isFinite).sort((a,c)=>a-c);
    let preferredYear=null;
    try{
@@ -2718,10 +2722,14 @@ async function selectStation(id){
        $('date').value=first?String(first.datetime).slice(0,10):`${selectedYear}-01-01`;
      }
      await loadBshYear();
+     if(!selectionIsCurrent())return;
    }
  }
  else{$('year').innerHTML='<option>–</option>';}
- render(); await loadWater(); await loadHistory(); await loadForecast();
+ if(!selectionIsCurrent())return;
+ render(); await loadWater(selectionToken); if(!selectionIsCurrent())return;
+ await loadHistory(selectionToken); if(!selectionIsCurrent())return;
+ await loadForecast(selectionToken);
  }catch(e){console.error(e);$('status').textContent='Fehler beim Öffnen der Station: '+(e&&e.message||e);$('status').className='small error';}
 }
 let currentBsh=null, modeForSelection=null;
@@ -3124,13 +3132,17 @@ function getWaterStation(){
 function waterCacheKey(uuid){return 'tiden.water.'+uuid}
 function historyCacheKey(uuid,range){return 'tiden.water.history.'+uuid+'.'+range}
 function showCachedWater(uuid){try{const j=JSON.parse(localStorage.getItem(waterCacheKey(uuid))||'null');if(!j)return false;const val=Number(j.value),ts=j.timestamp?new Date(j.timestamp):null;if(!Number.isFinite(val)||!ts)return false;$('water').textContent=(val/100).toFixed(2)+' m';$('waterTime').textContent=ts.toLocaleString('de-DE')+' · zuletzt gespeichert';$('waterTime').title='Alter der gespeicherten Messung: '+Math.round(Math.max(0,Date.now()-ts.getTime())/60000)+' min';return true}catch{return false}}
-async function loadWater(){
+let waterLoadToken=0,forecastLoadToken=0,historyLoadToken=0;
+async function loadWater(selectionToken=stationSelectionToken){
+ const requestToken=++waterLoadToken;
+ const requestIsCurrent=()=>selectionToken===stationSelectionToken&&requestToken===waterLoadToken;
  let st=getWaterStation(),uuid=st?.uuid;
  if(!uuid){$('water').textContent='–';$('waterTime').textContent='Keine PEGELONLINE-Zuordnung';return}
  try{
   const r=await poFetch(`/stations/${uuid}/W/currentmeasurement.json`,{cache:'no-store'});
   if(!r.ok)throw Error('HTTP '+r.status);
   const j=await r.json();
+  if(!requestIsCurrent()||getWaterStation()?.uuid!==uuid)return;
   const val=Number(j.value),ts=j.timestamp?new Date(j.timestamp):null;
   if(!Number.isFinite(val))throw Error('Ungültiger Messwert');
   storageSet(waterCacheKey(uuid),JSON.stringify(j));
@@ -3138,6 +3150,7 @@ async function loadWater(){
   const age=ts?Math.max(0,Date.now()-ts.getTime()):null;$('waterTime').title=age!==null?'Alter der Messung: '+Math.round(age/60000)+' min':'';
   $('status').textContent=age!==null&&age>25*3600*1000?'Wasserstand geladen – Messwert älter als 25 Stunden.':'Wasserstand aktuell geladen.';$('status').className='small ok';
  }catch(e){
+  if(!requestIsCurrent()||getWaterStation()?.uuid!==uuid)return;
   if(showCachedWater(uuid)){$('status').textContent='Internet/API momentan nicht erreichbar – letzter gespeicherter Wasserstand wird angezeigt.';$('status').className='small warn'}
   else{$('water').textContent='–';$('waterTime').textContent='';$('status').textContent='Aktueller Wasserstand momentan nicht erreichbar.';$('status').className='small warn'}
  }
@@ -3156,7 +3169,9 @@ function bshForecastUrl(){
  for(const k in map) if(n.includes(k)) return 'https://wasserstand.bsh.de/'+map[k];
  return 'https://wasserstand.bsh.de/';
 }
-async function loadForecast(){
+async function loadForecast(selectionToken=stationSelectionToken){
+ const requestToken=++forecastLoadToken;
+ const requestIsCurrent=()=>selectionToken===stationSelectionToken&&requestToken===forecastLoadToken;
  const kind=stationKind(), uuid=getUuid();
  const card=$('forecastCard'); if(!card)return;
  $('bshForecastLink').href=bshForecastUrl();
@@ -3168,12 +3183,13 @@ async function loadForecast(){
    try{
      const url=`${API}/stations/${uuid}/WV/measurements.json`;
      const r=await poFetch(url.replace(API,''),{cache:'no-store'}); if(!r.ok)throw Error('HTTP '+r.status);
-     const j=await r.json(); const arr=Array.isArray(j)?j:[];
+     const j=await r.json(); if(!requestIsCurrent()||getUuid()!==uuid)return; const arr=Array.isArray(j)?j:[];
      if(arr.length){
        storageSet('tiden.forecast.'+uuid,JSON.stringify({savedAt:Date.now(),items:arr}));
        renderForecast(arr,'PEGELONLINE · WV'); rendered=true;
      }
    }catch(e){
+     if(!requestIsCurrent()||getUuid()!==uuid)return;
      try{const c=JSON.parse(localStorage.getItem('tiden.forecast.'+uuid)||'null'); if(c?.items?.length){renderForecast(c.items,'PEGELONLINE · WV · Cache');rendered=true;}}
      catch(_){ }
    }
@@ -3195,16 +3211,20 @@ function renderForecast(arr,source){
  $('forecast').innerHTML=html;
  $('forecastInfo').textContent=`Zeitraum: ${first.t.toLocaleString('de-DE')} bis ${last.t.toLocaleString('de-DE')} · Werte von PEGELONLINE sind ungeprüfte Roh-/Vorhersagedaten.`;
 }
-async function loadHistory(){
+async function loadHistory(selectionToken=stationSelectionToken){
+ const requestToken=++historyLoadToken;
+ const requestIsCurrent=()=>selectionToken===stationSelectionToken&&requestToken===historyLoadToken;
  let st=getWaterStation(),uuid=st?.uuid;if(!uuid){$('chart').innerHTML='<div class="small">Für diese Station ist keine PEGELONLINE-Wasserstandszeitreihe verknüpft.</div>';$('chartInfo').textContent='';return}
  let range=$('range').value;
  try{
   const r=await poFetch(`/stations/${uuid}/W/measurements.json?start=${encodeURIComponent(range)}`,{cache:'no-store'});
   if(!r.ok)throw Error('HTTP '+r.status);const j=await r.json();
+  if(!requestIsCurrent()||getWaterStation()?.uuid!==uuid||String($('range').value)!==String(range))return;
   if(!Array.isArray(j))throw Error('Ungültige Messreihe');
   storageSet(historyCacheKey(uuid,range),JSON.stringify({savedAt:new Date().toISOString(),rows:j}));
   renderChart(j);
  }catch(e){
+  if(!requestIsCurrent()||getWaterStation()?.uuid!==uuid||String($('range').value)!==String(range))return;
   try{const c=JSON.parse(localStorage.getItem(historyCacheKey(uuid,range))||'null');if(Array.isArray(c?.rows)&&c.rows.length){renderChart(c.rows);$('chartInfo').textContent+=' · zuletzt gespeichert';return}}catch{}
   $('chart').innerHTML='<div class="small warn">Wasserstandsverlauf momentan nicht erreichbar.</div>';$('chartInfo').textContent='';
  }
