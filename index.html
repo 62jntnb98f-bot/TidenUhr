@@ -3558,7 +3558,8 @@ $('date').onchange=async()=>{
 applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();
 // Safari kann einen zuvor geöffneten Vollbildzustand wiederherstellen. Beim
 // regulären Seitenstart werden ausschließlich die Vollbild-Overlays entfernt.
-(function resetRestoredOverlays(){const map=$('coastMapCard'),archive=$('bshArchiveCard');map?.classList.remove('map-fullscreen');document.body.classList.remove('map-is-fullscreen');$('mapExpand')?.classList.remove('hidden');$('mapClose')?.classList.add('hidden');$('mapExpand')?.setAttribute('aria-expanded','false');if(archive?.open)archive.open=false;})();
+function resetRestoredOverlays(){const map=$('coastMapCard'),archive=$('bshArchiveCard');map?.classList.remove('map-fullscreen');document.body.classList.remove('map-is-fullscreen');$('mapExpand')?.classList.remove('hidden');$('mapClose')?.classList.add('hidden');$('mapExpand')?.setAttribute('aria-expanded','false');if(archive?.open)archive.open=false;}
+resetRestoredOverlays();window.addEventListener('pageshow',resetRestoredOverlays);
 loadCatalog();let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode');if(saved){mode=sm||'all';$('tabAll').classList.toggle('active',mode==='all');$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');$('tabNorth').classList.toggle('active',mode==='north');$('tabBaltic').classList.toggle('active',mode==='baltic');renderList();if(mode!=='po'||po.some(x=>x.uuid===saved))selectStation(saved);}renderFavorites();
 function setMapFullscreen(enabled){
  const card=$('coastMapCard');if(!card)return;
