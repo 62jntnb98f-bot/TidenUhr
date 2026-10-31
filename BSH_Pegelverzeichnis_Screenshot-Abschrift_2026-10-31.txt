@@ -6,7 +6,7 @@ Zweck: Arbeitsgrundlage für die spätere Stationsauswahl in der TidenUhr.
 WICHTIG
 - Die Schreibweise wird so übernommen, wie sie in den Screenshots lesbar angezeigt wird.
 - Dies ist eine Abschrift der vier übermittelten Bildschirmfotos, keine unabhängig verifizierte Live-Exportdatei.
-- Wo ein Eintrag am Bildrand abgeschnitten oder nicht vollständig lesbar ist, ist er mit [prüfen] markiert.
+- Die ursprünglich unklare Stelle bei Herbrum wurde anhand eines zusätzlichen Nutzerfotos korrigiert: „Herbrum, Ems, Hafendamm“.
 - Die Liste enthält Stationsnamen, keine bestätigten BSH-Dateikennungen. Kennungen und verfügbare HW/NW-Jahre müssen später je Station separat geprüft werden.
 - Diese Datei verändert weder die Stationsauswahl in index.html noch das Online-BSH-Archiv.
 
@@ -79,7 +79,7 @@ Hamburg, Zollenspieker, Elbe
 Harlesiel, Hafen
 Hechthausen, Oste
 Helgoland, Binnenhafen
-Herbrum, Ems, Hafenkanal [prüfen]
+Herbrum, Ems, Hafendamm
 Hetlingen, Elbe
 Hollersiel, Hunte
 Holmer Siel
