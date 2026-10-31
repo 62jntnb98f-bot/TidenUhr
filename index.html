@@ -2471,45 +2471,69 @@ async function loadOfficialBshCatalog(){
  bshCatalog=[...official,...extras];
  dedupeBshCatalog();
 }
+let poCatalogLoadPromise=null;
 async function loadCatalog(){
- // Offizielle BSH-Liste aus den Projektdateien laden; eingebettete Einträge
- // bleiben als Rückfallebene erhalten, falls die JSON-Datei nicht erreichbar ist.
+ // Zuerst lokale Daten anzeigen: die Oberfläche wartet nicht mehr auf Netzwerkdienste.
  bshCatalog=EMBEDDED_BSH_CATALOG.map(x=>({...x,files:{...(x.files||{})},years:[...(x.years||[])]}));
  dedupeBshCatalog();
- try{await loadOfficialBshCatalog();}
- catch(e){console.warn('Offizielle BSH-Stationsliste konnte nicht geladen werden:',e);$('status').textContent='Offizielle BSH-Stationsliste momentan nicht erreichbar; bisherige BSH-Einträge bleiben verfügbar.';}
- try{
-   const j=await Promise.race([
-     fetch('data/catalog.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json()}),
-     new Promise((_,rej)=>setTimeout(()=>rej(Error('catalog-timeout')),1500))
-   ]);
-   if(j && Array.isArray(j.stations) && j.stations.length)bshCatalog=j.stations;
-   dedupeBshCatalog();
- }catch(e){
-   $('status').textContent='BSH-Katalog aus integrierten Projektdaten geladen.';
- }
  restoreImportedBshStations();
- // Archivstationen und -jahre aus dem produktiven Supabase-BSH-Archiv ergänzen.
- await addArchiveStationsToCatalog();
- // Sofort rendern: eingebettete Stationen und Archivstationen bleiben auch bei Netzwerkproblemen auswählbar.
- renderList(); refreshDatabase();
  try{
    const cached=localStorage.getItem('tiden.po.catalog');
-   if(cached){try{const parsed=JSON.parse(cached);if(Array.isArray(parsed))po=parsed;}catch(_){} }
-   renderList(); refreshDatabase(); renderMap();
-   // Nur die kompakte Stationsliste laden. Die bisherige Abfrage mit
-   // includeTimeseries + includeCurrentMeasurement liefert eine sehr große
-   // Antwort, die auf Safari/iPhone unnötig lange dauern kann.
-   const request=poFetch('/stations.json',{cache:'default'}).then(r=>r.json());
-   const fresh=await Promise.race([request,new Promise((_,rej)=>setTimeout(()=>rej(Error('po-timeout')),15000))]);
-   if(Array.isArray(fresh)){po=fresh;storageSet('tiden.po.catalog',JSON.stringify(po));
-     $('status').textContent=`PEGELONLINE-Stationsliste geladen: ${po.length} Messstellen.`;
-     $('status').className='small ok';
+   if(cached){const parsed=JSON.parse(cached);if(Array.isArray(parsed))po=parsed;}
+ }catch(_){}
+ renderList(); refreshDatabase();
+
+ // Alle unabhängigen Katalogquellen parallel starten.
+ const officialTask=loadOfficialBshCatalog().catch(e=>{
+   console.warn('Offizielle BSH-Stationsliste konnte nicht geladen werden:',e);
+   return null;
+ });
+ const legacyTask=fetch('data/catalog.json',{cache:'default'}).then(r=>{
+   if(!r.ok)throw Error('catalog HTTP '+r.status);
+   return r.json();
+ }).catch(e=>{console.warn('Zusätzlicher BSH-Katalog nicht verfügbar:',e);return null;});
+ const archiveTask=getBshArchiveCatalog().catch(e=>{
+   console.warn('BSH-Archivkatalog nicht verfügbar:',e);
+   return null;
+ });
+
+ // PEGELONLINE unabhängig laden; ein langsamer API-Aufruf blockiert die BSH-Auswahl nicht.
+ poCatalogLoadPromise=(async()=>{
+   try{
+     const controller=new AbortController();
+     const timer=setTimeout(()=>controller.abort(),8000);
+     let fresh;
+     try{
+       const response=await poFetch('/stations.json',{cache:'default',signal:controller.signal});
+       fresh=await response.json();
+     }finally{clearTimeout(timer);}
+     if(Array.isArray(fresh)){
+       po=fresh;
+       storageSet('tiden.po.catalog',JSON.stringify(po));
+       $('status').textContent=`PEGELONLINE-Stationsliste geladen: ${po.length} Messstellen.`;
+       $('status').className='small ok';
+       renderList();refreshDatabase();
+       if($('coastMapCard')?.open)renderMap();
+     }
+   }catch(e){
+     if(!po.length){
+       $('status').textContent='PEGELONLINE-Stationsliste momentan nicht erreichbar; BSH-Stationen bleiben auswählbar.';
+       $('status').className='small warn';
+     }
    }
- }catch(e){
-   if(!po.length)$('status').textContent='PEGELONLINE-Stationsliste momentan nicht erreichbar; BSH-Stationen bleiben auswählbar.';
+ })();
+
+ const [officialResult,legacyResult,archiveResult]=await Promise.allSettled([officialTask,legacyTask,archiveTask]);
+ // Die bisherige Priorität bleibt erhalten: offizieller Katalog, danach ergänzender Projektkatalog.
+ const legacy=legacyResult.status==='fulfilled'?legacyResult.value:null;
+ if(legacy&&Array.isArray(legacy.stations)&&legacy.stations.length)bshCatalog=legacy.stations;
+ dedupeBshCatalog();
+ restoreImportedBshStations();
+ if(archiveResult.status==='fulfilled'&&archiveResult.value){
+   try{await addArchiveStationsToCatalog();}catch(e){console.warn('Archivstationen konnten nicht ergänzt werden:',e);}
  }
- renderList(); refreshDatabase(); renderMap();
+ renderList();refreshDatabase();
+ if($('coastMapCard')?.open)renderMap();
 }
 function mapCoastRegion(s){
  // Konservative Küstenklassifizierung:
@@ -3475,6 +3499,7 @@ function prepareBshArchiveAfterDirectDownload(){
  upload.scrollIntoView({behavior:'smooth',block:'start'});
 }
 $('bshTxtDownload')?.addEventListener('click',prepareBshArchiveAfterDirectDownload);
+ $('coastMapCard')?.addEventListener('toggle',()=>{if($('coastMapCard')?.open&&!$('map')?.dataset.rendered){renderMap();$('map').dataset.rendered='1';}});
 $('bshArchiveDirectDownload')?.addEventListener('click',()=>{
  const url=String(window.tidenuhrBshDirectUrl||'').trim();
  const info=$('bshArchiveDirectDownloadInfo');
@@ -3528,7 +3553,7 @@ $('date').onchange=async()=>{
  }
  await loadBshYear();
 };function stepYear(delta){const y=$('year');if(!y||!y.options.length)return;const next=Math.max(0,Math.min(y.options.length-1,y.selectedIndex+delta));if(next!==y.selectedIndex){y.selectedIndex=next;y.dispatchEvent(new Event('change',{bubbles:true}));}}$('yearPrev').onclick=()=>stepYear(-1);$('yearNext').onclick=()=>stepYear(1);$('range').onchange=loadHistory;$('favBtn').onclick=()=>{if(!current)return;const id=favoriteId();if(!id)return;let arr=getFavorites();const ix=arr.findIndex(f=>f.mode===mode&&f.id===id);if(ix>=0)arr.splice(ix,1);else{const station=modeForSelection||current;arr.push({mode,id,name:modeForSelection?.name||label(current),region:modeForSelection?stationRegion(modeForSelection):stationRegion(current)});}saveFavorites(arr);syncFavorite();};$('favListBtn').onclick=toggleFavoriteMenu;setInterval(tick,1000); setInterval(updateClock,1000);setInterval(loadWater,60000);
-applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();loadCatalog().then(()=>{let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode');if(saved){mode=sm||'all';$('tabAll').classList.toggle('active',mode==='all');$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');$('tabNorth').classList.toggle('active',mode==='north');$('tabBaltic').classList.toggle('active',mode==='baltic');renderList();selectStation(saved)}renderFavorites();});
+applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();loadCatalog().then(async()=>{let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode');if(saved){mode=sm||'all';if(mode==='po'&&poCatalogLoadPromise)await poCatalogLoadPromise;$('tabAll').classList.toggle('active',mode==='all');$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');$('tabNorth').classList.toggle('active',mode==='north');$('tabBaltic').classList.toggle('active',mode==='baltic');renderList();selectStation(saved)}renderFavorites();});
 function setMapFullscreen(enabled){
  const card=$('coastMapCard');if(!card)return;
  card.classList.toggle('map-fullscreen',!!enabled);document.body.classList.toggle('map-is-fullscreen',!!enabled);
