@@ -2462,7 +2462,7 @@ async function loadOfficialBshCatalog(){
    const code=String(g.bshnr||'').trim().toUpperCase();
    if(!/^[A-Z0-9]{3,12}$/.test(code))return null;
    const id=code==='3020P'?'KIEL-HOLTENAU':'DE__'+code;
-   const region=/,\\s*Ostsee\\s*$/i.test(String(g.station_name||''))?'Ostsee':'Nordsee';
+   const region=/,\s*Ostsee\s*$/i.test(String(g.station_name||''))?'Ostsee':'Nordsee';
    const old=previous.find(x=>archiveCodeForBsh(x)===code)||{};
    return {...old,id,name:String(g.station_name||''),region,bshnr:code,number:code,latitude:Number(g.latitude),longitude:Number(g.longitude),gauge_group:Number(g.gauge_group),seo_id:String(g.seo_id||''),bshUrl:g.seo_id?'https://gezeiten.bsh.de/'+g.seo_id:'https://gezeiten.bsh.de/',files:{...(old.files||{})},years:[...(old.years||[])]};
  }).filter(Boolean);
@@ -2630,7 +2630,7 @@ async function selectStation(id){
  storageSet('tiden.station.id',id);storageSet('tiden.station.mode',mode);
  $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?'BSH · '+(modeForSelection.bsh?.bshnr||modeForSelection.bsh?.id||'')+(modeForSelection.po?' · PEGELONLINE verknüpft':''):'PEGELONLINE · '+(current.water?.longname||'');
  $('gaugeLink').href=(modeForSelection?.po?.number||current.number)?`https://pegelonline.wsv.de/gast/stammdaten?pegelnr=${encodeURIComponent(modeForSelection?.po?.number||current.number)}`:'#';
- $('bshLink').href=currentBsh?.bshUrl||'https://gezeiten.bsh.de/'; $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
+ $('bshLink').href=(modeForSelection?.bsh?.bshUrl||currentBsh?.bshUrl||'https://gezeiten.bsh.de/'); $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
  data=[];meta=null;selectedYear=null;poCurrent=null;
  // Vorherige Quellenanzeige beim Stationswechsel zurücksetzen.
  $('bshSourceStatus').textContent='';
