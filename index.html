@@ -1870,8 +1870,6 @@ async function checkBshTxtDirectDownload(){
    const url=new URL('https://filebox.bsh.de/index.php/s/SbJ3z5NBkpOZloY/download');
    url.searchParams.set('path','/vb_hwnw/deu'+year);
    url.searchParams.set('files','DE__'+code+year+'.txt');
-   directUrl=url.href;
-   window.tidenuhrBshDirectUrl=url.href;
    // Serverseitige Prüfung vermeidet Safari-CORS-Probleme.
    // Ein Downloadlink wird ausschließlich bei bestätigter BSH-Datei angeboten.
    const verifyResponse=await fetch(BSH_ARCHIVE_API+'/bsh-direktdownload-pruefen',{
@@ -1891,13 +1889,9 @@ async function checkBshTxtDirectDownload(){
    status.textContent='BSH-Direktdatei bestätigt: '+(verified.stationName||candidate.name)+' · '+year+' · '+Number(verified.vb2Records||0)+' HW/NW-Datensätze. Sie ist für dieses Jahr noch nicht im Archiv eingetragen.';
    status.className='small ok';
  }catch(e){
-   const err=String(e?.message||e);
-   if(directUrl&&link&&/load failed|failed to fetch|networkerror|network error/i.test(err)){
-     link.href=directUrl;link.hidden=false;
-     status.textContent='Der BSH-Download-Link wurde erstellt. Safari kann den Dateiinhalt hier nicht automatisch prüfen (CORS-/Netzwerkbeschränkung). Die Datei lässt sich über „BSH-TXT herunterladen“ direkt laden; die automatische Inhaltsprüfung ist in diesem Browser nicht verfügbar.';
-   }else{
-     status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+err;
-   }
+   if(link){link.hidden=true;link.removeAttribute('href');}
+   window.tidenuhrBshDirectUrl='';
+   status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+String(e?.message||e);
    status.className='small warn';
  }finally{
    check.disabled=false;check.textContent='BSH-TXT-Direktdownload erneut prüfen';
