@@ -2500,13 +2500,8 @@ async function loadCatalog(){
  // PEGELONLINE unabhängig laden; ein langsamer API-Aufruf blockiert die BSH-Auswahl nicht.
  poCatalogLoadPromise=(async()=>{
    try{
-     const controller=new AbortController();
-     const timer=setTimeout(()=>controller.abort(),8000);
-     let fresh;
-     try{
-       const response=await poFetch('/stations.json',{cache:'default',signal:controller.signal});
-       fresh=await response.json();
-     }finally{clearTimeout(timer);}
+     const request=poFetch('/stations.json',{cache:'default'}).then(response=>response.json());
+     const fresh=await Promise.race([request,new Promise((_,reject)=>setTimeout(()=>reject(Error('PEGELONLINE-Zeitüberschreitung')),8000))]);
      if(Array.isArray(fresh)){
        po=fresh;
        storageSet('tiden.po.catalog',JSON.stringify(po));
@@ -2523,17 +2518,20 @@ async function loadCatalog(){
    }
  })();
 
- const [officialResult,legacyResult,archiveResult]=await Promise.allSettled([officialTask,legacyTask,archiveTask]);
+ const [officialResult,legacyResult]=await Promise.allSettled([officialTask,legacyTask]);
  // Die bisherige Priorität bleibt erhalten: offizieller Katalog, danach ergänzender Projektkatalog.
  const legacy=legacyResult.status==='fulfilled'?legacyResult.value:null;
  if(legacy&&Array.isArray(legacy.stations)&&legacy.stations.length)bshCatalog=legacy.stations;
  dedupeBshCatalog();
  restoreImportedBshStations();
- if(archiveResult.status==='fulfilled'&&archiveResult.value){
-   try{await addArchiveStationsToCatalog();}catch(e){console.warn('Archivstationen konnten nicht ergänzt werden:',e);}
- }
  renderList();refreshDatabase();
  if($('coastMapCard')?.open)renderMap();
+ // Archivdaten ergänzen die bereits sichtbare Liste im Hintergrund.
+ archiveTask.then(async items=>{
+   if(!items)return;
+   try{await addArchiveStationsToCatalog();renderList();refreshDatabase();if($('coastMapCard')?.open)renderMap();}
+   catch(e){console.warn('Archivstationen konnten nicht ergänzt werden:',e);}
+ });
 }
 function mapCoastRegion(s){
  // Konservative Küstenklassifizierung:
