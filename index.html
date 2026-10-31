@@ -3327,7 +3327,12 @@ function tick(){
  const selectedDate=String($('date')?.value||'');
  const yearData=data.filter(e=>String(e.datetime||'').slice(0,4)===String(selectedYear));
  const dateData=yearData.map(e=>({...e,d:eventDate(e)})).filter(e=>e.d.getFullYear()+'-'+String(e.d.getMonth()+1).padStart(2,'0')+'-'+String(e.d.getDate()).padStart(2,'0')===selectedDate).sort((a,b)=>a.d-b.d);
- if(!dateData.length){$('next').textContent='Keine BSH-Gezeitendaten verfügbar. Bitte eine passende BSH-Jahresdatei laden.';$('countDays').textContent='';$('countDays').hidden=true;$('countTime').textContent='';$('nextHeight').textContent='';updatePrioritySummary();return;}
+ if(!dateData.length){const activeCode=archiveCodeForBsh(currentBsh||{});
+ if(activeCode==='634P'&&Number(selectedYear)===2026){
+  $('next').textContent='Für Südwesthörn (634P) stellt der BSH für 2026 keine Jahresdatei zum Direktdownload bereit. Daher sind hier keine BSH-HW/NW-Daten verfügbar.';
+ }else{
+  $('next').textContent='Keine BSH-Gezeitendaten verfügbar. Bitte eine passende BSH-Jahresdatei laden.';
+ }$('countDays').textContent='';$('countDays').hidden=true;$('countTime').textContent='';$('nextHeight').textContent='';updatePrioritySummary();return;}
  const today=localDate();
  // Die obere Tideanzeige bezieht sich auf das gewählte Datum. Nur wenn dieses heute ist,
  // wird die nächste noch bevorstehende Tide des Tages gewählt; sonst die erste Tide des Datums.
