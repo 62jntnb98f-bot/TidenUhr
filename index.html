@@ -2484,14 +2484,20 @@ async function loadCatalog(){
  renderList(); refreshDatabase();
 
  // Alle unabhängigen Katalogquellen parallel starten.
- const officialTask=loadOfficialBshCatalog().catch(e=>{
+ const officialTask=Promise.race([
+   loadOfficialBshCatalog(),
+   new Promise((_,reject)=>setTimeout(()=>reject(Error('BSH-Katalog-Zeitüberschreitung')),5000))
+ ]).catch(e=>{
    console.warn('Offizielle BSH-Stationsliste konnte nicht geladen werden:',e);
    return null;
  });
- const legacyTask=fetch('data/catalog.json',{cache:'default'}).then(r=>{
-   if(!r.ok)throw Error('catalog HTTP '+r.status);
-   return r.json();
- }).catch(e=>{console.warn('Zusätzlicher BSH-Katalog nicht verfügbar:',e);return null;});
+ const legacyTask=Promise.race([
+   fetch('data/catalog.json',{cache:'default'}).then(r=>{
+     if(!r.ok)throw Error('catalog HTTP '+r.status);
+     return r.json();
+   }),
+   new Promise((_,reject)=>setTimeout(()=>reject(Error('Zusatzkatalog-Zeitüberschreitung')),1500))
+ ]).catch(e=>{console.warn('Zusätzlicher BSH-Katalog nicht verfügbar:',e);return null;});
  const archiveTask=getBshArchiveCatalog().catch(e=>{
    console.warn('BSH-Archivkatalog nicht verfügbar:',e);
    return null;
