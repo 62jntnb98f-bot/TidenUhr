@@ -1438,7 +1438,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
 #stationList .stationitem{min-height:46px;contain:layout style}
 @media(max-width:600px){#stationList{max-height:260px}.tabs.stationFilters button{min-height:42px}}
 </style><script>
-const TIDENUHR_VERSION="47.21";
+const TIDENUHR_VERSION="47.22";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, Föhr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel, Holtenau, Ostsee","region":"Ostsee","files":{},"years":[2026],"bshnr":"3020P","waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
@@ -1593,10 +1593,18 @@ EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
 const API='https://pegelonline.wsv.de/webservices/rest-api/v2';
 const API_FALLBACK='https://m.pegelonline.wsv.de/webservices/rest-api/v2';
 async function poFetch(path,options={}){
- const urls=[API+path,API_FALLBACK+path];
- let last;
- for(const url of urls){try{const r=await fetch(url,options);if(!r.ok)throw Error('HTTP '+r.status);return r}catch(e){last=e}}
- throw last||Error('PEGELONLINE nicht erreichbar');
+ try{
+  const response=await fetch(API+path,options);
+  if(!response.ok)throw Error('HTTP '+response.status);
+  return response;
+ }catch(error){
+  // CORS-/Netzwerkfehler sind Fetch-TypeErrors. Ein zweiter Host-Aufruf
+  // erzeugt bei gleicher CORS-Sperre nur einen weiteren Konsolenfehler.
+  if(error instanceof TypeError)throw error;
+  const response=await fetch(API_FALLBACK+path,options);
+  if(!response.ok)throw Error('HTTP '+response.status);
+  return response;
+ }
 }
 let bshCatalog=[],po=[],mode='all',current=null,data=[],meta=null,selectedYear=null,poCurrent=null,coastalOnly=true;
 
@@ -1838,14 +1846,13 @@ function storageSet(key,value){
 // Ein Update wird niemals ungefragt geladen; der Nutzer kann den Neuladevorgang auslösen.
 async function checkForPublishedUpdate(){
  try{
-  const url=new URL(location.href);
-  url.searchParams.set('__tiden_version_check',String(Date.now()));
+  const url=new URL('version.json',location.href);
+  url.searchParams.set('_',String(Date.now()));
   const response=await fetch(url.href,{cache:'no-store',headers:{'Cache-Control':'no-cache, no-store, max-age=0','Pragma':'no-cache'}});
-  if(!response.ok) return;
-  const html=await response.text();
-  const match=html.match(/const\s+TIDENUHR_VERSION\s*=\s*["'](\d+(?:\.\d+)+)["']/);
-  if(!match) return;
-  const remote=match[1], current=TIDENUHR_VERSION;
+  if(!response.ok)return;
+  const versionData=await response.json();
+  const remote=String(versionData?.version||'').trim(),current=TIDENUHR_VERSION;
+  if(!/^\d+(?:\.\d+)+$/.test(remote))return;
   const parts=v=>v.split('.').map(n=>parseInt(n,10)||0);
   const a=parts(remote),b=parts(current);let newer=false;
   for(let i=0;i<Math.max(a.length,b.length);i++){if((a[i]||0)>(b[i]||0)){newer=true;break;}if((a[i]||0)<(b[i]||0))break;}
@@ -2315,7 +2322,6 @@ async function loadCatalog(){
  renderList();refreshDatabase();
 
  const officialTask=Promise.race([loadOfficialBshCatalog(),new Promise((_,reject)=>setTimeout(()=>reject(Error('BSH-Katalog-Zeitüberschreitung')),5000))]).then(()=>true).catch(e=>{console.warn('Offizielle BSH-Stationsliste konnte nicht geladen werden:',e);return false;});
- const legacyTask=Promise.race([fetch('data/catalog.json',{cache:'default'}).then(r=>{if(!r.ok)throw Error('catalog HTTP '+r.status);return r.json();}),new Promise((_,reject)=>setTimeout(()=>reject(Error('Zusatzkatalog-Zeitüberschreitung')),1500))]).catch(e=>{console.warn('Zusätzlicher BSH-Katalog nicht verfügbar:',e);return null;});
 
  const archiveTask=getBshArchiveCatalog().catch(e=>{console.warn('BSH-Archivkatalog nicht verfügbar:',e);return null});
 
@@ -2336,14 +2342,9 @@ async function loadCatalog(){
 
  // Offizieller BSH-Katalog hat immer Vorrang. Er wird sofort nach dem Laden
  // sichtbar; der ältere Zusatzkatalog darf ihn nicht mehr überschreiben.
- officialTask.then(async officialLoaded=>{
-   if(!officialLoaded){
-     const legacy=await legacyTask;
-     if(legacy&&Array.isArray(legacy.stations)&&legacy.stations.length){
-       bshCatalog=legacy.stations;
-       dedupeBshCatalog();
-     }
-   }
+ officialTask.then(officialLoaded=>{
+    // Bei Ausfall des offiziellen Katalogs bleibt der eingebettete Katalog
+    // samt importierten Stationen verfügbar; es gibt keinen Legacy-Download.
    restoreImportedBshStations();renderList();refreshDatabase();
    if($('coastMapCard')?.open)renderMap();
    // Ein Startversuch mit dem noch unvollständigen eingebetteten Katalog kann
