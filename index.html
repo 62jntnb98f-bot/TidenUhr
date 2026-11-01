@@ -3344,7 +3344,7 @@ function prepareBshArchiveAfterDirectDownload(){
  card.scrollIntoView({behavior:'smooth',block:'start'});
  upload.scrollIntoView({behavior:'smooth',block:'start'});
 }
-$('bshTxtDownload')?.addEventListener('click',prepareBshArchiveAfterDirectDownload);
+// v47.17: BSH-Download-Klick löst keine automatische Archiv-UI oder Scrollbewegung aus.
  $('coastMapCard')?.addEventListener('toggle',()=>{if($('coastMapCard')?.open&&!$('map')?.dataset.rendered){renderMap();$('map').dataset.rendered='1';}});
 $('bshArchiveDirectDownload')?.addEventListener('click',()=>{
  const url=String(window.tidenuhrBshDirectUrl||'').trim();
