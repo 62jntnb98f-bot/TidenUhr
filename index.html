@@ -1604,9 +1604,8 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.10";
-const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"DE__632P","name":"Wyk, F\u00F6hr","region":"Nordsee","files":{"2026":"data/DE__632P2026.json"},"years":[2026]},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
-EMBEDDED_BSH_CATALOG.forEach(s=>{if(s.id==='DE__632P')s.name='Wyk, Föhr';});
+const TIDENUHR_VERSION="47.11";
+const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
 <style>.tideTime{font-weight:400!important}</style>
@@ -1824,17 +1823,11 @@ async function checkBshTxtDirectDownload(){
  let directUrl=null;
  try{
    let candidate=selectedBsh||(poStation?findBshForPo(poStation):null);
-   // Verifizierte Sonderzuordnung Büsum: PEGELONLINE 9510095 entspricht
-   // der offiziellen BSH-Dateikennung 505P. Andere Stationen werden nicht
-   // anhand ähnlicher Namen oder vermuteter Nummern zugeordnet.
    if(!candidate){
      const verified=verifiedLinkForPo(poStation);
      if(verified)candidate={id:'DE__'+verified.bshCode,name:verified.name,
        archiveStationCode:verified.bshCode,waterPegelNr:verified.poNumber,
        pegelonlineNumber:verified.poNumber,verifiedBshPoLink:true};
-   }
-   if(!candidate&&String(poStation?.number||'').trim()==='9510095'){
-     candidate={id:'DE__505P',name:'Büsum, Schleuse',archiveStationCode:'505P',waterPegelNr:'9510095',pegelonlineNumber:'9510095'};
    }
    // Verifizierte Zuordnung aus dem offiziellen BSH-Stationsverzeichnis:
    // „Eider-Sperrwerk, Außenpegel“ hat bshnr 664P.
