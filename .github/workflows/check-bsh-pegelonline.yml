@@ -1,0 +1,41 @@
+name: BSH to PEGELONLINE reference audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bsh-pegelonline-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+      - name: Run read-only audit
+        run: python3 scripts/check-bsh-pegelonline.py
+      - name: Publish audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bsh-pegelonline-audit-\${{ github.run_number }}
+          path: |
+            audit-output/bsh-pegelonline-audit.json
+            audit-output/bsh-pegelonline-audit.md
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Add report summary
+        if: always()
+        run: |
+          if [ -f audit-output/bsh-pegelonline-audit.md ]; then
+            cat audit-output/bsh-pegelonline-audit.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Prüfung fehlgeschlagen; siehe Job-Log." >> "$GITHUB_STEP_SUMMARY"
+          fi
