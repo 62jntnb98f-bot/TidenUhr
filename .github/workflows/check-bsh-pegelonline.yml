@@ -31,7 +31,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bsh-pegelonline-audit-\${{ github.run_number }}
+          name: bsh-pegelonline-audit-${{ github.run_number }}
           path: |
             audit-output/bsh-pegelonline-audit.json
             audit-output/bsh-pegelonline-audit.md
