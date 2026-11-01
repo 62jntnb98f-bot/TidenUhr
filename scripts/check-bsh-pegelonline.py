@@ -26,7 +26,9 @@ def parse_ref(feature):
     if not raw: return None
     u = urllib.parse.urlsplit(raw)
     if (u.hostname or "").lower() != "www.pegelonline.wsv.de": return None
-    q, f = urllib.parse.parse_qs(u.query), urllib.parse.parse_qs(u.fragment)
+    q = urllib.parse.parse_qs(u.query)
+    fragment_query = u.fragment.partition("?")[2]
+    f = urllib.parse.parse_qs(fragment_query)
     number = txt((q.get("pegelnr") or [""])[0])
     uuid = txt((f.get("id") or [""])[0])
     operator = txt(p.get("operator_gauge_id"))
