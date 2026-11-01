@@ -2106,10 +2106,8 @@ function findPoForBsh(b){
 }
 function findBshForPo(p){
  // Kartenpunkte stammen aus PEGELONLINE, während die Tidezeiten aus dem
- // BSH-Katalog kommen. Zuerst über die kanonische Stationskennung verknüpfen,
- // damit Kiel-Holtenau trotz abweichender Nummern/Namenszusätze gefunden wird.
- const pCanonical=canonicalBshId(p);
- if(pCanonical){const byCanonical=bshCatalog.find(x=>canonicalBshId(x)===pCanonical);if(byCanonical)return byCanonical;}
+ // BSH-Katalog kommen. Verifizierte A13-Zuordnungen haben Vorrang vor
+ // Namens-/Aliasabgleichen, damit keine ähnlich benannte Station gewinnt.
  const n=String(p.number||'');
  const verified=verifiedLinkForPo(p);
  if(verified){
@@ -2119,6 +2117,8 @@ function findBshForPo(p){
      archiveStationCode:verified.bshCode,waterPegelNr:verified.poNumber,
      pegelonlineNumber:verified.poNumber,verifiedBshPoLink:true};
  }
+ const pCanonical=canonicalBshId(p);
+ if(pCanonical){const byCanonical=bshCatalog.find(x=>canonicalBshId(x)===pCanonical);if(byCanonical)return byCanonical;}
  const byN=bshCatalog.find(x=>[x.waterPegelNr,x.pegelnummer,x.pegelnr,x.pegelonlineNumber,x.importedPegelNr].map(String).includes(n));
  if(byN)return byN;
  const pn=stationNameCore(p.longname||p.shortname||p.name);
