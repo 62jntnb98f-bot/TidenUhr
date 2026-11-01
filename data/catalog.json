@@ -14,7 +14,10 @@
       "seoId": "kalkgrund_leuchtturm",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Kalkgrund, Leuchtturm, Ostsee",
+      "gauge_group": 3,
+      "seo_id": "kalkgrund_leuchtturm"
     },
     {
       "id": "KIEL-HOLTENAU",
@@ -27,7 +30,10 @@
       "seoId": "kiel_holtenau",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Kiel, Holtenau, Ostsee",
+      "gauge_group": 3,
+      "seo_id": "kiel_holtenau"
     },
     {
       "id": "DE__3040P",
@@ -40,7 +46,10 @@
       "seoId": "travemuende",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Travemünde, Ostsee",
+      "gauge_group": 3,
+      "seo_id": "travemuende"
     },
     {
       "id": "DE__3060P",
@@ -53,7 +62,10 @@
       "seoId": "warnemuende",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Warnemünde, Ostsee",
+      "gauge_group": 3,
+      "seo_id": "warnemuende"
     },
     {
       "id": "DE__101P",
@@ -66,7 +78,10 @@
       "seoId": "borkum_fischerbalje",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Borkum, Fischerbalje",
+      "gauge_group": 1,
+      "seo_id": "borkum_fischerbalje"
     },
     {
       "id": "DE__103P",
@@ -79,7 +94,10 @@
       "seoId": "bremerhaven_alter_leuchtturm",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremerhaven, Weser, Alter Leuchtturm",
+      "gauge_group": 1,
+      "seo_id": "bremerhaven_alter_leuchtturm"
     },
     {
       "id": "DE__111P",
@@ -92,7 +110,10 @@
       "seoId": "norderney_riffgat",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Norderney, Riffgat",
+      "gauge_group": 1,
+      "seo_id": "norderney_riffgat"
     },
     {
       "id": "DE__502P",
@@ -105,7 +126,10 @@
       "seoId": "bremen_oslebshausen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Oslebshausen, Weser",
+      "gauge_group": 1,
+      "seo_id": "bremen_oslebshausen"
     },
     {
       "id": "DE__504B",
@@ -118,7 +142,10 @@
       "seoId": "brunsbuettel_ost",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Brunsbüttel, Elbe, Ost",
+      "gauge_group": 1,
+      "seo_id": "brunsbuettel_ost"
     },
     {
       "id": "DE__505P",
@@ -131,7 +158,10 @@
       "seoId": "buesum_schleuse",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Büsum, Schleuse",
+      "gauge_group": 1,
+      "seo_id": "buesum_schleuse"
     },
     {
       "id": "DE__506P",
@@ -144,7 +174,10 @@
       "seoId": "cuxhaven_steubenhoeft",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Cuxhaven, Steubenhöft, Elbe",
+      "gauge_group": 1,
+      "seo_id": "cuxhaven_steubenhoeft"
     },
     {
       "id": "DE__507P",
@@ -157,7 +190,10 @@
       "seoId": "emden_grosse_seeschleuse",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Emden, Ems, Große Seeschleuse",
+      "gauge_group": 1,
+      "seo_id": "emden_grosse_seeschleuse"
     },
     {
       "id": "DE__508P",
@@ -170,7 +206,10 @@
       "seoId": "hamburg_st-pauli",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, St. Pauli, Elbe",
+      "gauge_group": 1,
+      "seo_id": "hamburg_st-pauli"
     },
     {
       "id": "DE__509A",
@@ -183,7 +222,10 @@
       "seoId": "helgoland_binnenhafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Helgoland, Binnenhafen",
+      "gauge_group": 1,
+      "seo_id": "helgoland_binnenhafen"
     },
     {
       "id": "DE__510P",
@@ -196,7 +238,10 @@
       "seoId": "husum_schleuse",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Husum, Schleuse",
+      "gauge_group": 1,
+      "seo_id": "husum_schleuse"
     },
     {
       "id": "DE__512P",
@@ -209,7 +254,10 @@
       "seoId": "wilhelmshaven_alter_vorhafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wilhelmshaven, Alter Vorhafen",
+      "gauge_group": 1,
+      "seo_id": "wilhelmshaven_alter_vorhafen"
     },
     {
       "id": "DE__606P",
@@ -222,7 +270,10 @@
       "seoId": "fino3",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Fino 3",
+      "gauge_group": 1,
+      "seo_id": "fino3"
     },
     {
       "id": "DE__610P",
@@ -235,7 +286,10 @@
       "seoId": "fino1",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Fino 1",
+      "gauge_group": 1,
+      "seo_id": "fino1"
     },
     {
       "id": "DE__616P",
@@ -248,7 +302,10 @@
       "seoId": "list_west",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "List, Sylt, West",
+      "gauge_group": 2,
+      "seo_id": "list_west"
     },
     {
       "id": "DE__617P",
@@ -261,7 +318,10 @@
       "seoId": "list_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "List, Sylt, Hafen",
+      "gauge_group": 1,
+      "seo_id": "list_hafen"
     },
     {
       "id": "DE__618P",
@@ -274,7 +334,10 @@
       "seoId": "munkmarsch",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Munkmarsch, Sylt",
+      "gauge_group": 1,
+      "seo_id": "munkmarsch"
     },
     {
       "id": "DE__620P",
@@ -287,7 +350,10 @@
       "seoId": "westerland",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Westerland, Sylt",
+      "gauge_group": 1,
+      "seo_id": "westerland"
     },
     {
       "id": "DE__622P",
@@ -300,7 +366,10 @@
       "seoId": "amrum_odde",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Amrum Odde, Amrum",
+      "gauge_group": 1,
+      "seo_id": "amrum_odde"
     },
     {
       "id": "DE__623A",
@@ -313,7 +382,10 @@
       "seoId": "rantumdamm",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Rantumdamm, Sylt",
+      "gauge_group": 1,
+      "seo_id": "rantumdamm"
     },
     {
       "id": "DE__624A",
@@ -326,7 +398,10 @@
       "seoId": "hoernum_west",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hörnum, Sylt, West",
+      "gauge_group": 2,
+      "seo_id": "hoernum_west"
     },
     {
       "id": "DE__624P",
@@ -339,7 +414,10 @@
       "seoId": "hoernum_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hörnum, Sylt, Hafen",
+      "gauge_group": 1,
+      "seo_id": "hoernum_hafen"
     },
     {
       "id": "DE__628A",
@@ -352,7 +430,10 @@
       "seoId": "osterley",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Osterley",
+      "gauge_group": 1,
+      "seo_id": "osterley"
     },
     {
       "id": "DE__629B",
@@ -365,7 +446,10 @@
       "seoId": "foehrer_ley_nord",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Föhrer Ley, Nord",
+      "gauge_group": 1,
+      "seo_id": "foehrer_ley_nord"
     },
     {
       "id": "DE__631P",
@@ -378,7 +462,10 @@
       "seoId": "wittduen_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wittdün, Amrum, Hafen",
+      "gauge_group": 1,
+      "seo_id": "wittduen_hafen"
     },
     {
       "id": "DE__632D",
@@ -391,7 +478,10 @@
       "seoId": "langeness_hilligenley",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Langeness, Hilligenley",
+      "gauge_group": 2,
+      "seo_id": "langeness_hilligenley"
     },
     {
       "id": "DE__632F",
@@ -404,7 +494,10 @@
       "seoId": "langeness_nord",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Langeness, Nord",
+      "gauge_group": 1,
+      "seo_id": "langeness_nord"
     },
     {
       "id": "DE__632P",
@@ -417,7 +510,10 @@
       "seoId": "wyk",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wyk, Föhr",
+      "gauge_group": 1,
+      "seo_id": "wyk"
     },
     {
       "id": "DE__634P",
@@ -430,7 +526,10 @@
       "seoId": "suedwesthoern",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Südwesthörn",
+      "gauge_group": 2,
+      "seo_id": "suedwesthoern"
     },
     {
       "id": "DE__635P",
@@ -443,7 +542,10 @@
       "seoId": "dagebuell",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Dagebüll",
+      "gauge_group": 1,
+      "seo_id": "dagebuell"
     },
     {
       "id": "DE__636F",
@@ -456,7 +558,10 @@
       "seoId": "hooge_anleger",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hooge, Anleger",
+      "gauge_group": 1,
+      "seo_id": "hooge_anleger"
     },
     {
       "id": "DE__637A",
@@ -469,7 +574,10 @@
       "seoId": "der_strand_hamburger_hallig",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Der Strand, Hamburger Hallig",
+      "gauge_group": 1,
+      "seo_id": "der_strand_hamburger_hallig"
     },
     {
       "id": "DE__637P",
@@ -482,7 +590,10 @@
       "seoId": "groede_anleger",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Gröde, Anleger",
+      "gauge_group": 1,
+      "seo_id": "groede_anleger"
     },
     {
       "id": "DE__638P",
@@ -495,7 +606,10 @@
       "seoId": "schluettsiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Schlüttsiel",
+      "gauge_group": 1,
+      "seo_id": "schluettsiel"
     },
     {
       "id": "DE__642C",
@@ -508,7 +622,10 @@
       "seoId": "rummelloch_west",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Rummelloch, West",
+      "gauge_group": 1,
+      "seo_id": "rummelloch_west"
     },
     {
       "id": "DE__642E",
@@ -521,7 +638,10 @@
       "seoId": "pellworm_hoogerfaehre",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Pellworm, Hoogerfähre",
+      "gauge_group": 1,
+      "seo_id": "pellworm_hoogerfaehre"
     },
     {
       "id": "DE__645P",
@@ -534,7 +654,10 @@
       "seoId": "suederoogsand",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Süderoogsand",
+      "gauge_group": 1,
+      "seo_id": "suederoogsand"
     },
     {
       "id": "DE__647A",
@@ -547,7 +670,10 @@
       "seoId": "pellworm_anleger",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Pellworm, Anleger",
+      "gauge_group": 1,
+      "seo_id": "pellworm_anleger"
     },
     {
       "id": "DE__649A",
@@ -560,7 +686,10 @@
       "seoId": "nordstrandischmoor",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Nordstrandischmoor",
+      "gauge_group": 1,
+      "seo_id": "nordstrandischmoor"
     },
     {
       "id": "DE__649B",
@@ -573,7 +702,10 @@
       "seoId": "holmer_siel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Holmer Siel",
+      "gauge_group": 1,
+      "seo_id": "holmer_siel"
     },
     {
       "id": "DE__649P",
@@ -586,7 +718,10 @@
       "seoId": "strucklahnungshoern",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Strucklahnungshörn, Nordstrand, AP",
+      "gauge_group": 1,
+      "seo_id": "strucklahnungshoern"
     },
     {
       "id": "DE__653P",
@@ -599,7 +734,10 @@
       "seoId": "suedfall_fahrwasserkante",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Südfall, Fahrwasserkante",
+      "gauge_group": 1,
+      "seo_id": "suedfall_fahrwasserkante"
     },
     {
       "id": "DE__654E",
@@ -612,7 +750,10 @@
       "seoId": "everschopsiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Everschopsiel",
+      "gauge_group": 1,
+      "seo_id": "everschopsiel"
     },
     {
       "id": "DE__657P",
@@ -625,7 +766,10 @@
       "seoId": "st-peter-ording_bad",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "St. Peter-Ording, Bad",
+      "gauge_group": 2,
+      "seo_id": "st-peter-ording_bad"
     },
     {
       "id": "DE__664P",
@@ -638,7 +782,10 @@
       "seoId": "eider-sperrwerk_aussenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Eider-Sperrwerk, Außenpegel",
+      "gauge_group": 1,
+      "seo_id": "eider-sperrwerk_aussenpegel"
     },
     {
       "id": "DE__666P",
@@ -651,7 +798,10 @@
       "seoId": "blauort_norderpiep",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Blauort, Norderpiep",
+      "gauge_group": 1,
+      "seo_id": "blauort_norderpiep"
     },
     {
       "id": "DE__667B",
@@ -664,7 +814,10 @@
       "seoId": "meldorf_sperrwerk_aussenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Meldorf, Sperrwerk, Außenpegel",
+      "gauge_group": 1,
+      "seo_id": "meldorf_sperrwerk_aussenpegel"
     },
     {
       "id": "DE__671D",
@@ -677,7 +830,10 @@
       "seoId": "friedrichskoog_spitze",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Friedrichskoog, Spitze",
+      "gauge_group": 2,
+      "seo_id": "friedrichskoog_spitze"
     },
     {
       "id": "DE__673P",
@@ -690,7 +846,10 @@
       "seoId": "trischen_west",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Trischen, West",
+      "gauge_group": 1,
+      "seo_id": "trischen_west"
     },
     {
       "id": "DE__675C",
@@ -703,7 +862,10 @@
       "seoId": "mittelplate",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Mittelplate",
+      "gauge_group": 1,
+      "seo_id": "mittelplate"
     },
     {
       "id": "DE__675P",
@@ -716,7 +878,10 @@
       "seoId": "friedrichskoog_hafen_aussenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Friedrichskoog, Hafen, Außenpegel",
+      "gauge_group": 1,
+      "seo_id": "friedrichskoog_hafen_aussenpegel"
     },
     {
       "id": "DE__676P",
@@ -729,7 +894,10 @@
       "seoId": "zehnerloch",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Zehnerloch",
+      "gauge_group": 1,
+      "seo_id": "zehnerloch"
     },
     {
       "id": "DE__677B",
@@ -742,7 +910,10 @@
       "seoId": "sahlenburg",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Sahlenburg",
+      "gauge_group": 2,
+      "seo_id": "sahlenburg"
     },
     {
       "id": "DE__677C",
@@ -755,7 +926,10 @@
       "seoId": "scharhoernriff_bake_a",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Scharhörnriff, Bake A",
+      "gauge_group": 1,
+      "seo_id": "scharhoernriff_bake_a"
     },
     {
       "id": "DE__677P",
@@ -768,7 +942,10 @@
       "seoId": "scharhoern_bake_c",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Scharhörn, Bake C",
+      "gauge_group": 1,
+      "seo_id": "scharhoern_bake_c"
     },
     {
       "id": "DE__678W",
@@ -781,7 +958,10 @@
       "seoId": "neuwerk_anleger",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Neuwerk, Anleger",
+      "gauge_group": 1,
+      "seo_id": "neuwerk_anleger"
     },
     {
       "id": "DE__680P",
@@ -794,7 +974,10 @@
       "seoId": "kaiser_wilhelm_koog",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Kaiser-Wilhelm-Koog, Elbe",
+      "gauge_group": 2,
+      "seo_id": "kaiser_wilhelm_koog"
     },
     {
       "id": "DE__681A",
@@ -807,7 +990,10 @@
       "seoId": "neufeld_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Neufeld, Hafen",
+      "gauge_group": 2,
+      "seo_id": "neufeld_hafen"
     },
     {
       "id": "DE__681P",
@@ -820,7 +1006,10 @@
       "seoId": "otterndorf",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Otterndorf, Elbe",
+      "gauge_group": 1,
+      "seo_id": "otterndorf"
     },
     {
       "id": "DE__682P",
@@ -833,7 +1022,10 @@
       "seoId": "osteriff",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Osteriff, Elbe",
+      "gauge_group": 1,
+      "seo_id": "osteriff"
     },
     {
       "id": "DE__683B",
@@ -846,7 +1038,10 @@
       "seoId": "oberndorf",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Oberndorf, Oste",
+      "gauge_group": 2,
+      "seo_id": "oberndorf"
     },
     {
       "id": "DE__683P",
@@ -859,7 +1054,10 @@
       "seoId": "belum",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Belum, Oste",
+      "gauge_group": 1,
+      "seo_id": "belum"
     },
     {
       "id": "DE__685P",
@@ -872,7 +1070,10 @@
       "seoId": "hechthausen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hechthausen, Oste",
+      "gauge_group": 1,
+      "seo_id": "hechthausen"
     },
     {
       "id": "DE__687P",
@@ -885,7 +1086,10 @@
       "seoId": "bremervoerde",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremervörde, Oste",
+      "gauge_group": 1,
+      "seo_id": "bremervoerde"
     },
     {
       "id": "DE__688P",
@@ -898,7 +1102,10 @@
       "seoId": "brokdorf",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Brokdorf, Elbe",
+      "gauge_group": 1,
+      "seo_id": "brokdorf"
     },
     {
       "id": "DE__690P",
@@ -911,7 +1118,10 @@
       "seoId": "stoer-sperrwerk_aussenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Stör-Sperrwerk, Außenpegel",
+      "gauge_group": 1,
+      "seo_id": "stoer-sperrwerk_aussenpegel"
     },
     {
       "id": "DE__691R",
@@ -924,7 +1134,10 @@
       "seoId": "kasenort",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Kasenort, Stör",
+      "gauge_group": 1,
+      "seo_id": "kasenort"
     },
     {
       "id": "DE__692A",
@@ -937,7 +1150,10 @@
       "seoId": "itzehoe_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Itzehoe, Stör, Hafen",
+      "gauge_group": 1,
+      "seo_id": "itzehoe_hafen"
     },
     {
       "id": "DE__693P",
@@ -950,7 +1166,10 @@
       "seoId": "breitenberg",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Breitenberg, Stör",
+      "gauge_group": 1,
+      "seo_id": "breitenberg"
     },
     {
       "id": "DE__694P",
@@ -963,7 +1182,10 @@
       "seoId": "groenhude",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Grönhude, Stör",
+      "gauge_group": 1,
+      "seo_id": "groenhude"
     },
     {
       "id": "DE__695P",
@@ -976,7 +1198,10 @@
       "seoId": "glueckstadt",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Glückstadt, Elbe",
+      "gauge_group": 1,
+      "seo_id": "glueckstadt"
     },
     {
       "id": "DE__696P",
@@ -989,7 +1214,10 @@
       "seoId": "wischhafen_sperrwerk",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wischhafen, Elbe, Sperrwerk",
+      "gauge_group": 2,
+      "seo_id": "wischhafen_sperrwerk"
     },
     {
       "id": "DE__697P",
@@ -1002,7 +1230,10 @@
       "seoId": "krautsand",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Krautsand, Elbe, Reede",
+      "gauge_group": 1,
+      "seo_id": "krautsand"
     },
     {
       "id": "DE__698P",
@@ -1015,7 +1246,10 @@
       "seoId": "kollmar_kamperreihe",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Kollmar, Kamperreihe, Elbe",
+      "gauge_group": 1,
+      "seo_id": "kollmar_kamperreihe"
     },
     {
       "id": "DE__700R",
@@ -1028,7 +1262,10 @@
       "seoId": "krueckau-sperrwerk_binnenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Krückau-Sperrwerk, Binnenpegel",
+      "gauge_group": 1,
+      "seo_id": "krueckau-sperrwerk_binnenpegel"
     },
     {
       "id": "DE__702A",
@@ -1041,7 +1278,10 @@
       "seoId": "elmshorn_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Elmshorn, Hafen, Krückau",
+      "gauge_group": 1,
+      "seo_id": "elmshorn_hafen"
     },
     {
       "id": "DE__703P",
@@ -1054,7 +1294,10 @@
       "seoId": "grauerort",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Grauerort, Elbe, Reede",
+      "gauge_group": 1,
+      "seo_id": "grauerort"
     },
     {
       "id": "DE__704R",
@@ -1067,7 +1310,10 @@
       "seoId": "pinnau-sperrwerk_binnenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Pinnau-Sperrwerk, Binnenpegel",
+      "gauge_group": 1,
+      "seo_id": "pinnau-sperrwerk_binnenpegel"
     },
     {
       "id": "DE__706P",
@@ -1080,7 +1326,10 @@
       "seoId": "uetersen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Uetersen, Pinnau",
+      "gauge_group": 1,
+      "seo_id": "uetersen"
     },
     {
       "id": "DE__709P",
@@ -1093,7 +1342,10 @@
       "seoId": "stadersand",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Stadersand, Schwinge",
+      "gauge_group": 1,
+      "seo_id": "stadersand"
     },
     {
       "id": "DE__710P",
@@ -1106,7 +1358,10 @@
       "seoId": "stade",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Stade, Schwinge",
+      "gauge_group": 2,
+      "seo_id": "stade"
     },
     {
       "id": "DE__711P",
@@ -1119,7 +1374,10 @@
       "seoId": "hetlingen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hetlingen, Elbe",
+      "gauge_group": 1,
+      "seo_id": "hetlingen"
     },
     {
       "id": "DE__712P",
@@ -1132,7 +1390,10 @@
       "seoId": "luehort",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Lühort, Lühe",
+      "gauge_group": 1,
+      "seo_id": "luehort"
     },
     {
       "id": "DE__713P",
@@ -1145,7 +1406,10 @@
       "seoId": "horneburg",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Horneburg, Lühe",
+      "gauge_group": 1,
+      "seo_id": "horneburg"
     },
     {
       "id": "DE__714P",
@@ -1158,7 +1422,10 @@
       "seoId": "schulau",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Schulau, Elbe",
+      "gauge_group": 1,
+      "seo_id": "schulau"
     },
     {
       "id": "DE__715P",
@@ -1171,7 +1438,10 @@
       "seoId": "hamburg_blankenese",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Blankenese, Elbe, Unterfeuer",
+      "gauge_group": 1,
+      "seo_id": "hamburg_blankenese"
     },
     {
       "id": "DE__717P",
@@ -1184,7 +1454,10 @@
       "seoId": "hamburg_cranz",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Cranz, Este-Sperrwerk, AP",
+      "gauge_group": 1,
+      "seo_id": "hamburg_cranz"
     },
     {
       "id": "DE__718P",
@@ -1197,7 +1470,10 @@
       "seoId": "buxtehude",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Buxtehude, Este",
+      "gauge_group": 1,
+      "seo_id": "buxtehude"
     },
     {
       "id": "DE__720P",
@@ -1210,7 +1486,10 @@
       "seoId": "hamburg_seemannshoeft",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Seemannshöft, Elbe",
+      "gauge_group": 1,
+      "seo_id": "hamburg_seemannshoeft"
     },
     {
       "id": "DE__724P",
@@ -1223,7 +1502,10 @@
       "seoId": "hamburg_harburg",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Harburg, Elbe, Schleuse",
+      "gauge_group": 1,
+      "seo_id": "hamburg_harburg"
     },
     {
       "id": "DE__726A",
@@ -1236,7 +1518,10 @@
       "seoId": "hamburg_peute",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Peute, Elbe",
+      "gauge_group": 2,
+      "seo_id": "hamburg_peute"
     },
     {
       "id": "DE__727P",
@@ -1249,7 +1534,10 @@
       "seoId": "hamburg_dove-elbe_einfahrt",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Dove-Elbe, Elbe, Einfahrt",
+      "gauge_group": 1,
+      "seo_id": "hamburg_dove-elbe_einfahrt"
     },
     {
       "id": "DE__729P",
@@ -1262,7 +1550,10 @@
       "seoId": "hamburg_bunthaus",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Bunthaus, Elbe",
+      "gauge_group": 1,
+      "seo_id": "hamburg_bunthaus"
     },
     {
       "id": "DE__730A",
@@ -1275,7 +1566,10 @@
       "seoId": "ilmenau-sperrwerk_aussenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Ilmenau-Sperrwerk, Außenpegel",
+      "gauge_group": 1,
+      "seo_id": "ilmenau-sperrwerk_aussenpegel"
     },
     {
       "id": "DE__730C",
@@ -1288,7 +1582,10 @@
       "seoId": "fahrenholz",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Fahrenholz, Ilmenau",
+      "gauge_group": 1,
+      "seo_id": "fahrenholz"
     },
     {
       "id": "DE__730P",
@@ -1301,7 +1598,10 @@
       "seoId": "over",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Over, Elbe",
+      "gauge_group": 1,
+      "seo_id": "over"
     },
     {
       "id": "DE__731P",
@@ -1314,7 +1614,10 @@
       "seoId": "hamburg_zollenspieker",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Zollenspieker, Elbe",
+      "gauge_group": 1,
+      "seo_id": "hamburg_zollenspieker"
     },
     {
       "id": "DE__732A",
@@ -1327,7 +1630,10 @@
       "seoId": "hamburg_altengamme",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hamburg, Altengamme, Elbe",
+      "gauge_group": 1,
+      "seo_id": "hamburg_altengamme"
     },
     {
       "id": "DE__732D",
@@ -1340,7 +1646,10 @@
       "seoId": "geesthacht_wehr_unterpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Geesthacht, Elbe, Wehr, Unterpegel",
+      "gauge_group": 1,
+      "seo_id": "geesthacht_wehr_unterpegel"
     },
     {
       "id": "DE__734P",
@@ -1353,7 +1662,10 @@
       "seoId": "alte_weser_leuchtturm",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Alte Weser, Leuchtturm",
+      "gauge_group": 1,
+      "seo_id": "alte_weser_leuchtturm"
     },
     {
       "id": "DE__735A",
@@ -1366,7 +1678,10 @@
       "seoId": "spieka_neufeld",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Spieka Neufeld",
+      "gauge_group": 1,
+      "seo_id": "spieka_neufeld"
     },
     {
       "id": "DE__735B",
@@ -1379,7 +1694,10 @@
       "seoId": "wremertief",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wremertief",
+      "gauge_group": 1,
+      "seo_id": "wremertief"
     },
     {
       "id": "DE__737P",
@@ -1392,7 +1710,10 @@
       "seoId": "dwarsgat",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Dwarsgat, Unterfeuer",
+      "gauge_group": 1,
+      "seo_id": "dwarsgat"
     },
     {
       "id": "DE__737S",
@@ -1405,7 +1726,10 @@
       "seoId": "robbensuedsteert",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Robbensüdsteert",
+      "gauge_group": 1,
+      "seo_id": "robbensuedsteert"
     },
     {
       "id": "DE__738P",
@@ -1418,7 +1742,10 @@
       "seoId": "fedderwardersiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Fedderwardersiel, Fedderwarder Priel",
+      "gauge_group": 1,
+      "seo_id": "fedderwardersiel"
     },
     {
       "id": "DE__741A",
@@ -1431,7 +1758,10 @@
       "seoId": "nordenham",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Nordenham, Weser, Unterfeuer",
+      "gauge_group": 1,
+      "seo_id": "nordenham"
     },
     {
       "id": "DE__741B",
@@ -1444,7 +1774,10 @@
       "seoId": "rechtenfleth",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Rechtenfleth, Weser",
+      "gauge_group": 1,
+      "seo_id": "rechtenfleth"
     },
     {
       "id": "DE__743P",
@@ -1457,7 +1790,10 @@
       "seoId": "brake",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Brake, Weser",
+      "gauge_group": 1,
+      "seo_id": "brake"
     },
     {
       "id": "DE__744A",
@@ -1470,7 +1806,10 @@
       "seoId": "elsfleth_ohrt",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Elsfleth Ohrt, Hunte",
+      "gauge_group": 1,
+      "seo_id": "elsfleth_ohrt"
     },
     {
       "id": "DE__744P",
@@ -1483,7 +1822,10 @@
       "seoId": "elsfleth",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Elsfleth, Weser",
+      "gauge_group": 1,
+      "seo_id": "elsfleth"
     },
     {
       "id": "DE__745A",
@@ -1496,7 +1838,10 @@
       "seoId": "buttelerhoerne",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Buttelerhörne, Hunte",
+      "gauge_group": 1,
+      "seo_id": "buttelerhoerne"
     },
     {
       "id": "DE__745P",
@@ -1509,7 +1854,10 @@
       "seoId": "huntebrueck",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Huntebrück, Hunte",
+      "gauge_group": 1,
+      "seo_id": "huntebrueck"
     },
     {
       "id": "DE__746P",
@@ -1522,7 +1870,10 @@
       "seoId": "hollersiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hollersiel, Hunte",
+      "gauge_group": 1,
+      "seo_id": "hollersiel"
     },
     {
       "id": "DE__747P",
@@ -1535,7 +1886,10 @@
       "seoId": "reithoerne",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Reithörne, Hunte",
+      "gauge_group": 1,
+      "seo_id": "reithoerne"
     },
     {
       "id": "DE__748P",
@@ -1548,7 +1902,10 @@
       "seoId": "oldenburg_drielake",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Oldenburg, Drielake, Hunte",
+      "gauge_group": 1,
+      "seo_id": "oldenburg_drielake"
     },
     {
       "id": "DE__749P",
@@ -1561,7 +1918,10 @@
       "seoId": "bremen_farge",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Farge, Weser",
+      "gauge_group": 1,
+      "seo_id": "bremen_farge"
     },
     {
       "id": "DE__750A",
@@ -1574,7 +1934,10 @@
       "seoId": "bremen_wasserhorst",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Wasserhorst, Lesum",
+      "gauge_group": 1,
+      "seo_id": "bremen_wasserhorst"
     },
     {
       "id": "DE__750B",
@@ -1587,7 +1950,10 @@
       "seoId": "ritterhude",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Ritterhude, Hamme",
+      "gauge_group": 1,
+      "seo_id": "ritterhude"
     },
     {
       "id": "DE__750C",
@@ -1600,7 +1966,10 @@
       "seoId": "bremen_niederblockland",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Niederblockland, Wümme",
+      "gauge_group": 1,
+      "seo_id": "bremen_niederblockland"
     },
     {
       "id": "DE__750D",
@@ -1613,7 +1982,10 @@
       "seoId": "bremen_borgfeld",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Borgfeld, Wümme",
+      "gauge_group": 1,
+      "seo_id": "bremen_borgfeld"
     },
     {
       "id": "DE__750G",
@@ -1626,7 +1998,10 @@
       "seoId": "ochtum-sperrwerk_aussenpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Ochtum, Sperrwerk, Außenpegel",
+      "gauge_group": 2,
+      "seo_id": "ochtum-sperrwerk_aussenpegel"
     },
     {
       "id": "DE__750P",
@@ -1639,7 +2014,10 @@
       "seoId": "bremen_vegesack",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Vegesack, Weser",
+      "gauge_group": 1,
+      "seo_id": "bremen_vegesack"
     },
     {
       "id": "DE__751P",
@@ -1652,7 +2030,10 @@
       "seoId": "bremen_wilhelm-kaisen-bruecke",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Wilhelm-Kaisen-Brücke, Weser",
+      "gauge_group": 1,
+      "seo_id": "bremen_wilhelm-kaisen-bruecke"
     },
     {
       "id": "DE__752P",
@@ -1665,7 +2046,10 @@
       "seoId": "bremen_weserwehr",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bremen, Weserwehr, Weser",
+      "gauge_group": 1,
+      "seo_id": "bremen_weserwehr"
     },
     {
       "id": "DE__754P",
@@ -1678,7 +2062,10 @@
       "seoId": "wangerooge_nord",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wangerooge, Langes Riff, Nord",
+      "gauge_group": 1,
+      "seo_id": "wangerooge_nord"
     },
     {
       "id": "DE__756P",
@@ -1691,7 +2078,10 @@
       "seoId": "wangerooge_ost",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wangerooge, Ost",
+      "gauge_group": 1,
+      "seo_id": "wangerooge_ost"
     },
     {
       "id": "DE__760P",
@@ -1704,7 +2094,10 @@
       "seoId": "mellumplate_leuchtturm",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Mellumplate, Leuchtturm",
+      "gauge_group": 1,
+      "seo_id": "mellumplate_leuchtturm"
     },
     {
       "id": "DE__761P",
@@ -1717,7 +2110,10 @@
       "seoId": "schillig",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Schillig",
+      "gauge_group": 1,
+      "seo_id": "schillig"
     },
     {
       "id": "DE__763P",
@@ -1730,7 +2126,10 @@
       "seoId": "wangertief_horumersiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wangertief, Horumersiel",
+      "gauge_group": 2,
+      "seo_id": "wangertief_horumersiel"
     },
     {
       "id": "DE__764B",
@@ -1743,7 +2142,10 @@
       "seoId": "hooksielplate",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hooksielplate",
+      "gauge_group": 1,
+      "seo_id": "hooksielplate"
     },
     {
       "id": "DE__765P",
@@ -1756,7 +2158,10 @@
       "seoId": "hooksiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Hooksiel",
+      "gauge_group": 2,
+      "seo_id": "hooksiel"
     },
     {
       "id": "DE__768P",
@@ -1769,7 +2174,10 @@
       "seoId": "jade-weser-port",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Jade-Weser-Port",
+      "gauge_group": 1,
+      "seo_id": "jade-weser-port"
     },
     {
       "id": "DE__770P",
@@ -1782,7 +2190,10 @@
       "seoId": "wilhelmshaven_neuer_vorhafen_seeschleuse",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wilhelmshaven, Neuer Vorhafen, Seeschleuse",
+      "gauge_group": 1,
+      "seo_id": "wilhelmshaven_neuer_vorhafen_seeschleuse"
     },
     {
       "id": "DE__771P",
@@ -1795,7 +2206,10 @@
       "seoId": "eckwarderhoerne",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Eckwarderhörne",
+      "gauge_group": 2,
+      "seo_id": "eckwarderhoerne"
     },
     {
       "id": "DE__773P",
@@ -1808,7 +2222,10 @@
       "seoId": "arngast_leuchtturm",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Arngast, Leuchtturm",
+      "gauge_group": 1,
+      "seo_id": "arngast_leuchtturm"
     },
     {
       "id": "DE__776P",
@@ -1821,7 +2238,10 @@
       "seoId": "vareler_schleuse",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Vareler Schleuse",
+      "gauge_group": 1,
+      "seo_id": "vareler_schleuse"
     },
     {
       "id": "DE__777P",
@@ -1834,7 +2254,10 @@
       "seoId": "wangerooge_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Wangerooge, Hafen",
+      "gauge_group": 1,
+      "seo_id": "wangerooge_hafen"
     },
     {
       "id": "DE__778P",
@@ -1847,7 +2270,10 @@
       "seoId": "harlesiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Harlesiel, Hafen",
+      "gauge_group": 1,
+      "seo_id": "harlesiel"
     },
     {
       "id": "DE__779P",
@@ -1860,7 +2286,10 @@
       "seoId": "spiekeroog",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Spiekeroog, ehem. Landungsbrücke",
+      "gauge_group": 1,
+      "seo_id": "spiekeroog"
     },
     {
       "id": "DE__780P",
@@ -1873,7 +2302,10 @@
       "seoId": "neuharlingersiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Neuharlingersiel",
+      "gauge_group": 2,
+      "seo_id": "neuharlingersiel"
     },
     {
       "id": "DE__781P",
@@ -1886,7 +2318,10 @@
       "seoId": "langeoog_hafeneinfahrt",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Langeoog, Hafeneinfahrt",
+      "gauge_group": 1,
+      "seo_id": "langeoog_hafeneinfahrt"
     },
     {
       "id": "DE__782P",
@@ -1899,7 +2334,10 @@
       "seoId": "bensersiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Bensersiel",
+      "gauge_group": 1,
+      "seo_id": "bensersiel"
     },
     {
       "id": "DE__783P",
@@ -1912,7 +2350,10 @@
       "seoId": "dornumer-accumersiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Dornumer-Accumersiel",
+      "gauge_group": 2,
+      "seo_id": "dornumer-accumersiel"
     },
     {
       "id": "DE__784P",
@@ -1925,7 +2366,10 @@
       "seoId": "baltrum_westende",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Baltrum, Westende",
+      "gauge_group": 2,
+      "seo_id": "baltrum_westende"
     },
     {
       "id": "DE__785P",
@@ -1938,7 +2382,10 @@
       "seoId": "nessmersiel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Neßmersiel",
+      "gauge_group": 2,
+      "seo_id": "nessmersiel"
     },
     {
       "id": "DE__790A",
@@ -1951,7 +2398,10 @@
       "seoId": "norddeich_westerriede",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Norddeich, Westerriede",
+      "gauge_group": 2,
+      "seo_id": "norddeich_westerriede"
     },
     {
       "id": "DE__793P",
@@ -1964,7 +2414,10 @@
       "seoId": "juist_seeseite",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Juist, Seeseite",
+      "gauge_group": 2,
+      "seo_id": "juist_seeseite"
     },
     {
       "id": "DE__794P",
@@ -1977,7 +2430,10 @@
       "seoId": "juist_hafen",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Juist, Hafen",
+      "gauge_group": 2,
+      "seo_id": "juist_hafen"
     },
     {
       "id": "DE__796C",
@@ -1990,7 +2446,10 @@
       "seoId": "leyhoern_leybucht",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Leyhörn, Leybucht",
+      "gauge_group": 1,
+      "seo_id": "leyhoern_leybucht"
     },
     {
       "id": "DE__798P",
@@ -2003,7 +2462,10 @@
       "seoId": "borkum_suedstrand",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Borkum, Südstrand",
+      "gauge_group": 1,
+      "seo_id": "borkum_suedstrand"
     },
     {
       "id": "DE__799G",
@@ -2016,7 +2478,10 @@
       "seoId": "dukegat",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Dukegat",
+      "gauge_group": 1,
+      "seo_id": "dukegat"
     },
     {
       "id": "DE__799P",
@@ -2029,7 +2494,10 @@
       "seoId": "emshoern",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Emshörn",
+      "gauge_group": 1,
+      "seo_id": "emshoern"
     },
     {
       "id": "DE__802P",
@@ -2042,7 +2510,10 @@
       "seoId": "knock",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Knock, Ems",
+      "gauge_group": 1,
+      "seo_id": "knock"
     },
     {
       "id": "DE__803P",
@@ -2055,7 +2526,10 @@
       "seoId": "pogum",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Pogum, Ems",
+      "gauge_group": 1,
+      "seo_id": "pogum"
     },
     {
       "id": "DE__805P",
@@ -2068,7 +2542,10 @@
       "seoId": "terborg",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Terborg, Ems",
+      "gauge_group": 1,
+      "seo_id": "terborg"
     },
     {
       "id": "DE__806P",
@@ -2081,7 +2558,10 @@
       "seoId": "leerort",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Leerort, Ems",
+      "gauge_group": 1,
+      "seo_id": "leerort"
     },
     {
       "id": "DE__808A",
@@ -2094,7 +2574,10 @@
       "seoId": "leda-sperrwerk_unterpegel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Leda-Sperrwerk, Unterpegel",
+      "gauge_group": 1,
+      "seo_id": "leda-sperrwerk_unterpegel"
     },
     {
       "id": "DE__808P",
@@ -2107,7 +2590,10 @@
       "seoId": "leer_schleuse",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Leer, Leda, Schleuse",
+      "gauge_group": 2,
+      "seo_id": "leer_schleuse"
     },
     {
       "id": "DE__810A",
@@ -2120,7 +2606,10 @@
       "seoId": "nortmoor",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Nortmoor, Altarm Jümme",
+      "gauge_group": 1,
+      "seo_id": "nortmoor"
     },
     {
       "id": "DE__810B",
@@ -2133,7 +2622,10 @@
       "seoId": "detern",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Detern, Jümme",
+      "gauge_group": 1,
+      "seo_id": "detern"
     },
     {
       "id": "DE__810D",
@@ -2146,7 +2638,10 @@
       "seoId": "augustfehn",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Augustfehn, Aper Tief",
+      "gauge_group": 1,
+      "seo_id": "augustfehn"
     },
     {
       "id": "DE__810P",
@@ -2159,7 +2654,10 @@
       "seoId": "westringaburg",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Westringaburg, Leda",
+      "gauge_group": 1,
+      "seo_id": "westringaburg"
     },
     {
       "id": "DE__812P",
@@ -2172,7 +2670,10 @@
       "seoId": "dreyschloot",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Dreyschloot, Leda",
+      "gauge_group": 1,
+      "seo_id": "dreyschloot"
     },
     {
       "id": "DE__813P",
@@ -2185,7 +2686,10 @@
       "seoId": "weener",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Weener, Ems",
+      "gauge_group": 1,
+      "seo_id": "weener"
     },
     {
       "id": "DE__814B",
@@ -2198,7 +2702,10 @@
       "seoId": "rhede",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Rhede, Ems",
+      "gauge_group": 1,
+      "seo_id": "rhede"
     },
     {
       "id": "DE__814P",
@@ -2211,7 +2718,10 @@
       "seoId": "papenburg",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Papenburg, Ems",
+      "gauge_group": 1,
+      "seo_id": "papenburg"
     },
     {
       "id": "DE__816B",
@@ -2224,7 +2734,10 @@
       "seoId": "barssel",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Barßel, Soeste",
+      "gauge_group": 2,
+      "seo_id": "barssel"
     },
     {
       "id": "DE__816P",
@@ -2237,7 +2750,10 @@
       "seoId": "herbrum_hafendamm",
       "files": {},
       "years": [],
-      "bshAvailable": true
+      "bshAvailable": true,
+      "station_name": "Herbrum, Ems, Hafendamm",
+      "gauge_group": 1,
+      "seo_id": "herbrum_hafendamm"
     }
   ]
 }
