@@ -1,6 +1,12 @@
 name: BSH to PEGELONLINE reference audit
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'scripts/check-bsh-pegelonline.py'
+      - '.github/workflows/check-bsh-pegelonline.yml'
   workflow_dispatch:
   schedule:
     - cron: "17 6 * * 1"
