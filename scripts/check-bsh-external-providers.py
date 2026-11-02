@@ -158,10 +158,28 @@ def inspect_mv_page(url):
                                 parsed.append((stamp,float(match.group(2)),float(match.group(3))))
                             except ValueError:
                                 continue
+                        timestamps=[r[0] for r in parsed]
+                        timestamp_counts=Counter(timestamps)
+                        positive_deltas=[int((timestamps[i]-timestamps[i-1]).total_seconds()/60) for i in range(1,len(timestamps)) if (timestamps[i]-timestamps[i-1]).total_seconds()>0]
+                        delta_counts=Counter(positive_deltas)
+                        modal_interval=delta_counts.most_common(1)[0][0] if delta_counts else None
+                        gaps=[]
+                        out_of_order=sum(1 for i in range(1,len(timestamps)) if timestamps[i]<timestamps[i-1])
+                        for i in range(1,len(timestamps)):
+                            delta=int((timestamps[i]-timestamps[i-1]).total_seconds()/60)
+                            if modal_interval and delta>modal_interval:
+                                gaps.append({"from":timestamps[i-1].isoformat(),"to":timestamps[i].isoformat(),"minutes":delta,
+                                             "expectedSlotsMissing":max(0,round(delta/modal_interval)-1) if delta % modal_interval==0 else None})
                         entry["dataInspection"]={
                             "finalUrl":script_final,"contentType":script_type,"characters":len(source),
                             "lineCount":source.count("\\n")+1,
                             "recordCount":len(parsed),
+                            "duplicateTimestampCount":sum(n-1 for n in timestamp_counts.values() if n>1),
+                            "outOfOrderCount":out_of_order,
+                            "modalIntervalMinutes":modal_interval,
+                            "intervalDistributionMinutes":{str(k):v for k,v in delta_counts.most_common(8)},
+                            "gapCountAboveModalInterval":len(gaps),
+                            "largestGaps":sorted(gaps,key=lambda g:g["minutes"],reverse=True)[:10],
                             "firstTimestamp":min((r[0] for r in parsed),default=None).isoformat() if parsed else None,
                             "latestTimestamp":max((r[0] for r in parsed),default=None).isoformat() if parsed else None,
                             "firstRecords":[[r[0].isoformat(),r[1],r[2]] for r in parsed[:3]],
