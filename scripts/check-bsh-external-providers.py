@@ -307,7 +307,39 @@ def inspect_nlwkn_data():
             _,_,_,mbody=get(measurement_url)
             data=json.loads(mbody.decode("utf-8-sig"))
             result["measurement"]["jsonTopLevelType"]=type(data).__name__
-            result["measurement"]["jsonPreview"]=json.dumps(data,ensure_ascii=False)[:12000]
+            root=data.get("getPegelDatenspurenResult",data) if isinstance(data,dict) else data
+            records=[]
+            for item in walk_objects(root):
+                raw_date=item.get("Datum") if isinstance(item,dict) else None
+                value=item.get("Wert") if isinstance(item,dict) else None
+                if isinstance(raw_date,str) and isinstance(value,(int,float)):
+                    match=re.fullmatch(r"/Date\((-?\d+)(?:[+-]\d+)?\)/",raw_date)
+                    if match:
+                        stamp=datetime.fromtimestamp(int(match.group(1))/1000,timezone.utc)
+                        records.append((stamp,float(value)))
+            records.sort(key=lambda row:row[0])
+            stamps=[row[0] for row in records]
+            counts=Counter(stamps)
+            deltas=[int((stamps[i]-stamps[i-1]).total_seconds()) for i in range(1,len(stamps)) if stamps[i]>stamps[i-1]]
+            delta_counts=Counter(deltas)
+            result["measurement"]["dataInspection"]={
+                "recordCount":len(records),
+                "firstTimestampUtc":stamps[0].isoformat() if stamps else None,
+                "latestTimestampUtc":stamps[-1].isoformat() if stamps else None,
+                "duplicateTimestampCount":sum(n-1 for n in counts.values() if n>1),
+                "intervalDistributionSeconds":{str(k):v for k,v in delta_counts.most_common(8)},
+                "minimumValue":min((r[1] for r in records),default=None),
+                "maximumValue":max((r[1] for r in records),default=None),
+                "firstRecords":[[r[0].isoformat(),r[1]] for r in records[:3]],
+                "lastRecords":[[r[0].isoformat(),r[1]] for r in records[-3:]],
+                "metadata":{
+                    "stationName":root.get("Name") if isinstance(root,dict) else None,
+                    "gaugeZero":root.get("Hoehe_Text") if isinstance(root,dict) else None,
+                    "parameterCount":len(root.get("Parameter",[])) if isinstance(root,dict) else None,
+                    "currentReading":next((p.get("Datenspuren",[{}])[0].get("AktuellerMesswert_Text") for p in root.get("Parameter",[]) if p.get("Datenspuren")),None) if isinstance(root,dict) else None
+                }
+            }
+            result["measurement"].pop("jsonPreview",None)
     except Exception as e:
         result["error"]=str(e)[:300]
     return result
