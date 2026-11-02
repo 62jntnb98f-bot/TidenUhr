@@ -331,6 +331,24 @@ def inspect_nlwkn_data():
                     delta_counts=Counter(deltas)
                     gaps=[{"from":stamps[i-1].isoformat(),"to":stamps[i].isoformat(),"seconds":int((stamps[i]-stamps[i-1]).total_seconds())}
                           for i in range(1,len(stamps)) if (stamps[i]-stamps[i-1]).total_seconds()>max(90,int(ds.get("IntervallSek") or 60)*1.5)]
+                    # Sentinel/technical values are reported with their exact UTC
+                    # timestamp and neighboring records; they remain unmodified.
+                    special_value_records=[]
+                    for record_index,(stamp,value) in enumerate(records):
+                        if value <= -800:
+                            previous=records[record_index-1] if record_index>0 else None
+                            following=records[record_index+1] if record_index+1<len(records) else None
+                            special_value_records.append({
+                                "recordIndex1Based":record_index+1,
+                                "timestampUtc":stamp.isoformat(),
+                                "value":value,
+                                "previousRecord":{
+                                    "timestampUtc":previous[0].isoformat(),"value":previous[1]
+                                } if previous else None,
+                                "nextRecord":{
+                                    "timestampUtc":following[0].isoformat(),"value":following[1]
+                                } if following else None
+                            })
                     series_reports.append({
                         "parameterName":parameter.get("Name"),
                         "unit":parameter.get("Einheit") or ds.get("ParameterEinheit"),
@@ -351,6 +369,8 @@ def inspect_nlwkn_data():
                         "minimumValue":min((r[1] for r in records),default=None),
                         "maximumValue":max((r[1] for r in records),default=None),
                         "specialValueCounts":{str(k):v for k,v in Counter(r[1] for r in records if r[1] <= -800).items()},
+                        "specialValueRecordCount":len(special_value_records),
+                        "specialValueRecords":special_value_records,
                         "negativeValueCount":sum(1 for r in records if r[1] < 0),
                         "firstRecords":[[r[0].isoformat(),r[1]] for r in records[:3]],
                         "lastRecords":[[r[0].isoformat(),r[1]] for r in records[-3:]]
