@@ -145,7 +145,27 @@ def inspect_mv_page(url):
             absolute=urllib.parse.urljoin(final,src)
             if urllib.parse.urlsplit(absolute).netloc==urllib.parse.urlsplit(final).netloc:
                 info=inspect(absolute)
-                result["scripts"].append({"url":absolute,"http":info.get("http"),"contentType":info.get("contentType"),"bytes":info.get("bytes"),"status":info.get("status")})
+                entry={"url":absolute,"http":info.get("http"),"contentType":info.get("contentType"),"bytes":info.get("bytes"),"status":info.get("status")}
+                if "/data/" in urllib.parse.urlsplit(absolute).path and info.get("http")==200:
+                    try:
+                        _, script_final, script_type, script_body=get(absolute)
+                        source=script_body.decode("utf-8-sig",errors="replace")
+                        entry["dataInspection"]={
+                            "finalUrl":script_final,"contentType":script_type,"characters":len(source),
+                            "lineCount":source.count("\\n")+1,
+                            "sourceStart":source[:9000]
+                        }
+                        markers=[]
+                        patterns=(r"new\\s+Date\\s*\\(",r"Date\\.UTC\\s*\\(",r"timestamp",r"\\bdata\\s*=",r"Dygraph",r"20[0-9]{2}[-/.][0-9]{1,2}[-/.][0-9]{1,2}")
+                        for pattern in patterns:
+                            match=re.search(pattern,source,re.I)
+                            if match:
+                                a=max(0,match.start()-220); b=min(len(source),match.end()+520)
+                                markers.append({"pattern":pattern,"excerpt":source[a:b]})
+                        entry["dataInspection"]["markerContexts"]=markers
+                    except Exception as e:
+                        entry["dataInspectionError"]=str(e)[:240]
+                result["scripts"].append(entry)
         for href in parser.links:
             absolute=urllib.parse.urljoin(final,href)
             if "voll" in absolute.lower() or "datensatz" in absolute.lower(): result["fullRecordLinks"].append(absolute)
