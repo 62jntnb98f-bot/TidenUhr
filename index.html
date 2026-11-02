@@ -1773,6 +1773,9 @@ const HSI_STATIONS=[
  {id:'110006',name:'Hooge, Anleger',region:'Nordsee'},
  {id:'114609',name:'Lippe',region:'Ostsee'}
 ];
+function hsiStationEntries(){
+ return HSI_STATIONS.map(h=>({key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}));
+}
 const hsiRowsCache=new Map(),hsiFetchCache=new Map();
 async function loadHsiRows(station){
  const id=String(station?.id||'');
@@ -2187,7 +2190,7 @@ function mergeStations(){
    if(used.has(p.uuid))return;
    out.push({key:'station:'+p.uuid,name:cleanStationName(p.longname||p.shortname||'Unbenannte Station'),region:stationRegion(p),bsh:null,po:p});
  });
- HSI_STATIONS.forEach(h=>out.push({key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}));
+ out.push(...hsiStationEntries());
  return out;
 }
 function validateBsh(meta,events){
@@ -2670,7 +2673,7 @@ function stationSearchText(s){
 }
 function renderList(){
  const q=norm($('search').value.trim());
- let arr=mode==='bsh'?bshCatalog:mode==='po'?po:mergeStations();
+ let arr=mode==='bsh'?bshCatalog:mode==='po'?[...po,...hsiStationEntries()]:mergeStations();
  if(coastalOnly && mode!=='bsh') arr=arr.filter(s=>isCoastalStation(s));
  if(mode==='north') arr=arr.filter(s=>stationRegion(s)==='Nordsee');
  if(mode==='baltic') arr=arr.filter(s=>stationRegion(s)==='Ostsee');
@@ -2679,7 +2682,7 @@ function renderList(){
  const limited=arr.slice(0,500); let html=''; let last='';
  for(const s of limited){
    const reg=stationRegion(s); if(mode==='all'&&reg!==last){html+=`<div class="stationgroup">${esc(reg)}</div>`;last=reg;}
-   let id=mode==='bsh'?s.id:(mode==='po'?s.uuid:s.key);
+   let id=mode==='bsh'?s.id:(mode==='po'?(s.hsi?'HSI:'+s.hsi.id:s.uuid):s.key);
    html+=`<div class="stationitem" data-id="${esc(id)}"><b>${esc(label(s))}</b><div class="small">${esc(s.number||s.pegelNr||s.pegelnr||'')} ${s.hsi?'· HSI-SH Wasserstand':(((mode==='po')||(mode==='all'&&s.po))?'· Wasserstand':'')} ${((mode==='bsh')||(mode==='all'&&s.bsh))?'· Tide':''}</div></div>`;
  }
  $('stationList').innerHTML=html||'<div class="stationitem">Keine Treffer</div>';
@@ -2691,7 +2694,7 @@ function renderList(){
 async function selectStation(id){
  try{
  if(mode==='north'||mode==='baltic') mode='all';
- if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh||u.hsi; modeForSelection=u; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
+ if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh||u.hsi; modeForSelection=u; } else if(mode==='po'&&String(id).startsWith('HSI:')){ const h=HSI_STATIONS.find(x=>x.id===String(id).slice(4)); if(!h){$('status').textContent='HSI-Messstelle konnte nicht gefunden werden.';$('status').className='small error';return;} mode='all'; modeForSelection={key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}; current=h; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
  storageSet('tiden.station.id',id);storageSet('tiden.station.mode',modeForSelection? 'all':mode);
  $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?(modeForSelection.hsi?'HSI-SH · Messstelle '+modeForSelection.hsi.id:[(modeForSelection.bsh?'BSH':null),(modeForSelection.po?'PEGELONLINE':null)].filter(Boolean).join(' · ')):mode==='bsh'?'BSH · '+(current.pegelNr||current.pegelnr||''):'PEGELONLINE · '+(current.water?.longname||'');
  $('gaugeLink').href=(modeForSelection?.po?.number||current.number)?`https://pegelonline.wsv.de/gast/stammdaten?pegelnr=${encodeURIComponent(modeForSelection?.po?.number||current.number)}`:'#';
