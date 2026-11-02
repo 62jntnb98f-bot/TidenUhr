@@ -350,6 +350,8 @@ def inspect_nlwkn_data():
                         "largestGaps":sorted(gaps,key=lambda x:x["seconds"],reverse=True)[:8],
                         "minimumValue":min((r[1] for r in records),default=None),
                         "maximumValue":max((r[1] for r in records),default=None),
+                        "specialValueCounts":{str(k):v for k,v in Counter(r[1] for r in records if r[1] <= -800).items()},
+                        "negativeValueCount":sum(1 for r in records if r[1] < 0),
                         "firstRecords":[[r[0].isoformat(),r[1]] for r in records[:3]],
                         "lastRecords":[[r[0].isoformat(),r[1]] for r in records[-3:]]
                     })
