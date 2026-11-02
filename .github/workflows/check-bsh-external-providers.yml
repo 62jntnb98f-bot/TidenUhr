@@ -30,7 +30,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bsh-external-provider-audit-\${{ github.run_number }}
+          name: bsh-external-provider-audit-${{ github.run_number }}
           path: |
             audit-output/bsh-external-provider-audit.json
             audit-output/bsh-external-provider-audit.md
