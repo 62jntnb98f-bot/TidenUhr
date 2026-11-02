@@ -150,7 +150,7 @@ def inspect_mv_page(url):
                     try:
                         _, script_final, script_type, script_body=get(absolute)
                         source=script_body.decode("utf-8-sig",errors="replace")
-                        row_pattern=re.compile(r"\\[\\s*new\\s+Date\\s*\\(\\s*['\\\"]([^'\\\"]+)['\\\"]\\s*\\)\\s*,\\s*(-?\\d+(?:\\.\\d+)?)\\s*,\\s*(-?\\d+(?:\\.\\d+)?)\\s*\\]")
+                        row_pattern=re.compile(r"\[\s*new\s+Date\s*\(\s*['\"]([^'\"]+)['\"]\s*\)\s*,\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\]")
                         parsed=[]
                         for match in row_pattern.finditer(source):
                             try:
@@ -158,18 +158,17 @@ def inspect_mv_page(url):
                                 parsed.append((stamp,float(match.group(2)),float(match.group(3))))
                             except ValueError:
                                 continue
-                        valid_rows=[r for r in parsed if r[1] != 0 and r[2] > -4.0]
                         entry["dataInspection"]={
                             "finalUrl":script_final,"contentType":script_type,"characters":len(source),
                             "lineCount":source.count("\\n")+1,
                             "recordCount":len(parsed),
-                            "validRecordCountHeuristic":len(valid_rows),
                             "firstTimestamp":min((r[0] for r in parsed),default=None).isoformat() if parsed else None,
                             "latestTimestamp":max((r[0] for r in parsed),default=None).isoformat() if parsed else None,
                             "firstRecords":[[r[0].isoformat(),r[1],r[2]] for r in parsed[:3]],
                             "lastRecords":[[r[0].isoformat(),r[1],r[2]] for r in parsed[-3:]],
                             "zeroFirstValueCount":sum(1 for r in parsed if r[1]==0),
-                            "negativeSecondValueCount":sum(1 for r in parsed if r[2]<0),
+                            "firstValueRange":[min((r[1] for r in parsed),default=None),max((r[1] for r in parsed),default=None)],
+                            "secondValueRange":[min((r[2] for r in parsed),default=None),max((r[2] for r in parsed),default=None)],
                             "sourceStart":source[:9000]
                         }
                         markers=[]
