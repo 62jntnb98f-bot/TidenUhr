@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Read-only probes for non-PEGELONLINE BSH measurement providers."""
 import csv, io, json, re, sys, urllib.error, urllib.parse, urllib.request
+from html.parser import HTMLParser
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -124,6 +125,34 @@ def inspect_csv(url):
     except Exception as e:
         return {**base, "csvValidation": "CSV_PARSE_ERROR", "parseError": str(e)[:240]}
 
+class PageLinks(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.scripts=[]
+        self.links=[]
+    def handle_starttag(self, tag, attrs):
+        a=dict(attrs)
+        if tag.lower()=="script" and a.get("src"): self.scripts.append(a["src"])
+        if tag.lower()=="a" and a.get("href"): self.links.append(a["href"])
+
+def inspect_mv_page(url):
+    result={"page":inspect(url),"scripts":[],"fullRecordLinks":[]}
+    try:
+        _, final, _, body=get(url)
+        parser=PageLinks()
+        parser.feed(body.decode("utf-8",errors="replace"))
+        for src in parser.scripts:
+            absolute=urllib.parse.urljoin(final,src)
+            if urllib.parse.urlsplit(absolute).netloc==urllib.parse.urlsplit(final).netloc:
+                info=inspect(absolute)
+                result["scripts"].append({"url":absolute,"http":info.get("http"),"contentType":info.get("contentType"),"bytes":info.get("bytes"),"status":info.get("status")})
+        for href in parser.links:
+            absolute=urllib.parse.urljoin(final,href)
+            if "voll" in absolute.lower() or "datensatz" in absolute.lower(): result["fullRecordLinks"].append(absolute)
+        result["fullRecordLinks"]=list(dict.fromkeys(result["fullRecordLinks"]))
+    except Exception as e: result["inspectionError"]=str(e)[:240]
+    return result
+
 def provider(host):
     h=(host or "").lower()
     if "pegelportal-mv.de" in h or "fis-wasser-mv.de" in h: return "Pegelportal MV"
@@ -151,6 +180,8 @@ def main():
         print("Prüfe",x["provider"],x["station"])
         direct=inspect(x["sourceUrl"])
         item={**x,"direct":direct,"data":None}
+        if x["provider"]=="Pegelportal MV":
+            item["mvInspection"]=inspect_mv_page(x["sourceUrl"])
         if x["provider"]=="HSI-SH":
             candidates=re.findall(r"(?<!\d)(\d{5,7})(?!\d)",x["sourceUrl"]) or re.findall(r"(?<!\d)(\d{5,7})(?!\d)",x["operatorId"])
             if candidates:
