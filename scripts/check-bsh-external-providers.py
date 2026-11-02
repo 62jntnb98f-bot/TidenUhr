@@ -30,10 +30,10 @@ def inspect(url):
                 state, detail = "JSON_OK", "JSON lesbar; oberste Einträge/Features: " + str(count)
             except Exception as e:
                 state, detail = "JSON_INVALID", str(e)[:180]
-        elif "csv" in ctype.lower() or (";" in sample and "\n" in sample):
-            state, detail = "CSV_OR_TEXT", "Nichtleere CSV/Textantwort"
         elif "<html" in low or "<!doctype" in low:
             state, detail = "HTML_ONLY", "HTML-Seite erreichbar; Messdatenformat nicht bestätigt"
+        elif "csv" in ctype.lower() or (";" in sample and "\n" in sample):
+            state, detail = "CSV_OR_TEXT", "Nichtleere CSV/Textantwort"
         else:
             state, detail = ("TEXT_OK","Nichtleere Textantwort") if body else ("EMPTY","Leere Antwort")
         return {"url":url,"http":code,"finalUrl":final,"contentType":ctype,"bytes":len(body),"status":state,"detail":detail}
@@ -207,6 +207,60 @@ def inspect_mv_page(url):
     except Exception as e: result["inspectionError"]=str(e)[:240]
     return result
 
+class NlwknPage(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.scripts=[]
+        self.links=[]
+        self.inline=[]
+        self._in_script=False
+        self._script_src=None
+        self._script_text=[]
+    def handle_starttag(self,tag,attrs):
+        a=dict(attrs)
+        if tag.lower()=="script":
+            self._in_script=True
+            self._script_src=a.get("src")
+            self._script_text=[]
+        if tag.lower() in ("a","iframe","img") and a.get("href") or tag.lower() in ("iframe","img") and a.get("src"):
+            value=a.get("href") or a.get("src")
+            self.links.append({"tag":tag.lower(),"url":value})
+    def handle_data(self,data):
+        if self._in_script: self._script_text.append(data)
+    def handle_endtag(self,tag):
+        if tag.lower()=="script" and self._in_script:
+            text="".join(self._script_text)
+            if self._script_src: self.scripts.append(self._script_src)
+            elif text.strip(): self.inline.append(text[:20000])
+            self._in_script=False
+            self._script_src=None
+            self._script_text=[]
+
+def inspect_nlwkn_page(url):
+    result={"page":inspect(url),"scripts":[],"resourceLinks":[],"inlineScriptMarkers":[]}
+    try:
+        _,final,_,body=get(url)
+        parser=NlwknPage()
+        parser.feed(body.decode("utf-8",errors="replace"))
+        for src in parser.scripts:
+            absolute=urllib.parse.urljoin(final,src)
+            info=inspect(absolute)
+            result["scripts"].append({"url":absolute,"http":info.get("http"),"contentType":info.get("contentType"),"bytes":info.get("bytes"),"status":info.get("status")})
+        for item in parser.links:
+            absolute=urllib.parse.urljoin(final,item["url"])
+            result["resourceLinks"].append({"tag":item["tag"],"url":absolute})
+        for text in parser.inline:
+            markers=[]
+            for pattern in (r"chart",r"series",r"messwert",r"wasserstand",r"api",r"\.json",r"\.csv",r"ajax"):
+                for match in list(re.finditer(pattern,text,re.I))[:4]:
+                    a=max(0,match.start()-180); b=min(len(text),match.end()+360)
+                    markers.append({"pattern":pattern,"excerpt":text[a:b]})
+            result["inlineScriptMarkers"].extend(markers[:30])
+    except Exception as e:
+        result["inspectionError"]=str(e)[:240]
+    return result
+
+
 def provider(host):
     h=(host or "").lower()
     if "pegelportal-mv.de" in h or "fis-wasser-mv.de" in h: return "Pegelportal MV"
@@ -236,6 +290,8 @@ def main():
         item={**x,"direct":direct,"data":None}
         if x["provider"]=="Pegelportal MV":
             item["mvInspection"]=inspect_mv_page(x["sourceUrl"])
+        if x["provider"]=="NLWKN":
+            item["nlwknInspection"]=inspect_nlwkn_page(x["sourceUrl"])
         if x["provider"]=="HSI-SH":
             candidates=re.findall(r"(?<!\d)(\d{5,7})(?!\d)",x["sourceUrl"]) or re.findall(r"(?<!\d)(\d{5,7})(?!\d)",x["operatorId"])
             if candidates:
