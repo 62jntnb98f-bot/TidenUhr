@@ -318,7 +318,7 @@ def inspect_nlwkn_data():
                     for item in raw_records:
                         raw_date=item.get("Datum")
                         value=item.get("Wert")
-                        match=re.fullmatch(r"/Date\\((-?\\d+)(?:[+-]\\d+)?\\)/",raw_date or "")
+                        match=re.fullmatch(r"/Date\((-?\d+)(?:[+-]\d+)?\)/",raw_date or "")
                         if match and isinstance(value,(int,float)):
                             stamp=datetime.fromtimestamp(int(match.group(1))/1000,timezone.utc)
                             records.append((stamp,float(value)))
