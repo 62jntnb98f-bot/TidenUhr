@@ -7,13 +7,15 @@ from pathlib import Path
 
 BSH_URL = "https://gdi.bsh.de/ldproxy/rest/services/WaterLevelForecast/collections/waterlevelforecastdata/items?limit=500&f=json"
 OUT = Path("audit-output")
-LIMIT = 2_000_000
+MAX_RESPONSE_BYTES = 50_000_000
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent":"TidenUhr-External-Pegel-Audit/1.0","Accept":"application/json,text/csv,text/html,*/*"})
     with urllib.request.urlopen(req, timeout=35) as r:
-        body = r.read(LIMIT + 1)
-        return r.status, r.geturl(), r.headers.get("Content-Type",""), body[:LIMIT]
+        body = r.read(MAX_RESPONSE_BYTES + 1)
+        if len(body) > MAX_RESPONSE_BYTES:
+            raise RuntimeError(f"Antwort überschreitet Sicherheitsgrenze von {MAX_RESPONSE_BYTES} Bytes: {url}")
+        return r.status, r.geturl(), r.headers.get("Content-Type",""), body
 
 def inspect(url):
     try:
