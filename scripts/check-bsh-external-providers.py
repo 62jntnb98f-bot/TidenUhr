@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Read-only probes for non-PEGELONLINE BSH measurement providers."""
-import json, re, sys, urllib.error, urllib.parse, urllib.request
+import csv, io, json, re, sys, urllib.error, urllib.parse, urllib.request
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -41,6 +41,89 @@ def inspect(url):
     except Exception as e:
         return {"url":url,"status":"FETCH_ERROR","detail":str(e)[:200]}
 
+
+def inspect_csv(url):
+    """Read CSV rows and validate recognizable timestamp and water-level columns."""
+    base = inspect(url)
+    if base.get("status") != "CSV_OR_TEXT":
+        return {**base, "csvValidation": "NOT_CSV"}
+    try:
+        _, _, ctype, body = get(url)
+        try:
+            content = body.decode("utf-8-sig")
+        except UnicodeDecodeError:
+            content = body.decode("cp1252")
+        sample = content[:12000]
+        try:
+            dialect = csv.Sniffer().sniff(sample, delimiters=";,\t")
+        except csv.Error:
+            dialect = csv.excel
+            dialect.delimiter = ";" if sample.count(";") >= sample.count(",") else ","
+        rows = list(csv.reader(io.StringIO(content), dialect))
+        rows = [r for r in rows if any(cell.strip() for cell in r)]
+        if len(rows) < 2:
+            return {**base, "csvValidation": "NO_DATA_ROWS", "rowCount": max(0, len(rows)-1)}
+        header = [c.strip() for c in rows[0]]
+        norm = [re.sub(r"[^a-z0-9]+", "", h.lower()) for h in header]
+        time_tokens = ("datumzeit", "zeitstempel", "timestamp", "messzeit", "zeit", "date")
+        level_tokens = ("wasserstand", "wasserhoehe", "wasserstandcm", "wasserstandm",
+                        "waterlevel", "level", "pegel", "w")
+        time_idx = next((i for i,n in enumerate(norm) if any(t in n for t in time_tokens)), None)
+        level_idx = next((i for i,n in enumerate(norm) if any(t in n for t in level_tokens)), None)
+
+        def parse_time(value):
+            value = value.strip()
+            if not value:
+                return None
+            candidate = value.replace("Z", "+00:00")
+            try:
+                return datetime.fromisoformat(candidate)
+            except ValueError:
+                for fmt in ("%d.%m.%Y %H:%M:%S", "%d.%m.%Y %H:%M",
+                            "%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M",
+                            "%d.%m.%Y", "%Y-%m-%d"):
+                    try:
+                        return datetime.strptime(value, fmt)
+                    except ValueError:
+                        pass
+            return None
+
+        def parse_number(value):
+            value = value.strip().replace(" ", "")
+            if not value:
+                return None
+            if "," in value and "." in value:
+                value = value.replace(".", "").replace(",", ".") if value.rfind(",") > value.rfind(".") else value.replace(",", "")
+            elif "," in value:
+                value = value.replace(",", ".")
+            try:
+                return float(value)
+            except ValueError:
+                return None
+
+        data_rows = rows[1:]
+        time_values = [parse_time(row[time_idx]) for row in data_rows if time_idx is not None and len(row) > time_idx]
+        level_values = [parse_number(row[level_idx]) for row in data_rows if level_idx is not None and len(row) > level_idx]
+        valid_times = [v for v in time_values if v is not None]
+        valid_levels = [v for v in level_values if v is not None]
+        latest = max(valid_times).isoformat() if valid_times else None
+        if time_idx is None or level_idx is None:
+            state = "CSV_SCHEMA_UNRECOGNIZED"
+        elif not valid_times or not valid_levels:
+            state = "CSV_NO_VALID_MEASUREMENTS"
+        else:
+            state = "CSV_MEASUREMENTS_OK"
+        return {**base, "csvValidation": state, "delimiter": dialect.delimiter,
+                "header": header, "rowCount": len(data_rows),
+                "timestampColumn": header[time_idx] if time_idx is not None else None,
+                "validTimestampCount": len(valid_times),
+                "latestTimestamp": latest,
+                "waterLevelColumn": header[level_idx] if level_idx is not None else None,
+                "validWaterLevelCount": len(valid_levels),
+                "sampleWaterLevels": valid_levels[:3]}
+    except Exception as e:
+        return {**base, "csvValidation": "CSV_PARSE_ERROR", "parseError": str(e)[:240]}
+
 def provider(host):
     h=(host or "").lower()
     if "pegelportal-mv.de" in h or "fis-wasser-mv.de" in h: return "Pegelportal MV"
@@ -75,7 +158,7 @@ def main():
                 item["stationId"]=sid
                 item["data"]={
                     "json":inspect("https://hsi-sh.de/pegel/od/"+sid+"_w_messwerte.json"),
-                    "csv":inspect("https://hsi-sh.de/pegel/download/"+sid+"_w_messwerte.csv")}
+                    "csv":inspect_csv("https://hsi-sh.de/pegel/download/"+sid+"_w_messwerte.csv")}
             else:
                 item["data"]={"status":"NO_STATION_ID","detail":"Keine eindeutige HSI-Stationsnummer aus BSH-Referenz ermittelbar"}
         results.append(item)
@@ -97,7 +180,7 @@ def main():
     lines=["# BSH – externe Wasserstandsdatenquellen","",f"- Prüfung UTC: {now}",f"- BSH-Datenstand: {bsh.get('timeStamp')}",f"- Referenzen: {len(results)}","","| Station | Anbieter | Direkt-HTTP | Datentest | Status |","|---|---|---:|---|---|"]
     for x in results:
         data=x["data"]
-        if data and "json" in data: detail="JSON "+data["json"]["status"]+"; CSV "+data["csv"]["status"]
+        if data and "json" in data: detail="JSON "+data["json"]["status"]+"; CSV "+data["csv"].get("csvValidation", data["csv"]["status"])+" ("+str(data["csv"].get("validTimestampCount", 0))+" Zeitstempel, "+str(data["csv"].get("validWaterLevelCount", 0))+" Wasserstände)"
         elif data: detail=data["status"]
         else: detail="kein separater Datenendpunkt getestet"
         lines.append("| "+x["station"]+" | "+x["provider"]+" | "+str(x["direct"].get("http","-"))+" | "+detail+" | "+x["overall"]+" |")
