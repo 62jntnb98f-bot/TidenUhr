@@ -1697,7 +1697,7 @@ const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"
 <details class="card" id="coastMapCard"><summary class="sectionSummary">🗺️ Küstenkarte</summary><div class="sectionBody"><div class="small mapIntro">PEGELONLINE-Messstellen an Nord- und Ostsee. Über die Stationssuche oben finden Sie Orte und Pegel; tippen Sie einen Kartenpunkt an, um die Station auszuwählen.</div><div class="utilityBar"><button class="btn active" id="mapAll">Nordsee + Ostsee</button><button class="btn" id="mapNorth">Nordsee</button><button class="btn" id="mapBaltic">Ostsee</button><button class="btn" id="mapFit">Aktualisieren</button><button class="btn" id="mapExpand" aria-expanded="false">⛶ Karte vergrößern</button><button class="btn hidden" id="mapClose">✕ Zurück</button></div><div id="map" style="margin-top:10px"></div><div class="small" id="mapInfo" style="margin-top:8px"></div></div></details>
 
 
-<details class="card"><summary class="sectionSummary">📈 Wasserstandsverlauf</summary><div class="sectionBody"><div class="row"><div class="grow"><div class="small">Gemessene Wasserstands-Rohdaten von PEGELONLINE</div></div><select id="range" class="year"><option value="P1D">24 Stunden</option><option value="P3D">3 Tage</option><option value="P7D">7 Tage</option><option value="P14D">14 Tage</option><option value="P30D">30 Tage</option></select></div><div id="chart" class="compactChart"></div><div id="chartInfo" class="small compactChartInfo"></div></div></details>
+<details class="card"><summary class="sectionSummary">📈 Wasserstandsverlauf</summary><div class="sectionBody"><div class="row"><div class="grow"><div class="small">Gemessene Wasserstands-Rohdaten der ausgewählten Messstelle</div></div><select id="range" class="year"><option value="P1D">24 Stunden</option><option value="P3D">3 Tage</option><option value="P7D">7 Tage</option><option value="P14D">14 Tage</option><option value="P30D">30 Tage</option></select></div><div id="chart" class="compactChart"></div><div id="chartInfo" class="small compactChartInfo"></div></div></details>
 <details class="card" id="technicalInfoCard"><summary class="sectionSummary">📊 Weitere Messdaten und Quellen</summary><div class="sectionBody"><div class="small" style="margin-bottom:10px">Zusätzliche Messdaten, Vorhersage, Datenqualität und Stationsinformationen.</div><details class="card"><summary class="sectionSummary">🌊 Wasserstand</summary><div class="sectionBody"><div class="small">PEGELONLINE stellt aktuelle Messwerte und Messzeitreihen per REST-API bereit.</div><div style="margin-top:10px"><a href="https://pegelonline.wsv.de/webservice/guideRestapi" target="_blank" rel="noopener">PEGELONLINE REST-API</a> · <a id="gaugeLink" href="#" target="_blank" rel="noopener">Messstelle öffnen</a></div></div></details><details class="card" id="forecastCard"><summary class="sectionSummary">🔮 Wasserstandsvorhersage</summary><div class="sectionBody"><div class="row"><div class="grow"><div class="small" id="forecastSubtitle">PEGELONLINE-WV, falls für die Station verfügbar</div></div><a id="bshForecastLink" class="btn compactForecastLink" href="https://wasserstand.bsh.de/" target="_blank" rel="noopener">BSH-Vorhersage</a></div><div id="forecast" style="margin-top:10px"></div><div id="forecastInfo" class="small" style="margin-top:8px"></div></div></details><details class="card"><summary class="sectionSummary">🗂️ Datenstatus</summary><div class="sectionBody"><div id="quality" class="small">Wird geprüft …</div></div></details><details class="card"><summary class="sectionSummary">🗃️ Stationsdatenbank</summary><div class="sectionBody"><div class="small" id="dbInfo">BSH-Stationen werden geladen …</div></div></details></div></details>
 <details class="card" id="bshImportCard"><summary class="sectionSummary bshSummary"><span><span style="display:block">📥 BSH-Dateien importieren</span><span class="small" style="display:block;font-weight:400;margin-top:4px">BSH-Hoch-/Niedrigwasserdatei auswählen und lokal importieren.</span></span></summary><div class="sectionBody"><button class="guideToggle" id="bshGuideToggle" type="button" aria-expanded="false" aria-controls="bshGuideText">▸ Import-Anleitung anzeigen</button><div class="small" id="bshGuideText" hidden style="margin-top:4px;padding:8px;background:#f4f8fa;border-radius:8px">Laden Sie auf der BSH-Webseite die echte „Txt-Datei Hoch-/Niedrigwasser“ für die gewünschte Station und das passende Jahr herunter. Wählen Sie diese Textdatei anschließend über „BSH-TXT-Datei auswählen“ aus und starten Sie den Import. Die Station und Pegelnummer werden direkt aus der BSH-Datei erkannt. Die Datei wird nur lokal in diesem Browser gespeichert; es werden keine Tidewerte berechnet oder verändert. Zum Ausblenden der Hinweise tippen Sie erneut auf „Import-Anleitung ausblenden“.</div><div class="bshImportRow" style="margin-top:5px"><label class="bshFileBox" title="BSH-TXT-Datei auswählen"><span class="bshFileLabel">Datei auswählen</span><input id="bshFile" type="file" accept=".txt,text/plain" class="bshFileInput" aria-label="BSH-TXT-Datei auswählen"></label><button class="btn" id="bshImportBtn" type="button" title="BSH-TXT-Datei importieren">Importieren</button><button class="btn" id="bshRemoveBtn" type="button" disabled title="Ausgewählte bzw. zuletzt importierte BSH-Datei entfernen">✕ Entfernen</button><button class="btn" id="bshArchiveSelectedBtn" type="button" title="Ausgewählte BSH-Datei für die Archivierung vorbereiten">Archivieren</button></div><div class="small" id="bshImportInfo" style="margin-top:8px"></div></div></details>
 <details class="card" id="bshArchiveCard">
@@ -1766,6 +1766,42 @@ async function poFetch(path,options={}){
 let bshCatalog=[],po=[],mode='all',current=null,data=[],meta=null,selectedYear=null,poCurrent=null,coastalOnly=true;
 
 const BSH_ARCHIVE_API='https://hqdoufaiuslwnqwnrltc.supabase.co/functions/v1';
+const HSI_PROXY_API=BSH_ARCHIVE_API+'/hsi-messwerte-proxy';
+const HSI_STATIONS=[
+ {id:'114629',name:'Dahme-Seebrücke',region:'Ostsee'},
+ {id:'114528',name:'Füsing',region:'Ostsee'},
+ {id:'110006',name:'Hooge, Anleger',region:'Nordsee'},
+ {id:'114609',name:'Lippe',region:'Ostsee'}
+];
+const hsiRowsCache=new Map(),hsiFetchCache=new Map();
+async function loadHsiRows(station){
+ const id=String(station?.id||'');
+ if(!id)throw Error('HSI-Messstellenkennung fehlt.');
+ if(hsiRowsCache.has(id))return hsiRowsCache.get(id);
+ if(hsiFetchCache.has(id))return hsiFetchCache.get(id);
+ const pending=(async()=>{
+   const response=await fetch(HSI_PROXY_API+'?stationId='+encodeURIComponent(id),{method:'GET',headers:{Accept:'text/csv'},cache:'no-store'});
+   if(!response.ok)throw Error('HSI-Proxy HTTP '+response.status);
+   const csv=(await response.text()).replace(/^\uFEFF/,'');
+   const lines=csv.split(/\r?\n/);
+   if(lines.shift()?.trim()!=='Zeit[MEZ];wasserstand;wasserstand_status;valueType')throw Error('Ungültiges HSI-CSV-Format.');
+   const rows=[];
+   for(const line of lines){
+     if(!line.trim())continue;
+     const parts=line.split(';');
+     if(parts.length<4||String(parts[2]).trim()!=='1'||String(parts[3]).trim().toLowerCase()!=='mw')continue;
+     const time=new Date(String(parts[0]).trim().replace(' ','T'));
+     const value=Number(String(parts[1]).trim().replace(',','.'));
+     if(!Number.isFinite(value)||!Number.isFinite(time.getTime()))continue;
+     rows.push({timestamp:time.toISOString(),value,quality:'1',valueType:'mw'});
+   }
+   rows.sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
+   if(!rows.length)throw Error('Keine qualitätsgesicherten HSI-Messwerte vom Typ mw vorhanden.');
+   hsiRowsCache.set(id,rows);return rows;
+ })();
+ hsiFetchCache.set(id,pending);
+ try{return await pending}catch(error){hsiFetchCache.delete(id);throw error}
+}
 let bshArchiveCatalogCache=null,bshArchiveCatalogPromise=null;
 async function getBshArchiveCatalog(){
  if(bshArchiveCatalogCache)return bshArchiveCatalogCache;
@@ -2151,6 +2187,7 @@ function mergeStations(){
    if(used.has(p.uuid))return;
    out.push({key:'station:'+p.uuid,name:cleanStationName(p.longname||p.shortname||'Unbenannte Station'),region:stationRegion(p),bsh:null,po:p});
  });
+ HSI_STATIONS.forEach(h=>out.push({key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}));
  return out;
 }
 function validateBsh(meta,events){
@@ -2163,6 +2200,10 @@ function validateBsh(meta,events){
  return [...new Set(issues)];
 }
 function renderQuality(){
+ if(modeForSelection?.hsi){
+   $('quality').innerHTML='<span class="ok">HSI-SH · Wasserstandsdaten über den Supabase-Proxy · CSV-Qualitätsstatus 1 (qualitätsgesichert) · Typ mw.</span>';
+   return;
+ }
  const issues=validateBsh(meta,data); const parts=[];
  if(currentBsh){parts.push(issues.length?`<span class="warn">⚠ BSH: ${esc(issues.join(' · '))}</span>`:`<span class="ok">✓ BSH-Daten geprüft: ${data.length} HW/NW-Ereignisse, ${esc(meta.reference||'')} · ${esc(meta.timezone||'')}</span>`)}else parts.push('<span class="small">– Für diese Station ist derzeit keine BSH-Jahresdatei im Projekt eingebunden.</span>');
  if(poCurrent?.uuid)parts.push('<span class="ok">✓ PEGELONLINE-Station über UUID verknüpft.</span>'); else parts.push('<span class="small">– Keine PEGELONLINE-Verknüpfung.</span>');
@@ -2624,6 +2665,7 @@ function stationSearchText(s){
  add(s.longname);add(s.shortname);add(s.name);add(s.number);add(s.pegelNr);add(s.pegelnr);add(s.pegelnummer);add(s.pegelonlineNumber);add(s.uuid);add(s.waterUuid);add(s.region);add(s.water?.longname);add(s.water?.shortname);add(s.water?.name);
  if(s.bsh){add(s.bsh.id);add(s.bsh.name);add(s.bsh.pegelNr);add(s.bsh.pegelnr);add(s.bsh.pegelnummer);add(s.bsh.waterPegelNr);add(s.bsh.pegelonlineNumber);add(s.bsh.waterUuid);add(s.bsh.region);add(s.bsh.bshUrl);}
  if(s.po){add(s.po.longname);add(s.po.shortname);add(s.po.name);add(s.po.number);add(s.po.pegelNr);add(s.po.pegelnr);add(s.po.uuid);add(s.po.region);add(s.po.water?.longname);add(s.po.water?.shortname);add(s.po.water?.name);}
+ if(s.hsi){add('HSI-SH');add(s.hsi.id);add(s.hsi.name);add(s.hsi.region);}
  return norm(parts.join(' '));
 }
 function renderList(){
@@ -2638,7 +2680,7 @@ function renderList(){
  for(const s of limited){
    const reg=stationRegion(s); if(mode==='all'&&reg!==last){html+=`<div class="stationgroup">${esc(reg)}</div>`;last=reg;}
    let id=mode==='bsh'?s.id:(mode==='po'?s.uuid:s.key);
-   html+=`<div class="stationitem" data-id="${esc(id)}"><b>${esc(label(s))}</b><div class="small">${esc(s.number||s.pegelNr||s.pegelnr||'')} ${((mode==='po')||(mode==='all'&&s.po))?'· Wasserstand':''} ${((mode==='bsh')||(mode==='all'&&s.bsh))?'· Tide':''}</div></div>`;
+   html+=`<div class="stationitem" data-id="${esc(id)}"><b>${esc(label(s))}</b><div class="small">${esc(s.number||s.pegelNr||s.pegelnr||'')} ${s.hsi?'· HSI-SH Wasserstand':(((mode==='po')||(mode==='all'&&s.po))?'· Wasserstand':'')} ${((mode==='bsh')||(mode==='all'&&s.bsh))?'· Tide':''}</div></div>`;
  }
  $('stationList').innerHTML=html||'<div class="stationitem">Keine Treffer</div>';
  $('stationList').onclick=(ev)=>{const item=ev.target.closest('.stationitem[data-id]');if(!item)return;ev.preventDefault();selectStation(item.dataset.id);};
@@ -2649,9 +2691,9 @@ function renderList(){
 async function selectStation(id){
  try{
  if(mode==='north'||mode==='baltic') mode='all';
- if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh; modeForSelection=u; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
+ if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh||u.hsi; modeForSelection=u; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
  storageSet('tiden.station.id',id);storageSet('tiden.station.mode',modeForSelection? 'all':mode);
- $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?[(modeForSelection.bsh?'BSH':null),(modeForSelection.po?'PEGELONLINE':null)].filter(Boolean).join(' · '):mode==='bsh'?'BSH · '+(current.pegelNr||current.pegelnr||''):'PEGELONLINE · '+(current.water?.longname||'');
+ $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?(modeForSelection.hsi?'HSI-SH · Messstelle '+modeForSelection.hsi.id:[(modeForSelection.bsh?'BSH':null),(modeForSelection.po?'PEGELONLINE':null)].filter(Boolean).join(' · ')):mode==='bsh'?'BSH · '+(current.pegelNr||current.pegelnr||''):'PEGELONLINE · '+(current.water?.longname||'');
  $('gaugeLink').href=(modeForSelection?.po?.number||current.number)?`https://pegelonline.wsv.de/gast/stammdaten?pegelnr=${encodeURIComponent(modeForSelection?.po?.number||current.number)}`:'#';
  $('bshLink').href=currentBsh?.bshUrl||'https://gezeiten.bsh.de/'; $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
  data=[];meta=null;selectedYear=null;poCurrent=null;
@@ -2661,13 +2703,17 @@ async function selectStation(id){
  // Bei einer Auswahl aus der zusammengeführten Liste ist bsh:null eine bewusste
  // Aussage: dieser PEGELONLINE-Pegel hat keine BSH-Zuordnung. Nicht erneut raten,
  // sonst kann eine vorherige/falsche BSH-Quelle (z. B. Husum) hängen bleiben.
+ const hsiStation=modeForSelection?.hsi||null;
  let bsh=modeForSelection ? (modeForSelection.bsh||null) : (mode==='bsh'?current:findBshForPo(current));
  let poStation=modeForSelection ? (modeForSelection.po||null) : (mode==='bsh'?findPoForBsh(current):current);
  if(bsh){currentBsh=bsh}else{currentBsh=null}
  if(poStation){poCurrent=poStation}
  updateBshTxtDownload();
- if(!bsh){
+ if(!bsh&&!hsiStation){
    $('bshSourceStatus').textContent='Für diese Pegelstelle ist keine BSH-Tidequelle zugeordnet.';
+   $('bshSourceStatus').className='small';
+ }else if(hsiStation){
+   $('bshSourceStatus').textContent='HSI-SH-Wasserstandsmessstelle · Datenabruf über den Supabase-Proxy.';
    $('bshSourceStatus').className='small';
  }
  updateSources(); syncFavorite(); renderQuality();
@@ -3114,6 +3160,25 @@ function waterCacheKey(uuid){return 'tiden.water.'+uuid}
 function historyCacheKey(uuid,range){return 'tiden.water.history.'+uuid+'.'+range}
 function showCachedWater(uuid){try{const j=JSON.parse(localStorage.getItem(waterCacheKey(uuid))||'null');if(!j)return false;const val=Number(j.value),ts=j.timestamp?new Date(j.timestamp):null;if(!Number.isFinite(val)||!ts)return false;$('water').textContent=(val/100).toFixed(2)+' m';$('waterTime').textContent=ts.toLocaleString('de-DE')+' · zuletzt gespeichert';$('waterTime').title='Alter der gespeicherten Messung: '+Math.round(Math.max(0,Date.now()-ts.getTime())/60000)+' min';return true}catch{return false}}
 async function loadWater(){
+ const hsi=modeForSelection?.hsi;
+ if(hsi){
+   $('water').textContent='…';$('waterTime').textContent='HSI-SH wird geladen …';
+   try{
+     const rows=await loadHsiRows(hsi),latest=rows[rows.length-1],ts=new Date(latest.timestamp);
+     const age=Math.max(0,Date.now()-ts.getTime());
+     $('water').textContent=(latest.value/100).toFixed(2)+' m';
+     $('waterTime').textContent=ts.toLocaleString('de-DE')+(age>25*3600*1000?' · letzter verfügbarer Messwert':'');
+     $('waterTime').title='HSI-SH · Typ mw · Qualitätsstatus 1 · Alter: '+Math.round(age/3600000)+' Stunden';
+     $('status').textContent=age>25*3600*1000?'HSI-SH: letzter verfügbarer Messwert ist älter als 25 Stunden; nicht als aktuell werten.':'HSI-SH: letzter qualitätsgesicherter Messwert geladen.';
+     $('status').className=age>25*3600*1000?'small warn':'small ok';
+     $('quality').innerHTML='<span class="ok">HSI-SH · '+rows.length.toLocaleString('de-DE')+' qualitätsgesicherte Messwerte (Typ mw) geladen.</span>';
+   }catch(error){
+     $('water').textContent='–';$('waterTime').textContent='';
+     $('status').textContent='HSI-SH-Messwerte momentan nicht abrufbar: '+(error?.message||error);
+     $('status').className='small warn';$('quality').textContent='HSI-SH-Daten konnten nicht geladen werden.';
+   }
+   return;
+ }
  let st=getWaterStation(),uuid=st?.uuid;
  if(!uuid){$('water').textContent='–';$('waterTime').textContent='Keine PEGELONLINE-Zuordnung';return}
  try{
@@ -3185,6 +3250,20 @@ function renderForecast(arr,source){
  $('forecastInfo').textContent=`Zeitraum: ${first.t.toLocaleString('de-DE')} bis ${last.t.toLocaleString('de-DE')} · Werte von PEGELONLINE sind ungeprüfte Roh-/Vorhersagedaten.`;
 }
 async function loadHistory(){
+ const hsi=modeForSelection?.hsi;
+ if(hsi){
+   try{
+     const rows=await loadHsiRows(hsi);
+     const days=Number(String($('range').value||'P7D').replace(/^P/i,''))||7;
+     const cutoff=Date.now()-days*24*60*60*1000;
+     const filtered=rows.filter(x=>new Date(x.timestamp).getTime()>=cutoff);
+     renderChart(filtered,'HSI-SH · qualitätsgesicherte Messwerte');
+     if(filtered.length===0)$('chartInfo').textContent='Keine HSI-SH-Messwerte im gewählten Zeitraum. Letzter verfügbarer Datensatz: '+new Date(rows[rows.length-1].timestamp).toLocaleString('de-DE')+'.';
+   }catch(error){
+     $('chart').innerHTML='<div class="small warn">HSI-SH-Verlauf momentan nicht abrufbar: '+(error?.message||error)+'</div>';$('chartInfo').textContent='';
+   }
+   return;
+ }
  let st=getWaterStation(),uuid=st?.uuid;if(!uuid){$('chart').innerHTML='<div class="small">Für diese Station ist keine PEGELONLINE-Wasserstandszeitreihe verknüpft.</div>';$('chartInfo').textContent='';return}
  let range=$('range').value;
  try{
@@ -3198,8 +3277,8 @@ async function loadHistory(){
   $('chart').innerHTML='<div class="small warn">Wasserstandsverlauf momentan nicht erreichbar.</div>';$('chartInfo').textContent='';
  }
 }
-function renderChart(rows){let pts=rows.map(x=>({t:new Date(x.timestamp),v:Number(x.value)})).filter(x=>Number.isFinite(x.v)&&!isNaN(x.t.getTime())).sort((a,b)=>a.t-b.t);if(!pts.length){$('chart').innerHTML='<div class="small">Keine Messwerte für den gewählten Zeitraum.</div>';return}
- const w=860,h=228,pad={l:48,r:16,t:9,b:27},min=Math.min(...pts.map(x=>x.v)),max=Math.max(...pts.map(x=>x.v));const span=max-min||1;const x=t=>pad.l+(t-pts[0].t)/(pts[pts.length-1].t-pts[0].t||1)*(w-pad.l-pad.r);const y=v=>h-pad.b-(v-min)/span*(h-pad.t-pad.b);const poly=pts.map(p=>`${x(p.t).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');const ticks=[0,.25,.5,.75,1];let grid=ticks.map(q=>{let yy=pad.t+q*(h-pad.t-pad.b);let vv=max-q*span;return `<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#dfe8ec"/><text x="4" y="${yy+4}" font-size="11" fill="#52636e">${(vv/100).toFixed(2)} m</text>`}).join('');let xlabels=[pts[0],pts[Math.floor(pts.length/2)],pts[pts.length-1]].map(p=>`<text x="${x(p.t)}" y="${h-8}" text-anchor="middle" font-size="11" fill="#52636e">${p.t.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</text>`).join('');$('chart').innerHTML=`<svg viewBox="0 0 ${w} ${h}" width="100%" height="228" role="img" aria-label="Wasserstandsverlauf"><rect width="100%" height="100%" fill="#fff"/>${grid}<polyline points="${poly}" fill="none" stroke="#0b3954" stroke-width="2" vector-effect="non-scaling-stroke"/>${xlabels}</svg>`;$('chartInfo').textContent=`${pts.length} Messwerte · ${pts[0].t.toLocaleString('de-DE')} bis ${pts[pts.length-1].t.toLocaleString('de-DE')} · PEGELONLINE-Rohdaten`}
+function renderChart(rows,source='PEGELONLINE-Rohdaten'){let pts=rows.map(x=>({t:new Date(x.timestamp),v:Number(x.value)})).filter(x=>Number.isFinite(x.v)&&!isNaN(x.t.getTime())).sort((a,b)=>a.t-b.t);if(!pts.length){$('chart').innerHTML='<div class="small">Keine Messwerte für den gewählten Zeitraum.</div>';return}
+ const w=860,h=228,pad={l:48,r:16,t:9,b:27},min=Math.min(...pts.map(x=>x.v)),max=Math.max(...pts.map(x=>x.v));const span=max-min||1;const x=t=>pad.l+(t-pts[0].t)/(pts[pts.length-1].t-pts[0].t||1)*(w-pad.l-pad.r);const y=v=>h-pad.b-(v-min)/span*(h-pad.t-pad.b);const poly=pts.map(p=>`${x(p.t).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');const ticks=[0,.25,.5,.75,1];let grid=ticks.map(q=>{let yy=pad.t+q*(h-pad.t-pad.b);let vv=max-q*span;return `<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#dfe8ec"/><text x="4" y="${yy+4}" font-size="11" fill="#52636e">${(vv/100).toFixed(2)} m</text>`}).join('');let xlabels=[pts[0],pts[Math.floor(pts.length/2)],pts[pts.length-1]].map(p=>`<text x="${x(p.t)}" y="${h-8}" text-anchor="middle" font-size="11" fill="#52636e">${p.t.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</text>`).join('');$('chart').innerHTML=`<svg viewBox="0 0 ${w} ${h}" width="100%" height="228" role="img" aria-label="Wasserstandsverlauf"><rect width="100%" height="100%" fill="#fff"/>${grid}<polyline points="${poly}" fill="none" stroke="#0b3954" stroke-width="2" vector-effect="non-scaling-stroke"/>${xlabels}</svg>`;$('chartInfo').textContent=`${pts.length} Messwerte · ${pts[0].t.toLocaleString('de-DE')} bis ${pts[pts.length-1].t.toLocaleString('de-DE')} · ${esc(source)}`}
 function eventDate(e){return displayEvent(e)}
 
 // Lokale Zeitdiagnose: nur Ausgabe in der Browser-Konsole, keine Datenänderung.
@@ -3225,7 +3304,7 @@ try{
 }catch(_){}
 
 function updateClock(){ $('clock').textContent=new Date().toLocaleString('de-DE',{dateStyle:'full',timeStyle:'medium'}); }
-function updateSources(){ let hasBsh=!!currentBsh, hasPo=!!poCurrent; $('sourceBadges').innerHTML=(hasBsh?'<span class=\"pill\">BSH Tide</span>':'')+(hasPo?'<span class=\"pill\">PEGELONLINE Wasserstand</span>':''); }
+function updateSources(){ let hasBsh=!!currentBsh, hasPo=!!poCurrent, hasHsi=!!modeForSelection?.hsi; $('sourceBadges').innerHTML=(hasBsh?'<span class=\"pill\">BSH Tide</span>':'')+(hasPo?'<span class=\"pill\">PEGELONLINE Wasserstand</span>':'')+(hasHsi?'<span class=\"pill\">HSI-SH Wasserstand</span>':''); }
 function canonicalFavorite(f){
  if(!f||typeof f!=='object') return f;
  const out={...f};
