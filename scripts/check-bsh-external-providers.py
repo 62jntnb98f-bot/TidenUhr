@@ -261,6 +261,58 @@ def inspect_nlwkn_page(url):
     return result
 
 
+NLWKN_API_BASE = "https://bis.azure-api.net/PegelonlinePublic/REST/"
+NLWKN_PUBLIC_KEY = "9dc05f4e3b4a43a9988d747825b39f43"
+
+def walk_objects(value):
+    if isinstance(value,dict):
+        yield value
+        for child in value.values():
+            yield from walk_objects(child)
+    elif isinstance(value,list):
+        for child in value:
+            yield from walk_objects(child)
+
+def inspect_nlwkn_data():
+    result={"stationDirectory":None,"stationMatches":[],"measurement":None}
+    directory_url=NLWKN_API_BASE+"stammdaten/stationen/All?key="+NLWKN_PUBLIC_KEY
+    directory=inspect(directory_url)
+    result["stationDirectory"]=directory
+    if directory.get("status")!="JSON_OK":
+        return result
+    try:
+        _,_,_,body=get(directory_url)
+        obj=json.loads(body.decode("utf-8-sig"))
+        matches=[]
+        for item in walk_objects(obj):
+            vals=" ".join(str(v) for v in item.values() if isinstance(v,(str,int,float)))
+            if "bensersiel" in vals.lower():
+                matches.append(item)
+        result["stationMatches"]=matches[:5]
+        station_id=None
+        for item in matches:
+            for key in ("STA_ID","StaId","StationId","stationId","ID","Id","id"):
+                if item.get(key) is not None:
+                    station_id=str(item[key])
+                    break
+            if station_id: break
+        result["stationId"]=station_id
+        if not station_id:
+            result["measurement"]={"status":"STATION_ID_NOT_FOUND","detail":"Bensersiel in Stationsverzeichnis nicht eindeutig mit einer ID verknüpft"}
+            return result
+        measurement_url=NLWKN_API_BASE+f"station/{urllib.parse.quote(station_id,safe='')}/datenspuren/parameter/1/tage/-7?key="+NLWKN_PUBLIC_KEY
+        m=inspect(measurement_url)
+        result["measurement"]={"url":measurement_url,**m}
+        if m.get("status")=="JSON_OK":
+            _,_,_,mbody=get(measurement_url)
+            data=json.loads(mbody.decode("utf-8-sig"))
+            result["measurement"]["jsonTopLevelType"]=type(data).__name__
+            result["measurement"]["jsonPreview"]=json.dumps(data,ensure_ascii=False)[:12000]
+    except Exception as e:
+        result["error"]=str(e)[:300]
+    return result
+
+
 def provider(host):
     h=(host or "").lower()
     if "pegelportal-mv.de" in h or "fis-wasser-mv.de" in h: return "Pegelportal MV"
@@ -292,6 +344,7 @@ def main():
             item["mvInspection"]=inspect_mv_page(x["sourceUrl"])
         if x["provider"]=="NLWKN":
             item["nlwknInspection"]=inspect_nlwkn_page(x["sourceUrl"])
+            item["nlwknDataInspection"]=inspect_nlwkn_data()
         if x["provider"]=="HSI-SH":
             candidates=re.findall(r"(?<!\d)(\d{5,7})(?!\d)",x["sourceUrl"]) or re.findall(r"(?<!\d)(\d{5,7})(?!\d)",x["operatorId"])
             if candidates:
