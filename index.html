@@ -2206,7 +2206,7 @@ function renderQuality(){
  if(modeForSelection?.hsi){
    const rows=hsiRowsCache.get(String(modeForSelection.hsi.id))||[];
    if(!rows.length){
-     $('quality').innerHTML='<span class="small">HSI-SH · Qualitäsgesicherte Messwerte werden geladen …</span>';
+     $('quality').innerHTML='<span class="small">HSI-SH · qualitätsgesicherte Messwerte werden geladen …</span>';
      return;
    }
    const latest=rows[rows.length-1],ts=new Date(latest.timestamp);
