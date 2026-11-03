@@ -2202,24 +2202,24 @@ function validateBsh(meta,events){
  let prev=null; for(const e of (events||[])){if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(e.datetime))issues.push('Zeitformat ungültig'); if(!['HW','NW'].includes(e.type))issues.push('Unbekannter Ereignistyp'); if(!Number.isFinite(Number(e.height)))issues.push('Höhe ungültig'); if(prev&&e.datetime<prev)issues.push('Ereignisse nicht chronologisch'); prev=e.datetime;}
  return [...new Set(issues)];
 }
+let historyGapQuality = null;
+function appendHistoryGapQuality(html){
+ return historyGapQuality && !currentBsh ? html+'<br><span class="'+(historyGapQuality.count?'warn':'small')+'">'+esc(historyGapQuality.text)+'</span>' : html;
+}
 function renderQuality(){
  if(modeForSelection?.hsi){
    const rows=hsiRowsCache.get(String(modeForSelection.hsi.id))||[];
-   if(!rows.length){
-     $('quality').innerHTML='<span class="small">HSI-SH · qualitätsgesicherte Messwerte werden geladen …</span>';
-     return;
-   }
+   if(!rows.length){$('quality').innerHTML=appendHistoryGapQuality('<span class="small">HSI-SH · qualitätsgesicherte Messwerte werden geladen …</span>');return;}
    const latest=rows[rows.length-1],ts=new Date(latest.timestamp);
    const age=Math.max(0,Date.now()-ts.getTime()),stale=age>25*3600*1000;
    const ageHours=Math.floor(age/3600000);
    const detail='Letzter Messwert: '+ts.toLocaleString('de-DE')+' · '+(stale?'Daten veraltet (':'Daten aktuell (')+ageHours+' Std. alt).';
-   $('quality').innerHTML='<span class="'+(stale?'warn':'ok')+'">HSI-SH · '+rows.length.toLocaleString('de-DE')+' qualitätsgesicherte Messwerte · CSV-Qualitätsstatus 1 · Typ mw.</span><br><span class="'+(stale?'warn':'small')+'">'+esc(detail)+'</span>';
-   return;
+   $('quality').innerHTML=appendHistoryGapQuality('<span class="'+(stale?'warn':'ok')+'">HSI-SH · '+rows.length.toLocaleString('de-DE')+' qualitätsgesicherte Messwerte · CSV-Qualitätsstatus 1 · Typ mw.</span><br><span class="'+(stale?'warn':'small')+'">'+esc(detail)+'</span>');return;
  }
  const issues=validateBsh(meta,data); const parts=[];
- if(currentBsh){parts.push(issues.length?`<span class="warn">⚠ BSH: ${esc(issues.join(' · '))}</span>`:`<span class="ok">✓ BSH-Daten geprüft: ${data.length} HW/NW-Ereignisse, ${esc(meta.reference||'')} · ${esc(meta.timezone||'')}</span>`)}else parts.push('<span class="small">– Für diese Station ist derzeit keine BSH-Jahresdatei im Projekt eingebunden.</span>');
+ if(currentBsh){parts.push(issues.length?'<span class="warn">⚠ BSH: '+esc(issues.join(' · '))+'</span>':'<span class="ok">✓ BSH-Daten geprüft: '+data.length+' HW/NW-Ereignisse, '+esc(meta.reference||'')+' · '+esc(meta.timezone||'')+'</span>')}else parts.push('<span class="small">– Für diese Station ist derzeit keine BSH-Jahresdatei im Projekt eingebunden.</span>');
  if(poCurrent?.uuid)parts.push('<span class="ok">✓ PEGELONLINE-Station über UUID verknüpft.</span>'); else parts.push('<span class="small">– Keine PEGELONLINE-Verknüpfung.</span>');
- $('quality').innerHTML=parts.join('<br>');
+ $('quality').innerHTML=appendHistoryGapQuality(parts.join('<br>'));
 }
 async function refreshDatabase(){
  try{
@@ -3289,8 +3289,27 @@ async function loadHistory(){
   $('chart').innerHTML='<div class="small warn">Wasserstandsverlauf momentan nicht erreichbar.</div>';$('chartInfo').textContent='';
  }
 }
-function renderChart(rows,source='PEGELONLINE-Rohdaten'){let pts=rows.map(x=>({t:new Date(x.timestamp),v:Number(x.value)})).filter(x=>Number.isFinite(x.v)&&!isNaN(x.t.getTime())).sort((a,b)=>a.t-b.t);if(!pts.length){$('chart').innerHTML='<div class="small">Keine Messwerte für den gewählten Zeitraum.</div>';return}
- const w=860,h=228,pad={l:48,r:16,t:9,b:27},min=Math.min(...pts.map(x=>x.v)),max=Math.max(...pts.map(x=>x.v));const span=max-min||1;const x=t=>pad.l+(t-pts[0].t)/(pts[pts.length-1].t-pts[0].t||1)*(w-pad.l-pad.r);const y=v=>h-pad.b-(v-min)/span*(h-pad.t-pad.b);const poly=pts.map(p=>`${x(p.t).toFixed(1)},${y(p.v).toFixed(1)}`).join(' ');const ticks=[0,.25,.5,.75,1];let grid=ticks.map(q=>{let yy=pad.t+q*(h-pad.t-pad.b);let vv=max-q*span;return `<line x1="${pad.l}" y1="${yy}" x2="${w-pad.r}" y2="${yy}" stroke="#dfe8ec"/><text x="4" y="${yy+4}" font-size="11" fill="#52636e">${(vv/100).toFixed(2)} m</text>`}).join('');let xlabels=[pts[0],pts[Math.floor(pts.length/2)],pts[pts.length-1]].map(p=>`<text x="${x(p.t)}" y="${h-8}" text-anchor="middle" font-size="11" fill="#52636e">${p.t.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</text>`).join('');$('chart').innerHTML=`<svg viewBox="0 0 ${w} ${h}" width="100%" height="228" role="img" aria-label="Wasserstandsverlauf"><rect width="100%" height="100%" fill="#fff"/>${grid}<polyline points="${poly}" fill="none" stroke="#0b3954" stroke-width="2" vector-effect="non-scaling-stroke"/>${xlabels}</svg>`;$('chartInfo').textContent=`${pts.length} Messwerte · ${pts[0].t.toLocaleString('de-DE')} bis ${pts[pts.length-1].t.toLocaleString('de-DE')} · ${esc(source)}`}
+function detectMeasurementGaps(pts){
+ const intervals=[];for(let i=1;i<pts.length;i++){const m=(pts[i].t-pts[i-1].t)/60000;if(m>0&&Number.isFinite(m))intervals.push(m)}
+ if(intervals.length<7)return {interval:null,gaps:[],regular:false};
+ const sorted=[...intervals].sort((a,b)=>a-b),mid=Math.floor(sorted.length/2),typical=sorted.length%2?sorted[mid]:(sorted[mid-1]+sorted[mid])/2;
+ const regularShare=intervals.filter(v=>v>=typical*.65&&v<=typical*1.45).length/intervals.length;
+ if(!Number.isFinite(typical)||typical<=0||regularShare<.7)return {interval:typical,gaps:[],regular:false};
+ const gaps=[];for(let i=1;i<pts.length;i++){const minutes=(pts[i].t-pts[i-1].t)/60000;if(minutes>typical*1.8)gaps.push({from:pts[i-1].t,to:pts[i].t,missing:Math.max(1,Math.round(minutes/typical)-1)})}
+ return {interval:typical,gaps,regular:true};
+}
+function renderChart(rows,source='PEGELONLINE-Rohdaten'){
+ let pts=rows.map(x=>({t:new Date(x.timestamp),v:Number(x.value)})).filter(x=>Number.isFinite(x.v)&&!isNaN(x.t.getTime())).sort((a,b)=>a.t-b.t);
+ if(!pts.length){historyGapQuality=null;$('chart').innerHTML='<div class="small">Keine Messwerte für den gewählten Zeitraum.</div>';renderQuality();return}
+ const quality=detectMeasurementGaps(pts),totalMissing=quality.gaps.reduce((sum,g)=>sum+g.missing,0);
+ historyGapQuality=quality.regular?{count:quality.gaps.length,text:quality.gaps.length?'Zeitreihenprüfung: '+quality.gaps.length+' Datenlücke(n), geschätzt '+totalMissing+' fehlende Messzeitpunkte (typisches Intervall '+Math.round(quality.interval)+' Min.).':'Zeitreihenprüfung: keine auffälligen Datenlücken erkannt (typisches Intervall '+Math.round(quality.interval)+' Min.).'}:null;
+ const w=860,h=228,pad={l:48,r:16,t:9,b:27},min=Math.min(...pts.map(x=>x.v)),max=Math.max(...pts.map(x=>x.v));const span=max-min||1;const x=t=>pad.l+(t-pts[0].t)/(pts[pts.length-1].t-pts[0].t||1)*(w-pad.l-pad.r);const y=v=>h-pad.b-(v-min)/span*(h-pad.t-pad.b);const poly=pts.map(p=>x(p.t).toFixed(1)+','+y(p.v).toFixed(1)).join(' ');const ticks=[0,.25,.5,.75,1];let grid=ticks.map(q=>{let yy=pad.t+q*(h-pad.t-pad.b),vv=max-q*span;return '<line x1="'+pad.l+'" y1="'+yy+'" x2="'+(w-pad.r)+'" y2="'+yy+'" stroke="#dfe8ec"/><text x="4" y="'+(yy+4)+'" font-size="11" fill="#52636e">'+(vv/100).toFixed(2)+' m</text>'}).join('');
+ let xlabels=[pts[0],pts[Math.floor(pts.length/2)],pts[pts.length-1]].map(p=>'<text x="'+x(p.t)+'" y="'+(h-8)+'" text-anchor="middle" font-size="11" fill="#52636e">'+p.t.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+'</text>').join('');
+ $('chart').innerHTML='<svg viewBox="0 0 '+w+' '+h+'" width="100%" height="228" role="img" aria-label="Wasserstandsverlauf"><rect width="100%" height="100%" fill="#fff"/>'+grid+'<polyline points="'+poly+'" fill="none" stroke="#0b3954" stroke-width="2" vector-effect="non-scaling-stroke"/>'+xlabels+'</svg>';
+ let gapDetails='';if(quality.gaps.length){gapDetails=' · Lücken: '+quality.gaps.slice(0,5).map(g=>g.from.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+'–'+g.to.toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})+' ('+g.missing+' fehlend)').join('; ');if(quality.gaps.length>5)gapDetails+='; weitere '+(quality.gaps.length-5)}
+ $('chartInfo').textContent=pts.length+' Messwerte · '+pts[0].t.toLocaleString('de-DE')+' bis '+pts[pts.length-1].t.toLocaleString('de-DE')+' · '+esc(source)+(quality.regular?gapDetails:'');
+ renderQuality();
+}
 function eventDate(e){return displayEvent(e)}
 
 // Lokale Zeitdiagnose: nur Ausgabe in der Browser-Konsole, keine Datenänderung.
