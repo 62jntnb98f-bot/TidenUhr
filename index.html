@@ -3262,6 +3262,8 @@ function renderForecast(arr,source){
  $('forecastInfo').textContent=`Zeitraum: ${first.t.toLocaleString('de-DE')} bis ${last.t.toLocaleString('de-DE')} · Werte von PEGELONLINE sind ungeprüfte Roh-/Vorhersagedaten.`;
 }
 async function loadHistory(){
+ historyGapQuality=null;
+ renderQuality();
  const hsi=modeForSelection?.hsi;
  if(hsi){
    try{
