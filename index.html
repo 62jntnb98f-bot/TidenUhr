@@ -1810,11 +1810,28 @@ async function getBshArchiveCatalog(){
  if(bshArchiveCatalogCache)return bshArchiveCatalogCache;
  if(bshArchiveCatalogPromise)return bshArchiveCatalogPromise;
  bshArchiveCatalogPromise=(async()=>{
-   const r=await fetch(BSH_ARCHIVE_API+'/bsh-archiv-katalog?limit=100',{method:'GET',headers:{Accept:'application/json'},cache:'no-store'});
-   if(!r.ok)throw Error('BSH-Archivkatalog HTTP '+r.status);
-   const j=await r.json();
-   if(!j||!Array.isArray(j.items))throw Error('Ungültige Antwort des BSH-Archivkatalogs');
-   bshArchiveCatalogCache=j.items.filter(x=>x&&x.id&&x.station_code&&Number.isFinite(Number(x.datenjahr))&&x.archiv_status==='archiviert');
+   const limit=100;
+   let offset=0,total=null;
+   const allItems=[];
+   do{
+     const url=new URL(BSH_ARCHIVE_API+'/bsh-archiv-katalog');
+     url.searchParams.set('limit',String(limit));
+     url.searchParams.set('offset',String(offset));
+     const r=await fetch(url.href,{method:'GET',headers:{Accept:'application/json'},cache:'no-store'});
+     if(!r.ok)throw Error('BSH-Archivkatalog HTTP '+r.status+' (Offset '+offset+')');
+     const j=await r.json();
+     if(!j||!Array.isArray(j.items)||!Number.isInteger(Number(j.total))||Number(j.total)<0)throw Error('Ungültige Antwort des BSH-Archivkatalogs (Offset '+offset+')');
+     if(j.offset!==undefined&&Number(j.offset)!==offset)throw Error('Unerwarteter Katalog-Offset: '+j.offset+' statt '+offset);
+     if(j.limit!==undefined&&Number(j.limit)!==limit)throw Error('Unerwartete Katalog-Seitengröße: '+j.limit);
+     if(total===null)total=Number(j.total);
+     else if(Number(j.total)!==total)throw Error('Gesamtzahl des BSH-Archivkatalogs hat sich während des Abrufs geändert.');
+     if(j.items.length===0&&allItems.length<total)throw Error('BSH-Archivkatalog unvollständig: leere Seite bei Offset '+offset);
+     allItems.push(...j.items);
+     offset+=j.items.length;
+     if(offset<total&&j.items.length<limit)throw Error('BSH-Archivkatalog unvollständig: unerwartet kurze Seite bei Offset '+(offset-j.items.length));
+   }while(offset<total);
+   if(allItems.length!==total)throw Error('BSH-Archivkatalog unvollständig: '+allItems.length+' von '+total+' Einträgen geladen.');
+   bshArchiveCatalogCache=allItems.filter(x=>x&&x.id&&x.station_code&&Number.isFinite(Number(x.datenjahr))&&x.archiv_status==='archiviert');
    return bshArchiveCatalogCache;
  })().catch(e=>{bshArchiveCatalogPromise=null;throw e});
  return bshArchiveCatalogPromise;
