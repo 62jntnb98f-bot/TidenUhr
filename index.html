@@ -1763,7 +1763,7 @@ async function poFetch(path,options={}){
  for(const url of urls){try{const r=await fetch(url,options);if(!r.ok)throw Error('HTTP '+r.status);return r}catch(e){last=e}}
  throw last||Error('PEGELONLINE nicht erreichbar');
 }
-let bshCatalog=[],po=[],mode='all',current=null,data=[],meta=null,selectedYear=null,poCurrent=null,coastalOnly=true;
+let bshCatalog=[],po=[],mode='all',listMode='all',current=null,data=[],meta=null,selectedYear=null,poCurrent=null,coastalOnly=true;
 
 const BSH_ARCHIVE_API='https://hqdoufaiuslwnqwnrltc.supabase.co/functions/v1';
 const HSI_PROXY_API=BSH_ARCHIVE_API+'/hsi-messwerte-proxy';
@@ -2682,29 +2682,29 @@ function stationSearchText(s){
 }
 function renderList(){
  const q=norm($('search').value.trim());
- let arr=mode==='bsh'?bshCatalog:mode==='po'?[...po,...hsiStationEntries()]:mergeStations();
- if(coastalOnly && mode!=='bsh') arr=arr.filter(s=>isCoastalStation(s));
- if(mode==='north') arr=arr.filter(s=>stationRegion(s)==='Nordsee');
- if(mode==='baltic') arr=arr.filter(s=>stationRegion(s)==='Ostsee');
+ let arr=listMode==='bsh'?bshCatalog:listMode==='po'?[...po,...hsiStationEntries()]:mergeStations();
+ if(coastalOnly && listMode!=='bsh') arr=arr.filter(s=>isCoastalStation(s));
+ if(listMode==='north') arr=arr.filter(s=>stationRegion(s)==='Nordsee');
+ if(listMode==='baltic') arr=arr.filter(s=>stationRegion(s)==='Ostsee');
  arr=arr.filter(s=>{const txt=stationSearchText(s);return !q||txt.includes(q)});
- arr.sort((a,b)=>{const regionOrder=mode==='all'?stationRegion(a).localeCompare(stationRegion(b),'de'):0;return regionOrder||String(label(a)||'').localeCompare(String(label(b)||''),'de',{sensitivity:'base',numeric:true});});
+ arr.sort((a,b)=>{const regionOrder=listMode==='all'?stationRegion(a).localeCompare(stationRegion(b),'de'):0;return regionOrder||String(label(a)||'').localeCompare(String(label(b)||''),'de',{sensitivity:'base',numeric:true});});
  const limited=arr.slice(0,500); let html=''; let last='';
  for(const s of limited){
-   const reg=stationRegion(s); if(mode==='all'&&reg!==last){html+=`<div class="stationgroup">${esc(reg)}</div>`;last=reg;}
-   let id=mode==='bsh'?s.id:(mode==='po'?(s.hsi?'HSI:'+s.hsi.id:s.uuid):s.key);
-   html+=`<div class="stationitem" data-id="${esc(id)}"><b>${esc(label(s))}</b><div class="small">${esc(s.number||s.pegelNr||s.pegelnr||'')} ${s.hsi?'· HSI-SH Wasserstand':(((mode==='po')||(mode==='all'&&s.po))?'· Wasserstand':'')} ${((mode==='bsh')||(mode==='all'&&s.bsh))?'· Tide':''}</div></div>`;
+   const reg=stationRegion(s); if(listMode==='all'&&reg!==last){html+=`<div class="stationgroup">${esc(reg)}</div>`;last=reg;}
+   let id=listMode==='bsh'?s.id:(listMode==='po'?(s.hsi?'HSI:'+s.hsi.id:s.uuid):s.key);
+   const regional=listMode==='north'||listMode==='baltic'||listMode==='all';const hasWater=!!s.hsi||(listMode==='po'||(regional&&!!s.po));const hasTide=listMode==='bsh'||(regional&&!!s.bsh);html+=`<div class="stationitem" data-id="${esc(id)}"><b>${esc(label(s))}</b><div class="small">${esc(s.number||s.pegelNr||s.pegelnr||'')} ${hasWater?'· Wasserstand':''} ${hasTide?'· Tide':''}</div></div>`;
  }
  $('stationList').innerHTML=html||'<div class="stationitem">Keine Treffer</div>';
  $('stationList').onclick=(ev)=>{const item=ev.target.closest('.stationitem[data-id]');if(!item)return;ev.preventDefault();selectStation(item.dataset.id);};
  $('stationList').onkeydown=(ev)=>{if(ev.key!=='Enter'&&ev.key!==' ')return;const item=ev.target.closest('.stationitem[data-id]');if(!item)return;ev.preventDefault();selectStation(item.dataset.id);};
  document.querySelectorAll('.stationitem[data-id]').forEach(x=>{x.setAttribute('role','button');x.setAttribute('tabindex','0')});
- $('dbInfo').textContent=`${mode==='all'?mergeStations().length:arr.length} Stationen im aktuellen Bereich · PEGELONLINE ${po.length} Messstellen · BSH ${bshCatalog.length} Tide-Stationen`;
+ $('dbInfo').textContent=`${listMode==='all'?mergeStations().length:arr.length} Stationen im aktuellen Bereich · PEGELONLINE ${po.length} Messstellen · BSH ${bshCatalog.length} Tide-Stationen`;
 }
 async function selectStation(id){
  try{
  if(mode==='north'||mode==='baltic') mode='all';
  if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh||u.hsi; modeForSelection=u; } else if(mode==='po'&&String(id).startsWith('HSI:')){ const h=HSI_STATIONS.find(x=>x.id===String(id).slice(4)); if(!h){$('status').textContent='HSI-Messstelle konnte nicht gefunden werden.';$('status').className='small error';return;} mode='all'; modeForSelection={key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}; current=h; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
- storageSet('tiden.station.id',id);storageSet('tiden.station.mode',modeForSelection? 'all':mode);
+ storageSet('tiden.station.id',id);storageSet('tiden.station.mode',modeForSelection? 'all':mode);storageSet('tiden.station.listMode',listMode);
  $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?(modeForSelection.hsi?'HSI-SH · Messstelle '+modeForSelection.hsi.id:[(modeForSelection.bsh?'BSH':null),(modeForSelection.po?'PEGELONLINE':null)].filter(Boolean).join(' · ')):mode==='bsh'?'BSH · '+(current.pegelNr||current.pegelnr||''):'PEGELONLINE · '+(current.water?.longname||'');
  $('gaugeLink').href=(modeForSelection?.po?.number||current.number)?`https://pegelonline.wsv.de/gast/stammdaten?pegelnr=${encodeURIComponent(modeForSelection?.po?.number||current.number)}`:'#';
  $('bshLink').href=currentBsh?.bshUrl||'https://gezeiten.bsh.de/'; $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
@@ -2914,7 +2914,7 @@ async function importBshFile(file){
    const liveId=modeForSelection?.key||((mode==='bsh')?current?.id:((mode==='po')?current?.uuid:null));
    const sid=liveId||localStorage.getItem('tiden.station.id')||'KIEL-HOLTENAU';
    const sm=modeForSelection?'all':(localStorage.getItem('tiden.station.mode')||mode||'all');
-   storageSet('tiden.preImportStation',JSON.stringify({id:sid,mode:sm}));
+   storageSet('tiden.preImportStation',JSON.stringify({id:sid,mode:sm,listMode:listMode}));
  }
  const text=await file.text(); const d=parseBshTxtText(text,file.name);
  if(!d.events.length) throw Error('Keine HW/NW-Datensätze gefunden. Bitte die BSH-TXT-Datei „Hoch-/Niedrigwasser“ auswählen.');
@@ -2927,7 +2927,7 @@ async function importBshFile(file){
  refreshImportedBshCatalog(id);
  $('bshImportInfo').innerHTML=`<span class="ok">✓ BSH ${d.year} importiert: ${d.eventCount} HW/NW-Ereignisse · ${esc(d.station||id)} · ${esc(d.pegelNr||'Pegelnummer nicht erkannt')}</span>`;
  $('bshRemoveBtn').disabled=false;$('bshRemoveStatusBtn').style.display='inline-block';
- mode='bsh';
+ mode='bsh';listMode='bsh';
  renderList();
  await selectStation(id);
  // Nach einem Import das importierte Jahr ausdrücklich aktivieren.
@@ -2985,7 +2985,7 @@ async function removeBshImport(){
  $('bshRemoveBtn').disabled=true;$('bshRemoveStatusBtn').style.display='none';
  $('bshImportInfo').innerHTML='<span class="ok">✓ BSH-Datei entfernt. Der lokale Import wurde zurückgesetzt.</span>';
  const restoreMode=['all','bsh','po'].includes(previousStation?.mode)?previousStation.mode:'all';
- mode=restoreMode;
+ mode=restoreMode;listMode=['all','bsh','po','north','baltic'].includes(previousStation?.listMode)?previousStation.listMode:restoreMode;
  
  $('tabBsh').classList.toggle('active',mode==='bsh');
  $('tabPo').classList.toggle('active',mode==='po');
@@ -3378,7 +3378,7 @@ function syncFavorite(){ const active=isFavorite(); const btn=$('favBtn'); btn.t
 function renderFavorites(){
  const menu=$('favoriteMenu'); if(!menu)return; const favs=getFavorites();
  if(!favs.length){menu.innerHTML='<div class="favoriteEmpty">Noch keine Favoriten gespeichert.</div><div class="favoriteHint">Eine Station auswählen und auf „☆ Favorit“ klicken.</div>';return;}
- menu.innerHTML=favs.map((f,i)=>{const c=canonicalFavorite(f);return `<div class="favoriteItem"><button class="favSelect" data-fav-index="${i}" title="Favorit öffnen">★ ${esc(c.name||'Station')}<div class="small">${esc(c.region||'')} · ${c.mode==='bsh'?'BSH':c.mode==='po'?'PEGELONLINE':'Küste'}</div></button><button class="favoriteRemove" data-fav-remove="${i}" title="Favorit entfernen">×</button></div>`}).join('');
+ menu.innerHTML=favs.map((f,i)=>{const c=canonicalFavorite(f);return `<div class="favoriteItem"><button class="favSelect" data-fav-index="${i}" title="Favorit öffnen">★ ${esc(c.name||'Station')}<div class="small">${esc(c.region||'')} · ${c.mode==='bsh'?'BSH':c.mode==='po'?'PEGELONLINE':'Region'}</div></button><button class="favoriteRemove" data-fav-remove="${i}" title="Favorit entfernen">×</button></div>`}).join('');
  menu.querySelectorAll('[data-fav-index]').forEach(btn=>btn.onclick=()=>{const f=getFavorites()[Number(btn.dataset.favIndex)];if(!f)return;const c=canonicalFavorite(f);mode=c.mode||'all';setListMode(mode);selectStation(c.id);closeFavoriteMenu();});
  menu.querySelectorAll('[data-fav-remove]').forEach(btn=>btn.onclick=()=>{const arr=getFavorites();arr.splice(Number(btn.dataset.favRemove),1);saveFavorites(arr);renderFavorites();syncFavorite();});
 }
@@ -3485,7 +3485,7 @@ async function nearbyStations(lat,lon,radius=50){
 function renderNearby(arr){
  if(!arr.length){$('nearby').innerHTML='Keine Küstenmessstelle im gewählten Umkreis gefunden.';return;}
  $('nearby').innerHTML=arr.map(s=>`<div class="stationitem" data-near="${esc(s.uuid)}"><b>${esc(s.longname||s.shortname||'Pegel')}</b><div class="small">${esc(s.water?.longname||'')} · ${s.distance.toFixed(1)} km</div></div>`).join('');
- document.querySelectorAll('[data-near]').forEach(x=>x.onclick=()=>{mode='po';$('tabBsh').classList.remove('active');$('tabPo').classList.add('active');renderList();selectStation(x.dataset.near)});
+ document.querySelectorAll('[data-near]').forEach(x=>x.onclick=()=>{mode='po';listMode='po';$('tabBsh').classList.remove('active');$('tabPo').classList.add('active');renderList();selectStation(x.dataset.near)});
 }
 function nearbyLocationError(err){
  const insecure=location.protocol==='http:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1';
@@ -3528,7 +3528,7 @@ $('nearbyBtn').onclick=findNearby;
 $('nearbyPlaceBtn').onclick=findNearbyByPlace;
 $('nearbyPlace').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();findNearbyByPlace();}};
 
-function setListMode(m){mode=m;['tabBsh','tabPo','tabNorth','tabBaltic'].forEach(id=>$(id)?.classList.remove('active'));const ids={bsh:'tabBsh',po:'tabPo',north:'tabNorth',baltic:'tabBaltic'};$(ids[m])?.classList.add('active');renderList();}
+function setListMode(m){mode=m;listMode=m;['tabBsh','tabPo','tabNorth','tabBaltic'].forEach(id=>$(id)?.classList.remove('active'));const ids={bsh:'tabBsh',po:'tabPo',north:'tabNorth',baltic:'tabBaltic'};$(ids[m])?.classList.add('active');renderList();}
 $('bshGuideToggle').onclick=()=>{const text=$('bshGuideText'),open=text.hidden;text.hidden=!open;$('bshGuideToggle').textContent=open?'▾ Import-Anleitung ausblenden':'▸ Import-Anleitung anzeigen';$('bshGuideToggle').setAttribute('aria-expanded',String(open))};
 $('bshArchiveSelectedBtn').onclick=()=>{
   const selected=$('bshFile').files[0];
@@ -3648,7 +3648,7 @@ $('date').onchange=async()=>{
  }
  await loadBshYear();
 };function stepYear(delta){const y=$('year');if(!y||!y.options.length)return;const next=Math.max(0,Math.min(y.options.length-1,y.selectedIndex+delta));if(next!==y.selectedIndex){y.selectedIndex=next;y.dispatchEvent(new Event('change',{bubbles:true}));}}$('yearPrev').onclick=()=>stepYear(-1);$('yearNext').onclick=()=>stepYear(1);$('range').onchange=loadHistory;$('favBtn').onclick=()=>{if(!current)return;const id=favoriteId();if(!id)return;let arr=getFavorites();const ix=arr.findIndex(f=>f.mode===mode&&f.id===id);if(ix>=0)arr.splice(ix,1);else{const station=modeForSelection||current;arr.push({mode,id,name:modeForSelection?.name||label(current),region:modeForSelection?stationRegion(modeForSelection):stationRegion(current)});}saveFavorites(arr);syncFavorite();};$('favListBtn').onclick=toggleFavoriteMenu;setInterval(tick,1000); setInterval(updateClock,1000);setInterval(loadWater,60000);
-applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();loadCatalog().then(()=>{let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode');if(saved){mode=sm||'all';$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');renderList();selectStation(saved)}renderFavorites();});
+applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();loadCatalog().then(()=>{let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode'),slm=localStorage.getItem('tiden.station.listMode');if(saved){mode=sm||'all';listMode=slm||((mode==='bsh'||mode==='po')?mode:'all');$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');renderList();selectStation(saved)}renderFavorites();});
 function setMapFullscreen(enabled){
  const card=$('coastMapCard');if(!card)return;
  card.classList.toggle('map-fullscreen',!!enabled);document.body.classList.toggle('map-is-fullscreen',!!enabled);
