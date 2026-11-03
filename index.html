@@ -1998,26 +1998,45 @@ function archiveRecordsForStation(b,items){
 }
 async function addArchiveStationsToCatalog(){
  let items;
- try{items=await getBshArchiveCatalog()}catch(e){console.warn('BSH-Archivkatalog nicht verfügbar:',e);return}
+ try{items=await getBshArchiveCatalog()}catch(e){console.warn('BSH-Archivkatalog nicht verfügbar:',e);return false}
+ if(!Array.isArray(items)||!items.length)return false;
+ const beforeCount=bshCatalog.length;
  const grouped=new Map();
  for(const item of items){
    const code=String(item.station_code||'').trim().toUpperCase();
    if(!code)continue;
    const id=archiveStationId(code);
    let b=grouped.get(id);
-   if(!b){b=bshCatalog.find(x=>x.id===id)||{id,name:item.station_name||id,region:mapCoastRegion({name:item.station_name||id}),files:{},years:[],bshAvailable:true,archiveStationCode:code};grouped.set(id,b)}
+   if(!b){
+     const current=bshCatalog.find(x=>x.id===id);
+     b=current?{...current,files:{...(current.files||{})},years:[...(current.years||[])]}:{id,name:item.station_name||id,region:mapCoastRegion({name:item.station_name||id}),files:{},years:[],bshAvailable:true,archiveStationCode:code};
+     grouped.set(id,b);
+   }
    b.name=b.name||item.station_name||id;
    b.archiveStationCode=code;
    b.archiveAvailable=true;
    b.years=[...new Set([...(b.years||[]).map(Number),Number(item.datenjahr)].filter(Number.isFinite))].sort((a,b)=>a-b);
    b.files=b.files||{};
  }
+ let changed=false;
  for(const [id,b] of grouped){
    const existing=bshCatalog.findIndex(x=>x.id===id);
-   if(existing>=0)bshCatalog[existing]={...bshCatalog[existing],...b,files:{...(bshCatalog[existing].files||{}),...(b.files||{})},years:[...new Set([...(bshCatalog[existing].years||[]).map(Number),...(b.years||[]).map(Number)])].sort((a,b)=>a-b)};
-   else bshCatalog.push(b);
+   if(existing>=0){
+     const current=bshCatalog[existing];
+     const years=[...new Set([...(current.years||[]).map(Number),...(b.years||[]).map(Number)])].sort((a,b)=>a-b);
+     const next={...current,...b,files:{...(current.files||{}),...(b.files||{})},years};
+     const differs=current.archiveAvailable!==true||
+       current.archiveStationCode!==next.archiveStationCode||
+       current.name!==next.name||
+       JSON.stringify([...(current.years||[])].map(Number).sort((a,b)=>a-b))!==JSON.stringify(years);
+     if(differs){bshCatalog[existing]=next;changed=true;}
+   }else{
+     bshCatalog.push(b);changed=true;
+   }
  }
  dedupeBshCatalog();
+ if(bshCatalog.length!==beforeCount)changed=true;
+ return changed;
 }
 async function loadOfficialBshTxtYear(bsh,year,requestIsCurrent){
  const code=archiveCodeForBsh(bsh);
@@ -2644,9 +2663,9 @@ async function loadCatalog(){
  // darf den Seitenaufbau und die erste Bedienbarkeit nicht aufhalten.
  renderStationListAndDatabase();
  // Archivstationen und -jahre unabhängig im Hintergrund ergänzen.
- addArchiveStationsToCatalog().then(()=>{
-   // Die anschließende Zuordnungsaufbereitung übernimmt den gebündelten Listen- und Datenbank-Refresh.
-   scheduleStationLinkReconciliation();
+ addArchiveStationsToCatalog().then(changed=>{
+   // Nur echte Ergänzungen am Archivkatalog erfordern einen neuen Stationsabgleich.
+   if(changed)scheduleStationLinkReconciliation();
  }).catch(e=>console.warn('BSH-Archivkatalog konnte im Hintergrund nicht ergänzt werden:',e));
  try{
    const cached=localStorage.getItem('tiden.po.catalog');
