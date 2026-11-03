@@ -2225,7 +2225,7 @@ function scheduleStationLinkReconciliation(){
    if(token!==stationLinkCacheBuildToken)return;
    bshToPoCache=nextBshToPo;poToBshCache=nextPoToBsh;
    stationLinkCacheReady=true;
-   renderList();refreshDatabase();
+   renderStationListAndDatabase();
  };
  if(typeof window.requestIdleCallback==='function'){
    window.requestIdleCallback(run,{timeout:1200});
@@ -2282,15 +2282,21 @@ function renderQuality(){
  if(poCurrent?.uuid)parts.push('<span class="ok">✓ PEGELONLINE-Station über UUID verknüpft.</span>'); else parts.push('<span class="small">– Keine PEGELONLINE-Verknüpfung.</span>');
  $('quality').innerHTML=appendHistoryGapQuality(parts.join('<br>'));
 }
-async function refreshDatabase(){
+async function refreshDatabase(mergedStations=null){
  try{
-  const merged=mergeStations();
+  const merged=Array.isArray(mergedStations)?mergedStations:mergeStations();
   const linked=merged.filter(x=>x.bsh&&x.po).length;
   $('dbInfo').textContent=`${merged.length} kombinierte Stationen · ${linked} mit BSH + PEGELONLINE · PEGELONLINE ${po.length} Messstellen · BSH ${bshCatalog.length} Tide-Stationen · HSI-SH ${HSI_STATIONS.length} Messstellen`;
  }catch(e){}
 }
 
 let mapRegion='all';
+function renderStationListAndDatabase(){
+ const merged=mergeStations();
+ renderList(merged);
+ refreshDatabase(merged);
+}
+
 function mapStations(){
  const arr=po
    .filter(x=>Number.isFinite(Number(x.latitude))&&Number.isFinite(Number(x.longitude)))
@@ -2636,7 +2642,7 @@ async function loadCatalog(){
  restoreImportedBshStations();
  // Sofort die lokal verfügbaren BSH-Stationen anzeigen. Der Supabase-Archivkatalog
  // darf den Seitenaufbau und die erste Bedienbarkeit nicht aufhalten.
- renderList(); refreshDatabase();
+ renderStationListAndDatabase();
  // Archivstationen und -jahre unabhängig im Hintergrund ergänzen.
  addArchiveStationsToCatalog().then(()=>{
    // Die anschließende Zuordnungsaufbereitung übernimmt den gebündelten Listen- und Datenbank-Refresh.
@@ -2645,7 +2651,7 @@ async function loadCatalog(){
  try{
    const cached=localStorage.getItem('tiden.po.catalog');
    if(cached){try{const parsed=JSON.parse(cached);if(Array.isArray(parsed))po=parsed;}catch(_){} }
-   renderList(); refreshDatabase(); renderMap();
+   renderStationListAndDatabase(); renderMap();
    // Nur die kompakte Stationsliste laden. Die bisherige Abfrage mit
    // includeTimeseries + includeCurrentMeasurement liefert eine sehr große
    // Antwort, die auf Safari/iPhone unnötig lange dauern kann.
@@ -2659,7 +2665,7 @@ async function loadCatalog(){
  }catch(e){
    if(!po.length)$('status').textContent='PEGELONLINE-Stationsliste momentan nicht erreichbar; BSH-Stationen bleiben auswählbar.';
  }
- renderList(); refreshDatabase(); renderMap();
+ renderStationListAndDatabase(); renderMap();
 }
 function mapCoastRegion(s){
  // Konservative Küstenklassifizierung:
@@ -2746,10 +2752,10 @@ function stationSearchText(s){
  if(s.hsi){add('HSI-SH');add(s.hsi.id);add(s.hsi.name);add(s.hsi.region);}
  return norm(parts.join(' '));
 }
-function renderList(){
+function renderList(mergedStations=null){
  const q=norm($('search').value.trim());
- // Die zusammengeführte Stationsliste nur einmal je Renderdurchlauf berechnen.
- const merged=listMode==='all'?mergeStations():null;
+ // Bei gebündelten Aktualisierungen wird die bereits berechnete Zusammenführung wiederverwendet.
+ const merged=listMode==='all'?(Array.isArray(mergedStations)?mergedStations:mergeStations()):null;
  let arr=listMode==='bsh'?bshCatalog:listMode==='po'?[...po,...hsiStationEntries()]:merged;
  if(coastalOnly && listMode!=='bsh') arr=arr.filter(s=>isCoastalStation(s));
  if(listMode==='north') arr=arr.filter(s=>stationRegion(s)==='Nordsee');
