@@ -2204,7 +2204,16 @@ function validateBsh(meta,events){
 }
 function renderQuality(){
  if(modeForSelection?.hsi){
-   $('quality').innerHTML='<span class="ok">HSI-SH · Wasserstandsdaten über den Supabase-Proxy · CSV-Qualitätsstatus 1 (qualitätsgesichert) · Typ mw.</span>';
+   const rows=hsiRowsCache.get(String(modeForSelection.hsi.id))||[];
+   if(!rows.length){
+     $('quality').innerHTML='<span class="small">HSI-SH · Qualitäsgesicherte Messwerte werden geladen …</span>';
+     return;
+   }
+   const latest=rows[rows.length-1],ts=new Date(latest.timestamp);
+   const age=Math.max(0,Date.now()-ts.getTime()),stale=age>25*3600*1000;
+   const ageHours=Math.floor(age/3600000);
+   const detail='Letzter Messwert: '+ts.toLocaleString('de-DE')+' · '+(stale?'Daten veraltet (':'Daten aktuell (')+ageHours+' Std. alt).';
+   $('quality').innerHTML='<span class="'+(stale?'warn':'ok')+'">HSI-SH · '+rows.length.toLocaleString('de-DE')+' qualitätsgesicherte Messwerte · CSV-Qualitätsstatus 1 · Typ mw.</span><br><span class="'+(stale?'warn':'small')+'">'+esc(detail)+'</span>';
    return;
  }
  const issues=validateBsh(meta,data); const parts=[];
@@ -3174,7 +3183,7 @@ async function loadWater(){
      $('waterTime').title='HSI-SH · Typ mw · Qualitätsstatus 1 · Alter: '+Math.round(age/3600000)+' Stunden';
      $('status').textContent=age>25*3600*1000?'HSI-SH: letzter verfügbarer Messwert ist älter als 25 Stunden; nicht als aktuell werten.':'HSI-SH: letzter qualitätsgesicherter Messwert geladen.';
      $('status').className=age>25*3600*1000?'small warn':'small ok';
-     $('quality').innerHTML='<span class="ok">HSI-SH · '+rows.length.toLocaleString('de-DE')+' qualitätsgesicherte Messwerte (Typ mw) geladen.</span>';
+     renderQuality();
    }catch(error){
      $('water').textContent='–';$('waterTime').textContent='';
      $('status').textContent='HSI-SH-Messwerte momentan nicht abrufbar: '+(error?.message||error);
