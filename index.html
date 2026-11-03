@@ -2204,7 +2204,7 @@ function validateBsh(meta,events){
 }
 let historyGapQuality = null;
 function appendHistoryGapQuality(html){
- return historyGapQuality && !currentBsh ? html+'<br><span class="'+(historyGapQuality.count?'warn':'small')+'">'+esc(historyGapQuality.text)+'</span>' : html;
+ return historyGapQuality ? html+'<br><span class="'+(historyGapQuality.count?'warn':'small')+'">'+esc(historyGapQuality.text)+'</span>' : html;
 }
 function renderQuality(){
  if(modeForSelection?.hsi){
