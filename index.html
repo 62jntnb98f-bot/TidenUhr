@@ -1604,7 +1604,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.17";
+const TIDENUHR_VERSION="47.18";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
@@ -2723,7 +2723,9 @@ function renderList(){
  document.querySelectorAll('.stationitem[data-id]').forEach(x=>{x.setAttribute('role','button');x.setAttribute('tabindex','0')});
  $('dbInfo').textContent=`${listMode==='all'?mergeStations().length:arr.length} Stationen im aktuellen Bereich · PEGELONLINE ${po.length} Messstellen · BSH ${bshCatalog.length} Tide-Stationen`;
 }
+let stationSelectionToken=0;
 async function selectStation(id){
+ const selectionToken=++stationSelectionToken;
  try{
  if(mode==='north'||mode==='baltic') mode='all';
  if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh||u.hsi; modeForSelection=u; } else if(mode==='po'&&String(id).startsWith('HSI:')){ const h=HSI_STATIONS.find(x=>x.id===String(id).slice(4)); if(!h){$('status').textContent='HSI-Messstelle konnte nicht gefunden werden.';$('status').className='small error';return;} mode='all'; modeForSelection={key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}; current=h; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
@@ -2755,8 +2757,11 @@ async function selectStation(id){
  if(bsh){
    // v46.70: beim Wiederöffnen der Home-Bildschirm-App lokale Importjahre erneut aus localStorage lesen.
    refreshImportedBshCatalog(bsh.id);
-   let archiveYears=[];
-   try{archiveYears=archiveRecordsForStation(bsh,await getBshArchiveCatalog()).map(x=>Number(x.datenjahr)).filter(Number.isFinite)}catch(e){console.warn('BSH-Archivjahre konnten nicht geladen werden:',e)}
+   // Nur bereits verfügbare Archivjahre synchron verwenden. Der Katalogabruf
+   // darf die Stationsauswahl nicht aufhalten.
+   const archiveYears=bshArchiveCatalogCache
+     ?archiveRecordsForStation(bsh,bshArchiveCatalogCache).map(x=>Number(x.datenjahr)).filter(Number.isFinite)
+     :[];
    const years=[...new Set([...(bsh.years||[]).map(Number),...Object.keys(bsh.files||{}).map(Number),...archiveYears])].filter(Number.isFinite).sort((a,c)=>a-c);
    let preferredYear=null;
    try{
@@ -2775,7 +2780,28 @@ async function selectStation(id){
        const first=loadLocalBsh(bsh.id,selectedYear)?.events?.find(e=>String(e.datetime||'').slice(0,4)===String(selectedYear));
        $('date').value=first?String(first.datetime).slice(0,10):`${selectedYear}-01-01`;
      }
-     await loadBshYear();
+     // Tide-Daten parallel laden; die Stationsauswahl wartet nicht auf den Archivkatalog.
+     loadBshYear().catch(e=>console.warn('BSH-Jahresdaten konnten nicht geladen werden:',e));
+   }
+   // Falls der vollständige Archivkatalog noch geladen wird, Archivjahre später
+   // ergänzen. Nur die weiterhin aktive Stationsauswahl darf aktualisiert werden.
+   if(!bshArchiveCatalogCache){
+     getBshArchiveCatalog().then(items=>{
+       if(selectionToken!==stationSelectionToken||currentBsh?.id!==bsh.id)return;
+       const extraYears=archiveRecordsForStation(bsh,items).map(x=>Number(x.datenjahr)).filter(Number.isFinite);
+       const updatedYears=[...new Set([...(bsh.years||[]).map(Number),...Object.keys(bsh.files||{}).map(Number),...extraYears])].filter(Number.isFinite).sort((a,c)=>a-c);
+       const previousYear=Number(selectedYear);
+       $('year').innerHTML=updatedYears.length?updatedYears.map(y=>`<option value="${y}">${y}</option>`).join(''):'<option>–</option>';
+       if(previousYear&&updatedYears.includes(previousYear)){
+         $('year').value=String(previousYear);
+       }else if(!selectedYear&&updatedYears.length){
+         const currentCalendarYear=Number(localDate().slice(0,4));
+         selectedYear=updatedYears.includes(currentCalendarYear)?currentCalendarYear:updatedYears[updatedYears.length-1];
+         $('year').value=String(selectedYear);
+         $('date').value=Number(selectedYear)===currentCalendarYear?localDate():`${selectedYear}-01-01`;
+         loadBshYear().catch(e=>console.warn('BSH-Jahresdaten konnten nach Archivabgleich nicht geladen werden:',e));
+       }
+     }).catch(e=>console.warn('Archivjahre konnten im Hintergrund nicht ergänzt werden:',e));
    }
  }
  else{$('year').innerHTML='<option>–</option>';}
