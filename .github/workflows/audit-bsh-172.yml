@@ -1,0 +1,46 @@
+name: BSH 172 station read-only audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'audit-data/bsh-stations-172.json'
+      - 'scripts/audit-bsh-172.py'
+      - '.github/workflows/audit-bsh-172.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bsh-172-read-only-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+      - name: Run read-only BSH and archive audit
+        run: python3 scripts/audit-bsh-172.py
+      - name: Upload complete audit reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bsh-172-audit-${{ github.run_number }}
+          path: |
+            audit-output/bsh-172-audit.json
+            audit-output/bsh-172-audit.csv
+            audit-output/bsh-172-audit.md
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Add audit summary to job summary
+        if: always()
+        run: |
+          if [ -f audit-output/bsh-172-audit.md ]; then
+            cat audit-output/bsh-172-audit.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Prüfung fehlgeschlagen; siehe Job-Log." >> "$GITHUB_STEP_SUMMARY"
+          fi
