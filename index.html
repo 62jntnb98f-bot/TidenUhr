@@ -1685,7 +1685,7 @@ const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"
 </head><body><div class="wrap"><div class="top"><h1>🌊 TidenUhr</h1><div class="muted">BSH-Gezeiten · PEGELONLINE-Wasserstand</div><div id="clock" class="muted" style="margin-top:6px"></div>
 
 </div>
-<div class="card"><div class="tabs row dynamicFilter expanded"><button id="tabAll" class="active">Küste</button><button id="tabBsh">BSH Tide</button><button id="tabPo">Wasserpegel</button><button id="tabNorth">Nordsee</button><button id="tabBaltic">Ostsee</button><button id="favListBtn">★ Favoriten</button><span class="filterChevron" aria-hidden="true">▾</span></div><div id="favoriteMenu" class="favoriteMenu" aria-label="Gespeicherte Favoriten"></div><div style="height:10px"></div><div class="searchWrap"><input id="search" class="search" placeholder="Station oder Pegel suchen …" autocomplete="off" autocapitalize="none"><button type="button" id="searchClear" class="searchClear" aria-label="Suche löschen" title="Suche löschen" hidden>×</button></div><div id="stationList" class="stationlist"></div></div>
+<div class="card"><div class="tabs row dynamicFilter expanded"><button id="tabBsh">BSH Tide</button><button id="tabPo">Wasserpegel</button><button id="tabNorth">Nordsee</button><button id="tabBaltic">Ostsee</button><button id="favListBtn">★ Favoriten</button><span class="filterChevron" aria-hidden="true">▾</span></div><div id="favoriteMenu" class="favoriteMenu" aria-label="Gespeicherte Favoriten"></div><div style="height:10px"></div><div class="searchWrap"><input id="search" class="search" placeholder="Station oder Pegel suchen …" autocomplete="off" autocapitalize="none"><button type="button" id="searchClear" class="searchClear" aria-label="Suche löschen" title="Suche löschen" hidden>×</button></div><div id="stationList" class="stationlist"></div></div>
 <div class="card"><div class="row stationHeader"><div class="grow"><b id="stationName">–</b><div class="small" id="stationMeta">Bitte Station auswählen</div><div id="sourceBadges" style="margin-top:5px"></div></div><button class="btn" id="favBtn">☆ Favorit</button></div><div class="prioritySummary" id="prioritySummary">
 <div class="priorityTile"><div class="priorityLabel">Aktueller Wasserstand</div><div class="priorityValue" id="priorityWater">–</div><div class="prioritySub" id="priorityWaterTime">Messwert</div></div>
 <div class="priorityTile"><div class="priorityLabel">Nächstes Hochwasser</div><div class="priorityValue" id="priorityHigh">–</div><div class="prioritySub" id="priorityHighSub">BSH-Vorausberechnung</div><div class="priorityNext" id="priorityHighNext"></div></div>
@@ -2986,7 +2986,7 @@ async function removeBshImport(){
  $('bshImportInfo').innerHTML='<span class="ok">✓ BSH-Datei entfernt. Der lokale Import wurde zurückgesetzt.</span>';
  const restoreMode=['all','bsh','po'].includes(previousStation?.mode)?previousStation.mode:'all';
  mode=restoreMode;
- $('tabAll').classList.toggle('active',mode==='all');
+ 
  $('tabBsh').classList.toggle('active',mode==='bsh');
  $('tabPo').classList.toggle('active',mode==='po');
  renderList();
@@ -3485,7 +3485,7 @@ async function nearbyStations(lat,lon,radius=50){
 function renderNearby(arr){
  if(!arr.length){$('nearby').innerHTML='Keine Küstenmessstelle im gewählten Umkreis gefunden.';return;}
  $('nearby').innerHTML=arr.map(s=>`<div class="stationitem" data-near="${esc(s.uuid)}"><b>${esc(s.longname||s.shortname||'Pegel')}</b><div class="small">${esc(s.water?.longname||'')} · ${s.distance.toFixed(1)} km</div></div>`).join('');
- document.querySelectorAll('[data-near]').forEach(x=>x.onclick=()=>{mode='po';$('tabAll').classList.remove('active');$('tabBsh').classList.remove('active');$('tabPo').classList.add('active');renderList();selectStation(x.dataset.near)});
+ document.querySelectorAll('[data-near]').forEach(x=>x.onclick=()=>{mode='po';$('tabBsh').classList.remove('active');$('tabPo').classList.add('active');renderList();selectStation(x.dataset.near)});
 }
 function nearbyLocationError(err){
  const insecure=location.protocol==='http:'&&location.hostname!=='localhost'&&location.hostname!=='127.0.0.1';
@@ -3528,7 +3528,7 @@ $('nearbyBtn').onclick=findNearby;
 $('nearbyPlaceBtn').onclick=findNearbyByPlace;
 $('nearbyPlace').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();findNearbyByPlace();}};
 
-function setListMode(m){mode=m;['tabAll','tabBsh','tabPo','tabNorth','tabBaltic'].forEach(id=>$(id)?.classList.remove('active'));const ids={all:'tabAll',bsh:'tabBsh',po:'tabPo',north:'tabNorth',baltic:'tabBaltic'};$(ids[m])?.classList.add('active');renderList();}
+function setListMode(m){mode=m;['tabBsh','tabPo','tabNorth','tabBaltic'].forEach(id=>$(id)?.classList.remove('active'));const ids={bsh:'tabBsh',po:'tabPo',north:'tabNorth',baltic:'tabBaltic'};$(ids[m])?.classList.add('active');renderList();}
 $('bshGuideToggle').onclick=()=>{const text=$('bshGuideText'),open=text.hidden;text.hidden=!open;$('bshGuideToggle').textContent=open?'▾ Import-Anleitung ausblenden':'▸ Import-Anleitung anzeigen';$('bshGuideToggle').setAttribute('aria-expanded',String(open))};
 $('bshArchiveSelectedBtn').onclick=()=>{
   const selected=$('bshFile').files[0];
@@ -3561,7 +3561,7 @@ $('bshArchiveSelectedBtn').onclick=()=>{
   document.getElementById('bshArchiveUpload').scrollIntoView({behavior:'smooth',block:'end'});
   archiveStatus.textContent='Datei vorbereitet. Bitte die Sicherheitsprüfung abschließen und der Archivierung ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
 };
-$('bshRemoveStatusBtn').onclick=removeBshImport;$('bshImportBtn').onclick=async()=>{try{await importBshFile($('bshFile').files[0])}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('bshFile').addEventListener('change',()=>{$('bshRemoveBtn').disabled=!$('bshFile').files.length&&!localStorage.getItem('tiden.lastBshImport')});$('bshRemoveBtn').onclick=async()=>{try{await removeBshImport()}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('tabAll').onclick=()=>setListMode('all');$('tabBsh').onclick=()=>setListMode('bsh');$('tabPo').onclick=()=>setListMode('po');$('tabNorth').onclick=()=>setListMode('north');$('tabBaltic').onclick=()=>setListMode('baltic');function syncSearchClear(){const has=!!$('search').value.trim();$('searchClear').classList.toggle('visible',has);$('searchClear').hidden=!has} $('search').oninput=()=>{renderList();syncSearchClear()};syncSearchClear();$('searchClear').onclick=()=>{$('search').value='';syncSearchClear();$('search').focus();renderList()};/* v47.01: custom calendar combines month and year selection while preserving existing date-change logic */
+$('bshRemoveStatusBtn').onclick=removeBshImport;$('bshImportBtn').onclick=async()=>{try{await importBshFile($('bshFile').files[0])}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('bshFile').addEventListener('change',()=>{$('bshRemoveBtn').disabled=!$('bshFile').files.length&&!localStorage.getItem('tiden.lastBshImport')});$('bshRemoveBtn').onclick=async()=>{try{await removeBshImport()}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('tabBsh').onclick=()=>setListMode('bsh');$('tabPo').onclick=()=>setListMode('po');$('tabNorth').onclick=()=>setListMode('north');$('tabBaltic').onclick=()=>setListMode('baltic');function syncSearchClear(){const has=!!$('search').value.trim();$('searchClear').classList.toggle('visible',has);$('searchClear').hidden=!has} $('search').oninput=()=>{renderList();syncSearchClear()};syncSearchClear();$('searchClear').onclick=()=>{$('search').value='';syncSearchClear();$('search').focus();renderList()};/* v47.01: custom calendar combines month and year selection while preserving existing date-change logic */
 (function initIntegratedDatePicker(){
  const byId=id=>document.getElementById(id),input=byId('date'),trigger=byId('datePickerTrigger'),pop=byId('datePickerPopover');if(!input||!trigger||!pop)return;
  let view=new Date((input.value||new Date().toISOString().slice(0,10))+'T12:00:00');if(Number.isNaN(view.getTime()))view=new Date();
@@ -3648,7 +3648,7 @@ $('date').onchange=async()=>{
  }
  await loadBshYear();
 };function stepYear(delta){const y=$('year');if(!y||!y.options.length)return;const next=Math.max(0,Math.min(y.options.length-1,y.selectedIndex+delta));if(next!==y.selectedIndex){y.selectedIndex=next;y.dispatchEvent(new Event('change',{bubbles:true}));}}$('yearPrev').onclick=()=>stepYear(-1);$('yearNext').onclick=()=>stepYear(1);$('range').onchange=loadHistory;$('favBtn').onclick=()=>{if(!current)return;const id=favoriteId();if(!id)return;let arr=getFavorites();const ix=arr.findIndex(f=>f.mode===mode&&f.id===id);if(ix>=0)arr.splice(ix,1);else{const station=modeForSelection||current;arr.push({mode,id,name:modeForSelection?.name||label(current),region:modeForSelection?stationRegion(modeForSelection):stationRegion(current)});}saveFavorites(arr);syncFavorite();};$('favListBtn').onclick=toggleFavoriteMenu;setInterval(tick,1000); setInterval(updateClock,1000);setInterval(loadWater,60000);
-applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();loadCatalog().then(()=>{let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode');if(saved){mode=sm||'all';$('tabAll').classList.toggle('active',mode==='all');$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');renderList();selectStation(saved)}renderFavorites();});
+applyVersion();updateClock();setTimeout(()=>checkForPublishedUpdate(),1200);(function migrateFavorite(){if(localStorage.getItem('tiden.favorites'))return;const raw=localStorage.getItem('tiden.favorite');if(!raw)return;try{const f=JSON.parse(raw);if(f&&f.id)storageSet('tiden.favorites',JSON.stringify([f]));}catch{}})();loadCatalog().then(()=>{let saved=localStorage.getItem('tiden.station.id'),sm=localStorage.getItem('tiden.station.mode');if(saved){mode=sm||'all';$('tabBsh').classList.toggle('active',mode==='bsh');$('tabPo').classList.toggle('active',mode==='po');renderList();selectStation(saved)}renderFavorites();});
 function setMapFullscreen(enabled){
  const card=$('coastMapCard');if(!card)return;
  card.classList.toggle('map-fullscreen',!!enabled);document.body.classList.toggle('map-is-fullscreen',!!enabled);
