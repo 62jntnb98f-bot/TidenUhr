@@ -1604,7 +1604,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.16";
+const TIDENUHR_VERSION="47.17";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
@@ -2593,10 +2593,13 @@ async function loadCatalog(){
    $('status').textContent='BSH-Katalog aus integrierten Projektdaten geladen.';
  }
  restoreImportedBshStations();
- // Archivstationen und -jahre aus dem produktiven Supabase-BSH-Archiv ergänzen.
- await addArchiveStationsToCatalog();
- // Sofort rendern: eingebettete Stationen und Archivstationen bleiben auch bei Netzwerkproblemen auswählbar.
+ // Sofort die lokal verfügbaren BSH-Stationen anzeigen. Der Supabase-Archivkatalog
+ // darf den Seitenaufbau und die erste Bedienbarkeit nicht aufhalten.
  renderList(); refreshDatabase();
+ // Archivstationen und -jahre unabhängig im Hintergrund ergänzen.
+ addArchiveStationsToCatalog().then(()=>{
+   renderList(); refreshDatabase();
+ }).catch(e=>console.warn('BSH-Archivkatalog konnte im Hintergrund nicht ergänzt werden:',e));
  try{
    const cached=localStorage.getItem('tiden.po.catalog');
    if(cached){try{const parsed=JSON.parse(cached);if(Array.isArray(parsed))po=parsed;}catch(_){} }
