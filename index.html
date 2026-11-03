@@ -1876,6 +1876,10 @@ async function checkBshTxtDirectDownload(){
    return;
  }
  check.disabled=true;check.textContent='BSH-Datei wird geprüft …';
+ // Vor jeder neuen Prüfung einen alten Download-Link sicher entwerten.
+ window.tidenuhrBshDirectUrl='';
+ if(link){link.hidden=true;link.removeAttribute('href');link.removeAttribute('download');}
+ window.tidenuhrUpdateArchiveUploadButton?.();
  let directUrl=null;
  try{
    let candidate=selectedBsh||(poStation?findBshForPo(poStation):null);
@@ -1941,7 +1945,7 @@ async function checkBshTxtDirectDownload(){
    url.searchParams.set('path','/vb_hwnw/deu'+year);
    url.searchParams.set('files','DE__'+code+year+'.txt');
    directUrl=url.href;
-   window.tidenuhrBshDirectUrl=url.href;
+   // Die URL bleibt intern, bis der Server die BSH-Datei vollständig bestätigt hat.
    // Serverseitige Prüfung vermeidet Safari-CORS-Probleme.
    // Ein Downloadlink wird ausschließlich bei bestätigter BSH-Datei angeboten.
    const verifyResponse=await fetch(BSH_ARCHIVE_API+'/bsh-direktdownload-pruefen',{
@@ -1958,19 +1962,19 @@ async function checkBshTxtDirectDownload(){
    directUrl=verified.downloadUrl||url.href;
    window.tidenuhrBshDirectUrl=directUrl;
    if(link){link.href=directUrl;link.download=verified.filename||('DE__'+code+year+'.txt');link.hidden=false;}
+   window.tidenuhrUpdateArchiveUploadButton?.();
    status.textContent='BSH-Direktdatei bestätigt: '+(verified.stationName||candidate.name)+' · '+year+' · '+Number(verified.vb2Records||0)+' HW/NW-Datensätze. Sie ist für dieses Jahr noch nicht im Archiv eingetragen.';
    status.className='small ok';
  }catch(e){
    const err=String(e?.message||e);
-   if(directUrl&&link&&/load failed|failed to fetch|networkerror|network error/i.test(err)){
-     link.href=directUrl;link.hidden=false;
-     status.textContent='Der BSH-Download-Link wurde erstellt. Safari kann den Dateiinhalt hier nicht automatisch prüfen (CORS-/Netzwerkbeschränkung). Die Datei lässt sich über „BSH-TXT herunterladen“ direkt laden; die automatische Inhaltsprüfung ist in diesem Browser nicht verfügbar.';
-   }else{
-     status.textContent='Kein bestätigter BSH-Direktdownload für diese Station und dieses Jahr: '+err;
-   }
+   // Ohne positive Serverbestätigung weder Link noch Upload-Freigabe stehen lassen.
+   window.tidenuhrBshDirectUrl='';
+   if(link){link.hidden=true;link.removeAttribute('href');link.removeAttribute('download');}
+   status.textContent='BSH-Datei nicht bestätigt: '+err+'. Es wurde kein Download freigegeben und nichts archiviert.';
    status.className='small warn';
  }finally{
    check.disabled=false;check.textContent='BSH-TXT-Direktdownload erneut prüfen';
+   window.tidenuhrUpdateArchiveUploadButton?.();
  }
 }
 function archiveCodeForBsh(b){
@@ -4316,6 +4320,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
     const directUrl = String(window.tidenuhrBshDirectUrl || "").trim();
     button.disabled = !(turnstileToken && (fileInput.files.length || directUrl) && consent.checked);
   }
+  window.tidenuhrUpdateArchiveUploadButton = updateButton;
 
   window.tidenuhrArchiveTurnstileLoaded = function () {
     if (!window.turnstile) {
