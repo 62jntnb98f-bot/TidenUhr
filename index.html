@@ -1604,7 +1604,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.18";
+const TIDENUHR_VERSION="47.19";
 const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
@@ -2153,7 +2153,7 @@ function verifiedLinkForPo(p){
  const number=String(p?.number||'').trim();
  return VERIFIED_BSH_PO_LINKS.find(x=>x.poNumber===number)||null;
 }
-function findPoForBsh(b){
+function findPoForBshUncached(b){
  const waterUuid=b.waterUuid||b.uuid||null;
  if(waterUuid){const byU=po.find(x=>x.uuid===waterUuid);if(byU)return byU;}
  const verified=verifiedLinkForBsh(b);
@@ -2169,7 +2169,7 @@ function findPoForBsh(b){
  // können eigenständige Messstellen sein und dürfen nicht verwechselt werden.
  return null;
 }
-function findBshForPo(p){
+function findBshForPoUncached(p){
  // Kartenpunkte stammen aus PEGELONLINE, während die Tidezeiten aus dem
  // BSH-Katalog kommen. Verifizierte A13-Zuordnungen haben Vorrang vor
  // Namens-/Aliasabgleichen, damit keine ähnlich benannte Station gewinnt.
@@ -2191,6 +2191,47 @@ function findBshForPo(p){
  // Keine Zuordnung allein über räumliche Nähe oder Teilstrings:
  // ein PEGELONLINE-Pegel ohne eindeutige BSH-Kennung bleibt ein Wasserpegel.
  return null;
+}
+
+// Stationsabgleich vorberechnen, sobald BSH- und PEGELONLINE-Kataloge bereitstehen.
+// Die bisherige Zuordnungslogik bleibt unverändert; nur ihre Ergebnisse werden
+// für die wiederholten Listen-/Karten-Neuaufbauten zwischengespeichert.
+let stationLinkCacheReady=false,stationLinkCacheBuildToken=0;
+let bshToPoCache=new WeakMap(),poToBshCache=new WeakMap();
+function findPoForBsh(b){
+ if(stationLinkCacheReady&&b&&typeof b==='object'&&bshToPoCache.has(b))return bshToPoCache.get(b);
+ return findPoForBshUncached(b);
+}
+function findBshForPo(p){
+ if(stationLinkCacheReady&&p&&typeof p==='object'&&poToBshCache.has(p))return poToBshCache.get(p);
+ return findBshForPoUncached(p);
+}
+function scheduleStationLinkReconciliation(){
+ const token=++stationLinkCacheBuildToken;
+ stationLinkCacheReady=false;
+ const run=()=>{
+   if(token!==stationLinkCacheBuildToken)return;
+   const nextBshToPo=new WeakMap(),nextPoToBsh=new WeakMap();
+   for(const b of bshCatalog){
+     if(!b||typeof b!=='object')continue;
+     const match=findPoForBshUncached(b);
+     nextBshToPo.set(b,match||null);
+   }
+   for(const p of po){
+     if(!p||typeof p!=='object')continue;
+     const match=findBshForPoUncached(p);
+     nextPoToBsh.set(p,match||null);
+   }
+   if(token!==stationLinkCacheBuildToken)return;
+   bshToPoCache=nextBshToPo;poToBshCache=nextPoToBsh;
+   stationLinkCacheReady=true;
+   renderList();refreshDatabase();
+ };
+ if(typeof window.requestIdleCallback==='function'){
+   window.requestIdleCallback(run,{timeout:1200});
+ }else{
+   setTimeout(run,120);
+ }
 }
 function mergeStations(){
  // BSH und PEGELONLINE werden über eine kanonische Stationsidentität
@@ -2599,6 +2640,7 @@ async function loadCatalog(){
  // Archivstationen und -jahre unabhängig im Hintergrund ergänzen.
  addArchiveStationsToCatalog().then(()=>{
    renderList(); refreshDatabase();
+   scheduleStationLinkReconciliation();
  }).catch(e=>console.warn('BSH-Archivkatalog konnte im Hintergrund nicht ergänzt werden:',e));
  try{
    const cached=localStorage.getItem('tiden.po.catalog');
@@ -2612,6 +2654,7 @@ async function loadCatalog(){
    if(Array.isArray(fresh)){po=fresh;storageSet('tiden.po.catalog',JSON.stringify(po));
      $('status').textContent=`PEGELONLINE-Stationsliste geladen: ${po.length} Messstellen.`;
      $('status').className='small ok';
+     scheduleStationLinkReconciliation();
    }
  }catch(e){
    if(!po.length)$('status').textContent='PEGELONLINE-Stationsliste momentan nicht erreichbar; BSH-Stationen bleiben auswählbar.';
