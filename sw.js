@@ -1,11 +1,12 @@
 /* TidenUhr Service Worker v46.70
    Navigation: network-first; cache is only the offline fallback.
    LocalStorage (BSH imports and favorites) is not touched by this worker. */
-const CACHE = 'tiden-v46-70-2026';
+const CACHE = 'tiden-v47-24-2026';
 const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
+  './audit-data/bsh-stations-172.json',
   './data/stations.json',
   './data/DE__510P2026.json',
   './data/DE__632P2026.json',
