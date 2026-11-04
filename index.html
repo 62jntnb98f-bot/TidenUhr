@@ -2723,6 +2723,11 @@ function mapCoastRegion(s){
  const bshRegion=norm(b?.region||'');
  if(bshRegion==='nordsee') return 'Nordsee';
  if(bshRegion==='ostsee') return 'Ostsee';
+ // Der offizielle BSH-Stammdatensatz kennzeichnet Ostsee-Pegel im
+ // Stationsnamen ausdrücklich mit dem Zusatz „Ostsee“.
+ const bshName=norm(b?.name||'');
+ if(/(?:^|\\s)ostsee$/.test(bshName)) return 'Ostsee';
+ if(b?.bshnr && b?.bshGroup!==undefined) return 'Nordsee';
  const water=norm(s?.water?.longname||s?.po?.water?.longname||b?.water?.longname||'');
  const waterShort=norm(s?.water?.shortname||s?.po?.water?.shortname||b?.water?.shortname||'');
  const stationText=norm([s?.longname,s?.shortname,s?.name,b?.name].filter(Boolean).join(' '));
@@ -2735,7 +2740,7 @@ function mapCoastRegion(s){
    'ostsee','kieler foerde','kieler förde','flensburger foerde','flensburger förde',
    'schlei','schleimuende','schleimünde','eckernfoerder bucht','eckernförder bucht',
    'luebecker bucht','lübecker bucht','travemuender bucht','travemünder bucht',
-   'mecklenburger bucht','warnow','bodden','stettiner haff'
+   'mecklenburger bucht','warnow','trave','bodden','stettiner haff'
  ];
  if(balticWaters.includes(water)||balticWaters.includes(waterShort))return 'Ostsee';
  // Bei einigen PEGELONLINE-Datensätzen steht die Küstengewässerangabe nicht
@@ -2766,7 +2771,11 @@ function mapCoastRegion(s){
  }
  // WESER: der küsten-/tidebeeinflusste Abschnitt liegt im unteren Weserlauf.
  if(water==='weser'||waterShort==='weser'){
-   if(Number.isFinite(km) && km<=100) return 'Nordsee';
+   // Weser-km beginnen bei Hann. Münden erneut bei 0. Ein km-Wert <=100
+   // allein erfasst daher auch Binnenpegel. Zusätzlich muss die Station
+   // im unteren Weserlauf nördlich von 53° N liegen.
+   const latitude=Number(s?.latitude??s?.po?.latitude??b?.latitude);
+   if(Number.isFinite(km) && km<=100 && Number.isFinite(latitude) && latitude>=53) return 'Nordsee';
    return 'Weitere Gewässer';
  }
  // EMS: nur die vom WSA EMS-NORDSEE betreuten unteren Ems-Pegel werden
