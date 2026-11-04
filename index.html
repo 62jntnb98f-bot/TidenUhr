@@ -2806,7 +2806,8 @@ function stationSearchText(s){
 function renderList(mergedStations=null){
  const q=norm($('search').value.trim());
  // Bei gebündelten Aktualisierungen wird die bereits berechnete Zusammenführung wiederverwendet.
- const merged=listMode==='all'?(Array.isArray(mergedStations)?mergedStations:mergeStations()):null;
+ const merged=(listMode==='all'||listMode==='north'||listMode==='baltic')
+   ?(Array.isArray(mergedStations)?mergedStations:mergeStations()):null;
  let arr=listMode==='bsh'?bshCatalog:listMode==='po'?[...po,...hsiStationEntries()]:merged;
  if(coastalOnly && listMode!=='bsh') arr=arr.filter(s=>isCoastalStation(s));
  if(listMode==='north') arr=arr.filter(s=>stationRegion(s)==='Nordsee');
