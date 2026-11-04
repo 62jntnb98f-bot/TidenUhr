@@ -2659,7 +2659,7 @@ async function loadCatalog(){
      const code=String(g.bshnr||'').trim().toUpperCase();
      if(!code||!g.station_name)throw Error('BSH-Stammdatensatz ohne Kennung oder Stationsname.');
      return {id:'DE__'+code,name:g.station_name,bshnr:code,archiveStationCode:code,
-       region:mapCoastRegion({name:g.station_name}),latitude:Number(g.latitude),longitude:Number(g.longitude),
+       region:mapCoastRegion({name:g.station_name,bshnr:code,bshGroup:g.gauge_group}),latitude:Number(g.latitude),longitude:Number(g.longitude),
        bshGroup:g.gauge_group,seoId:g.seo_id,files:{},years:[],bshAvailable:true};
    });
    if(new Set(master.map(x=>x.bshnr)).size!==172)throw Error('BSH-Stammdaten enthalten doppelte Kennungen.');
@@ -2726,7 +2726,7 @@ function mapCoastRegion(s){
  // Der offizielle BSH-Stammdatensatz kennzeichnet Ostsee-Pegel im
  // Stationsnamen ausdrücklich mit dem Zusatz „Ostsee“.
  const bshName=norm(b?.name||'');
- if(/(?:^|\\s)ostsee$/.test(bshName)) return 'Ostsee';
+ if(bshName.endsWith('ostsee')) return 'Ostsee';
  if(b?.bshnr && b?.bshGroup!==undefined) return 'Nordsee';
  const water=norm(s?.water?.longname||s?.po?.water?.longname||b?.water?.longname||'');
  const waterShort=norm(s?.water?.shortname||s?.po?.water?.shortname||b?.water?.shortname||'');
