@@ -1604,8 +1604,8 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.23";
-const EMBEDDED_BSH_CATALOG=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
+const TIDENUHR_VERSION="47.24";
+const LEGACY_BSH_METADATA=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
 <style>.tideTime{font-weight:400!important}</style>
@@ -2585,7 +2585,7 @@ function dedupeBshCatalog(){
      }
    }
    if(cid==='KIEL-HOLTENAU'){
-     const base=EMBEDDED_BSH_CATALOG.find(x=>x.id===cid);
+     const base=LEGACY_BSH_METADATA.find(x=>x.id===cid);
      if(base){
        // Kanonischen Datensatz niemals mit dem Roh-Namen des Imports überschreiben.
        b.name=base.name; b.region=base.region; b.waterPegelNr=base.waterPegelNr; b.pegelonlineNumber=base.pegelonlineNumber; b.waterUuid=base.waterUuid; b.bshAvailable=base.bshAvailable; b.bshUrl=base.bshUrl;
@@ -2609,7 +2609,7 @@ function dedupeBshCatalog(){
    if(b.importedSourceId) existing.importedSourceId=b.importedSourceId;
  }
  const kiel=final.find(x=>x.id==='KIEL-HOLTENAU');
- if(kiel){const base=EMBEDDED_BSH_CATALOG.find(x=>x.id==='KIEL-HOLTENAU'); if(base){kiel.name=base.name;kiel.region=base.region;kiel.waterPegelNr=base.waterPegelNr;kiel.pegelonlineNumber=base.pegelonlineNumber;kiel.waterUuid=base.waterUuid;kiel.bshAvailable=base.bshAvailable;kiel.bshUrl=base.bshUrl;}}
+ if(kiel){const base=LEGACY_BSH_METADATA.find(x=>x.id==='KIEL-HOLTENAU'); if(base){kiel.name=base.name;kiel.region=base.region;kiel.waterPegelNr=base.waterPegelNr;kiel.pegelonlineNumber=base.pegelonlineNumber;kiel.waterUuid=base.waterUuid;kiel.bshAvailable=base.bshAvailable;kiel.bshUrl=base.bshUrl;}}
  bshCatalog=final;
 }
 
@@ -2645,18 +2645,41 @@ function restoreImportedBshStations(){
 }
 
 async function loadCatalog(){
- // BSH sofort bereitstellen, damit file://-Betrieb nicht auf Netzwerk-Fetches warten muss.
- bshCatalog=EMBEDDED_BSH_CATALOG.map(x=>({...x,files:{...(x.files||{})},years:[...(x.years||[])]}));
- dedupeBshCatalog();
+ // Vollständige BSH-Stammdaten unabhängig von Archivdateien laden.
+ // Die beiden früher fest eingebauten Stationen dienen nur noch als ergänzende
+ // Alt-Metadaten (z. B. lokale Husum-Datei und Kiel-PO-Verknüpfung), nicht als Katalog.
+ bshCatalog=[];
  try{
    const j=await Promise.race([
-     fetch('data/catalog.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json()}),
-     new Promise((_,rej)=>setTimeout(()=>rej(Error('catalog-timeout')),1500))
+     fetch('./audit-data/bsh-stations-172.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('BSH-Stammdaten HTTP '+r.status);return r.json()}),
+     new Promise((_,rej)=>setTimeout(()=>rej(Error('BSH-Stammdaten-Timeout')),5000))
    ]);
-   if(j && Array.isArray(j.stations) && j.stations.length)bshCatalog=j.stations;
+   if(!j||!Array.isArray(j.gauges)||j.gauges.length!==172)throw Error('BSH-Stammdaten unvollständig (erwartet: 172 Pegelstellen).');
+   const master=j.gauges.map(g=>{
+     const code=String(g.bshnr||'').trim().toUpperCase();
+     if(!code||!g.station_name)throw Error('BSH-Stammdatensatz ohne Kennung oder Stationsname.');
+     return {id:'DE__'+code,name:g.station_name,bshnr:code,archiveStationCode:code,
+       region:mapCoastRegion({name:g.station_name}),latitude:Number(g.latitude),longitude:Number(g.longitude),
+       bshGroup:g.gauge_group,seoId:g.seo_id,files:{},years:[],bshAvailable:true};
+   });
+   if(new Set(master.map(x=>x.bshnr)).size!==172)throw Error('BSH-Stammdaten enthalten doppelte Kennungen.');
+   // Frühere Zusatzinformationen exakt über BSH-Kennung ergänzen, niemals als zweite Station.
+   for(const legacy of LEGACY_BSH_METADATA){
+     const code=String(legacy.archiveStationCode||legacy.id||'').replace(/^DE__?/i,'').replace(/^KIEL-HOLTENAU$/i,'3020P').toUpperCase();
+     const target=master.find(x=>x.bshnr===code);
+     if(target)Object.assign(target,{...legacy,id:target.id,bshnr:code,archiveStationCode:code,
+       name:target.name,latitude:target.latitude,longitude:target.longitude,
+       files:{...(target.files||{}),...(legacy.files||{})},
+       years:[...new Set([...(target.years||[]),...(legacy.years||[])])].sort((a,b)=>a-b)});
+   }
+   bshCatalog=master;
    dedupeBshCatalog();
+   if(bshCatalog.length!==172)throw Error('Kanonische BSH-Prüfung ergab '+bshCatalog.length+' statt 172 Stationen.');
  }catch(e){
-   $('status').textContent='BSH-Katalog aus integrierten Projektdaten geladen.';
+   console.error('Vollständige BSH-Stammdaten konnten nicht geladen werden:',e);
+   $('status').textContent='BSH-Stammdaten konnten nicht vollständig geladen werden: '+String(e?.message||e);
+   bshCatalog=LEGACY_BSH_METADATA.map(x=>({...x,files:{...(x.files||{})},years:[...(x.years||[])]}));
+   dedupeBshCatalog();
  }
  restoreImportedBshStations();
  // Sofort die lokal verfügbaren BSH-Stationen anzeigen. Der Supabase-Archivkatalog
@@ -2924,7 +2947,7 @@ function parseBshTxtText(text, filename='BSH-TXT'){
 }
 function localBshKey(id,year){return `tiden.bsh.import.${id}.${year}`}
 function bshEquivalentIds(idOrRecord){
- const src=typeof idOrRecord==='string'?bshCatalog.find(x=>x.id===idOrRecord)||EMBEDDED_BSH_CATALOG.find(x=>x.id===idOrRecord):idOrRecord;
+ const src=typeof idOrRecord==='string'?bshCatalog.find(x=>x.id===idOrRecord)||LEGACY_BSH_METADATA.find(x=>x.id===idOrRecord):idOrRecord;
  const ids=[];
  const add=v=>{v=String(v??'').trim();if(v&&!ids.includes(v))ids.push(v)};
  if(!src)return ids;
@@ -2941,7 +2964,7 @@ function bshEquivalentIds(idOrRecord){
 }
 function canonicalBshId(idOrRecord){
  const rawId=String(typeof idOrRecord==='string'?idOrRecord:(idOrRecord?.id||'')).trim();
- const src=typeof idOrRecord==='string'?bshCatalog.find(x=>x.id===idOrRecord)||EMBEDDED_BSH_CATALOG.find(x=>x.id===idOrRecord):idOrRecord;
+ const src=typeof idOrRecord==='string'?bshCatalog.find(x=>x.id===idOrRecord)||LEGACY_BSH_METADATA.find(x=>x.id===idOrRecord):idOrRecord;
  const upperId=rawId.toUpperCase();
  // Kiel-Holtenau besitzt aus Kompatibilitätsgründen einen stabilen kanonischen Schlüssel.
  if(upperId==='DE_3020P'||upperId==='DE__3020P'||upperId==='KIEL-HOLTENAU')return 'KIEL-HOLTENAU';
@@ -2967,7 +2990,7 @@ function loadLocalBsh(id,year){
  // können denselben Import unter einer abweichenden Pegel-ID abgelegt haben.
  // Daher gespeicherte BSH-Datensätze nach Jahr und Stationskennung durchsuchen.
  try{
-   const target=typeof id==='string'?(bshCatalog.find(x=>x.id===id)||EMBEDDED_BSH_CATALOG.find(x=>x.id===id)||{id}):id;
+   const target=typeof id==='string'?(bshCatalog.find(x=>x.id===id)||LEGACY_BSH_METADATA.find(x=>x.id===id)||{id}):id;
    const targetName=norm(target?.name||target?.station||'');
    const targetPegel=String(target?.importedPegelNr||target?.pegelNr||target?.pegelnummer||target?.pegelnr||target?.waterPegelNr||target?.pegelonlineNumber||'').trim();
    for(let i=0;i<localStorage.length;i++){
@@ -3086,7 +3109,7 @@ async function removeBshImport(){
      const ids2=[canonical,...bshEquivalentIds(b)].filter(Boolean);
      for(const keyId of [...new Set(ids2)]) for(let y=2020;y<=2100;y++){if(localStorage.getItem(localBshKey(keyId,y))){hasImported=true;break}}
      if(!hasImported && b.imported){
-       const embedded=EMBEDDED_BSH_CATALOG.find(x=>x.id===canonical);
+       const embedded=LEGACY_BSH_METADATA.find(x=>x.id===canonical);
        if(embedded){Object.assign(b,JSON.parse(JSON.stringify(embedded)));}
        else bshCatalog=bshCatalog.filter(x=>x.id!==canonical);
      }
