@@ -2924,45 +2924,38 @@ function parseBshTxtText(text, filename='BSH-TXT'){
 }
 function localBshKey(id,year){return `tiden.bsh.import.${id}.${year}`}
 function bshEquivalentIds(idOrRecord){
- if(String(idOrRecord||'').trim()==='DE_3020P'){return ['KIEL-HOLTENAU','DE_3020P','9610066']}
  const src=typeof idOrRecord==='string'?bshCatalog.find(x=>x.id===idOrRecord)||EMBEDDED_BSH_CATALOG.find(x=>x.id===idOrRecord):idOrRecord;
  const ids=[];
- const add=v=>{v=String(v||'').trim();if(v&&!ids.includes(v))ids.push(v)};
+ const add=v=>{v=String(v??'').trim();if(v&&!ids.includes(v))ids.push(v)};
  if(!src)return ids;
  add(src.id);
- if(String(src.id||'')==='KIEL-HOLTENAU')add('DE_3020P'); add(src.pegelNr); add(src.pegelnummer); add(src.pegelnr); add(src.pegelonlineNumber);
- const name=norm(src.name||src.station||'');
- const num=String(src.waterPegelNr||src.pegelonlineNumber||'');
- const uuid=String(src.waterUuid||src.uuid||'');
- const all=[...bshCatalog,...EMBEDDED_BSH_CATALOG];
- for(const b of all){
-   const bn=norm(b.name||'');
-   const sameName=name.length>4&&bn.length>4&&(bn===name||bn.includes(name)||name.includes(bn));
-   const sameNum=num&&String(b.waterPegelNr||b.pegelonlineNumber||'')===num;
-   const sameUuid=uuid&&String(b.waterUuid||b.uuid||'')===uuid;
-   if(sameName||sameNum||sameUuid){add(b.id);add(b.pegelNr);add(b.pegelnummer);add(b.pegelnr);add(b.pegelonlineNumber)}
+ // Ausschließlich explizite Altkennungen derselben BSH-Station berücksichtigen.
+ // Keine Namensähnlichkeit, Teilstrings oder allgemeinen PEGELONLINE-Nummern verwenden.
+ const rawId=String(src.id||'').trim().toUpperCase();
+ const code=String(src.bshnr||src.bshNr||src.bshNumber||src.archiveStationCode||src.stationCode||src.station_code||src.downloadCode||src.pegelNr||src.pegelnummer||src.pegelnr||'').trim().replace(/^DE__?/i,'').toUpperCase();
+ if(rawId==='KIEL-HOLTENAU'||rawId==='DE_3020P'||code==='3020P'||String(src.waterPegelNr||'')==='9610066'||String(src.waterUuid||src.uuid||'')==='3ad4013f-644b-47f5-a641-44b332bfecb2'){
+   add('KIEL-HOLTENAU');add('DE_3020P');add('DE__3020P');add('3020P');
  }
+ if(code)add('DE__'+code);
  return ids;
 }
 function canonicalBshId(idOrRecord){
- const rawId=String(typeof idOrRecord==='string'?idOrRecord:(idOrRecord?.id||'' )).trim();
- if(rawId==='DE_3020P'||rawId==='KIEL-HOLTENAU')return 'KIEL-HOLTENAU';
+ const rawId=String(typeof idOrRecord==='string'?idOrRecord:(idOrRecord?.id||'')).trim();
  const src=typeof idOrRecord==='string'?bshCatalog.find(x=>x.id===idOrRecord)||EMBEDDED_BSH_CATALOG.find(x=>x.id===idOrRecord):idOrRecord;
+ const upperId=rawId.toUpperCase();
+ // Kiel-Holtenau besitzt aus Kompatibilitätsgründen einen stabilen kanonischen Schlüssel.
+ if(upperId==='DE_3020P'||upperId==='DE__3020P'||upperId==='KIEL-HOLTENAU')return 'KIEL-HOLTENAU';
  const name=norm(src?.name||src?.station||'');
- const num=String(src?.waterPegelNr||src?.pegelonlineNumber||src?.pegelNr||src?.pegelnummer||src?.pegelnr||src?.importedPegelNr||src?.number||'');
- const uuid=String(src?.waterUuid||src?.uuid||'');
- // Alle bekannten Darstellungen von Kiel-Holtenau müssen auf genau EINEN
- // BSH-Katalogeintrag zeigen. Das ist absichtlich auch namensbasiert, damit
- // alte Katalogvarianten wie „Kiel, Holtenau, Ostsee“ keinen zweiten Eintrag
- // erzeugen können.
- if(name.includes('kiel holtenau') || name.includes('kiel holtenau ostsee') || num==='9610066' || num==='DE_3020P' || uuid==='3ad4013f-644b-47f5-a641-44b332bfecb2') return 'KIEL-HOLTENAU';
- const ids=bshEquivalentIds(idOrRecord);
- if(ids.includes('KIEL-HOLTENAU') || ids.includes('DE_3020P') || ids.includes('9610066')) return 'KIEL-HOLTENAU';
- const match=[...bshCatalog,...EMBEDDED_BSH_CATALOG].find(b=>{
-   const bn=norm(b.name||'');
-   return (num&&String(b.waterPegelNr||b.pegelonlineNumber||'')===num)||(uuid&&String(b.waterUuid||b.uuid||'')===uuid)||(name.length>4&&bn.length>4&&(bn===name||bn.includes(name)||name.includes(bn)));
- });
- return match?.id||src?.id||src?.pegelNr||null;
+ const code=String(src?.bshnr||src?.bshNr||src?.bshNumber||src?.archiveStationCode||src?.stationCode||src?.station_code||src?.downloadCode||src?.pegelNr||src?.pegelnummer||src?.pegelnr||'').trim().replace(/^DE__?/i,'').toUpperCase();
+ // Nur die eindeutig bekannte Kiel-Altzuordnung darf über Zusatzmerkmale erfolgen.
+ if(code==='3020P'||name==='kiel holtenau'||name==='kiel holtenau ostsee'||String(src?.waterPegelNr||src?.pegelonlineNumber||'')==='9610066'||String(src?.waterUuid||src?.uuid||'')==='3ad4013f-644b-47f5-a641-44b332bfecb2')return 'KIEL-HOLTENAU';
+ if(/^DE__?[A-Z0-9]+$/i.test(rawId)){
+   const c=rawId.replace(/^DE__?/i,'').toUpperCase();
+   return c==='3020P'?'KIEL-HOLTENAU':'DE__'+c;
+ }
+ if(code)return code==='3020P'?'KIEL-HOLTENAU':'DE__'+code;
+ // Unbekannte/importierte IDs bleiben eigenständig. Keine unscharfe Zuordnung.
+ return rawId||null;
 }
 function loadLocalBsh(id,year){
  const ids=[canonicalBshId(id),...bshEquivalentIds(id),String(id||'')].filter(Boolean);
