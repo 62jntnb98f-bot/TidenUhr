@@ -1958,7 +1958,7 @@ async function checkBshTxtDirectDownload(){
    directUrl=verified.downloadUrl||url.href;
    window.tidenuhrBshDirectUrl=directUrl;
    if(link){link.href=directUrl;link.download=verified.filename||('DE__'+code+year+'.txt');link.hidden=false;}
-   status.textContent='BSH-Direktdatei bestätigt: '+(verified.stationName||candidate.name)+' · '+year+' · '+Number(verified.vb2Records||0)+' HW/NW-Datensätze. Sie ist für dieses Jahr noch nicht im Archiv eingetragen.';
+   status.textContent='BSH-Direktdatei bestätigt: '+(verified.stationName||candidate.name)+' · '+year+' · '+Number(verified.records||verified.vb1Records||0)+' HW/NW-Datensätze. Sie ist für dieses Jahr noch nicht im Archiv eingetragen.';
    status.className='small ok';
  }catch(e){
    const err=String(e?.message||e);
@@ -2292,7 +2292,7 @@ function validateBsh(meta,events){
  if(!meta.reference)issues.push('Bezugsniveau fehlt');
  if(!meta.timezone)issues.push('Zeitzone fehlt');
  if(!Array.isArray(events)||!events.length)issues.push('Keine HW/NW-Ereignisse');
- let prev=null; for(const e of (events||[])){if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(e.datetime))issues.push('Zeitformat ungültig'); if(!['HW','NW'].includes(e.type))issues.push('Unbekannter Ereignistyp'); if(!Number.isFinite(Number(e.height)))issues.push('Höhe ungültig'); if(prev&&e.datetime<prev)issues.push('Ereignisse nicht chronologisch'); prev=e.datetime;}
+ let prev=null; for(const e of (events||[])){if(!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$/.test(e.datetime))issues.push('Zeitformat ungültig'); if(!['HW','NW'].includes(e.type))issues.push('Unbekannter Ereignistyp'); if(e.height!==null&&e.height!==undefined&&!Number.isFinite(Number(e.height)))issues.push('Höhe ungültig'); if(prev&&e.datetime<prev)issues.push('Ereignisse nicht chronologisch'); prev=e.datetime;}
  return [...new Set(issues)];
 }
 let historyGapQuality = null;
@@ -2941,16 +2941,16 @@ function parseBshTxtText(text, filename='BSH-TXT'){
  function parseDms(v,dir){const m=String(v||'').match(/(\d+)°\s*(\d+)'\s*(\d+(?:\.\d+)?)''\s*([NSWE])/i);if(!m)return null;let n=Number(m[1])+Number(m[2])/60+Number(m[3])/3600;return /[SW]/i.test(m[4])?-n:n}
  const pm=pos.match(/(\d+°\s*\d+'\s*\d+(?:\.\d+)?''\s*[NS])\s+(\d+°\s*\d+'\s*\d+(?:\.\d+)?''\s*[EW])/i);
  const latitude=pm?parseDms(pm[1],'N'):null, longitude=pm?parseDms(pm[2],'E'):null;
- // BSH-VB2-Zeilen sind nicht immer gleich aufgebaut. Vor H/N können z.B.
- // #H#, #0#H#, #1#H# usw. stehen. Deshalb wird H/N als Ereignismarker
- // gesucht und Datum, Uhrzeit und Höhe anschließend aus derselben Zeile gelesen.
+ // BSH-VB1 enthält HW/NW-Zeitpunkte ohne Höhenwerte; VB2 enthält zusätzlich Höhen.
+ // Beide Formate werden anhand des H/N-Markers und des Datums/Uhrzeit-Feldes gelesen.
  const events=[];
  const lines=String(text||'').split(/\r?\n/);
  const dateRe=/(\d{1,2})\.\s*(\d{1,2})\.(\d{4})/;
  const timeRe=/(\d{1,2}):(\d{2})/;
  const heightRe=/(-?\d+(?:[\.,]\d+)?)(?=\s*(?:#|$|[A-Za-z]))/;
  for(const line of lines){
-   if(!/^VB2#/i.test(line)) continue;
+   if(!/^VB[12]#/i.test(line)) continue;
+   const format=(line.match(/^VB([12])#/i)||[])[1];
    const parts=line.split('#');
    const markerIndex=parts.findIndex(x=>/^\s*[HN]\s*$/i.test(x));
    if(markerIndex<0) continue;
@@ -2958,12 +2958,15 @@ function parseBshTxtText(text, filename='BSH-TXT'){
    const rest=parts.slice(markerIndex+1).join('#');
    const dm=rest.match(dateRe), tm=rest.match(timeRe);
    if(!dm||!tm) continue;
-   const afterTime=rest.slice((tm.index||0)+tm[0].length);
-   const hm=afterTime.match(heightRe) || afterTime.match(/(-?\d+(?:[\.,]\d+)?)/);
-   if(!hm) continue;
-   const height=Number(hm[1].replace(',','.'));
-   if(!Number.isFinite(height)) continue;
-   events.push({datetime:`${dm[3]}-${String(dm[2]).padStart(2,'0')}-${String(dm[1]).padStart(2,'0')}T${String(tm[1]).padStart(2,'0')}:${tm[2]}`,type:typ,height});
+   let height=null;
+   if(format==='2'){
+     const afterTime=rest.slice((tm.index||0)+tm[0].length);
+     const hm=afterTime.match(heightRe) || afterTime.match(/(-?\d+(?:[\.,]\d+)?)/);
+     if(!hm) continue;
+     height=Number(hm[1].replace(',','.'));
+     if(!Number.isFinite(height)) continue;
+   }
+   events.push({datetime:`${dm[3]}-${String(dm[2]).padStart(2,'0')}-${String(dm[1]).padStart(2,'0')}T${String(tm[1]).padStart(2,'0')}:${tm[2]}`,type:typ,height,format:'VB'+format});
  }
  events.sort((a,b)=>a.datetime.localeCompare(b.datetime));
  const seen=new Set();
@@ -3660,7 +3663,7 @@ function render(){
  const tideCard=document.querySelector('#next')?.closest('.grid2')?.children?.[1]; if(tideCard) tideCard.style.display=(hasTideStation?'block':'none');updateClock();
  const d=String($('date').value||'');
  const day=data.filter(e=>{const dt=displayEvent(e);return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0')===d});
- $('events').innerHTML=day.length?day.map(e=>{const dt=displayEvent(e);return `<div class="event"><span>${dt.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</span><span class="${e.type==='HW'?'hw':'nw'}">${e.type==='HW'?'Hochwasser':'Niedrigwasser'}</span><span class="right">${Number(e.height).toFixed(2)} m</span></div>`}).join(''):'<div class="small">Keine BSH-HW/NW-Daten für diesen Tag.</div>';
+ $('events').innerHTML=day.length?day.map(e=>{const dt=displayEvent(e);return `<div class="event"><span>${dt.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</span><span class="${e.type==='HW'?'hw':'nw'}">${e.type==='HW'?'Hochwasser':'Niedrigwasser'}</span><span class="right">${e.height===null||e.height===undefined?'nur Zeitangabe':Number(e.height).toFixed(2)+' m'}</span></div>`}).join(''):'<div class="small">Keine BSH-HW/NW-Daten für diesen Tag.</div>';
  $('bshInfo').textContent=meta?`Bezugsniveau: ${meta.reference||'–'} · Zeitzone: Gesetzliche Ortszeit (MEZ/MESZ) · ${meta.eventCount||data.length} Ereignisse ${meta.year||selectedYear}`:'Keine BSH-Jahresdatei für diese Station eingebunden.';
  tick();
 }
@@ -3674,7 +3677,7 @@ function tick(){
  // wird die nächste noch bevorstehende Tide des Tages gewählt; sonst die erste Tide des Datums.
  const now=new Date();const n=data.map(e=>({...e,d:eventDate(e)})).filter(e=>e.d instanceof Date&&Number.isFinite(e.d.getTime())&&e.d>now).sort((a,b)=>a.d-b.d)[0]||dateData[0];
  $('next').textContent=`${n.d.toLocaleDateString('de-DE')} ${n.d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})} · ${n.type==='HW'?'Hochwasser':'Niedrigwasser'}`;
- $('nextHeight').textContent=`Höhe: ${Number(n.height).toFixed(2)} m`;
+ $('nextHeight').textContent=n.height===null||n.height===undefined?'Für diese BSH-Datei sind keine Höhenwerte enthalten.':`Höhe: ${Number(n.height).toFixed(2)} m`;
  const seconds=Math.floor((n.d.getTime()-Date.now())/1000);
  if(seconds<=0){$('countDays').textContent='';$('countDays').hidden=true;$('countTime').textContent='';return;}
  const days=Math.floor(seconds/86400),h=Math.floor((seconds%86400)/3600),m=Math.floor(seconds%3600/60),sec=seconds%60;
