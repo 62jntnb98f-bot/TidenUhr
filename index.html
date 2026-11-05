@@ -3640,7 +3640,7 @@ function tick(){
  // Für heute die nächste noch bevorstehende Tide des Tages wählen.
  const now=new Date();
  const n=(selectedDate===today
-   ?dateData.find(e=>e.d>now)
+   ?(dateData.find(e=>e.d>now)||dateData[0])
    :dateData[0]);
  $('next').textContent=`${n.d.toLocaleDateString('de-DE')} ${n.d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})} · ${n.type==='HW'?'Hochwasser':'Niedrigwasser'}`;
  $('nextHeight').textContent=n.height===null||n.height===undefined?'Für diese BSH-Datei sind keine Höhenwerte enthalten.':`Höhe: ${Number(n.height).toFixed(2)} m`;
