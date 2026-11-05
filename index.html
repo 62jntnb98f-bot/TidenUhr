@@ -3773,27 +3773,6 @@ $('bshTxtYearChecks')?.addEventListener('click',event=>{
    uploadStatus.textContent='Der BSH-Download für '+year+' wurde geöffnet. Nach dem Download die Datei auswählen, Sicherheitsprüfung abschließen und ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
  }
 });
-function prepareBshArchiveAfterDirectDownload(){
- const link=$('bshTxtDownload');
- if(!link||link.hidden||!link.href||link.href==='#')return;
- const card=$('bshArchiveCard'),upload=$('bshArchiveUpload');
- const file=$('bshArchiveUploadFile'),consent=$('bshArchiveConsent');
- const uploadStatus=$('bshArchiveUploadStatus');
- if(!card||!upload||!file||!consent||!uploadStatus)return;
- // Der BSH-Link öffnet den Download in einem neuen Tab. Die heruntergeladene
- // Datei kann der Browser aus Sicherheitsgründen nicht automatisch in ein
- // Datei-Auswahlfeld übertragen; deshalb wird hier die vorhandene Uploadfläche
- // vorbereitet und die manuelle Dateiauswahl ausdrücklich erklärt.
- card.open=true;
- upload.open=true;
- file.value='';
- consent.checked=false;
- consent.dispatchEvent(new Event('change',{bubbles:true}));
- uploadStatus.textContent='Der BSH-Download wurde in einem neuen Tab geöffnet. Sobald der Download abgeschlossen ist, hier unten im Feld „BSH-TXT-Datei auswählen“ genau diese heruntergeladene Datei auswählen. Danach die Sicherheitsprüfung abschließen und der Archivierung ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
- card.scrollIntoView({behavior:'smooth',block:'start'});
- upload.scrollIntoView({behavior:'smooth',block:'start'});
-}
-$('bshTxtDownload')?.addEventListener('click',prepareBshArchiveAfterDirectDownload);
 $('bshArchiveDirectDownload')?.addEventListener('click',()=>{
  const url=String(window.tidenuhrBshDirectUrl||'').trim();
  const info=$('bshArchiveDirectDownloadInfo');
