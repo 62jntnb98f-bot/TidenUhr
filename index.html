@@ -3578,12 +3578,18 @@ function updatePrioritySummary(){
  if(pw) pw.textContent=waterText||'–';
  if(pwt) pwt.textContent=waterTime||'Aktueller Messwert';
 
- const today=new Date();
- const future=data.map(e=>({...e, _dt:eventDate(e)}))
-   .filter(e=>e._dt instanceof Date && Number.isFinite(e._dt.getTime()) && e._dt>today)
+ const selectedDate=String($('date')?.value||'');
+ const todayKey=localDate();
+ const now=new Date();
+ const selectedDay=data.map(e=>({...e, _dt:eventDate(e)}))
+   .filter(e=>{
+     if(!(e._dt instanceof Date)||!Number.isFinite(e._dt.getTime())) return false;
+     const key=e._dt.getFullYear()+'-'+String(e._dt.getMonth()+1).padStart(2,'0')+'-'+String(e._dt.getDate()).padStart(2,'0');
+     return key===selectedDate && (selectedDate!==todayKey || e._dt>now);
+   })
    .sort((a,b)=>a._dt-b._dt);
- const highs=future.filter(e=>e.type==='HW').slice(0,2);
- const lows=future.filter(e=>e.type==='NW').slice(0,2);
+ const highs=selectedDay.filter(e=>e.type==='HW').slice(0,2);
+ const lows=selectedDay.filter(e=>e.type==='NW').slice(0,2);
  const high=highs[0], highNext=highs[1], low=lows[0], lowNext=lows[1];
  const fmtTime=e=>e?e._dt.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}):'–';
  const eventLabel=(e,kind)=>{
@@ -3630,9 +3636,12 @@ function tick(){
  const dateData=yearData.map(e=>({...e,d:eventDate(e)})).filter(e=>e.d.getFullYear()+'-'+String(e.d.getMonth()+1).padStart(2,'0')+'-'+String(e.d.getDate()).padStart(2,'0')===selectedDate).sort((a,b)=>a.d-b.d);
  if(!dateData.length){$('next').textContent='Keine BSH-Gezeitendaten verfügbar. Bitte eine passende BSH-Jahresdatei laden.';$('countDays').textContent='';$('countDays').hidden=true;$('countTime').textContent='';$('nextHeight').textContent='';updatePrioritySummary();return;}
  const today=localDate();
- // Die obere Tideanzeige bezieht sich auf das gewählte Datum. Nur wenn dieses heute ist,
- // wird die nächste noch bevorstehende Tide des Tages gewählt; sonst die erste Tide des Datums.
- const now=new Date();const n=data.map(e=>({...e,d:eventDate(e)})).filter(e=>e.d instanceof Date&&Number.isFinite(e.d.getTime())&&e.d>now).sort((a,b)=>a.d-b.d)[0]||dateData[0];
+ // Bei einem anderen ausgewählten Datum nur Ereignisse dieses Tages verwenden.
+ // Für heute die nächste noch bevorstehende Tide des Tages wählen.
+ const now=new Date();
+ const n=(selectedDate===today
+   ?dateData.find(e=>e.d>now)
+   :dateData[0]);
  $('next').textContent=`${n.d.toLocaleDateString('de-DE')} ${n.d.toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})} · ${n.type==='HW'?'Hochwasser':'Niedrigwasser'}`;
  $('nextHeight').textContent=n.height===null||n.height===undefined?'Für diese BSH-Datei sind keine Höhenwerte enthalten.':`Höhe: ${Number(n.height).toFixed(2)} m`;
  const seconds=Math.floor((n.d.getTime()-Date.now())/1000);
