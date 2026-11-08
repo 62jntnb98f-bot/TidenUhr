@@ -5,7 +5,7 @@
       "name": "Husum, Schleuse",
       "region": "Nordsee",
       "files": {
-        "2026": "data/DE__510P2026.json"
+        "2026": "./DE__510P2026.json"
       },
       "pegelnr": "9530020",
       "waterUuid": null
@@ -15,7 +15,7 @@
       "name": "Wyk, Föhr",
       "region": "Nordsee",
       "files": {
-        "2026": "data/DE__632P2026.json"
+        "2026": "./DE__632P2026.json"
       },
       "pegelnr": null,
       "waterUuid": null
@@ -34,5 +34,5 @@
   ],
   "version": "v6",
   "autoYears": true,
-  "note": "BSH-Jahre werden aus data/catalog.json erkannt; PEGELONLINE-Stationen werden dynamisch geladen."
+  "note": "BSH-Jahre werden aus ./catalog.json erkannt; PEGELONLINE-Stationen werden dynamisch geladen."
 }
