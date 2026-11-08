@@ -1,35 +1,32 @@
-TidenUhr v45.2 – iPhone/PWA-Paket
-====================================
+TidenUhr v47.37 – iPhone / PWA
+==============================
 
-Dieses Paket ist die statische iPhone-Version der TidenUhr.
+Diese Datei beschreibt den produktiven GitHub-Pages-Stand.
 
-Wichtig:
-- Es wird KEIN Windows-Server benötigt.
-- Es gibt keine .BAT- oder PowerShell-Datei in diesem Paket.
-- Die TidenUhr läuft als normale Web-App/PWA in Safari.
-- Die lokalen BSH-Daten und das Offline-Caching bleiben erhalten.
-- Der Button „BSH-Originaltabelle ↗“ führt direkt zur offiziellen BSH-Seite:
-  https://gezeiten.bsh.de/kiel_holtenau
-- Für aktuelle PEGELONLINE-Werte benötigt die App eine Internetverbindung.
-- Die automatische Übernahme der aktuellen BSH-Webtabelle hängt davon ab,
-  ob der BSH-Webserver den direkten Browserzugriff (CORS) erlaubt. Wenn nicht,
-  bleibt die offizielle BSH-Originaltabelle als direkter Link verfügbar.
+Betrieb
+-------
+- Die TidenUhr läuft als Web-App/PWA in Safari.
+- GitHub Pages stellt die Anwendung statisch aus dem Repository-Hauptverzeichnis bereit.
+- Für aktuelle PEGELONLINE-Werte und das produktive BSH-Archiv ist eine Internetverbindung erforderlich.
+- Der Service Worker verwendet Network-First für Navigationen und einen Offline-Fallback.
+- Nach einer neuen Veröffentlichung kann ein Neuladen erforderlich sein, damit der aktuelle Service Worker aktiv wird.
 
-VERWENDUNG AUF DEM iPHONE
---------------------------
-Die Dateien können nicht sinnvoll aus der Dateien-App per file:// als
-installierbare PWA betrieben werden, weil iOS Service Worker nur über einen
-geeigneten Web-Kontext zulässt.
+Installation
+------------
+1. Die produktive GitHub-Pages-Seite in Safari öffnen.
+2. „Teilen“ wählen.
+3. „Zum Home-Bildschirm“ auswählen.
 
-Daher dieses Paket auf einen statischen Webserver/Webhosting-Dienst hochladen
-(z. B. eine eigene Website oder GitHub Pages). Danach die TidenUhr in Safari
-öffnen und über „Teilen“ -> „Zum Home-Bildschirm“ hinzufügen.
+Dateien
+-------
+Die Anwendung verwendet index.html, sw.js und manifest.webmanifest.
+Die gebündelten Jahresdateien DE__510P2026.json, DE__632P2026.json und
+KIEL-HOLTENAU2026.json liegen neben index.html im Repository-Hauptverzeichnis.
+Die Stationsmetadaten stehen in stations.json und catalog.json.
+Es wird kein data/-Unterordner vorausgesetzt.
 
-Die App benötigt keine serverseitige Programmlogik für die normale
-PWA-Funktion. Der frühere Windows-PowerShell-Server diente hauptsächlich dem
-lokalen Bereitstellen der Dateien und dem BSH-Proxy.
-
-DESKTOP-VERSION
+Quellentrennung
 ---------------
-Die ursprünglichen Windows-Serverdateien bleiben im Ausgangsprojekt erhalten.
-Dieses ZIP ist bewusst die separate, statische iPhone-Version.
+BSH-Gezeiten, PEGELONLINE-Messwerte, BSH-Wasserstandsvorhersagen und
+Supabase-BSH-Archiv bleiben getrennte Datenquellen. Die Anzeige kennzeichnet
+die jeweils verwendete Quelle.
