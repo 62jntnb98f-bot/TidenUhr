@@ -1776,8 +1776,9 @@ const HSI_STATIONS=[
  {id:'114609',name:'Lippe',region:'Ostsee'}
 ];
 function hsiStationEntries(){
- // HSI-Messstellen sind Hintergrundquellen und keine auswählbaren Tide-Stationen.
- return [];
+ // HSI-SH-Messstellen als eigenständige Wasserpegel-Auswahl anbieten.
+ // Wyk und Hooge werden im kombinierten Stationsbestand an ihre BSH-Stationen gehängt.
+ return HSI_STATIONS.map(h=>({key:'station:HSI:'+h.id,name:h.name,region:h.region,hsi:h}));
 }
 const hsiRowsCache=new Map(),hsiFetchCache=new Map();
 async function loadHsiRows(station){
@@ -2244,24 +2245,28 @@ function scheduleStationLinkReconciliation(){
  }
 }
 function mergeStations(){
- // BSH und PEGELONLINE werden über eine kanonische Stationsidentität
- // zusammengeführt. Dadurch kann ein importierter BSH-Datensatz niemals
- // zusätzlich als zweite Kiel-Holtenau-Station erscheinen.
+ // BSH, PEGELONLINE und HSI-SH werden über bestätigte Stationsidentitäten zusammengeführt.
  dedupeBshCatalog();
  const out=[]; const used=new Set();
+ const hsiByBshCode={'632P':'110005','636F':'110006'};
  bshCatalog.forEach(b=>{
    const canonical=canonicalBshId(b)||b.id;
    const p=findPoForBsh(b);
+   const code=archiveCodeForBsh(b);
+   const hsi=HSI_STATIONS.find(x=>x.id===hsiByBshCode[code])||null;
    const key='station:'+(p?.uuid||canonical);
    const region=stationRegion({...b,po:p,bsh:b});
-   out.push({key,name:canonical==='KIEL-HOLTENAU'?'Kiel-Holtenau':b.name,region,bsh:b,po:p});
+   out.push({key,name:canonical==='KIEL-HOLTENAU'?'Kiel-Holtenau':b.name,region,bsh:b,po:p,hsi});
    if(p?.uuid)used.add(p.uuid);
  });
  po.forEach(p=>{
    if(used.has(p.uuid))return;
    out.push({key:'station:'+p.uuid,name:cleanStationName(p.longname||p.shortname||'Unbenannte Station'),region:stationRegion(p),bsh:null,po:p});
  });
- // HSI-SH-Messstellen werden ausschließlich als fest zugeordnete Hintergrundquellen genutzt.
+ // HSI-Messstellen ohne bestätigte BSH-Gegenstation eigenständig aufführen.
+ for(const h of HSI_STATIONS.filter(x=>!['110005','110006'].includes(x.id))){
+   out.push({key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h});
+ }
  return out;
 }
 function validateBsh(meta,events){
@@ -2803,7 +2808,7 @@ function renderList(mergedStations=null){
  // Bei gebündelten Aktualisierungen wird die bereits berechnete Zusammenführung wiederverwendet.
  const merged=(listMode==='all'||listMode==='north'||listMode==='baltic')
    ?(Array.isArray(mergedStations)?mergedStations:mergeStations()):null;
- let arr=listMode==='bsh'?bshCatalog:listMode==='po'?po:merged;
+ let arr=listMode==='bsh'?bshCatalog:listMode==='po'?[...po,...hsiStationEntries()]:merged;
  if(coastalOnly && listMode!=='bsh') arr=arr.filter(s=>isCoastalStation(s));
  if(listMode==='north') arr=arr.filter(s=>stationRegion(s)==='Nordsee');
  if(listMode==='baltic') arr=arr.filter(s=>stationRegion(s)==='Ostsee');
