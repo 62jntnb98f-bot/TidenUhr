@@ -70,7 +70,15 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9340020",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Bremerhaven, Weser, Alter Leuchtturm",
@@ -98,7 +106,15 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9360010",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Bremen, Oslebshausen, Weser",
@@ -140,7 +156,15 @@
         "status": "unverified_link",
         "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9510095",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Cuxhaven, Steubenhöft, Elbe",
@@ -196,7 +220,15 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9510070",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Husum, Schleuse",
@@ -294,7 +326,15 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110035",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Westerland, Sylt",
@@ -322,7 +362,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110109",
+          "stationName": "Amrum Odde",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Rantumdamm, Sylt",
@@ -336,7 +385,15 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110050",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Hörnum, Sylt, West",
@@ -364,7 +421,15 @@
         "status": "unverified_link",
         "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9570050",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Osterley",
@@ -420,7 +485,15 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110048",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Langeness, Nord",
@@ -445,10 +518,19 @@
       "seo_id": "wyk",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "unverified_link",
+        "statusLabel": "Fest zugeordnet, aber fachlich noch nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-09"
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110005",
+          "stationName": "Wyk auf Föhr",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Südwesthörn",
@@ -476,7 +558,16 @@
         "status": "unverified_link",
         "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9570040",
+          "stationName": "Dagebüll",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Hooge, Anleger",
@@ -490,7 +581,15 @@
         "status": "unverified_link",
         "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110006",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Der Strand, Hamburger Hallig",
@@ -532,7 +631,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110007",
+          "stationName": "Schlüttsiel AP",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Rummelloch, West",
@@ -588,7 +696,15 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9550021",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Nordstrandischmoor",
@@ -630,7 +746,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110010",
+          "stationName": "Strucklahnungshörn AP",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Südfall, Fahrwasserkante",
@@ -658,7 +783,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110014",
+          "stationName": "Everschopsiel AP",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "St. Peter-Ording, Bad",
@@ -714,7 +848,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110026",
+          "stationName": "Meldorf Sperrwerk AP",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Friedrichskoog, Spitze",
@@ -770,7 +913,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110021",
+          "stationName": "Friedrichskoog Hafen AP",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Zehnerloch",
@@ -781,10 +933,19 @@
       "seo_id": "zehnerloch",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "unverified_link",
+        "statusLabel": "Fest zugeordnet, aber fachlich noch nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-09"
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9510010",
+          "stationName": "Zehnerloch",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Sahlenburg",
@@ -995,7 +1156,15 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110022",
+          "mappingSource": "index.html / HSI_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Itzehoe, Stör, Hafen",
@@ -1475,7 +1644,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "NLWKN",
+          "stationId": "4940",
+          "stationName": "Spieka-Neufeld",
+          "mappingSource": "index.html / NLWKN_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Wremertief",
@@ -1517,7 +1695,16 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9460010",
+          "stationName": "Robbensüdsteert",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Fedderwardersiel, Fedderwarder Priel",
@@ -1531,7 +1718,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "NLWKN",
+          "stationId": "4938",
+          "stationName": "Fedderwardersiel",
+          "mappingSource": "index.html / NLWKN_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Nordenham, Weser, Unterfeuer",
@@ -1827,7 +2023,15 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9420020",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Mellumplate, Leuchtturm",
@@ -1855,7 +2059,16 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9430030",
+          "stationName": "Schillig",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Wangertief, Horumersiel",
@@ -1883,7 +2096,16 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9430020",
+          "stationName": "Hooksielplate",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Hooksiel",
@@ -1911,7 +2133,16 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9430050",
+          "stationName": "Jade-Weser-Port",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Wilhelmshaven, Neuer Vorhafen, Seeschleuse",
@@ -1967,7 +2198,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "NLWKN",
+          "stationId": "9402",
+          "stationName": "Vareler Schleuse",
+          "mappingSource": "index.html / NLWKN_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Wangerooge, Hafen",
@@ -2051,7 +2291,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "NLWKN",
+          "stationId": "9303",
+          "stationName": "Bensersiel",
+          "mappingSource": "index.html / NLWKN_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Dornumer-Accumersiel",
@@ -2149,7 +2398,16 @@
         "status": "candidate",
         "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "NLWKN",
+          "stationId": "9301",
+          "stationName": "Leyhörn",
+          "mappingSource": "index.html / NLWKN_STATIONS",
+          "verificationStatus": "unverified"
+        }
+      ]
     },
     {
       "station_name": "Borkum, Südstrand",
@@ -2163,7 +2421,15 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9340030",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Dukegat",
@@ -2177,7 +2443,16 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3990020",
+          "stationName": "Dukegat",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Emshörn",
@@ -2191,7 +2466,16 @@
         "status": "confirmed",
         "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
         "auditDate": "2026-11-08"
-      }
+      },
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9340010",
+          "stationName": "Emshörn",
+          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
+          "verificationStatus": "confirmed"
+        }
+      ]
     },
     {
       "station_name": "Knock, Ems",
@@ -2418,5 +2702,17 @@
         "auditDate": "2026-11-08"
       }
     }
-  ]
+  ],
+  "mappingSync": {
+    "date": "2026-11-09",
+    "source": "index.html on main",
+    "description": "Provider-Zuordnungen aus den Code-Arrays PEGELONLINE, HSI-SH und NLWKN wurden in den Stationsdatensätzen gespiegelt. Eine Code-Zuordnung gilt nicht automatisch als fachlich oder live bestätigt.",
+    "counts": {
+      "pegelonline": 16,
+      "hsiSh": 12,
+      "nlwkn": 5,
+      "total": 33
+    },
+    "statusRule": "no_match wird bei vorhandener fester Provider-Zuordnung auf unverified_link angehoben; bestätigte, candidate- und unverified-Status bleiben ansonsten erhalten."
+  }
 }
