@@ -1,4 +1,4 @@
-TidenUhr v47.38 – Produktiver GitHub-Pages-Stand
+TidenUhr v47.39 – Produktiver GitHub-Pages-Stand
 =================================================
 
 Produktive Quelle
@@ -18,8 +18,8 @@ Veröffentlichung und Nutzung
 
 Wichtige Dateien
 ----------------
-- index.html: Anwendung und Versionskennung v47.38
-- sw.js: Offline-Cache und Netzwerkverhalten; Cachekennung tiden-v47-37-2026
+- index.html: Anwendung und Versionskennung v47.39
+- sw.js: Offline-Cache und Netzwerkverhalten; Cachekennung tiden-v47-39-2026
 - manifest.webmanifest: PWA-Metadaten
 - stations.json und catalog.json: Stations- und Jahresdatei-Metadaten
 - DE__510P2026.json, DE__632P2026.json und KIEL-HOLTENAU2026.json: gebündelte Jahresdateien im Repository-Hauptverzeichnis
