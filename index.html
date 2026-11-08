@@ -1772,6 +1772,7 @@ const HSI_STATIONS=[
  {id:'114629',name:'Dahme-Seebrücke',region:'Ostsee'},
  {id:'114528',name:'Füsing',region:'Ostsee'},
  {id:'110006',name:'Hooge, Anleger',region:'Nordsee'},
+ {id:'110005',name:'Wyk auf Föhr',region:'Nordsee'},
  {id:'114609',name:'Lippe',region:'Ostsee'}
 ];
 function hsiStationEntries(){
@@ -1788,19 +1789,35 @@ async function loadHsiRows(station){
    if(!response.ok)throw Error('HSI-Proxy HTTP '+response.status);
    const csv=(await response.text()).replace(/^\uFEFF/,'');
    const lines=csv.split(/\r?\n/);
-   if(lines.shift()?.trim()!=='Zeit[MEZ];wasserstand;wasserstand_status;valueType')throw Error('Ungültiges HSI-CSV-Format.');
+   const header=lines.shift()?.trim();
    const rows=[];
-   for(const line of lines){
-     if(!line.trim())continue;
-     const parts=line.split(';');
-     if(parts.length<4||String(parts[2]).trim()!=='1'||String(parts[3]).trim().toLowerCase()!=='mw')continue;
-     const time=new Date(String(parts[0]).trim().replace(' ','T'));
-     const value=Number(String(parts[1]).trim().replace(',','.'));
-     if(!Number.isFinite(value)||!Number.isFinite(time.getTime()))continue;
-     rows.push({timestamp:time.toISOString(),value,quality:'1',valueType:'mw'});
+   if(String(id)==='110005'){
+     if(header!=='#Date;Data')throw Error('Ungültiges HSI-Wyk-TXT-Format.');
+     for(const line of lines){
+       if(!line.trim())continue;
+       const match=line.trim().match(/^(\\d{4}-\\d{2}-\\d{2}) (\\d{2}:\\d{2}),([^,]+)$/);
+       if(!match)continue;
+       const valueText=match[3].trim();
+       if(!valueText||valueText.toUpperCase()==='NULL')continue;
+       const value=Number(valueText.replace(',','.'));
+       const time=new Date(match[1]+'T'+match[2]);
+       if(!Number.isFinite(value)||!Number.isFinite(time.getTime()))continue;
+       rows.push({timestamp:time.toISOString(),value,quality:'minute',valueType:'W'});
+     }
+   }else{
+     if(header!=='Zeit[MEZ];wasserstand;wasserstand_status;valueType')throw Error('Ungültiges HSI-CSV-Format.');
+     for(const line of lines){
+       if(!line.trim())continue;
+       const parts=line.split(';');
+       if(parts.length<4||String(parts[2]).trim()!=='1'||String(parts[3]).trim().toLowerCase()!=='mw')continue;
+       const time=new Date(String(parts[0]).trim().replace(' ','T'));
+       const value=Number(String(parts[1]).trim().replace(',','.'));
+       if(!Number.isFinite(value)||!Number.isFinite(time.getTime()))continue;
+       rows.push({timestamp:time.toISOString(),value,quality:'1',valueType:'mw'});
+     }
    }
    rows.sort((a,b)=>new Date(a.timestamp)-new Date(b.timestamp));
-   if(!rows.length)throw Error('Keine qualitätsgesicherten HSI-Messwerte vom Typ mw vorhanden.');
+   if(!rows.length)throw Error('Keine verwendbaren HSI-Wasserstandsmesswerte vorhanden.');
    hsiRowsCache.set(id,rows);return rows;
  })();
  hsiFetchCache.set(id,pending);
@@ -2133,7 +2150,6 @@ const VERIFIED_BSH_PO_LINKS = [
  {bshCode:'764B',name:'Hooksielplate',poNumber:'9430020'},
  {bshCode:'505P',name:'Büsum, Schleuse',poNumber:'9510095'},
  {bshCode:'624P',name:'Hörnum, Sylt, Hafen',poNumber:'9570050'},
- {bshCode:'632P',name:'Wyk, Föhr',poNumber:'110005'}
 ];
 function verifiedLinkForBsh(b){
  const code=archiveCodeForBsh(b);
@@ -2265,7 +2281,7 @@ function renderQuality(){
    const age=Math.max(0,Date.now()-ts.getTime()),stale=age>25*3600*1000;
    const ageHours=Math.floor(age/3600000);
    const detail='Letzter Messwert: '+ts.toLocaleString('de-DE')+' · '+(stale?'Daten veraltet (':'Daten aktuell (')+ageHours+' Std. alt).';
-   $('quality').innerHTML=appendHistoryGapQuality('<span class="'+(stale?'warn':'ok')+'">HSI-SH · '+rows.length.toLocaleString('de-DE')+' qualitätsgesicherte Messwerte · CSV-Qualitätsstatus 1 · Typ mw.</span><br><span class="'+(stale?'warn':'small')+'">'+esc(detail)+'</span>');return;
+   $('quality').innerHTML=appendHistoryGapQuality('<span class="'+(stale?'warn':'ok')+'">HSI-SH · '+rows.length.toLocaleString('de-DE')+' Wasserstandsmesswerte · '+(latest.valueType==='W'?'Minutenmessung · Rohdatenformat W':'CSV-Qualitätsstatus 1 · Typ mw')+'.</span><br><span class="'+(stale?'warn':'small')+'">'+esc(detail)+'</span>');return;
  }
  const issues=validateBsh(meta,data); const parts=[];
  if(currentBsh){parts.push(issues.length?'<span class="warn">⚠ BSH: '+esc(issues.join(' · '))+'</span>':'<span class="ok">✓ BSH-Daten geprüft: '+data.length+' HW/NW-Ereignisse, '+esc(meta.reference||'')+' · '+esc(meta.timezone||'')+'</span>')}else parts.push('<span class="small">– Für diese Station ist derzeit keine BSH-Jahresdatei im Projekt eingebunden.</span>');
@@ -3320,7 +3336,7 @@ async function loadWater(){
      const age=Math.max(0,Date.now()-ts.getTime());
      $('water').textContent=(latest.value/100).toFixed(2)+' m';
      $('waterTime').textContent=ts.toLocaleString('de-DE')+(age>25*3600*1000?' · letzter verfügbarer Messwert':'');
-     $('waterTime').title='HSI-SH · Typ mw · Qualitätsstatus 1 · Alter: '+Math.round(age/3600000)+' Stunden';
+     $('waterTime').title=latest.valueType==='W'?'HSI-SH · Minutenmessung · Rohwert in cm · Alter: '+Math.round(age/60000)+' Minuten':'HSI-SH · Typ mw · Qualitätsstatus 1 · Alter: '+Math.round(age/3600000)+' Stunden';
      $('status').textContent=age>25*3600*1000?'HSI-SH: letzter verfügbarer Messwert ist älter als 25 Stunden; nicht als aktuell werten.':'HSI-SH: letzter qualitätsgesicherter Messwert geladen.';
      $('status').className=age>25*3600*1000?'small warn':'small ok';
      renderQuality();
