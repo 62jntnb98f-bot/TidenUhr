@@ -3336,7 +3336,6 @@ function selectedHsiSource(){
 }
 function waterCacheKey(uuid){return 'tiden.water.'+uuid}
 function historyCacheKey(uuid,range){return 'tiden.water.history.'+uuid+'.'+range}
-function showCachedWater(uuid){try{const j=JSON.parse(localStorage.getItem(waterCacheKey(uuid))||'null');if(!j)return false;const val=Number(j.value),ts=j.timestamp?new Date(j.timestamp):null;if(!Number.isFinite(val)||!ts)return false;$('water').textContent=(val/100).toFixed(2)+' m';$('waterTime').textContent=ts.toLocaleString('de-DE')+' · zuletzt gespeichert';$('waterTime').title='Alter der gespeicherten Messung: '+Math.round(Math.max(0,Date.now()-ts.getTime())/60000)+' min';return true}catch{return false}}
 let waterRequestCache=new Map();
 async function loadWater(){
  const selectionToken=stationSelectionToken;
@@ -3349,11 +3348,19 @@ async function loadWater(){
      if(selectionToken!==stationSelectionToken||selectedHsiSource()?.id!==hsi.id)return;
      const latest=rows[rows.length-1],ts=new Date(latest.timestamp);
      const age=Math.max(0,Date.now()-ts.getTime());
-     $('water').textContent=(latest.value/100).toFixed(2)+' m';
-     $('waterTime').textContent=ts.toLocaleString('de-DE')+(age>25*3600*1000?' · letzter verfügbarer Messwert':'');
-     $('waterTime').title=latest.valueType==='W'?'HSI-SH · Minutenmessung · Rohwert in cm · Alter: '+Math.round(age/60000)+' Minuten':'HSI-SH · Typ mw · Qualitätsstatus 1 · Alter: '+Math.round(age/3600000)+' Stunden';
-     $('status').textContent=age>25*3600*1000?'HSI-SH: letzter verfügbarer Messwert ist älter als 25 Stunden; nicht als aktuell werten.':(latest.valueType==='W'?'HSI-SH: letzter Minutenmesswert geladen.':'HSI-SH: letzter qualitätsgesicherter Messwert geladen.');
-     $('status').className=age>25*3600*1000?'small warn':'small ok';
+     if(age>25*3600*1000){
+       $('water').textContent='–';
+       $('waterTime').textContent=ts.toLocaleString('de-DE')+' · veraltet';
+       $('waterTime').title='HSI-SH · letzter Messwert älter als 25 Stunden · nicht aktuell';
+       $('status').textContent='HSI-SH: letzter Messwert älter als 25 Stunden – kein aktueller Pegelstand wird angezeigt.';
+       $('status').className='small warn';
+     }else{
+       $('water').textContent=(latest.value/100).toFixed(2)+' m';
+       $('waterTime').textContent=ts.toLocaleString('de-DE');
+       $('waterTime').title=latest.valueType==='W'?'HSI-SH · Minutenmessung · Rohwert in cm · Alter: '+Math.round(age/60000)+' Minuten':'HSI-SH · Typ mw · Qualitätsstatus 1 · Alter: '+Math.round(age/3600000)+' Stunden';
+       $('status').textContent=latest.valueType==='W'?'HSI-SH: letzter Minutenmesswert geladen.':'HSI-SH: letzter qualitätsgesicherter Messwert geladen.';
+       $('status').className='small ok';
+     }
      renderQuality();
    }catch(error){
      $('water').textContent='–';$('waterTime').textContent='';
@@ -3394,12 +3401,20 @@ async function loadWater(){
   if(!Number.isFinite(val))throw Error('Ungültiger Messwert');
   storageSet(waterCacheKey(uuid),JSON.stringify(j));
   $('water').textContent=(val/100).toFixed(2)+' m';$('waterTime').textContent=ts?ts.toLocaleString('de-DE'):'–'; const mp=$('mapPopup'); if(mp?.classList.contains('visible')&&String(window._tideMapSelectedUuid||'')===String(uuid)){const w=mp.querySelector('.mapPopupWater');if(w)w.textContent=(val/100).toFixed(2)+' m';}
-  const age=ts?Math.max(0,Date.now()-ts.getTime()):null;$('waterTime').title=age!==null?'Alter der Messung: '+Math.round(age/60000)+' min':'';
-  $('status').textContent=age!==null&&age>25*3600*1000?'Wasserstand geladen – Messwert älter als 25 Stunden.':'Wasserstand aktuell geladen.';$('status').className='small ok';
+  const age=ts?Math.max(0,Date.now()-ts.getTime()):null;
+  if(age!==null&&age>25*3600*1000){
+    $('water').textContent='–';
+    $('waterTime').textContent=ts.toLocaleString('de-DE')+' · veraltet';
+    $('waterTime').title='PEGELONLINE / WSV · letzter Messwert älter als 25 Stunden · nicht aktuell';
+    $('status').textContent='PEGELONLINE: letzter Messwert älter als 25 Stunden – kein aktueller Pegelstand wird angezeigt.';
+    $('status').className='small warn';
+  }else{
+    $('waterTime').title=age!==null?'Alter der Messung: '+Math.round(age/60000)+' min':'';
+    $('status').textContent='Wasserstand aktuell geladen.';$('status').className='small ok';
+  }
  }catch(e){
   if(selectionToken!==stationSelectionToken||getWaterStation()?.uuid!==uuid)return;
-  if(showCachedWater(uuid)){$('status').textContent='Internet/API momentan nicht erreichbar – letzter gespeicherter Wasserstand wird angezeigt.';$('status').className='small warn'}
-  else{$('water').textContent='–';$('waterTime').textContent='';$('status').textContent='Aktueller Wasserstand momentan nicht erreichbar.';$('status').className='small warn'}
+  $('water').textContent='–';$('waterTime').textContent='';$('status').textContent='Aktueller Wasserstand momentan nicht erreichbar. Gespeicherte ältere Messwerte werden nicht verwendet.';$('status').className='small warn'
  }
 }
 function stationKind(){
