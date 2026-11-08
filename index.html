@@ -2191,6 +2191,10 @@ function verifiedLinkForBsh(b){
 }
 function verifiedLinkForPo(p){
  const number=String(p?.number||'').trim();
+ const auditStation=bshCatalog.find(b=>(b.providerLinks||[]).some(x=>
+   x.provider==='PEGELONLINE'&&String(x.stationId)===number));
+ if(auditStation)return {bshCode:archiveCodeForBsh(auditStation),poNumber:number,
+   name:auditStation.name,mappingSource:'BSH-Audit'};
  return VERIFIED_BSH_PO_LINKS.find(x=>x.poNumber===number)||null;
 }
 function findPoForBshUncached(b){
@@ -2274,7 +2278,7 @@ function scheduleStationLinkReconciliation(){
  }
 }
 function mergeStations(){
- // BSH, PEGELONLINE und HSI-SH werden über bestätigte Stationsidentitäten zusammengeführt.
+ // BSH, PEGELONLINE, HSI-SH und NLWKN nutzen die synchronisierten Provider-Links; Audit-Prüfstatus bleibt separat.
  dedupeBshCatalog();
  const out=[]; const used=new Set();
  const hsiByBshCode=Object.fromEntries(HSI_STATIONS.filter(x=>x.bshCode).map(x=>[x.bshCode,x.id]));
