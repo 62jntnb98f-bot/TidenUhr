@@ -9,7 +9,12 @@
       "longitude": 9.88806,
       "gauge_group": 3,
       "seo_id": "kalkgrund_leuchtturm",
-      "region": "Ostsee"
+      "region": "Ostsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Kiel, Holtenau, Ostsee",
@@ -18,7 +23,12 @@
       "longitude": 10.15694,
       "gauge_group": 3,
       "seo_id": "kiel_holtenau",
-      "region": "Ostsee"
+      "region": "Ostsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Travemünde, Ostsee",
@@ -27,7 +37,12 @@
       "longitude": 10.87222,
       "gauge_group": 3,
       "seo_id": "travemuende",
-      "region": "Ostsee"
+      "region": "Ostsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Warnemünde, Ostsee",
@@ -36,7 +51,12 @@
       "longitude": 12.10333,
       "gauge_group": 3,
       "seo_id": "warnemuende",
-      "region": "Ostsee"
+      "region": "Ostsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Borkum, Fischerbalje",
@@ -45,7 +65,12 @@
       "longitude": 6.74778,
       "gauge_group": 1,
       "seo_id": "borkum_fischerbalje",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremerhaven, Weser, Alter Leuchtturm",
@@ -54,7 +79,12 @@
       "longitude": 8.56806,
       "gauge_group": 1,
       "seo_id": "bremerhaven_alter_leuchtturm",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Norderney, Riffgat",
@@ -63,7 +93,12 @@
       "longitude": 7.15778,
       "gauge_group": 1,
       "seo_id": "norderney_riffgat",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Oslebshausen, Weser",
@@ -72,7 +107,12 @@
       "longitude": 8.71222,
       "gauge_group": 1,
       "seo_id": "bremen_oslebshausen",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Brunsbüttel, Elbe, Ost",
@@ -81,7 +121,12 @@
       "longitude": 9.14861,
       "gauge_group": 1,
       "seo_id": "brunsbuettel_ost",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Büsum, Schleuse",
@@ -90,7 +135,12 @@
       "longitude": 8.85917,
       "gauge_group": 1,
       "seo_id": "buesum_schleuse",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Cuxhaven, Steubenhöft, Elbe",
@@ -99,7 +149,12 @@
       "longitude": 8.7175,
       "gauge_group": 1,
       "seo_id": "cuxhaven_steubenhoeft",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Emden, Ems, Große Seeschleuse",
@@ -108,7 +163,12 @@
       "longitude": 7.18639,
       "gauge_group": 1,
       "seo_id": "emden_grosse_seeschleuse",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, St. Pauli, Elbe",
@@ -117,7 +177,12 @@
       "longitude": 9.97,
       "gauge_group": 1,
       "seo_id": "hamburg_st-pauli",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Helgoland, Binnenhafen",
@@ -126,7 +191,12 @@
       "longitude": 7.89,
       "gauge_group": 1,
       "seo_id": "helgoland_binnenhafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Husum, Schleuse",
@@ -135,7 +205,12 @@
       "longitude": 9.02472,
       "gauge_group": 1,
       "seo_id": "husum_schleuse",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wilhelmshaven, Alter Vorhafen",
@@ -144,7 +219,12 @@
       "longitude": 8.145,
       "gauge_group": 1,
       "seo_id": "wilhelmshaven_alter_vorhafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Fino 3",
@@ -153,7 +233,12 @@
       "longitude": 7.15806,
       "gauge_group": 1,
       "seo_id": "fino3",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Fino 1",
@@ -162,7 +247,12 @@
       "longitude": 6.58778,
       "gauge_group": 1,
       "seo_id": "fino1",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "List, Sylt, West",
@@ -171,7 +261,12 @@
       "longitude": 8.4,
       "gauge_group": 2,
       "seo_id": "list_west",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "List, Sylt, Hafen",
@@ -180,7 +275,12 @@
       "longitude": 8.44056,
       "gauge_group": 1,
       "seo_id": "list_hafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Munkmarsch, Sylt",
@@ -189,7 +289,12 @@
       "longitude": 8.36333,
       "gauge_group": 1,
       "seo_id": "munkmarsch",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Westerland, Sylt",
@@ -198,7 +303,12 @@
       "longitude": 8.27111,
       "gauge_group": 1,
       "seo_id": "westerland",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Amrum Odde, Amrum",
@@ -207,7 +317,12 @@
       "longitude": 8.33972,
       "gauge_group": 1,
       "seo_id": "amrum_odde",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Rantumdamm, Sylt",
@@ -216,7 +331,12 @@
       "longitude": 8.31333,
       "gauge_group": 1,
       "seo_id": "rantumdamm",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hörnum, Sylt, West",
@@ -225,7 +345,12 @@
       "longitude": 8.27444,
       "gauge_group": 2,
       "seo_id": "hoernum_west",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hörnum, Sylt, Hafen",
@@ -234,7 +359,12 @@
       "longitude": 8.29611,
       "gauge_group": 1,
       "seo_id": "hoernum_hafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Osterley",
@@ -243,7 +373,12 @@
       "longitude": 8.55583,
       "gauge_group": 1,
       "seo_id": "osterley",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Föhrer Ley, Nord",
@@ -252,7 +387,12 @@
       "longitude": 8.56,
       "gauge_group": 1,
       "seo_id": "foehrer_ley_nord",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "preserve_previous",
+        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wittdün, Amrum, Hafen",
@@ -261,7 +401,12 @@
       "longitude": 8.38389,
       "gauge_group": 1,
       "seo_id": "wittduen_hafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Langeness, Hilligenley",
@@ -270,7 +415,12 @@
       "longitude": 8.54722,
       "gauge_group": 2,
       "seo_id": "langeness_hilligenley",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Langeness, Nord",
@@ -279,7 +429,12 @@
       "longitude": 8.63139,
       "gauge_group": 1,
       "seo_id": "langeness_nord",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wyk, Föhr",
@@ -288,7 +443,12 @@
       "longitude": 8.57639,
       "gauge_group": 1,
       "seo_id": "wyk",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Südwesthörn",
@@ -297,7 +457,12 @@
       "longitude": 8.65972,
       "gauge_group": 2,
       "seo_id": "suedwesthoern",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "preserve_previous",
+        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Dagebüll",
@@ -306,7 +471,12 @@
       "longitude": 8.68694,
       "gauge_group": 1,
       "seo_id": "dagebuell",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hooge, Anleger",
@@ -315,7 +485,12 @@
       "longitude": 8.55639,
       "gauge_group": 1,
       "seo_id": "hooge_anleger",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Der Strand, Hamburger Hallig",
@@ -324,7 +499,12 @@
       "longitude": 8.78722,
       "gauge_group": 1,
       "seo_id": "der_strand_hamburger_hallig",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Gröde, Anleger",
@@ -333,7 +513,12 @@
       "longitude": 8.72917,
       "gauge_group": 1,
       "seo_id": "groede_anleger",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Schlüttsiel",
@@ -342,7 +527,12 @@
       "longitude": 8.755,
       "gauge_group": 1,
       "seo_id": "schluettsiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Rummelloch, West",
@@ -351,7 +541,12 @@
       "longitude": 8.55278,
       "gauge_group": 1,
       "seo_id": "rummelloch_west",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Pellworm, Hoogerfähre",
@@ -360,7 +555,12 @@
       "longitude": 8.59778,
       "gauge_group": 1,
       "seo_id": "pellworm_hoogerfaehre",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Süderoogsand",
@@ -369,7 +569,12 @@
       "longitude": 8.51917,
       "gauge_group": 1,
       "seo_id": "suederoogsand",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "preserve_previous",
+        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Pellworm, Anleger",
@@ -378,7 +583,12 @@
       "longitude": 8.70194,
       "gauge_group": 1,
       "seo_id": "pellworm_anleger",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Nordstrandischmoor",
@@ -387,7 +597,12 @@
       "longitude": 8.79778,
       "gauge_group": 1,
       "seo_id": "nordstrandischmoor",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Holmer Siel",
@@ -396,7 +611,12 @@
       "longitude": 8.86917,
       "gauge_group": 1,
       "seo_id": "holmer_siel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Strucklahnungshörn, Nordstrand, AP",
@@ -405,7 +625,12 @@
       "longitude": 8.80639,
       "gauge_group": 1,
       "seo_id": "strucklahnungshoern",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Südfall, Fahrwasserkante",
@@ -414,7 +639,12 @@
       "longitude": 8.7525,
       "gauge_group": 1,
       "seo_id": "suedfall_fahrwasserkante",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "preserve_previous",
+        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Everschopsiel",
@@ -423,7 +653,12 @@
       "longitude": 8.82778,
       "gauge_group": 1,
       "seo_id": "everschopsiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "St. Peter-Ording, Bad",
@@ -432,7 +667,12 @@
       "longitude": 8.57806,
       "gauge_group": 2,
       "seo_id": "st-peter-ording_bad",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Eider-Sperrwerk, Außenpegel",
@@ -441,7 +681,12 @@
       "longitude": 8.84194,
       "gauge_group": 1,
       "seo_id": "eider-sperrwerk_aussenpegel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Blauort, Norderpiep",
@@ -450,7 +695,12 @@
       "longitude": 8.675,
       "gauge_group": 1,
       "seo_id": "blauort_norderpiep",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Meldorf, Sperrwerk, Außenpegel",
@@ -459,7 +709,12 @@
       "longitude": 8.94917,
       "gauge_group": 1,
       "seo_id": "meldorf_sperrwerk_aussenpegel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Friedrichskoog, Spitze",
@@ -468,7 +723,12 @@
       "longitude": 8.84056,
       "gauge_group": 2,
       "seo_id": "friedrichskoog_spitze",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Trischen, West",
@@ -477,7 +737,12 @@
       "longitude": 8.65917,
       "gauge_group": 1,
       "seo_id": "trischen_west",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Mittelplate",
@@ -486,7 +751,12 @@
       "longitude": 8.73972,
       "gauge_group": 1,
       "seo_id": "mittelplate",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Friedrichskoog, Hafen, Außenpegel",
@@ -495,7 +765,12 @@
       "longitude": 8.87611,
       "gauge_group": 1,
       "seo_id": "friedrichskoog_hafen_aussenpegel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Zehnerloch",
@@ -504,7 +779,12 @@
       "longitude": 8.65833,
       "gauge_group": 1,
       "seo_id": "zehnerloch",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Sahlenburg",
@@ -513,7 +793,12 @@
       "longitude": 8.59444,
       "gauge_group": 2,
       "seo_id": "sahlenburg",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Scharhörnriff, Bake A",
@@ -522,7 +807,12 @@
       "longitude": 8.31528,
       "gauge_group": 1,
       "seo_id": "scharhoernriff_bake_a",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Scharhörn, Bake C",
@@ -531,7 +821,12 @@
       "longitude": 8.46806,
       "gauge_group": 1,
       "seo_id": "scharhoern_bake_c",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Neuwerk, Anleger",
@@ -540,7 +835,12 @@
       "longitude": 8.48639,
       "gauge_group": 1,
       "seo_id": "neuwerk_anleger",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Kaiser-Wilhelm-Koog, Elbe",
@@ -549,7 +849,12 @@
       "longitude": 8.91667,
       "gauge_group": 2,
       "seo_id": "kaiser_wilhelm_koog",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Neufeld, Hafen",
@@ -558,7 +863,12 @@
       "longitude": 9.0225,
       "gauge_group": 2,
       "seo_id": "neufeld_hafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Otterndorf, Elbe",
@@ -567,7 +877,12 @@
       "longitude": 8.87083,
       "gauge_group": 1,
       "seo_id": "otterndorf",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Osteriff, Elbe",
@@ -576,7 +891,12 @@
       "longitude": 9.03167,
       "gauge_group": 1,
       "seo_id": "osteriff",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Oberndorf, Oste",
@@ -586,7 +906,12 @@
       "gauge_group": 2,
       "seo_id": "oberndorf",
       "region": "Binnengewässer",
-      "region_note": "Grenzfall Oste: konservativ Binnengewässer"
+      "region_note": "Grenzfall Oste: konservativ Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Belum, Oste",
@@ -595,7 +920,12 @@
       "longitude": 9.03722,
       "gauge_group": 1,
       "seo_id": "belum",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hechthausen, Oste",
@@ -604,7 +934,12 @@
       "longitude": 9.25278,
       "gauge_group": 1,
       "seo_id": "hechthausen",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremervörde, Oste",
@@ -613,7 +948,12 @@
       "longitude": 9.15472,
       "gauge_group": 1,
       "seo_id": "bremervoerde",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Brokdorf, Elbe",
@@ -622,7 +962,12 @@
       "longitude": 9.31611,
       "gauge_group": 1,
       "seo_id": "brokdorf",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Stör-Sperrwerk, Außenpegel",
@@ -631,7 +976,12 @@
       "longitude": 9.40111,
       "gauge_group": 1,
       "seo_id": "stoer-sperrwerk_aussenpegel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Kasenort, Stör",
@@ -640,7 +990,12 @@
       "longitude": 9.40944,
       "gauge_group": 1,
       "seo_id": "kasenort",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Itzehoe, Stör, Hafen",
@@ -649,7 +1004,12 @@
       "longitude": 9.50056,
       "gauge_group": 1,
       "seo_id": "itzehoe_hafen",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Breitenberg, Stör",
@@ -658,7 +1018,12 @@
       "longitude": 9.63222,
       "gauge_group": 1,
       "seo_id": "breitenberg",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Grönhude, Stör",
@@ -667,7 +1032,12 @@
       "longitude": 9.69083,
       "gauge_group": 1,
       "seo_id": "groenhude",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Glückstadt, Elbe",
@@ -676,7 +1046,12 @@
       "longitude": 9.40944,
       "gauge_group": 1,
       "seo_id": "glueckstadt",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wischhafen, Elbe, Sperrwerk",
@@ -685,7 +1060,12 @@
       "longitude": 9.34111,
       "gauge_group": 2,
       "seo_id": "wischhafen_sperrwerk",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Krautsand, Elbe, Reede",
@@ -694,7 +1074,12 @@
       "longitude": 9.39167,
       "gauge_group": 1,
       "seo_id": "krautsand",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Kollmar, Kamperreihe, Elbe",
@@ -703,7 +1088,12 @@
       "longitude": 9.46083,
       "gauge_group": 1,
       "seo_id": "kollmar_kamperreihe",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Krückau-Sperrwerk, Binnenpegel",
@@ -713,7 +1103,12 @@
       "gauge_group": 1,
       "seo_id": "krueckau-sperrwerk_binnenpegel",
       "region": "Binnengewässer",
-      "region_note": "BSH-Bezeichnung ausdrücklich Binnenpegel"
+      "region_note": "BSH-Bezeichnung ausdrücklich Binnenpegel",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Elmshorn, Hafen, Krückau",
@@ -723,7 +1118,12 @@
       "gauge_group": 1,
       "seo_id": "elmshorn_hafen",
       "region": "Nordsee",
-      "region_note": "Grenzfall Krückau/Elmshorn: Nordsee gemäß abgeschlossener Grenzfallentscheidung"
+      "region_note": "Grenzfall Krückau/Elmshorn: Nordsee gemäß abgeschlossener Grenzfallentscheidung",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Grauerort, Elbe, Reede",
@@ -732,7 +1132,12 @@
       "longitude": 9.49472,
       "gauge_group": 1,
       "seo_id": "grauerort",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Pinnau-Sperrwerk, Binnenpegel",
@@ -742,7 +1147,12 @@
       "gauge_group": 1,
       "seo_id": "pinnau-sperrwerk_binnenpegel",
       "region": "Binnengewässer",
-      "region_note": "BSH-Bezeichnung ausdrücklich Binnenpegel"
+      "region_note": "BSH-Bezeichnung ausdrücklich Binnenpegel",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Uetersen, Pinnau",
@@ -752,7 +1162,12 @@
       "gauge_group": 1,
       "seo_id": "uetersen",
       "region": "Binnengewässer",
-      "region_note": "Grenzfall Pinnau/Uetersen: Binnengewässer"
+      "region_note": "Grenzfall Pinnau/Uetersen: Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Stadersand, Schwinge",
@@ -761,7 +1176,12 @@
       "longitude": 9.52667,
       "gauge_group": 1,
       "seo_id": "stadersand",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Stade, Schwinge",
@@ -770,7 +1190,12 @@
       "longitude": 9.48,
       "gauge_group": 2,
       "seo_id": "stade",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hetlingen, Elbe",
@@ -779,7 +1204,12 @@
       "longitude": 9.58444,
       "gauge_group": 1,
       "seo_id": "hetlingen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Lühort, Lühe",
@@ -788,7 +1218,12 @@
       "longitude": 9.63361,
       "gauge_group": 1,
       "seo_id": "luehort",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Horneburg, Lühe",
@@ -797,7 +1232,12 @@
       "longitude": 9.59083,
       "gauge_group": 1,
       "seo_id": "horneburg",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Schulau, Elbe",
@@ -806,7 +1246,12 @@
       "longitude": 9.70333,
       "gauge_group": 1,
       "seo_id": "schulau",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Blankenese, Elbe, Unterfeuer",
@@ -815,7 +1260,12 @@
       "longitude": 9.79583,
       "gauge_group": 1,
       "seo_id": "hamburg_blankenese",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Cranz, Este-Sperrwerk, AP",
@@ -824,7 +1274,12 @@
       "longitude": 9.79167,
       "gauge_group": 1,
       "seo_id": "hamburg_cranz",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Buxtehude, Este",
@@ -833,7 +1288,12 @@
       "longitude": 9.70333,
       "gauge_group": 1,
       "seo_id": "buxtehude",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Seemannshöft, Elbe",
@@ -842,7 +1302,12 @@
       "longitude": 9.88083,
       "gauge_group": 1,
       "seo_id": "hamburg_seemannshoeft",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Harburg, Elbe, Schleuse",
@@ -851,7 +1316,12 @@
       "longitude": 9.99194,
       "gauge_group": 1,
       "seo_id": "hamburg_harburg",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Peute, Elbe",
@@ -860,7 +1330,12 @@
       "longitude": 10.03333,
       "gauge_group": 2,
       "seo_id": "hamburg_peute",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Dove-Elbe, Elbe, Einfahrt",
@@ -869,7 +1344,12 @@
       "longitude": 10.06167,
       "gauge_group": 1,
       "seo_id": "hamburg_dove-elbe_einfahrt",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Bunthaus, Elbe",
@@ -878,7 +1358,12 @@
       "longitude": 10.06389,
       "gauge_group": 1,
       "seo_id": "hamburg_bunthaus",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Ilmenau-Sperrwerk, Außenpegel",
@@ -887,7 +1372,12 @@
       "longitude": 10.17972,
       "gauge_group": 1,
       "seo_id": "ilmenau-sperrwerk_aussenpegel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Fahrenholz, Ilmenau",
@@ -896,7 +1386,12 @@
       "longitude": 10.31556,
       "gauge_group": 1,
       "seo_id": "fahrenholz",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Over, Elbe",
@@ -905,7 +1400,12 @@
       "longitude": 10.10111,
       "gauge_group": 1,
       "seo_id": "over",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Zollenspieker, Elbe",
@@ -914,7 +1414,12 @@
       "longitude": 10.18528,
       "gauge_group": 1,
       "seo_id": "hamburg_zollenspieker",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hamburg, Altengamme, Elbe",
@@ -923,7 +1428,12 @@
       "longitude": 10.2975,
       "gauge_group": 1,
       "seo_id": "hamburg_altengamme",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Geesthacht, Elbe, Wehr, Unterpegel",
@@ -932,7 +1442,12 @@
       "longitude": 10.33472,
       "gauge_group": 1,
       "seo_id": "geesthacht_wehr_unterpegel",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Alte Weser, Leuchtturm",
@@ -941,7 +1456,12 @@
       "longitude": 8.1275,
       "gauge_group": 1,
       "seo_id": "alte_weser_leuchtturm",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Spieka Neufeld",
@@ -950,7 +1470,12 @@
       "longitude": 8.55306,
       "gauge_group": 1,
       "seo_id": "spieka_neufeld",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wremertief",
@@ -959,7 +1484,12 @@
       "longitude": 8.49472,
       "gauge_group": 1,
       "seo_id": "wremertief",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Dwarsgat, Unterfeuer",
@@ -968,7 +1498,12 @@
       "longitude": 8.3075,
       "gauge_group": 1,
       "seo_id": "dwarsgat",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Robbensüdsteert",
@@ -977,7 +1512,12 @@
       "longitude": 8.44528,
       "gauge_group": 1,
       "seo_id": "robbensuedsteert",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Fedderwardersiel, Fedderwarder Priel",
@@ -986,7 +1526,12 @@
       "longitude": 8.35444,
       "gauge_group": 1,
       "seo_id": "fedderwardersiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Nordenham, Weser, Unterfeuer",
@@ -995,7 +1540,12 @@
       "longitude": 8.48806,
       "gauge_group": 1,
       "seo_id": "nordenham",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Rechtenfleth, Weser",
@@ -1004,7 +1554,12 @@
       "longitude": 8.50056,
       "gauge_group": 1,
       "seo_id": "rechtenfleth",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Brake, Weser",
@@ -1014,7 +1569,12 @@
       "gauge_group": 1,
       "seo_id": "brake",
       "region": "Binnengewässer",
-      "region_note": "Grenzfall Weser/Brake: Binnengewässer nach festgelegter WRRL-Abgrenzung"
+      "region_note": "Grenzfall Weser/Brake: Binnengewässer nach festgelegter WRRL-Abgrenzung",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Elsfleth Ohrt, Hunte",
@@ -1023,7 +1583,12 @@
       "longitude": 8.46,
       "gauge_group": 1,
       "seo_id": "elsfleth_ohrt",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Elsfleth, Weser",
@@ -1032,7 +1597,12 @@
       "longitude": 8.48139,
       "gauge_group": 1,
       "seo_id": "elsfleth",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Buttelerhörne, Hunte",
@@ -1041,7 +1611,12 @@
       "longitude": 8.4125,
       "gauge_group": 1,
       "seo_id": "buttelerhoerne",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Huntebrück, Hunte",
@@ -1051,7 +1626,12 @@
       "gauge_group": 1,
       "seo_id": "huntebrueck",
       "region": "Binnengewässer",
-      "region_note": "Grenzfall Huntebrück: Grenzlinie; konservativ Binnengewässer"
+      "region_note": "Grenzfall Huntebrück: Grenzlinie; konservativ Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hollersiel, Hunte",
@@ -1060,7 +1640,12 @@
       "longitude": 8.37861,
       "gauge_group": 1,
       "seo_id": "hollersiel",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Reithörne, Hunte",
@@ -1069,7 +1654,12 @@
       "longitude": 8.3225,
       "gauge_group": 1,
       "seo_id": "reithoerne",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Oldenburg, Drielake, Hunte",
@@ -1078,7 +1668,12 @@
       "longitude": 8.23417,
       "gauge_group": 1,
       "seo_id": "oldenburg_drielake",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Farge, Weser",
@@ -1087,7 +1682,12 @@
       "longitude": 8.51028,
       "gauge_group": 1,
       "seo_id": "bremen_farge",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Wasserhorst, Lesum",
@@ -1096,7 +1696,12 @@
       "longitude": 8.71833,
       "gauge_group": 1,
       "seo_id": "bremen_wasserhorst",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Ritterhude, Hamme",
@@ -1105,7 +1710,12 @@
       "longitude": 8.76333,
       "gauge_group": 1,
       "seo_id": "ritterhude",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Niederblockland, Wümme",
@@ -1114,7 +1724,12 @@
       "longitude": 8.82639,
       "gauge_group": 1,
       "seo_id": "bremen_niederblockland",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Borgfeld, Wümme",
@@ -1123,7 +1738,12 @@
       "longitude": 8.89444,
       "gauge_group": 1,
       "seo_id": "bremen_borgfeld",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Ochtum, Sperrwerk, Außenpegel",
@@ -1132,7 +1752,12 @@
       "longitude": 8.64889,
       "gauge_group": 2,
       "seo_id": "ochtum-sperrwerk_aussenpegel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Vegesack, Weser",
@@ -1141,7 +1766,12 @@
       "longitude": 8.61944,
       "gauge_group": 1,
       "seo_id": "bremen_vegesack",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Wilhelm-Kaisen-Brücke, Weser",
@@ -1150,7 +1780,12 @@
       "longitude": 8.80361,
       "gauge_group": 1,
       "seo_id": "bremen_wilhelm-kaisen-bruecke",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bremen, Weserwehr, Weser",
@@ -1159,7 +1794,12 @@
       "longitude": 8.85472,
       "gauge_group": 1,
       "seo_id": "bremen_weserwehr",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wangerooge, Langes Riff, Nord",
@@ -1168,7 +1808,12 @@
       "longitude": 7.92917,
       "gauge_group": 1,
       "seo_id": "wangerooge_nord",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wangerooge, Ost",
@@ -1177,7 +1822,12 @@
       "longitude": 7.985,
       "gauge_group": 1,
       "seo_id": "wangerooge_ost",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Mellumplate, Leuchtturm",
@@ -1186,7 +1836,12 @@
       "longitude": 8.0925,
       "gauge_group": 1,
       "seo_id": "mellumplate_leuchtturm",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Schillig",
@@ -1195,7 +1850,12 @@
       "longitude": 8.04694,
       "gauge_group": 1,
       "seo_id": "schillig",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wangertief, Horumersiel",
@@ -1204,7 +1864,12 @@
       "longitude": 8.02333,
       "gauge_group": 2,
       "seo_id": "wangertief_horumersiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hooksielplate",
@@ -1213,7 +1878,12 @@
       "longitude": 8.14861,
       "gauge_group": 1,
       "seo_id": "hooksielplate",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Hooksiel",
@@ -1222,7 +1892,12 @@
       "longitude": 8.08194,
       "gauge_group": 2,
       "seo_id": "hooksiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Jade-Weser-Port",
@@ -1231,7 +1906,12 @@
       "longitude": 8.14889,
       "gauge_group": 1,
       "seo_id": "jade-weser-port",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wilhelmshaven, Neuer Vorhafen, Seeschleuse",
@@ -1240,7 +1920,12 @@
       "longitude": 8.16083,
       "gauge_group": 1,
       "seo_id": "wilhelmshaven_neuer_vorhafen_seeschleuse",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Eckwarderhörne",
@@ -1249,7 +1934,12 @@
       "longitude": 8.225,
       "gauge_group": 2,
       "seo_id": "eckwarderhoerne",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Arngast, Leuchtturm",
@@ -1258,7 +1948,12 @@
       "longitude": 8.1925,
       "gauge_group": 1,
       "seo_id": "arngast_leuchtturm",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Vareler Schleuse",
@@ -1267,7 +1962,12 @@
       "longitude": 8.18833,
       "gauge_group": 1,
       "seo_id": "vareler_schleuse",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Wangerooge, Hafen",
@@ -1276,7 +1976,12 @@
       "longitude": 7.86806,
       "gauge_group": 1,
       "seo_id": "wangerooge_hafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Harlesiel, Hafen",
@@ -1285,7 +1990,12 @@
       "longitude": 7.80861,
       "gauge_group": 1,
       "seo_id": "harlesiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Spiekeroog, ehem. Landungsbrücke",
@@ -1294,7 +2004,12 @@
       "longitude": 7.68194,
       "gauge_group": 1,
       "seo_id": "spiekeroog",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Neuharlingersiel",
@@ -1303,7 +2018,12 @@
       "longitude": 7.70417,
       "gauge_group": 2,
       "seo_id": "neuharlingersiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Langeoog, Hafeneinfahrt",
@@ -1312,7 +2032,12 @@
       "longitude": 7.50167,
       "gauge_group": 1,
       "seo_id": "langeoog_hafeneinfahrt",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Bensersiel",
@@ -1321,7 +2046,12 @@
       "longitude": 7.575,
       "gauge_group": 1,
       "seo_id": "bensersiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Dornumer-Accumersiel",
@@ -1330,7 +2060,12 @@
       "longitude": 7.48833,
       "gauge_group": 2,
       "seo_id": "dornumer-accumersiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Baltrum, Westende",
@@ -1339,7 +2074,12 @@
       "longitude": 7.36444,
       "gauge_group": 2,
       "seo_id": "baltrum_westende",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Neßmersiel",
@@ -1348,7 +2088,12 @@
       "longitude": 7.36083,
       "gauge_group": 2,
       "seo_id": "nessmersiel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Norddeich, Westerriede",
@@ -1357,7 +2102,12 @@
       "longitude": 7.14806,
       "gauge_group": 2,
       "seo_id": "norddeich_westerriede",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Juist, Seeseite",
@@ -1366,7 +2116,12 @@
       "longitude": 7,
       "gauge_group": 2,
       "seo_id": "juist_seeseite",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Juist, Hafen",
@@ -1375,7 +2130,12 @@
       "longitude": 6.99583,
       "gauge_group": 2,
       "seo_id": "juist_hafen",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Leyhörn, Leybucht",
@@ -1384,7 +2144,12 @@
       "longitude": 7.03611,
       "gauge_group": 1,
       "seo_id": "leyhoern_leybucht",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "candidate",
+        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Borkum, Südstrand",
@@ -1393,7 +2158,12 @@
       "longitude": 6.66139,
       "gauge_group": 1,
       "seo_id": "borkum_suedstrand",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Dukegat",
@@ -1402,7 +2172,12 @@
       "longitude": 6.92611,
       "gauge_group": 1,
       "seo_id": "dukegat",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Emshörn",
@@ -1411,7 +2186,12 @@
       "longitude": 6.84111,
       "gauge_group": 1,
       "seo_id": "emshoern",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "confirmed",
+        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Knock, Ems",
@@ -1420,7 +2200,12 @@
       "longitude": 7.03056,
       "gauge_group": 1,
       "seo_id": "knock",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Pogum, Ems",
@@ -1429,7 +2214,12 @@
       "longitude": 7.25917,
       "gauge_group": 1,
       "seo_id": "pogum",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Terborg, Ems",
@@ -1438,7 +2228,12 @@
       "longitude": 7.39611,
       "gauge_group": 1,
       "seo_id": "terborg",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Leerort, Ems",
@@ -1448,7 +2243,12 @@
       "gauge_group": 1,
       "seo_id": "leerort",
       "region": "Nordsee",
-      "region_note": "Grenzfall Ems/Leerort: Nordsee nach festgelegter landesrechtlicher Abgrenzung"
+      "region_note": "Grenzfall Ems/Leerort: Nordsee nach festgelegter landesrechtlicher Abgrenzung",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Leda-Sperrwerk, Unterpegel",
@@ -1457,7 +2257,12 @@
       "longitude": 7.47444,
       "gauge_group": 1,
       "seo_id": "leda-sperrwerk_unterpegel",
-      "region": "Nordsee"
+      "region": "Nordsee",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Leer, Leda, Schleuse",
@@ -1466,7 +2271,12 @@
       "longitude": 7.44861,
       "gauge_group": 2,
       "seo_id": "leer_schleuse",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Nortmoor, Altarm Jümme",
@@ -1475,7 +2285,12 @@
       "longitude": 7.57583,
       "gauge_group": 1,
       "seo_id": "nortmoor",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Detern, Jümme",
@@ -1484,7 +2299,12 @@
       "longitude": 7.67278,
       "gauge_group": 1,
       "seo_id": "detern",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Augustfehn, Aper Tief",
@@ -1493,7 +2313,12 @@
       "longitude": 7.7575,
       "gauge_group": 1,
       "seo_id": "augustfehn",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Westringaburg, Leda",
@@ -1502,7 +2327,12 @@
       "longitude": 7.57139,
       "gauge_group": 1,
       "seo_id": "westringaburg",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Dreyschloot, Leda",
@@ -1511,7 +2341,12 @@
       "longitude": 7.66917,
       "gauge_group": 1,
       "seo_id": "dreyschloot",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Weener, Ems",
@@ -1520,7 +2355,12 @@
       "longitude": 7.37194,
       "gauge_group": 1,
       "seo_id": "weener",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Rhede, Ems",
@@ -1529,7 +2369,12 @@
       "longitude": 7.28778,
       "gauge_group": 1,
       "seo_id": "rhede",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Papenburg, Ems",
@@ -1538,7 +2383,12 @@
       "longitude": 7.36556,
       "gauge_group": 1,
       "seo_id": "papenburg",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "unverified_link",
+        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Barßel, Soeste",
@@ -1547,7 +2397,12 @@
       "longitude": 7.74056,
       "gauge_group": 2,
       "seo_id": "barssel",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     },
     {
       "station_name": "Herbrum, Ems, Hafendamm",
@@ -1556,7 +2411,12 @@
       "longitude": 7.31833,
       "gauge_group": 1,
       "seo_id": "herbrum_hafendamm",
-      "region": "Binnengewässer"
+      "region": "Binnengewässer",
+      "audit": {
+        "status": "no_match",
+        "statusLabel": "Offen / kein belegter Treffer",
+        "auditDate": "2026-11-08"
+      }
     }
   ]
 }
