@@ -1,4 +1,4 @@
-TidenUhr v47.37 – Produktiver GitHub-Pages-Stand
+TidenUhr v47.38 – Produktiver GitHub-Pages-Stand
 =================================================
 
 Produktive Quelle
@@ -18,7 +18,7 @@ Veröffentlichung und Nutzung
 
 Wichtige Dateien
 ----------------
-- index.html: Anwendung und Versionskennung v47.37
+- index.html: Anwendung und Versionskennung v47.38
 - sw.js: Offline-Cache und Netzwerkverhalten; Cachekennung tiden-v47-37-2026
 - manifest.webmanifest: PWA-Metadaten
 - stations.json und catalog.json: Stations- und Jahresdatei-Metadaten
