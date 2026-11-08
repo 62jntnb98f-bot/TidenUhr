@@ -1605,7 +1605,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
  .card > .row > .datePickerWrap > .datePickerTrigger{width:142px !important;min-width:142px !important;max-width:142px !important}
 }
 </style><script>
-const TIDENUHR_VERSION="47.35";
+const TIDENUHR_VERSION="47.36";
 const LEGACY_BSH_METADATA=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
@@ -1771,9 +1771,28 @@ const HSI_PROXY_API=BSH_ARCHIVE_API+'/hsi-messwerte-proxy';
 const HSI_STATIONS=[
  {id:'114629',name:'Dahme-Seebrücke',region:'Ostsee'},
  {id:'114528',name:'Füsing',region:'Ostsee'},
- {id:'110006',name:'Hooge, Anleger',region:'Nordsee'},
- {id:'110005',name:'Wyk auf Föhr',region:'Nordsee'},
- {id:'114609',name:'Lippe',region:'Ostsee'}
+ {id:'110006',name:'Hooge, Anleger',region:'Nordsee',bshCode:'636F'},
+ {id:'110005',name:'Wyk auf Föhr',region:'Nordsee',bshCode:'632P'},
+ {id:'114609',name:'Lippe',region:'Ostsee'},
+ {id:'110035',name:'Munkmarsch, Sylt',region:'Nordsee',bshCode:'618P'},
+ {id:'110109',name:'Amrum Odde',region:'Nordsee',bshCode:'622P'},
+ {id:'110050',name:'Rantumdamm, Sylt',region:'Nordsee',bshCode:'623A'},
+ {id:'110007',name:'Schlüttsiel AP',region:'Nordsee',bshCode:'638P'},
+ {id:'110010',name:'Strucklahnungshörn AP',region:'Nordsee',bshCode:'649P'},
+ {id:'110014',name:'Everschopsiel AP',region:'Nordsee',bshCode:'654E'},
+ {id:'110026',name:'Meldorf Sperrwerk AP',region:'Nordsee',bshCode:'667B'},
+ {id:'110021',name:'Friedrichskoog Hafen AP',region:'Nordsee',bshCode:'675P'},
+ {id:'110022',name:'Kasenort, Stör',region:'Nordsee',bshCode:'691R'},
+ {id:'110048',name:'Langeness, Hilligenley',region:'Nordsee',bshCode:'632D'}
+];
+// Bestätigte NLWKN-Zuordnungen. Die Kennungen werden als Stationszuordnung
+// geführt; der NLWKN-Liveabruf ist davon getrennt und wird nicht vorgetäuscht.
+const NLWKN_STATIONS=[
+ {id:'4940',name:'Spieka-Neufeld',region:'Nordsee',bshCode:'735A'},
+ {id:'4938',name:'Fedderwardersiel',region:'Nordsee',bshCode:'738P'},
+ {id:'9402',name:'Vareler Schleuse',region:'Nordsee',bshCode:'776P'},
+ {id:'9303',name:'Bensersiel',region:'Nordsee',bshCode:'782P'},
+ {id:'9301',name:'Leyhörn',region:'Nordsee',bshCode:'796C'}
 ];
 function hsiStationEntries(){
  // HSI-SH-Messstellen als eigenständige Wasserpegel-Auswahl anbieten.
@@ -2155,6 +2174,13 @@ const VERIFIED_BSH_PO_LINKS = [
  {bshCode:'764B',name:'Hooksielplate',poNumber:'9430020'},
  {bshCode:'505P',name:'Büsum, Schleuse',poNumber:'9510095'},
  {bshCode:'624P',name:'Hörnum, Sylt, Hafen',poNumber:'9570050'},
+ // Weitere im Stationsabgleich einzeln bestätigte BSH–PEGELONLINE-Identitäten.
+ {bshCode:'101P',name:'Borkum, Fischerbalje',poNumber:'9340020'},
+ {bshCode:'509A',name:'Helgoland, Binnenhafen',poNumber:'9510070'},
+ {bshCode:'647A',name:'Pellworm, Anleger',poNumber:'9550021'},
+ {bshCode:'737S',name:'Robbensüdsteert',poNumber:'9460010'},
+ {bshCode:'798P',name:'Borkum, Südstrand',poNumber:'9340030'},
+ {bshCode:'799G',name:'Dukegat',poNumber:'3990020'}
 ];
 function verifiedLinkForBsh(b){
  const code=archiveCodeForBsh(b);
@@ -2248,15 +2274,17 @@ function mergeStations(){
  // BSH, PEGELONLINE und HSI-SH werden über bestätigte Stationsidentitäten zusammengeführt.
  dedupeBshCatalog();
  const out=[]; const used=new Set();
- const hsiByBshCode={'632P':'110005','636F':'110006'};
+ const hsiByBshCode=Object.fromEntries(HSI_STATIONS.filter(x=>x.bshCode).map(x=>[x.bshCode,x.id]));
+ const nlwknByBshCode=Object.fromEntries(NLWKN_STATIONS.map(x=>[x.bshCode,x]));
  bshCatalog.forEach(b=>{
    const canonical=canonicalBshId(b)||b.id;
    const p=findPoForBsh(b);
    const code=archiveCodeForBsh(b);
    const hsi=HSI_STATIONS.find(x=>x.id===hsiByBshCode[code])||null;
+   const nlwkn=nlwknByBshCode[code]||null;
    const key='station:'+(p?.uuid||canonical);
    const region=stationRegion({...b,po:p,bsh:b});
-   out.push({key,name:canonical==='KIEL-HOLTENAU'?'Kiel-Holtenau':b.name,region,bsh:b,po:p,hsi});
+   out.push({key,name:canonical==='KIEL-HOLTENAU'?'Kiel-Holtenau':b.name,region,bsh:b,po:p,hsi,nlwkn});
    if(p?.uuid)used.add(p.uuid);
  });
  po.forEach(p=>{
@@ -2818,7 +2846,7 @@ function renderList(mergedStations=null){
  for(const s of limited){
    const reg=stationRegion(s); if(listMode==='all'&&reg!==last){html+=`<div class="stationgroup">${esc(reg)}</div>`;last=reg;}
    let id=listMode==='bsh'?s.id:(listMode==='po'?(s.hsi?'HSI:'+s.hsi.id:s.uuid):s.key);
-   const regional=listMode==='north'||listMode==='baltic'||listMode==='all';const hasWater=!!s.hsi||(listMode==='po'||(regional&&!!s.po));const hasTide=listMode==='bsh'||(regional&&!!s.bsh);html+=`<div class="stationitem" data-id="${esc(id)}"><b>${esc(label(s))}</b><div class="small">${esc(s.number||s.pegelNr||s.pegelnr||'')} ${hasWater?'· Wasserstand':''} ${hasTide?'· Tide':''}</div></div>`;
+   const regional=listMode==='north'||listMode==='baltic'||listMode==='all';const hasWater=!!s.hsi||!!s.nlwkn||(listMode==='po'||(regional&&!!s.po));const hasTide=listMode==='bsh'||(regional&&!!s.bsh);html+=`<div class="stationitem" data-id="${esc(id)}"><b>${esc(label(s))}</b><div class="small">${esc(s.number||s.pegelNr||s.pegelnr||'')} ${hasWater?'· Wasserstand':''} ${hasTide?'· Tide':''}</div></div>`;
  }
  $('stationList').innerHTML=html||'<div class="stationitem">Keine Treffer</div>';
  $('stationList').onclick=(ev)=>{const item=ev.target.closest('.stationitem[data-id]');if(!item)return;ev.preventDefault();selectStation(item.dataset.id);};
@@ -2831,9 +2859,9 @@ async function selectStation(id){
  const selectionToken=++stationSelectionToken;
  try{
  if(mode==='north'||mode==='baltic') mode='all';
- if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id)||(String(id).startsWith('HSI:')?merged.find(s=>s.hsi&&s.hsi.id===String(id).slice(4)):null); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh||u.hsi; modeForSelection=u; } else if(mode==='po'&&String(id).startsWith('HSI:')){ const h=HSI_STATIONS.find(x=>x.id===String(id).slice(4)); if(!h){$('status').textContent='HSI-Messstelle konnte nicht gefunden werden.';$('status').className='small error';return;} mode='all'; modeForSelection={key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}; current=h; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
+ if(mode==='all'){ const merged=mergeStations(); const u=merged.find(s=>s.key===id)||merged.find(s=>s.po&&s.po.uuid===id)||merged.find(s=>s.bsh&&s.bsh.id===id)||(String(id).startsWith('HSI:')?merged.find(s=>s.hsi&&s.hsi.id===String(id).slice(4)):null); if(!u){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} current=u.po||u.bsh||u.hsi||u.nlwkn; modeForSelection=u; } else if(mode==='po'&&String(id).startsWith('HSI:')){ const h=HSI_STATIONS.find(x=>x.id===String(id).slice(4)); if(!h){$('status').textContent='HSI-Messstelle konnte nicht gefunden werden.';$('status').className='small error';return;} mode='all'; modeForSelection={key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h}; current=h; } else { current=(mode==='bsh'?bshCatalog:po).find(s=>(mode==='bsh'?s.id:s.uuid)===id); if(!current){$('status').textContent='Station konnte nicht gefunden werden.';$('status').className='small error';return;} modeForSelection=null; }
  storageSet('tiden.station.id',id);storageSet('tiden.station.mode',modeForSelection? 'all':mode);storageSet('tiden.station.listMode',listMode);
- $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?(modeForSelection.hsi?'HSI-SH · Messstelle '+modeForSelection.hsi.id:[(modeForSelection.bsh?'BSH':null),(modeForSelection.po?'PEGELONLINE':null)].filter(Boolean).join(' · ')):mode==='bsh'?'BSH · '+(current.pegelNr||current.pegelnr||''):'PEGELONLINE · '+(current.water?.longname||'');
+ $('stationName').textContent=modeForSelection?(modeForSelection.name||modeForSelection.bsh?.name||'Station'):label(current); $('stationMeta').textContent=modeForSelection?(modeForSelection.hsi?'HSI-SH · Messstelle '+modeForSelection.hsi.id:modeForSelection.nlwkn?'NLWKN · Messstelle '+modeForSelection.nlwkn.id:[(modeForSelection.bsh?'BSH':null),(modeForSelection.po?'PEGELONLINE':null)].filter(Boolean).join(' · ')):mode==='bsh'?'BSH · '+(current.pegelNr||current.pegelnr||''):'PEGELONLINE · '+(current.water?.longname||'');
  $('gaugeLink').href=(modeForSelection?.po?.number||current.number)?`https://pegelonline.wsv.de/gast/stammdaten?pegelnr=${encodeURIComponent(modeForSelection?.po?.number||current.number)}`:'#';
  $('bshLink').href=currentBsh?.bshUrl||'https://gezeiten.bsh.de/'; $('bshLink').target='_blank'; $('bshLink').rel='noopener noreferrer';
  data=[];meta=null;selectedYear=null;poCurrent=null;
@@ -2844,6 +2872,7 @@ async function selectStation(id){
  // Aussage: dieser PEGELONLINE-Pegel hat keine BSH-Zuordnung. Nicht erneut raten,
  // sonst kann eine vorherige/falsche BSH-Quelle (z. B. Husum) hängen bleiben.
  const hsiStation=modeForSelection?.hsi||null;
+ const nlwknStation=modeForSelection?.nlwkn||null;
  let bsh=modeForSelection ? (modeForSelection.bsh||null) : (mode==='bsh'?current:findBshForPo(current));
  let poStation=modeForSelection ? (modeForSelection.po||null) : (mode==='bsh'?findPoForBsh(current):current);
  if(bsh){currentBsh=bsh}else{currentBsh=null}
@@ -2855,6 +2884,9 @@ async function selectStation(id){
  }else if(hsiStation){
    $('bshSourceStatus').textContent='HSI-SH-Wasserstandsmessstelle · Datenabruf über den Supabase-Proxy.';
    $('bshSourceStatus').className='small';
+ }else if(nlwknStation){
+   $('bshSourceStatus').textContent='NLWKN-Wasserpegel zugeordnet · Live-Datenabruf ist in dieser HTML-Version noch nicht angebunden.';
+   $('bshSourceStatus').className='small warn';
  }
  updateSources(); syncFavorite(); renderQuality();
  if(bsh){
@@ -3334,6 +3366,7 @@ function selectedHsiSource(){
  const b=modeForSelection?.bsh||currentBsh||(mode==='bsh'?current:null);
  return modeForSelection?.hsi||(archiveCodeForBsh(b)==='632P'?HSI_STATIONS.find(x=>x.id==='110005'):null);
 }
+function selectedNlwknSource(){ return modeForSelection?.nlwkn||null; }
 function waterCacheKey(uuid){return 'tiden.water.'+uuid}
 function historyCacheKey(uuid,range){return 'tiden.water.history.'+uuid+'.'+range}
 let waterRequestCache=new Map();
@@ -3367,6 +3400,13 @@ async function loadWater(){
      $('status').textContent='Nicht aktuell';
      $('status').className='small warn';$('quality').textContent='Nicht aktuell';
    }
+   return;
+ }
+ const nlwkn=selectedNlwknSource();
+ if(nlwkn){
+   $('waterSourceLabel').textContent='Quelle: NLWKN · Messstelle '+nlwkn.id;
+   $('water').textContent='–';
+   $('waterTime').textContent='Zuordnung vorhanden · Live-Abruf noch nicht angebunden';
    return;
  }
  let st=getWaterStation(),uuid=st?.uuid;
