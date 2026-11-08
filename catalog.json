@@ -8,7 +8,7 @@
       "id": "DE__510P",
       "name": "Husum, Schleuse",
       "files": {
-        "2026": "data/DE__510P2026.json"
+        "2026": "./DE__510P2026.json"
       },
       "years": [
         2026
@@ -21,7 +21,7 @@
       "id": "DE__632P",
       "name": "Wyk, Föhr",
       "files": {
-        "2026": "data/DE__632P2026.json"
+        "2026": "./DE__632P2026.json"
       },
       "years": [
         2026
