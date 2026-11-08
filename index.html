@@ -2292,7 +2292,7 @@ function mergeStations(){
    out.push({key:'station:'+p.uuid,name:cleanStationName(p.longname||p.shortname||'Unbenannte Station'),region:stationRegion(p),bsh:null,po:p});
  });
  // HSI-Messstellen ohne bestätigte BSH-Gegenstation eigenständig aufführen.
- for(const h of HSI_STATIONS.filter(x=>!['110005','110006'].includes(x.id))){
+ for(const h of HSI_STATIONS.filter(x=>!x.bshCode)){
    out.push({key:'station:HSI:'+h.id,name:h.name,region:h.region,bsh:null,po:null,hsi:h});
  }
  return out;
