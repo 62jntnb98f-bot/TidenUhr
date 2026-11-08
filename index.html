@@ -1606,7 +1606,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
 }
 </style><script>
 const TIDENUHR_VERSION="47.37";
-const LEGACY_BSH_METADATA=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"data/DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
+const LEGACY_BSH_METADATA=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"./DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
 <style>.tideTime{font-weight:400!important}</style>
@@ -3331,7 +3331,7 @@ if (currentBsh.id === 'KIEL-HOLTENAU' && Number(selectedYear) === 2026) {
      $('bshSourceStatus').className='small warn'; render(); renderQuality(); return;
    }
  }
- const file=(currentBsh.files||{})[String(selectedYear)] || `data/${currentBsh.id}${selectedYear}.json`;
+ const file=(currentBsh.files||{})[String(selectedYear)] || `./${currentBsh.id}${selectedYear}.json`;
  // Falls im GitHub-Projekt eine separate Jahresdatei liegt, darf sie geladen werden;
  // die Jahresdaten werden nicht mehr als großer Datenblock in index.html gespeichert.
  try{
