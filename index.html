@@ -3260,35 +3260,6 @@ async function loadBshYear(){
    }
  }
  
-// Lokaler BSH-TXT-Fallback aus data/bsh; nur Kiel-Holtenau 2026.
-if (currentBsh.id === 'KIEL-HOLTENAU' && Number(selectedYear) === 2026) {
-  try {
-    const r = await fetch('./data/bsh/DE_3020P2026_hwnw.txt', {cache:'no-store'});
-    if (!requestIsCurrent()) return;
-    if (!r.ok) throw Error('Lokale BSH-TXT-Datei: HTTP ' + r.status);
-    const text = await r.text();
-    if (!requestIsCurrent()) return;
-    const parsed = parseBshTxtText(text, 'DE_3020P2026_hwnw.txt');
-    if (!parsed || !Array.isArray(parsed.events) || !parsed.events.length)
-      throw Error('Keine HW/NW-Ereignisse in der lokalen BSH-TXT-Datei');
-    const events = parsed.events.filter(e =>
-      String(e.datetime || '').slice(0,4) === String(selectedYear));
-    if (!events.length) throw Error('Keine Ereignisse für das ausgewählte Jahr');
-    meta = parsed;
-    data = events;
-    syncDateToData();
-    $('bshSourceStatus').textContent =
-      `Datenquelle: lokale BSH-TXT-Datei · ${parsed.filename} · ${data.length} HW/NW-Ereignisse (${selectedYear}).`;
-    $('bshSourceStatus').className = 'small ok';
-    render();
-    renderQuality();
-    return;
-  } catch (e) {
-    if (!requestIsCurrent()) return;
-    // Bei fehlender oder ungültiger lokaler Datei den bisherigen Web-Fallback versuchen.
-  }
-}
-
 // Kiel-Holtenau: Nach einem vorhandenen lokalen TXT-Import versuchen wir zusätzlich,
  // die BSH-Webtabelle direkt zu lesen. Das klappt nur, wenn BSH/CORS den Browserzugriff zulässt.
  // Der TXT-Import bleibt die zuverlässige Alternative; andere Stationen nutzen ihren normalen Datenpfad.
