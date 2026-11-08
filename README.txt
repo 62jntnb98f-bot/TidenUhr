@@ -1,11 +1,25 @@
-Neue BSH-Jahresdateien hier ablegen:
+BSH-Jahresdateien – Hinweise zum produktiven TidenUhr-Repository
+=====================================================================
 
-DE__<Pegelnummer><Jahr>.txt
+Produktiver Stand: v47.37
+Repository: 62jntnb98f-bot/TidenUhr
+Branch: main
 
-Danach im Projektordner ausführen:
+Die gebündelten JSON-Jahresdateien liegen im Repository-Hauptverzeichnis:
+- DE__510P2026.json
+- DE__632P2026.json
+- KIEL-HOLTENAU2026.json
 
-python tools/update_bsh.py --incoming
+Die dazugehörigen Metadaten stehen in stations.json und catalog.json.
+Die relativen Dateipfade in diesen Dateien müssen mit den tatsächlichen
+Dateipositionen im GitHub-Repository übereinstimmen.
 
-Der Import prüft Metadaten, HW/NW-Ereignisse und Chronologie und erzeugt die JSON-Datei sowie catalog.json neu.
+Wichtiger Hinweis
+----------------
+Ältere Importanleitungen verwiesen auf tools/update_bsh.py und einen
+data/-Unterordner. Diese Pfade gehören nicht zur aktuellen Dateistruktur
+des produktiven Repositorys und dürfen nicht als aktuelle Arbeitsanleitung
+verwendet werden.
 
-Hinweis: Die BSH-Website bietet die Standard-TXT-Dateien zum Download an. TidenUhr umgeht keine Download-Freischaltung oder Nutzungsbedingungen des BSH; die vom BSH bereitgestellte Datei wird anschließend automatisch importiert.
+Die produktiven Supabase-BSH-Archivdaten sind separat. Eine Aktualisierung
+dieser statischen Repository-Dateien verändert das Supabase-Archiv nicht.
