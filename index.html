@@ -1754,7 +1754,7 @@ const LEGACY_BSH_METADATA=[{"id":"DE__510P","name":"Husum, Schleuse","region":"N
 </details>
 
 
-<div class="techInfoBar" style="padding:6px 2px 10px;display:flex;align-items:center;gap:8px;border-top:1px solid #3a3a3a;margin-top:10px"><button id="themeToggle" type="button" aria-label="Darstellung wechseln" aria-pressed="false" title="Hell-/Dunkelansicht wechseln" style="flex:0 0 32px;width:32px;height:30px;padding:2px;border:1px solid #777;border-radius:8px;cursor:pointer;font-size:13px">☀️</button><details class="techInfo" style="flex:1;min-width:0;border-radius:8px;overflow:hidden"><summary style="border-radius:8px;font-size:10px;line-height:1.25;font-weight:400;color:#8b969d;padding:4px 0;white-space:nowrap">TidenUhr · v<span data-app-version>47.27</span> · BSH · PEGELONLINE · HSI-SH</summary><div class="small techInfoBody" style="font-size:11px;line-height:1.35;color:#8b969d;padding:0 0 4px">Datei: index.html · Quellentrennung BSH-TXT/Online · Stationslogik Nordsee/Ostsee · BSH-Gezeiten · BSH-Wasserstandsvorhersage · PEGELONLINE Messung/WV · HSI-SH-Wasserstand · Offline-Caching.</div></details></div>
+<div class="techInfoBar" style="padding:6px 2px 10px;display:flex;align-items:center;gap:8px;border-top:1px solid #3a3a3a;margin-top:10px"><button id="themeToggle" type="button" aria-label="Darstellung wechseln" aria-pressed="false" title="Hell-/Dunkelansicht wechseln" style="flex:0 0 32px;width:32px;height:30px;padding:2px;border:1px solid #777;border-radius:8px;cursor:pointer;font-size:13px">☀️</button><details class="techInfo" style="flex:1;min-width:0;border-radius:8px;overflow:hidden"><summary style="border-radius:8px;font-size:10px;line-height:1.25;font-weight:400;color:#8b969d;padding:4px 0;white-space:nowrap">TidenUhr · v<span data-app-version>47.28</span> · BSH · PEGELONLINE · HSI-SH</summary><div class="small techInfoBody" style="font-size:11px;line-height:1.35;color:#8b969d;padding:0 0 4px">Datei: index.html · Quellentrennung BSH-TXT/Online · Stationslogik Nordsee/Ostsee · BSH-Gezeiten · BSH-Wasserstandsvorhersage · PEGELONLINE Messung/WV · HSI-SH-Wasserstand · Offline-Caching.</div></details></div>
 <script>
 const API='https://pegelonline.wsv.de/webservices/rest-api/v2';
 const API_FALLBACK='https://m.pegelonline.wsv.de/webservices/rest-api/v2';
@@ -3337,7 +3337,7 @@ async function loadWater(){
      $('water').textContent=(latest.value/100).toFixed(2)+' m';
      $('waterTime').textContent=ts.toLocaleString('de-DE')+(age>25*3600*1000?' · letzter verfügbarer Messwert':'');
      $('waterTime').title=latest.valueType==='W'?'HSI-SH · Minutenmessung · Rohwert in cm · Alter: '+Math.round(age/60000)+' Minuten':'HSI-SH · Typ mw · Qualitätsstatus 1 · Alter: '+Math.round(age/3600000)+' Stunden';
-     $('status').textContent=age>25*3600*1000?'HSI-SH: letzter verfügbarer Messwert ist älter als 25 Stunden; nicht als aktuell werten.':'HSI-SH: letzter qualitätsgesicherter Messwert geladen.';
+     $('status').textContent=age>25*3600*1000?'HSI-SH: letzter verfügbarer Messwert ist älter als 25 Stunden; nicht als aktuell werten.':(latest.valueType==='W'?'HSI-SH: letzter Minutenmesswert geladen.':'HSI-SH: letzter qualitätsgesicherter Messwert geladen.');
      $('status').className=age>25*3600*1000?'small warn':'small ok';
      renderQuality();
    }catch(error){
