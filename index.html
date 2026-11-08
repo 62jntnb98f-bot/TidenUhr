@@ -2321,7 +2321,8 @@ function renderQuality(){
    const detail='Letzter Messwert: '+ts.toLocaleString('de-DE')+' · '+(stale?'Daten veraltet (':'Daten aktuell (')+ageHours+' Std. alt).';
    $('quality').innerHTML=appendHistoryGapQuality('<span class="'+(stale?'warn':'ok')+'">HSI-SH · '+rows.length.toLocaleString('de-DE')+' Wasserstandsmesswerte · '+(latest.valueType==='W'?'Minutenmessung · Rohdatenformat W':'CSV-Qualitätsstatus 1 · Typ mw')+'.</span><br><span class="'+(stale?'warn':'small')+'">'+esc(detail)+'</span>');return;
  }
- const issues=validateBsh(meta,data); const parts=[];\n if(currentBsh?.audit){const a=currentBsh.audit;parts.push('<span class="small">BSH-Zuordnungsprüfung ('+esc(a.auditDate||'')+'): '+esc(a.statusLabel||a.status||'Status dokumentiert')+'. Keine automatische Freigabe aus Kandidaten-/Linkhinweisen.</span>');}
+ const issues=validateBsh(meta,data); const parts=[];
+ if(currentBsh?.audit){const a=currentBsh.audit;parts.push('<span class="small">BSH-Zuordnungsprüfung ('+esc(a.auditDate||'')+'): '+esc(a.statusLabel||a.status||'Status dokumentiert')+'. Keine automatische Freigabe aus Kandidaten-/Linkhinweisen.</span>');}
  if(currentBsh){parts.push(issues.length?'<span class="warn">⚠ BSH: '+esc(issues.join(' · '))+'</span>':'<span class="ok">✓ BSH-Daten geprüft: '+data.length+' HW/NW-Ereignisse, '+esc(meta.reference||'')+' · '+esc(meta.timezone||'')+'</span>')}else parts.push('<span class="small">– Für diese Station ist derzeit keine BSH-Jahresdatei im Projekt eingebunden.</span>');
  if(poCurrent?.uuid)parts.push('<span class="ok">✓ PEGELONLINE-Station über UUID verknüpft.</span>'); else parts.push('<span class="small">– Keine PEGELONLINE-Verknüpfung.</span>');
  $('quality').innerHTML=appendHistoryGapQuality(parts.join('<br>'));
