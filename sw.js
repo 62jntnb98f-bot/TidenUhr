@@ -7,9 +7,9 @@ const ASSETS = [
   './index.html',
   './manifest.webmanifest',
   './audit-data/bsh-stations-172.json',
-  './data/stations.json',
-  './data/DE__510P2026.json',
-  './data/DE__632P2026.json',
+  './stations.json',
+  './DE__510P2026.json',
+  './DE__632P2026.json',
   './KIEL-HOLTENAU2026.json'
 ];
 
