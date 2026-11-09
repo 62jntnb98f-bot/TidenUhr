@@ -4080,7 +4080,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
     let yearValue = year.value.trim();
     // Ein leerer oder deaktivierter Platzhalter darf niemals "alle Jahre"
     // auslösen. Ohne gültige Auswahl gilt immer das aktuelle Kalenderjahr.
-    if (!/^\\d{4}$/.test(yearValue)) {
+    if (yearValue.length !== 4 || !Number.isInteger(Number(yearValue))) {
       yearValue = String(new Date().getFullYear());
       if (Array.from(year.options).some(option => option.value === yearValue && !option.disabled)) {
         year.value = yearValue;
@@ -4392,7 +4392,7 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
       // Beim ersten Öffnen ist ausschließlich das aktuelle Jahr vorausgewählt.
       const availableValues = new Set(
         Array.from(year.options)
-          .filter(option => !option.disabled && /^\\d{4}$/.test(option.value))
+          .filter(option => !option.disabled && option.value.length === 4 && Number.isInteger(Number(option.value)))
           .map(option => option.value)
       );
       // Leere/deaktivierte Platzhalter sind keine gültigen Filterwerte.
