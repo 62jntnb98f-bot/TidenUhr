@@ -19,7 +19,7 @@ Veröffentlichung und Nutzung
 Wichtige Dateien
 ----------------
 - index.html: Anwendung und Versionskennung v47.47
-- sw.js: Offline-Cache und Netzwerkverhalten; Cachekennung tiden-v47-46-2026
+- sw.js: Offline-Cache und Netzwerkverhalten; Cachekennung tiden-v47-47-2026
 - manifest.webmanifest: PWA-Metadaten
 - stations.json und catalog.json: Stations- und Jahresdatei-Metadaten
 - DE__510P2026.json, DE__632P2026.json und KIEL-HOLTENAU2026.json: gebündelte Jahresdateien im Repository-Hauptverzeichnis
