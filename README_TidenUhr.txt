@@ -28,7 +28,7 @@ TidenUhr ist eine browserbasierte Progressive Web App für iPhone, Android und D
 
 ### Produktive Dateien
 - `index.html`: Anwendung, Versionskennung v47.47.
-- `sw.js`: Service Worker, Cachekennung `tiden-v47-46-2026`.
+- `sw.js`: Service Worker, Cachekennung `tiden-v47-47-2026`.
 - `manifest.webmanifest`: PWA-Metadaten.
 - `stations.json`, `catalog.json`: Stations- und Jahresdatei-Metadaten.
 - `DE__510P2026.json`, `DE__632P2026.json`, `KIEL-HOLTENAU2026.json`: Jahresdateien im Repository-Hauptverzeichnis.
