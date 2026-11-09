@@ -375,21 +375,21 @@ body.map-is-fullscreen{overflow:hidden}
 }
 #bshArchiveCard[open] .sectionBody > div,
 #bshArchiveCard[open] #bshArchiveResults > div,
-#bshArchiveCard[open] #bshArchiveUpload,
-#bshArchiveCard[open] #bshArchiveUploadForm,
-#bshArchiveCard[open] #bshArchiveUploadForm > * {
+#bshArchiveInline[open],
+#bshArchiveInline[open]Form,
+#bshArchiveInline[open]Form > * {
   min-width: 0 !important;
   width: 100% !important;
   max-width: 100% !important;
 }
-#bshArchiveCard[open] #bshArchiveUploadForm input[type="file"] {
+#bshArchiveInline[open]Form input[type="file"] {
   display: block !important;
   width: 100% !important;
   min-width: 0 !important;
   max-width: 100% !important;
   font-size: 14px !important;
 }
-#bshArchiveCard[open] #bshArchiveUploadForm label {
+#bshArchiveInline[open]Form label {
   overflow-wrap: anywhere !important;
 }
 /* BSH-Archiv: Root an den Viewport binden; alle Nachfahren gegen horizontales Überlaufen sichern */
@@ -412,7 +412,7 @@ body.map-is-fullscreen{overflow:hidden}
 #bshArchiveCard[open] .sectionBody > *,
 #bshArchiveCard[open] #bshArchiveResults,
 #bshArchiveCard[open] #bshArchiveResults > *,
-#bshArchiveCard[open] #bshArchiveUpload {
+#bshArchiveInline[open] {
   width: 100% !important;
   max-width: 100% !important;
   min-width: 0 !important;
@@ -469,7 +469,7 @@ body.map-is-fullscreen{overflow:hidden}
 }
 #bshArchiveCard[open] .sectionBody > div,
 #bshArchiveCard[open] #bshArchiveResults,
-#bshArchiveCard[open] #bshArchiveUpload {
+#bshArchiveInline[open] {
   box-sizing: border-box !important;
   max-width: 100% !important;
   min-width: 0 !important;
