@@ -1,6 +1,6 @@
 # TidenUhr – Projektdokumentation
 
-**Produktiver Stand: v47.46**  
+**Produktiver Stand: v47.47**  
 **Repository:** 62jntnb98f-bot/TidenUhr  
 **Produktiver Branch:** main  
 **Startdatei:** index.html
@@ -8,6 +8,10 @@
 ## Aktuelle Architektur
 
 TidenUhr ist eine browserbasierte Progressive Web App für iPhone, Android und Desktop-Browser.
+
+### Oberfläche und Datenstatus
+- Der Datumskalender sitzt rechts neben der Überschrift „Aktueller Wasserstand“ im oberen Stationsbereich.
+- Datenquelle, BSH-Dateiname, Datenjahr, Bezugsniveau und Zeitzone werden im aufklappbaren Bereich „Weitere Messdaten und Quellen“ unter „Datenstatus“ angezeigt.
 
 ### Datenquellen
 - **BSH:** Gezeitenvorausberechnungen (Hoch- und Niedrigwasser) und importierte BSH-TXT-Dateien.
@@ -23,7 +27,7 @@ TidenUhr ist eine browserbasierte Progressive Web App für iPhone, Android und D
 - BSH-Wasserstandsvorhersage und PEGELONLINE-WV werden getrennt behandelt.
 
 ### Produktive Dateien
-- `index.html`: Anwendung, Versionskennung v47.46.
+- `index.html`: Anwendung, Versionskennung v47.47.
 - `sw.js`: Service Worker, Cachekennung `tiden-v47-46-2026`.
 - `manifest.webmanifest`: PWA-Metadaten.
 - `stations.json`, `catalog.json`: Stations- und Jahresdatei-Metadaten.
