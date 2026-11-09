@@ -1,7 +1,7 @@
 BSH-Jahresdateien – Hinweise zum produktiven TidenUhr-Repository
 =====================================================================
 
-Produktiver Stand: v47.43
+Produktiver Stand: v47.44
 Repository: 62jntnb98f-bot/TidenUhr
 Branch: main
 
