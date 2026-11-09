@@ -3809,7 +3809,7 @@ function setListMode(m){mode=m;listMode=m;['tabBsh','tabPo','tabNorth','tabBalti
 $('bshGuideToggle').onclick=()=>{const text=$('bshGuideText'),open=text.hidden;text.hidden=!open;$('bshGuideToggle').textContent=open?'▾ Import-Anleitung ausblenden':'▸ Import-Anleitung anzeigen';$('bshGuideToggle').setAttribute('aria-expanded',String(open))};
 $('bshArchiveSelectedBtn').onclick=()=>{
   const selected=$('bshFile').files[0];
-  const archiveCard=$('bshArchiveCard');
+  const archivePanel=$('bshArchiveInline');
   const archiveFile=$('bshArchiveUploadFile');
   const archiveForm=$('bshArchiveUploadForm');
   const archiveStatus=$('bshArchiveUploadStatus');
@@ -3818,7 +3818,7 @@ $('bshArchiveSelectedBtn').onclick=()=>{
     $('bshFile').click();
     return;
   }
-  if(!archiveCard||!archiveFile||!archiveForm){
+  if(!archivePanel||!archiveFile||!archiveForm){
     $('bshImportInfo').textContent='Die Archivierungsfunktion ist derzeit nicht verfügbar.';
     return;
   }
@@ -3827,16 +3827,17 @@ $('bshArchiveSelectedBtn').onclick=()=>{
     transfer.items.add(selected);
     archiveFile.files=transfer.files;
   }catch(error){
-    $('bshImportInfo').textContent='Die Datei konnte nicht automatisch an das Archivformular übergeben werden. Bitte im BSH-Archiv erneut auswählen.';
-    archiveCard.open=true;
-    archiveCard.scrollIntoView({behavior:'smooth',block:'start'});
+    $('bshImportInfo').textContent='Die Datei konnte nicht automatisch an das Archivformular übergeben werden. Bitte die Datei im geöffneten Archivformular manuell auswählen.';
+    archivePanel.style.display='block';
+    archivePanel.open=true;
+    archivePanel.scrollIntoView({behavior:'smooth',block:'center'});
     return;
   }
-  archiveCard.open=true;
+  archivePanel.style.display='block';
+  archivePanel.open=true;
   $('bshArchiveConsent').checked=false;
-  archiveCard.scrollIntoView({behavior:'smooth',block:'start'});
-  document.getElementById('bshArchiveUpload').scrollIntoView({behavior:'smooth',block:'end'});
-  archiveStatus.textContent='Datei vorbereitet. Bitte die Sicherheitsprüfung abschließen und der Archivierung ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
+  archivePanel.scrollIntoView({behavior:'smooth',block:'center'});
+  archiveStatus.textContent='Datei vorbereitet. Bitte die Cloudflare-Sicherheitsprüfung abschließen und der Archivierung ausdrücklich zustimmen. Es wurde noch nichts hochgeladen.';
 };
 $('bshRemoveStatusBtn').onclick=removeBshImport;$('bshImportBtn').onclick=async()=>{try{await importBshFile($('bshFile').files[0])}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('bshFile').addEventListener('change',()=>{$('bshRemoveBtn').disabled=!$('bshFile').files.length&&!localStorage.getItem('tiden.lastBshImport')});$('bshRemoveBtn').onclick=async()=>{try{await removeBshImport()}catch(e){$('bshImportInfo').innerHTML=`<span class="warn">⚠ ${esc(e.message||e)}</span>`}};$('tabBsh').onclick=()=>setListMode('bsh');$('tabPo').onclick=()=>setListMode('po');$('tabNorth').onclick=()=>setListMode('north');$('tabBaltic').onclick=()=>setListMode('baltic');function syncSearchClear(){const has=!!$('search').value.trim();$('searchClear').classList.toggle('visible',has);$('searchClear').hidden=!has} $('search').oninput=()=>{renderList();syncSearchClear()};syncSearchClear();$('searchClear').onclick=()=>{$('search').value='';syncSearchClear();$('search').focus();renderList()};/* v47.01: custom calendar combines month and year selection while preserving existing date-change logic */
 (function initIntegratedDatePicker(){
