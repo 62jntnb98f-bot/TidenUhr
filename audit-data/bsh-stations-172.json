@@ -3142,7 +3142,9 @@
           "note": "Beide Messstellen bestätigt; konkrete Zuordnung BSH OW/UW laut Arbeitsmappe noch nicht entschieden."
         }
       ],
-      "links": []
+      "links": [],
+      "waterMappingStatus": "candidate_review",
+      "waterMappingStatusLabel": "Zuordnung in Prüfung · Ober-/Unterwasser noch offen"
     },
     {
       "station_name": "Wangerooge, Langes Riff, Nord",
