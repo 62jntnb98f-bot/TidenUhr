@@ -1833,7 +1833,12 @@ const HSI_STATIONS=[
  {id:'110026',name:'Meldorf Sperrwerk AP',region:'Nordsee',bshCode:'667B'},
  {id:'110021',name:'Friedrichskoog Hafen AP',region:'Nordsee',bshCode:'675P'},
  {id:'110022',name:'Kasenort, Stör',region:'Nordsee',bshCode:'691R'},
- {id:'110048',name:'Langeness, Hilligenley',region:'Nordsee',bshCode:'632D'}
+ {id:'110048',name:'Langeness, Hilligenley',region:'Nordsee',bshCode:'632D'},
+ {id:'110039',name:'Westerland, Sylt',region:'Nordsee',bshCode:'620P'},
+ {id:'110164',name:'Osterley',region:'Nordsee',bshCode:'628A'},
+ {id:'110032',name:'Gröde, Anleger',region:'Nordsee',bshCode:'637P'},
+ {id:'110031',name:'Pellworm, Hoogerfähre',region:'Nordsee',bshCode:'642E'},
+ {id:'110104',name:'Süderoogsand',region:'Nordsee',bshCode:'645P'}
 ];
 // Bestätigte NLWKN-Zuordnungen. Die Kennungen werden als Stationszuordnung
 // geführt; der NLWKN-Liveabruf ist davon getrennt und wird nicht vorgetäuscht.
@@ -2248,6 +2253,9 @@ function verifiedLinkForPo(p){
  return VERIFIED_BSH_PO_LINKS.find(x=>x.poNumber===number)||null;
 }
 function findPoForBshUncached(b){
+ // Explizit dokumentierte Mehrfachkandidaten ohne entschiedene BSH-Zuordnung
+ // dürfen nicht durch einen nachgelagerten Namensabgleich automatisch verbunden werden.
+ if((b?.mappingCandidates||[]).some(x=>x.provider==='PEGELONLINE'&&x.verificationStatus==='confirmed_station_identity_assignment_pending'))return null;
  const waterUuid=b.waterUuid||b.uuid||null;
  if(waterUuid){const byU=po.find(x=>x.uuid===waterUuid);if(byU)return byU;}
  const verified=verifiedLinkForBsh(b);
