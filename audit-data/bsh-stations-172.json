@@ -16,7 +16,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "mappingCandidates": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9610020",
+          "stationName": "Kalkgrund, Leuchtturm, Ostsee",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "not_active_candidate",
+          "note": "Konflikt laut Arbeitsmappe; nicht als aktive Zuordnung freigeben."
+        }
+      ],
+      "links": []
     },
     {
       "station_name": "Kiel, Holtenau, Ostsee",
@@ -32,7 +43,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9610066",
+          "stationName": "Kiel, Holtenau, Ostsee",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Travemünde, Ostsee",
@@ -48,7 +69,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9620085",
+          "stationName": "Travemünde, Ostsee",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Warnemünde, Ostsee",
@@ -64,7 +95,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9640015",
+          "stationName": "Warnemünde, Ostsee",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Borkum, Fischerbalje",
@@ -83,12 +124,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9340020",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "stationName": "Borkum, Fischerbalje",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Bremerhaven, Weser, Alter Leuchtturm",
@@ -104,7 +147,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4990010",
+          "stationName": "Bremerhaven, Weser, Alter Leuchtturm",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Norderney, Riffgat",
@@ -123,12 +176,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9360010",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "stationName": "Norderney, Riffgat",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Bremen, Oslebshausen, Weser",
@@ -144,7 +199,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4910060",
+          "stationName": "Bremen, Oslebshausen, Weser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Brunsbüttel, Elbe, Ost",
@@ -160,7 +225,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970094",
+          "stationName": "Brunsbüttel, Elbe, Ost",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Büsum, Schleuse",
@@ -179,12 +254,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9510095",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "unverified"
+          "stationName": "Büsum, Schleuse",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Cuxhaven, Steubenhöft, Elbe",
@@ -200,7 +277,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5990020",
+          "stationName": "Cuxhaven, Steubenhöft, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Emden, Ems, Große Seeschleuse",
@@ -216,7 +303,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3970010",
+          "stationName": "Emden, Ems, Große Seeschleuse",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Hamburg, St. Pauli, Elbe",
@@ -232,7 +329,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5952050",
+          "stationName": "Hamburg, St. Pauli, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Helgoland, Binnenhafen",
@@ -251,12 +358,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9510070",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "stationName": "Helgoland, Binnenhafen",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Husum, Schleuse",
@@ -272,7 +381,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9530020",
+          "stationName": "Husum, Schleuse",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Wilhelmshaven, Alter Vorhafen",
@@ -288,7 +407,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9440020",
+          "stationName": "Wilhelmshaven, Alter Vorhafen",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Fino 3",
@@ -304,7 +433,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Fino 1",
@@ -320,7 +450,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "List, Sylt, West",
@@ -336,7 +467,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "List, Sylt, Hafen",
@@ -352,7 +484,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9570070",
+          "stationName": "List, Sylt, Hafen",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Munkmarsch, Sylt",
@@ -371,12 +513,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110035",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Munkmarsch, Sylt",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Westerland, Sylt",
@@ -392,7 +536,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110039",
+          "stationName": "Westerland, Sylt",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Amrum Odde, Amrum",
@@ -411,13 +565,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110109",
-          "stationName": "Amrum Odde",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Amrum Odde, Amrum",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Rantumdamm, Sylt",
@@ -436,12 +591,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110050",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Rantumdamm, Sylt",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Hörnum, Sylt, West",
@@ -457,7 +614,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hörnum, Sylt, Hafen",
@@ -476,12 +634,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9570050",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "unverified"
+          "stationName": "Hörnum, Sylt, Hafen",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Osterley",
@@ -497,7 +657,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110164",
+          "stationName": "Osterley",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Föhrer Ley, Nord",
@@ -513,7 +683,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "mappingCandidates": [
+        {
+          "provider": "UNGEKLAERT",
+          "stationId": "1401629",
+          "stationName": "Föhrer Ley, Nord",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "not_active_candidate",
+          "note": "Betreiberkennung laut Arbeitsmappe nicht amtlich bestätigt."
+        }
+      ],
+      "links": []
     },
     {
       "station_name": "Wittdün, Amrum, Hafen",
@@ -529,7 +710,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9570010",
+          "stationName": "Wittdün, Amrum, Hafen",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Langeness, Hilligenley",
@@ -583,7 +774,8 @@
         "632D",
         "632F"
       ],
-      "consolidationNote": "Geografisch zusammengeführt; BSH-Originalkennung bleibt erhalten."
+      "consolidationNote": "Geografisch zusammengeführt; BSH-Originalkennung bleibt erhalten.",
+      "links": []
     },
     {
       "station_name": "Wyk, Föhr",
@@ -602,13 +794,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110005",
-          "stationName": "Wyk auf Föhr",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Wyk, Föhr",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Südwesthörn",
@@ -624,7 +817,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Dagebüll",
@@ -644,12 +838,13 @@
           "provider": "PEGELONLINE",
           "stationId": "9570040",
           "stationName": "Dagebüll",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "unverified"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Hooge, Anleger",
@@ -668,12 +863,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110006",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Hooge, Anleger",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Der Strand, Hamburger Hallig",
@@ -689,7 +886,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "mappingCandidates": [
+        {
+          "provider": "UNGEKLAERT",
+          "stationId": "1401637",
+          "stationName": "Der Strand, Hamburger Hallig",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "not_active_candidate",
+          "note": "Betreiberkennung laut Arbeitsmappe nicht amtlich bestätigt."
+        }
+      ],
+      "links": []
     },
     {
       "station_name": "Gröde, Anleger",
@@ -705,7 +913,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110032",
+          "stationName": "Gröde, Anleger",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Schlüttsiel",
@@ -724,13 +942,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110007",
-          "stationName": "Schlüttsiel AP",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Schlüttsiel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Rummelloch, West",
@@ -746,7 +965,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Pellworm, Hoogerfähre",
@@ -762,7 +982,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110031",
+          "stationName": "Pellworm, Hoogerfähre",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Süderoogsand",
@@ -778,7 +1008,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "HSI-SH",
+          "stationId": "110104",
+          "stationName": "Süderoogsand",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Pellworm, Anleger",
@@ -797,12 +1037,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9550021",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "stationName": "Pellworm, Anleger",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Nordstrandischmoor",
@@ -821,7 +1063,8 @@
       "assignmentStatusLabel": "In Bearbeitung",
       "geographicStation": "Hallig Nordstrandischmoor",
       "geographicGroup": "hallig-nordstrandischmoor",
-      "consolidationNote": "Geografische Pegelstelle; lokale Messpunkte nicht als getrennte Hallig-Standorte führen."
+      "consolidationNote": "Geografische Pegelstelle; lokale Messpunkte nicht als getrennte Hallig-Standorte führen.",
+      "links": []
     },
     {
       "station_name": "Holmer Siel",
@@ -837,7 +1080,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Strucklahnungshörn, Nordstrand, AP",
@@ -856,13 +1100,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110010",
-          "stationName": "Strucklahnungshörn AP",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Strucklahnungshörn, Nordstrand, AP",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Südfall, Fahrwasserkante",
@@ -878,7 +1123,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Everschopsiel",
@@ -897,13 +1143,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110014",
-          "stationName": "Everschopsiel AP",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Everschopsiel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "St. Peter-Ording, Bad",
@@ -919,7 +1166,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Eider-Sperrwerk, Außenpegel",
@@ -935,7 +1183,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9530010",
+          "stationName": "Eider-Sperrwerk, Außenpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Blauort, Norderpiep",
@@ -951,7 +1209,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "mappingCandidates": [
+        {
+          "provider": "LfU Schleswig-Holstein",
+          "stationId": "110178",
+          "stationName": "Blauort, Norderpiep",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "not_active_candidate",
+          "note": "In Bearbeitung; veröffentlichter Datenzeitraum endet laut Arbeitsmappe am 31.12.2025."
+        }
+      ],
+      "links": []
     },
     {
       "station_name": "Meldorf, Sperrwerk, Außenpegel",
@@ -970,13 +1239,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110026",
-          "stationName": "Meldorf Sperrwerk AP",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Meldorf, Sperrwerk, Außenpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Friedrichskoog, Spitze",
@@ -992,7 +1262,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Trischen, West",
@@ -1008,7 +1279,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Mittelplate",
@@ -1024,7 +1296,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "mappingCandidates": [
+        {
+          "provider": "LfU Schleswig-Holstein",
+          "stationId": "110187",
+          "stationName": "Mittelplate",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "not_active_candidate",
+          "note": "In Bearbeitung; veröffentlichter Datenzeitraum endet laut Arbeitsmappe am 31.12.2025."
+        }
+      ],
+      "links": []
     },
     {
       "station_name": "Friedrichskoog, Hafen, Außenpegel",
@@ -1043,13 +1326,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110021",
-          "stationName": "Friedrichskoog Hafen AP",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Friedrichskoog, Hafen, Außenpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Zehnerloch",
@@ -1069,12 +1353,13 @@
           "provider": "PEGELONLINE",
           "stationId": "9510010",
           "stationName": "Zehnerloch",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "unverified"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Sahlenburg",
@@ -1090,7 +1375,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Scharhörnriff, Bake A",
@@ -1106,7 +1392,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9510063",
+          "stationName": "Scharhörnriff, Bake A",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Scharhörn, Bake C",
@@ -1122,7 +1418,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9510060",
+          "stationName": "Scharhörn, Bake C",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Neuwerk, Anleger",
@@ -1138,7 +1444,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Kaiser-Wilhelm-Koog, Elbe",
@@ -1154,7 +1461,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Neufeld, Hafen",
@@ -1170,7 +1478,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Otterndorf, Elbe",
@@ -1186,7 +1495,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Osteriff, Elbe",
@@ -1202,7 +1512,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Oberndorf, Oste",
@@ -1219,7 +1530,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Belum, Oste",
@@ -1235,7 +1547,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5980060",
+          "stationName": "Belum, Oste",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Hechthausen, Oste",
@@ -1251,7 +1573,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Bremervörde, Oste",
@@ -1267,7 +1590,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Brokdorf, Elbe",
@@ -1283,7 +1607,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970050",
+          "stationName": "Brokdorf, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Stör-Sperrwerk, Außenpegel",
@@ -1299,7 +1633,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970041",
+          "stationName": "Stör-Sperrwerk, Außenpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Kasenort, Stör",
@@ -1318,12 +1662,14 @@
         {
           "provider": "HSI-SH",
           "stationId": "110022",
-          "mappingSource": "index.html / HSI_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Kasenort, Stör",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Itzehoe, Stör, Hafen",
@@ -1339,7 +1685,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Breitenberg, Stör",
@@ -1355,7 +1702,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Grönhude, Stör",
@@ -1371,7 +1719,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Glückstadt, Elbe",
@@ -1387,7 +1736,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970035",
+          "stationName": "Glückstadt, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Wischhafen, Elbe, Sperrwerk",
@@ -1403,7 +1762,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Krautsand, Elbe, Reede",
@@ -1419,7 +1779,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Kollmar, Kamperreihe, Elbe",
@@ -1435,7 +1796,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970025",
+          "stationName": "Kollmar, Kamperreihe, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Krückau-Sperrwerk, Binnenpegel",
@@ -1452,7 +1823,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970023",
+          "stationName": "Krückau-Sperrwerk, Binnenpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Elmshorn, Hafen, Krückau",
@@ -1469,7 +1850,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Grauerort, Elbe, Reede",
@@ -1485,7 +1867,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Pinnau-Sperrwerk, Binnenpegel",
@@ -1502,7 +1885,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970018",
+          "stationName": "Pinnau-Sperrwerk, Binnenpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Uetersen, Pinnau",
@@ -1519,7 +1912,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Stadersand, Schwinge",
@@ -1535,7 +1929,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970013",
+          "stationName": "Stadersand, Schwinge",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Stade, Schwinge",
@@ -1551,7 +1955,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hetlingen, Elbe",
@@ -1567,7 +1972,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5970010",
+          "stationName": "Hetlingen, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Lühort, Lühe",
@@ -1583,7 +1998,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "126016",
+          "stationName": "Lühort, Lühe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned",
+          "note": "Kennung laut Arbeitsmappe vorhanden; Messparameter/UUID noch gesondert zu prüfen."
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Horneburg, Lühe",
@@ -1599,7 +2025,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Schulau, Elbe",
@@ -1615,7 +2042,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5950090",
+          "stationName": "Schulau, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Hamburg, Blankenese, Elbe, Unterfeuer",
@@ -1631,7 +2068,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hamburg, Cranz, Este-Sperrwerk, AP",
@@ -1647,7 +2085,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5950070",
+          "stationName": "Hamburg, Cranz, Este-Sperrwerk, AP",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Buxtehude, Este",
@@ -1663,7 +2111,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hamburg, Seemannshöft, Elbe",
@@ -1679,7 +2128,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hamburg, Harburg, Elbe, Schleuse",
@@ -1695,7 +2145,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hamburg, Peute, Elbe",
@@ -1711,7 +2162,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hamburg, Dove-Elbe, Elbe, Einfahrt",
@@ -1727,7 +2179,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Hamburg, Bunthaus, Elbe",
@@ -1743,7 +2196,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Ilmenau-Sperrwerk, Außenpegel",
@@ -1759,7 +2213,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Fahrenholz, Ilmenau",
@@ -1775,7 +2230,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Over, Elbe",
@@ -1791,7 +2247,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hamburg, Zollenspieker, Elbe",
@@ -1807,7 +2264,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5930090",
+          "stationName": "Hamburg, Zollenspieker, Elbe",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Hamburg, Altengamme, Elbe",
@@ -1823,7 +2290,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Geesthacht, Elbe, Wehr, Unterpegel",
@@ -1839,7 +2307,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "5930062",
+          "stationName": "Geesthacht, Elbe, Wehr, Unterpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Alte Weser, Leuchtturm",
@@ -1855,7 +2333,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9460040",
+          "stationName": "Alte Weser, Leuchtturm",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Spieka Neufeld",
@@ -1874,13 +2362,14 @@
         {
           "provider": "NLWKN",
           "stationId": "4940",
-          "stationName": "Spieka-Neufeld",
-          "mappingSource": "index.html / NLWKN_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Spieka Neufeld",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Wremertief",
@@ -1896,7 +2385,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Dwarsgat, Unterfeuer",
@@ -1912,7 +2402,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9460020",
+          "stationName": "Dwarsgat, Unterfeuer",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Robbensüdsteert",
@@ -1932,12 +2432,13 @@
           "provider": "PEGELONLINE",
           "stationId": "9460010",
           "stationName": "Robbensüdsteert",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Fedderwardersiel, Fedderwarder Priel",
@@ -1956,13 +2457,14 @@
         {
           "provider": "NLWKN",
           "stationId": "4938",
-          "stationName": "Fedderwardersiel",
-          "mappingSource": "index.html / NLWKN_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Fedderwardersiel, Fedderwarder Priel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Nordenham, Weser, Unterfeuer",
@@ -1978,7 +2480,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4970040",
+          "stationName": "Nordenham, Weser, Unterfeuer",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Rechtenfleth, Weser",
@@ -1994,7 +2506,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4970030",
+          "stationName": "Rechtenfleth, Weser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Brake, Weser",
@@ -2011,7 +2533,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4970020",
+          "stationName": "Brake, Weser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Elsfleth Ohrt, Hunte",
@@ -2027,7 +2559,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4960080",
+          "stationName": "Elsfleth Ohrt, Hunte",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Elsfleth, Weser",
@@ -2043,7 +2585,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4970010",
+          "stationName": "Elsfleth, Weser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Buttelerhörne, Hunte",
@@ -2059,7 +2611,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Huntebrück, Hunte",
@@ -2076,7 +2629,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hollersiel, Hunte",
@@ -2092,7 +2646,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Reithörne, Hunte",
@@ -2108,7 +2663,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Oldenburg, Drielake, Hunte",
@@ -2124,7 +2680,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4960030",
+          "stationName": "Oldenburg, Drielake, Hunte",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Bremen, Farge, Weser",
@@ -2140,7 +2706,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4950020",
+          "stationName": "Bremen, Farge, Weser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Bremen, Wasserhorst, Lesum",
@@ -2156,7 +2732,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Ritterhude, Hamme",
@@ -2172,7 +2749,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Bremen, Niederblockland, Wümme",
@@ -2188,7 +2766,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Bremen, Borgfeld, Wümme",
@@ -2204,7 +2783,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Ochtum, Sperrwerk, Außenpegel",
@@ -2220,7 +2800,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Bremen, Vegesack, Weser",
@@ -2236,7 +2817,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4950010",
+          "stationName": "Bremen, Vegesack, Weser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Bremen, Wilhelm-Kaisen-Brücke, Weser",
@@ -2252,7 +2843,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4910050",
+          "stationName": "Bremen, Wilhelm-Kaisen-Brücke, Weser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Bremen, Weserwehr, Weser",
@@ -2268,7 +2869,26 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "mappingCandidates": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4910030",
+          "stationName": "Bremen, Weserwehr, Oberwasser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "confirmed_station_identity_assignment_pending",
+          "note": "Beide Messstellen bestätigt; konkrete Zuordnung BSH OW/UW laut Arbeitsmappe noch nicht entschieden."
+        },
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "4910040",
+          "stationName": "Bremen, Weserwehr, Unterwasser",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "confirmed_station_identity_assignment_pending",
+          "note": "Beide Messstellen bestätigt; konkrete Zuordnung BSH OW/UW laut Arbeitsmappe noch nicht entschieden."
+        }
+      ],
+      "links": []
     },
     {
       "station_name": "Wangerooge, Langes Riff, Nord",
@@ -2284,7 +2904,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9420030",
+          "stationName": "Wangerooge, Langes Riff, Nord",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Wangerooge, Ost",
@@ -2303,12 +2933,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9420020",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "stationName": "Wangerooge, Ost",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Mellumplate, Leuchtturm",
@@ -2324,7 +2956,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Schillig",
@@ -2344,12 +2977,13 @@
           "provider": "PEGELONLINE",
           "stationId": "9430030",
           "stationName": "Schillig",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Wangertief, Horumersiel",
@@ -2365,7 +2999,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Hooksielplate",
@@ -2385,12 +3020,13 @@
           "provider": "PEGELONLINE",
           "stationId": "9430020",
           "stationName": "Hooksielplate",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Hooksiel",
@@ -2406,7 +3042,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Jade-Weser-Port",
@@ -2426,12 +3063,13 @@
           "provider": "PEGELONLINE",
           "stationId": "9430050",
           "stationName": "Jade-Weser-Port",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Wilhelmshaven, Neuer Vorhafen, Seeschleuse",
@@ -2447,7 +3085,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9440030",
+          "stationName": "Wilhelmshaven, Neuer Vorhafen, Seeschleuse",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Eckwarderhörne",
@@ -2463,7 +3111,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Arngast, Leuchtturm",
@@ -2479,7 +3128,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Vareler Schleuse",
@@ -2499,12 +3149,13 @@
           "provider": "NLWKN",
           "stationId": "9402",
           "stationName": "Vareler Schleuse",
-          "mappingSource": "index.html / NLWKN_STATIONS",
-          "verificationStatus": "unverified"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Wangerooge, Hafen",
@@ -2520,7 +3171,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9420040",
+          "stationName": "Wangerooge, Hafen",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Harlesiel, Hafen",
@@ -2536,7 +3197,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Spiekeroog, ehem. Landungsbrücke",
@@ -2552,7 +3214,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9410010",
+          "stationName": "Spiekeroog, ehem. Landungsbrücke",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Neuharlingersiel",
@@ -2568,7 +3240,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Langeoog, Hafeneinfahrt",
@@ -2584,7 +3257,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "9390010",
+          "stationName": "Langeoog, Hafeneinfahrt",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Bensersiel",
@@ -2604,12 +3287,13 @@
           "provider": "NLWKN",
           "stationId": "9303",
           "stationName": "Bensersiel",
-          "mappingSource": "index.html / NLWKN_STATIONS",
-          "verificationStatus": "unverified"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Dornumer-Accumersiel",
@@ -2625,7 +3309,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Baltrum, Westende",
@@ -2641,7 +3326,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Neßmersiel",
@@ -2657,7 +3343,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Norddeich, Westerriede",
@@ -2673,7 +3360,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Juist, Seeseite",
@@ -2689,7 +3377,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Juist, Hafen",
@@ -2705,7 +3394,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Leyhörn, Leybucht",
@@ -2724,13 +3414,14 @@
         {
           "provider": "NLWKN",
           "stationId": "9301",
-          "stationName": "Leyhörn",
-          "mappingSource": "index.html / NLWKN_STATIONS",
-          "verificationStatus": "unverified"
+          "stationName": "Leyhörn, Leybucht",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Borkum, Südstrand",
@@ -2749,12 +3440,14 @@
         {
           "provider": "PEGELONLINE",
           "stationId": "9340030",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "stationName": "Borkum, Südstrand",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Dukegat",
@@ -2774,12 +3467,13 @@
           "provider": "PEGELONLINE",
           "stationId": "3990020",
           "stationName": "Dukegat",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Emshörn",
@@ -2799,12 +3493,13 @@
           "provider": "PEGELONLINE",
           "stationId": "9340010",
           "stationName": "Emshörn",
-          "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
-          "verificationStatus": "confirmed"
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
         }
       ],
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Knock, Ems",
@@ -2820,7 +3515,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3990010",
+          "stationName": "Knock, Ems",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Pogum, Ems",
@@ -2836,7 +3541,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Terborg, Ems",
@@ -2852,7 +3558,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Leerort, Ems",
@@ -2869,7 +3576,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3910010",
+          "stationName": "Leerort, Ems",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Leda-Sperrwerk, Unterpegel",
@@ -2885,7 +3602,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3880050",
+          "stationName": "Leda-Sperrwerk, Unterpegel",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Leer, Leda, Schleuse",
@@ -2901,7 +3628,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Nortmoor, Altarm Jümme",
@@ -2917,7 +3645,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Detern, Jümme",
@@ -2933,7 +3662,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Augustfehn, Aper Tief",
@@ -2949,7 +3679,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Westringaburg, Leda",
@@ -2965,7 +3696,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "in_progress",
-      "assignmentStatusLabel": "In Bearbeitung"
+      "assignmentStatusLabel": "In Bearbeitung",
+      "links": []
     },
     {
       "station_name": "Dreyschloot, Leda",
@@ -2981,7 +3713,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Weener, Ems",
@@ -2997,7 +3730,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Rhede, Ems",
@@ -3013,7 +3747,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3770040",
+          "stationName": "Rhede, Ems",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned",
+          "note": "Kennung laut Arbeitsmappe vorhanden; Messparameter/UUID noch gesondert zu prüfen."
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Papenburg, Ems",
@@ -3029,7 +3774,17 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3790010",
+          "stationName": "Papenburg, Ems",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned"
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     },
     {
       "station_name": "Barßel, Soeste",
@@ -3045,7 +3800,8 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": []
     },
     {
       "station_name": "Herbrum, Ems, Hafendamm",
@@ -3061,7 +3817,18 @@
         "auditDate": "2026-11-10"
       },
       "assignmentStatus": "assigned",
-      "assignmentStatusLabel": "Zugeordnet"
+      "assignmentStatusLabel": "Zugeordnet",
+      "links": [
+        {
+          "provider": "PEGELONLINE",
+          "stationId": "3770030",
+          "stationName": "Herbrum, Ems, Hafendamm",
+          "mappingSource": "BSH_172_Zuordnungsstand_154_zugeordnet_18_in_bearbeitung.xlsx",
+          "verificationStatus": "workbook_assigned",
+          "note": "Kennung laut Arbeitsmappe vorhanden; Messparameter/UUID noch gesondert zu prüfen."
+        }
+      ],
+      "sourceMappingStatus": "assigned_from_workbook"
     }
   ],
   "mappingSync": {
