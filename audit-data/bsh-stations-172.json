@@ -11,10 +11,12 @@
       "seo_id": "kalkgrund_leuchtturm",
       "region": "Ostsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Kiel, Holtenau, Ostsee",
@@ -25,10 +27,12 @@
       "seo_id": "kiel_holtenau",
       "region": "Ostsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Travemünde, Ostsee",
@@ -39,10 +43,12 @@
       "seo_id": "travemuende",
       "region": "Ostsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Warnemünde, Ostsee",
@@ -53,10 +59,12 @@
       "seo_id": "warnemuende",
       "region": "Ostsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Borkum, Fischerbalje",
@@ -67,9 +75,9 @@
       "seo_id": "borkum_fischerbalje",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -78,7 +86,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremerhaven, Weser, Alter Leuchtturm",
@@ -89,10 +99,12 @@
       "seo_id": "bremerhaven_alter_leuchtturm",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Norderney, Riffgat",
@@ -103,9 +115,9 @@
       "seo_id": "norderney_riffgat",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -114,7 +126,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Oslebshausen, Weser",
@@ -125,10 +139,12 @@
       "seo_id": "bremen_oslebshausen",
       "region": "Binnengewässer",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Brunsbüttel, Elbe, Ost",
@@ -139,10 +155,12 @@
       "seo_id": "brunsbuettel_ost",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Büsum, Schleuse",
@@ -153,9 +171,9 @@
       "seo_id": "buesum_schleuse",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -164,7 +182,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Cuxhaven, Steubenhöft, Elbe",
@@ -175,10 +195,12 @@
       "seo_id": "cuxhaven_steubenhoeft",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Emden, Ems, Große Seeschleuse",
@@ -189,10 +211,12 @@
       "seo_id": "emden_grosse_seeschleuse",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, St. Pauli, Elbe",
@@ -203,10 +227,12 @@
       "seo_id": "hamburg_st-pauli",
       "region": "Binnengewässer",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Helgoland, Binnenhafen",
@@ -217,9 +243,9 @@
       "seo_id": "helgoland_binnenhafen",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -228,7 +254,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Husum, Schleuse",
@@ -239,10 +267,12 @@
       "seo_id": "husum_schleuse",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wilhelmshaven, Alter Vorhafen",
@@ -253,10 +283,12 @@
       "seo_id": "wilhelmshaven_alter_vorhafen",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Fino 3",
@@ -267,10 +299,12 @@
       "seo_id": "fino3",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Fino 1",
@@ -281,10 +315,12 @@
       "seo_id": "fino1",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "List, Sylt, West",
@@ -295,10 +331,12 @@
       "seo_id": "list_west",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "List, Sylt, Hafen",
@@ -309,10 +347,12 @@
       "seo_id": "list_hafen",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Munkmarsch, Sylt",
@@ -323,9 +363,9 @@
       "seo_id": "munkmarsch",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -334,7 +374,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Westerland, Sylt",
@@ -345,10 +387,12 @@
       "seo_id": "westerland",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Amrum Odde, Amrum",
@@ -359,9 +403,9 @@
       "seo_id": "amrum_odde",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -371,7 +415,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Rantumdamm, Sylt",
@@ -382,9 +428,9 @@
       "seo_id": "rantumdamm",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -393,7 +439,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hörnum, Sylt, West",
@@ -404,10 +452,12 @@
       "seo_id": "hoernum_west",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hörnum, Sylt, Hafen",
@@ -418,9 +468,9 @@
       "seo_id": "hoernum_hafen",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -429,7 +479,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Osterley",
@@ -440,10 +492,12 @@
       "seo_id": "osterley",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Föhrer Ley, Nord",
@@ -454,10 +508,12 @@
       "seo_id": "foehrer_ley_nord",
       "region": "Nordsee",
       "audit": {
-        "status": "preserve_previous",
-        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wittdün, Amrum, Hafen",
@@ -468,10 +524,12 @@
       "seo_id": "wittduen_hafen",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Langeness, Hilligenley",
@@ -482,9 +540,9 @@
       "seo_id": "langeness_hilligenley",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -493,7 +551,16 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet",
+      "geographicStation": "Hallig Langeneß",
+      "geographicGroup": "hallig-langeness",
+      "alternativeBshCodes": [
+        "632D",
+        "632F"
+      ],
+      "consolidationNote": "Geografisch zusammengeführt; BSH-Originalkennung bleibt erhalten."
     },
     {
       "station_name": "Langeness, Nord",
@@ -504,10 +571,19 @@
       "seo_id": "langeness_nord",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung",
+      "geographicStation": "Hallig Langeneß",
+      "geographicGroup": "hallig-langeness",
+      "alternativeBshCodes": [
+        "632D",
+        "632F"
+      ],
+      "consolidationNote": "Geografisch zusammengeführt; BSH-Originalkennung bleibt erhalten."
     },
     {
       "station_name": "Wyk, Föhr",
@@ -518,9 +594,9 @@
       "seo_id": "wyk",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Fest zugeordnet, aber fachlich noch nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-09"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -530,7 +606,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Südwesthörn",
@@ -541,10 +619,12 @@
       "seo_id": "suedwesthoern",
       "region": "Nordsee",
       "audit": {
-        "status": "preserve_previous",
-        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Dagebüll",
@@ -555,9 +635,9 @@
       "seo_id": "dagebuell",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -567,7 +647,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hooge, Anleger",
@@ -578,9 +660,9 @@
       "seo_id": "hooge_anleger",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -589,7 +671,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Der Strand, Hamburger Hallig",
@@ -600,10 +684,12 @@
       "seo_id": "der_strand_hamburger_hallig",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Gröde, Anleger",
@@ -614,10 +700,12 @@
       "seo_id": "groede_anleger",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Schlüttsiel",
@@ -628,9 +716,9 @@
       "seo_id": "schluettsiel",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -640,7 +728,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Rummelloch, West",
@@ -651,10 +741,12 @@
       "seo_id": "rummelloch_west",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Pellworm, Hoogerfähre",
@@ -665,10 +757,12 @@
       "seo_id": "pellworm_hoogerfaehre",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Süderoogsand",
@@ -679,10 +773,12 @@
       "seo_id": "suederoogsand",
       "region": "Nordsee",
       "audit": {
-        "status": "preserve_previous",
-        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Pellworm, Anleger",
@@ -693,9 +789,9 @@
       "seo_id": "pellworm_anleger",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -704,7 +800,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Nordstrandischmoor",
@@ -715,10 +813,15 @@
       "seo_id": "nordstrandischmoor",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung",
+      "geographicStation": "Hallig Nordstrandischmoor",
+      "geographicGroup": "hallig-nordstrandischmoor",
+      "consolidationNote": "Geografische Pegelstelle; lokale Messpunkte nicht als getrennte Hallig-Standorte führen."
     },
     {
       "station_name": "Holmer Siel",
@@ -729,10 +832,12 @@
       "seo_id": "holmer_siel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Strucklahnungshörn, Nordstrand, AP",
@@ -743,9 +848,9 @@
       "seo_id": "strucklahnungshoern",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -755,7 +860,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Südfall, Fahrwasserkante",
@@ -766,10 +873,12 @@
       "seo_id": "suedfall_fahrwasserkante",
       "region": "Nordsee",
       "audit": {
-        "status": "preserve_previous",
-        "statusLabel": "Offen / historischer Status bleibt maßgeblich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Everschopsiel",
@@ -780,9 +889,9 @@
       "seo_id": "everschopsiel",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -792,7 +901,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "St. Peter-Ording, Bad",
@@ -803,10 +914,12 @@
       "seo_id": "st-peter-ording_bad",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Eider-Sperrwerk, Außenpegel",
@@ -817,10 +930,12 @@
       "seo_id": "eider-sperrwerk_aussenpegel",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Blauort, Norderpiep",
@@ -831,10 +946,12 @@
       "seo_id": "blauort_norderpiep",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Meldorf, Sperrwerk, Außenpegel",
@@ -845,9 +962,9 @@
       "seo_id": "meldorf_sperrwerk_aussenpegel",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -857,7 +974,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Friedrichskoog, Spitze",
@@ -868,10 +987,12 @@
       "seo_id": "friedrichskoog_spitze",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Trischen, West",
@@ -882,10 +1003,12 @@
       "seo_id": "trischen_west",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Mittelplate",
@@ -896,10 +1019,12 @@
       "seo_id": "mittelplate",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Friedrichskoog, Hafen, Außenpegel",
@@ -910,9 +1035,9 @@
       "seo_id": "friedrichskoog_hafen_aussenpegel",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -922,7 +1047,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Zehnerloch",
@@ -933,9 +1060,9 @@
       "seo_id": "zehnerloch",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Fest zugeordnet, aber fachlich noch nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-09"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -945,7 +1072,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Sahlenburg",
@@ -956,10 +1085,12 @@
       "seo_id": "sahlenburg",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Scharhörnriff, Bake A",
@@ -970,10 +1101,12 @@
       "seo_id": "scharhoernriff_bake_a",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Scharhörn, Bake C",
@@ -984,10 +1117,12 @@
       "seo_id": "scharhoern_bake_c",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Neuwerk, Anleger",
@@ -998,10 +1133,12 @@
       "seo_id": "neuwerk_anleger",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Kaiser-Wilhelm-Koog, Elbe",
@@ -1012,10 +1149,12 @@
       "seo_id": "kaiser_wilhelm_koog",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Neufeld, Hafen",
@@ -1026,10 +1165,12 @@
       "seo_id": "neufeld_hafen",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Otterndorf, Elbe",
@@ -1040,10 +1181,12 @@
       "seo_id": "otterndorf",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Osteriff, Elbe",
@@ -1054,10 +1197,12 @@
       "seo_id": "osteriff",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Oberndorf, Oste",
@@ -1069,10 +1214,12 @@
       "region": "Binnengewässer",
       "region_note": "Grenzfall Oste: konservativ Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Belum, Oste",
@@ -1083,10 +1230,12 @@
       "seo_id": "belum",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hechthausen, Oste",
@@ -1097,10 +1246,12 @@
       "seo_id": "hechthausen",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremervörde, Oste",
@@ -1111,10 +1262,12 @@
       "seo_id": "bremervoerde",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Brokdorf, Elbe",
@@ -1125,10 +1278,12 @@
       "seo_id": "brokdorf",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Stör-Sperrwerk, Außenpegel",
@@ -1139,10 +1294,12 @@
       "seo_id": "stoer-sperrwerk_aussenpegel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Kasenort, Stör",
@@ -1153,9 +1310,9 @@
       "seo_id": "kasenort",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -1164,7 +1321,9 @@
           "mappingSource": "index.html / HSI_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Itzehoe, Stör, Hafen",
@@ -1175,10 +1334,12 @@
       "seo_id": "itzehoe_hafen",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Breitenberg, Stör",
@@ -1189,10 +1350,12 @@
       "seo_id": "breitenberg",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Grönhude, Stör",
@@ -1203,10 +1366,12 @@
       "seo_id": "groenhude",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Glückstadt, Elbe",
@@ -1217,10 +1382,12 @@
       "seo_id": "glueckstadt",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wischhafen, Elbe, Sperrwerk",
@@ -1231,10 +1398,12 @@
       "seo_id": "wischhafen_sperrwerk",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Krautsand, Elbe, Reede",
@@ -1245,10 +1414,12 @@
       "seo_id": "krautsand",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Kollmar, Kamperreihe, Elbe",
@@ -1259,10 +1430,12 @@
       "seo_id": "kollmar_kamperreihe",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Krückau-Sperrwerk, Binnenpegel",
@@ -1274,10 +1447,12 @@
       "region": "Binnengewässer",
       "region_note": "BSH-Bezeichnung ausdrücklich Binnenpegel",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Elmshorn, Hafen, Krückau",
@@ -1289,10 +1464,12 @@
       "region": "Nordsee",
       "region_note": "Grenzfall Krückau/Elmshorn: Nordsee gemäß abgeschlossener Grenzfallentscheidung",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Grauerort, Elbe, Reede",
@@ -1303,10 +1480,12 @@
       "seo_id": "grauerort",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Pinnau-Sperrwerk, Binnenpegel",
@@ -1318,10 +1497,12 @@
       "region": "Binnengewässer",
       "region_note": "BSH-Bezeichnung ausdrücklich Binnenpegel",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Uetersen, Pinnau",
@@ -1333,10 +1514,12 @@
       "region": "Binnengewässer",
       "region_note": "Grenzfall Pinnau/Uetersen: Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Stadersand, Schwinge",
@@ -1347,10 +1530,12 @@
       "seo_id": "stadersand",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Stade, Schwinge",
@@ -1361,10 +1546,12 @@
       "seo_id": "stade",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hetlingen, Elbe",
@@ -1375,10 +1562,12 @@
       "seo_id": "hetlingen",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Lühort, Lühe",
@@ -1389,10 +1578,12 @@
       "seo_id": "luehort",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Horneburg, Lühe",
@@ -1403,10 +1594,12 @@
       "seo_id": "horneburg",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Schulau, Elbe",
@@ -1417,10 +1610,12 @@
       "seo_id": "schulau",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Blankenese, Elbe, Unterfeuer",
@@ -1431,10 +1626,12 @@
       "seo_id": "hamburg_blankenese",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Cranz, Este-Sperrwerk, AP",
@@ -1445,10 +1642,12 @@
       "seo_id": "hamburg_cranz",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Buxtehude, Este",
@@ -1459,10 +1658,12 @@
       "seo_id": "buxtehude",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Seemannshöft, Elbe",
@@ -1473,10 +1674,12 @@
       "seo_id": "hamburg_seemannshoeft",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Harburg, Elbe, Schleuse",
@@ -1487,10 +1690,12 @@
       "seo_id": "hamburg_harburg",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Peute, Elbe",
@@ -1501,10 +1706,12 @@
       "seo_id": "hamburg_peute",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Dove-Elbe, Elbe, Einfahrt",
@@ -1515,10 +1722,12 @@
       "seo_id": "hamburg_dove-elbe_einfahrt",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Hamburg, Bunthaus, Elbe",
@@ -1529,10 +1738,12 @@
       "seo_id": "hamburg_bunthaus",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Ilmenau-Sperrwerk, Außenpegel",
@@ -1543,10 +1754,12 @@
       "seo_id": "ilmenau-sperrwerk_aussenpegel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Fahrenholz, Ilmenau",
@@ -1557,10 +1770,12 @@
       "seo_id": "fahrenholz",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Over, Elbe",
@@ -1571,10 +1786,12 @@
       "seo_id": "over",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Zollenspieker, Elbe",
@@ -1585,10 +1802,12 @@
       "seo_id": "hamburg_zollenspieker",
       "region": "Binnengewässer",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hamburg, Altengamme, Elbe",
@@ -1599,10 +1818,12 @@
       "seo_id": "hamburg_altengamme",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Geesthacht, Elbe, Wehr, Unterpegel",
@@ -1613,10 +1834,12 @@
       "seo_id": "geesthacht_wehr_unterpegel",
       "region": "Binnengewässer",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Alte Weser, Leuchtturm",
@@ -1627,10 +1850,12 @@
       "seo_id": "alte_weser_leuchtturm",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Spieka Neufeld",
@@ -1641,9 +1866,9 @@
       "seo_id": "spieka_neufeld",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -1653,7 +1878,9 @@
           "mappingSource": "index.html / NLWKN_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wremertief",
@@ -1664,10 +1891,12 @@
       "seo_id": "wremertief",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Dwarsgat, Unterfeuer",
@@ -1678,10 +1907,12 @@
       "seo_id": "dwarsgat",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Robbensüdsteert",
@@ -1692,9 +1923,9 @@
       "seo_id": "robbensuedsteert",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -1704,7 +1935,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Fedderwardersiel, Fedderwarder Priel",
@@ -1715,9 +1948,9 @@
       "seo_id": "fedderwardersiel",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -1727,7 +1960,9 @@
           "mappingSource": "index.html / NLWKN_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Nordenham, Weser, Unterfeuer",
@@ -1738,10 +1973,12 @@
       "seo_id": "nordenham",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Rechtenfleth, Weser",
@@ -1752,10 +1989,12 @@
       "seo_id": "rechtenfleth",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Brake, Weser",
@@ -1767,10 +2006,12 @@
       "region": "Binnengewässer",
       "region_note": "Grenzfall Weser/Brake: Binnengewässer nach festgelegter WRRL-Abgrenzung",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Elsfleth Ohrt, Hunte",
@@ -1781,10 +2022,12 @@
       "seo_id": "elsfleth_ohrt",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Elsfleth, Weser",
@@ -1795,10 +2038,12 @@
       "seo_id": "elsfleth",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Buttelerhörne, Hunte",
@@ -1809,10 +2054,12 @@
       "seo_id": "buttelerhoerne",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Huntebrück, Hunte",
@@ -1824,10 +2071,12 @@
       "region": "Binnengewässer",
       "region_note": "Grenzfall Huntebrück: Grenzlinie; konservativ Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hollersiel, Hunte",
@@ -1838,10 +2087,12 @@
       "seo_id": "hollersiel",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Reithörne, Hunte",
@@ -1852,10 +2103,12 @@
       "seo_id": "reithoerne",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Oldenburg, Drielake, Hunte",
@@ -1866,10 +2119,12 @@
       "seo_id": "oldenburg_drielake",
       "region": "Binnengewässer",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Farge, Weser",
@@ -1880,10 +2135,12 @@
       "seo_id": "bremen_farge",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Wasserhorst, Lesum",
@@ -1894,10 +2151,12 @@
       "seo_id": "bremen_wasserhorst",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Ritterhude, Hamme",
@@ -1908,10 +2167,12 @@
       "seo_id": "ritterhude",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Niederblockland, Wümme",
@@ -1922,10 +2183,12 @@
       "seo_id": "bremen_niederblockland",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Borgfeld, Wümme",
@@ -1936,10 +2199,12 @@
       "seo_id": "bremen_borgfeld",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Ochtum, Sperrwerk, Außenpegel",
@@ -1950,10 +2215,12 @@
       "seo_id": "ochtum-sperrwerk_aussenpegel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Vegesack, Weser",
@@ -1964,10 +2231,12 @@
       "seo_id": "bremen_vegesack",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Wilhelm-Kaisen-Brücke, Weser",
@@ -1978,10 +2247,12 @@
       "seo_id": "bremen_wilhelm-kaisen-bruecke",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bremen, Weserwehr, Weser",
@@ -1992,10 +2263,12 @@
       "seo_id": "bremen_weserwehr",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wangerooge, Langes Riff, Nord",
@@ -2006,10 +2279,12 @@
       "seo_id": "wangerooge_nord",
       "region": "Nordsee",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wangerooge, Ost",
@@ -2020,9 +2295,9 @@
       "seo_id": "wangerooge_ost",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2031,7 +2306,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Mellumplate, Leuchtturm",
@@ -2042,10 +2319,12 @@
       "seo_id": "mellumplate_leuchtturm",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Schillig",
@@ -2056,9 +2335,9 @@
       "seo_id": "schillig",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2068,7 +2347,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wangertief, Horumersiel",
@@ -2079,10 +2360,12 @@
       "seo_id": "wangertief_horumersiel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hooksielplate",
@@ -2093,9 +2376,9 @@
       "seo_id": "hooksielplate",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2105,7 +2388,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Hooksiel",
@@ -2116,10 +2401,12 @@
       "seo_id": "hooksiel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Jade-Weser-Port",
@@ -2130,9 +2417,9 @@
       "seo_id": "jade-weser-port",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2142,7 +2429,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wilhelmshaven, Neuer Vorhafen, Seeschleuse",
@@ -2153,10 +2442,12 @@
       "seo_id": "wilhelmshaven_neuer_vorhafen_seeschleuse",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Eckwarderhörne",
@@ -2167,10 +2458,12 @@
       "seo_id": "eckwarderhoerne",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Arngast, Leuchtturm",
@@ -2181,10 +2474,12 @@
       "seo_id": "arngast_leuchtturm",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Vareler Schleuse",
@@ -2195,9 +2490,9 @@
       "seo_id": "vareler_schleuse",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2207,7 +2502,9 @@
           "mappingSource": "index.html / NLWKN_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Wangerooge, Hafen",
@@ -2218,10 +2515,12 @@
       "seo_id": "wangerooge_hafen",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Harlesiel, Hafen",
@@ -2232,10 +2531,12 @@
       "seo_id": "harlesiel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Spiekeroog, ehem. Landungsbrücke",
@@ -2246,10 +2547,12 @@
       "seo_id": "spiekeroog",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Neuharlingersiel",
@@ -2260,10 +2563,12 @@
       "seo_id": "neuharlingersiel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Langeoog, Hafeneinfahrt",
@@ -2274,10 +2579,12 @@
       "seo_id": "langeoog_hafeneinfahrt",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Bensersiel",
@@ -2288,9 +2595,9 @@
       "seo_id": "bensersiel",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2300,7 +2607,9 @@
           "mappingSource": "index.html / NLWKN_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Dornumer-Accumersiel",
@@ -2311,10 +2620,12 @@
       "seo_id": "dornumer-accumersiel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Baltrum, Westende",
@@ -2325,10 +2636,12 @@
       "seo_id": "baltrum_westende",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Neßmersiel",
@@ -2339,10 +2652,12 @@
       "seo_id": "nessmersiel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Norddeich, Westerriede",
@@ -2353,10 +2668,12 @@
       "seo_id": "norddeich_westerriede",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Juist, Seeseite",
@@ -2367,10 +2684,12 @@
       "seo_id": "juist_seeseite",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Juist, Hafen",
@@ -2381,10 +2700,12 @@
       "seo_id": "juist_hafen",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Leyhörn, Leybucht",
@@ -2395,9 +2716,9 @@
       "seo_id": "leyhoern_leybucht",
       "region": "Nordsee",
       "audit": {
-        "status": "candidate",
-        "statusLabel": "Kandidat / weitere Primärbelegprüfung erforderlich",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2407,7 +2728,9 @@
           "mappingSource": "index.html / NLWKN_STATIONS",
           "verificationStatus": "unverified"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Borkum, Südstrand",
@@ -2418,9 +2741,9 @@
       "seo_id": "borkum_suedstrand",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2429,7 +2752,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Dukegat",
@@ -2440,9 +2765,9 @@
       "seo_id": "dukegat",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2452,7 +2777,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Emshörn",
@@ -2463,9 +2790,9 @@
       "seo_id": "emshoern",
       "region": "Nordsee",
       "audit": {
-        "status": "confirmed",
-        "statusLabel": "Bestätigt – nicht allein aus Namensgleichheit abgeleitet",
-        "auditDate": "2026-11-08"
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
       },
       "links": [
         {
@@ -2475,7 +2802,9 @@
           "mappingSource": "index.html / VERIFIED_BSH_PO_LINKS",
           "verificationStatus": "confirmed"
         }
-      ]
+      ],
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Knock, Ems",
@@ -2486,10 +2815,12 @@
       "seo_id": "knock",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Pogum, Ems",
@@ -2500,10 +2831,12 @@
       "seo_id": "pogum",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Terborg, Ems",
@@ -2514,10 +2847,12 @@
       "seo_id": "terborg",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Leerort, Ems",
@@ -2529,10 +2864,12 @@
       "region": "Nordsee",
       "region_note": "Grenzfall Ems/Leerort: Nordsee nach festgelegter landesrechtlicher Abgrenzung",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Leda-Sperrwerk, Unterpegel",
@@ -2543,10 +2880,12 @@
       "seo_id": "leda-sperrwerk_unterpegel",
       "region": "Nordsee",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Leer, Leda, Schleuse",
@@ -2557,10 +2896,12 @@
       "seo_id": "leer_schleuse",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Nortmoor, Altarm Jümme",
@@ -2571,10 +2912,12 @@
       "seo_id": "nortmoor",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Detern, Jümme",
@@ -2585,10 +2928,12 @@
       "seo_id": "detern",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Augustfehn, Aper Tief",
@@ -2599,10 +2944,12 @@
       "seo_id": "augustfehn",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Westringaburg, Leda",
@@ -2613,10 +2960,12 @@
       "seo_id": "westringaburg",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "in_progress",
+        "statusLabel": "In Bearbeitung",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "in_progress",
+      "assignmentStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Dreyschloot, Leda",
@@ -2627,10 +2976,12 @@
       "seo_id": "dreyschloot",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Weener, Ems",
@@ -2641,10 +2992,12 @@
       "seo_id": "weener",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Rhede, Ems",
@@ -2655,10 +3008,12 @@
       "seo_id": "rhede",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Papenburg, Ems",
@@ -2669,10 +3024,12 @@
       "seo_id": "papenburg",
       "region": "Binnengewässer",
       "audit": {
-        "status": "unverified_link",
-        "statusLabel": "Nicht bestätigt – Kennung/UUID/Primärbeleg abgleichen",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Barßel, Soeste",
@@ -2683,10 +3040,12 @@
       "seo_id": "barssel",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     },
     {
       "station_name": "Herbrum, Ems, Hafendamm",
@@ -2697,10 +3056,12 @@
       "seo_id": "herbrum_hafendamm",
       "region": "Binnengewässer",
       "audit": {
-        "status": "no_match",
-        "statusLabel": "Offen / kein belegter Treffer",
-        "auditDate": "2026-11-08"
-      }
+        "status": "assigned",
+        "statusLabel": "Zugeordnet",
+        "auditDate": "2026-11-10"
+      },
+      "assignmentStatus": "assigned",
+      "assignmentStatusLabel": "Zugeordnet"
     }
   ],
   "mappingSync": {
@@ -2714,5 +3075,32 @@
       "total": 33
     },
     "statusRule": "no_match wird bei vorhandener fester Provider-Zuordnung auf unverified_link angehoben; bestätigte, candidate- und unverified-Status bleiben ansonsten erhalten."
+  },
+  "assignmentSummary": {
+    "total": 172,
+    "assigned": 154,
+    "inProgress": 18,
+    "additionalOpen": 0,
+    "rule": "Alle 154 bereits zugeordneten Einträge behalten ihren Zuordnungsstatus; fehlende exakte WF-Namensübereinstimmung hebt eine bestehende Zuordnung nicht auf.",
+    "openCodes": [
+      "606P",
+      "610P",
+      "632F",
+      "642C",
+      "649A",
+      "653P",
+      "666P",
+      "673P",
+      "675C",
+      "678W",
+      "727P",
+      "735B",
+      "773P",
+      "778P",
+      "810A",
+      "810B",
+      "810D",
+      "810P"
+    ]
   }
 }
