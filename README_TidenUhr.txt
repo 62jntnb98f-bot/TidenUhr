@@ -1,6 +1,6 @@
 # TidenUhr – Projektdokumentation
 
-**Produktiver Stand: v47.47**  
+**Produktiver Stand: v47.54**  
 **Repository:** 62jntnb98f-bot/TidenUhr  
 **Produktiver Branch:** main  
 **Startdatei:** index.html
@@ -27,8 +27,8 @@ TidenUhr ist eine browserbasierte Progressive Web App für iPhone, Android und D
 - BSH-Wasserstandsvorhersage und PEGELONLINE-WV werden getrennt behandelt.
 
 ### Produktive Dateien
-- `index.html`: Anwendung, Versionskennung v47.47.
-- `sw.js`: Service Worker, Cachekennung `tiden-v47-47-2026`.
+- `index.html`: Anwendung, Versionskennung v47.54.
+- `sw.js`: Service Worker, Cachekennung `tiden-v47-54-2026`.
 - `manifest.webmanifest`: PWA-Metadaten.
 - `stations.json`, `catalog.json`: Stations- und Jahresdatei-Metadaten.
 - `DE__510P2026.json`, `DE__632P2026.json`, `KIEL-HOLTENAU2026.json`: Jahresdateien im Repository-Hauptverzeichnis.
