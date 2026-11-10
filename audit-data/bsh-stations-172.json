@@ -27,7 +27,9 @@
           "note": "Konflikt laut Arbeitsmappe; nicht als aktive Zuordnung freigeben."
         }
       ],
-      "links": []
+      "links": [],
+      "waterMappingStatus": "candidate_review",
+      "waterMappingStatusLabel": "Zuordnung in Prüfung"
     },
     {
       "station_name": "Kiel, Holtenau, Ostsee",
@@ -53,7 +55,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Travemünde, Ostsee",
@@ -79,7 +83,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Warnemünde, Ostsee",
@@ -105,7 +111,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Borkum, Fischerbalje",
@@ -131,7 +139,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Bremerhaven, Weser, Alter Leuchtturm",
@@ -157,7 +167,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Norderney, Riffgat",
@@ -183,7 +195,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Bremen, Oslebshausen, Weser",
@@ -209,7 +223,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Brunsbüttel, Elbe, Ost",
@@ -235,7 +251,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Büsum, Schleuse",
@@ -261,7 +279,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Cuxhaven, Steubenhöft, Elbe",
@@ -287,7 +307,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Emden, Ems, Große Seeschleuse",
@@ -313,7 +335,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Hamburg, St. Pauli, Elbe",
@@ -339,7 +363,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Helgoland, Binnenhafen",
@@ -365,7 +391,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Husum, Schleuse",
@@ -391,7 +419,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Wilhelmshaven, Alter Vorhafen",
@@ -417,7 +447,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Fino 3",
@@ -434,7 +466,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Fino 1",
@@ -451,7 +485,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "List, Sylt, West",
@@ -468,7 +504,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "List, Sylt, Hafen",
@@ -494,7 +532,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Munkmarsch, Sylt",
@@ -520,7 +560,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Westerland, Sylt",
@@ -546,7 +588,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Amrum Odde, Amrum",
@@ -572,7 +616,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Rantumdamm, Sylt",
@@ -598,7 +644,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Hörnum, Sylt, West",
@@ -615,7 +663,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Hörnum, Sylt, Hafen",
@@ -641,7 +691,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Osterley",
@@ -667,7 +719,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Föhrer Ley, Nord",
@@ -694,7 +748,9 @@
           "note": "Betreiberkennung laut Arbeitsmappe nicht amtlich bestätigt."
         }
       ],
-      "links": []
+      "links": [],
+      "waterMappingStatus": "candidate_review",
+      "waterMappingStatusLabel": "Zuordnung in Prüfung"
     },
     {
       "station_name": "Wittdün, Amrum, Hafen",
@@ -720,7 +776,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Langeness, Hilligenley",
@@ -751,7 +809,9 @@
         "632D",
         "632F"
       ],
-      "consolidationNote": "Geografisch zusammengeführt; BSH-Originalkennung bleibt erhalten."
+      "consolidationNote": "Geografisch zusammengeführt; BSH-Originalkennung bleibt erhalten.",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Langeness, Nord",
@@ -775,7 +835,9 @@
         "632F"
       ],
       "consolidationNote": "Geografisch zusammengeführt; BSH-Originalkennung bleibt erhalten.",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Wyk, Föhr",
@@ -801,7 +863,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Südwesthörn",
@@ -818,7 +882,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Dagebüll",
@@ -844,7 +910,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Hooge, Anleger",
@@ -870,7 +938,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Der Strand, Hamburger Hallig",
@@ -897,7 +967,9 @@
           "note": "Betreiberkennung laut Arbeitsmappe nicht amtlich bestätigt."
         }
       ],
-      "links": []
+      "links": [],
+      "waterMappingStatus": "candidate_review",
+      "waterMappingStatusLabel": "Zuordnung in Prüfung"
     },
     {
       "station_name": "Gröde, Anleger",
@@ -923,7 +995,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Schlüttsiel",
@@ -949,7 +1023,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Rummelloch, West",
@@ -966,7 +1042,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Pellworm, Hoogerfähre",
@@ -992,7 +1070,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Süderoogsand",
@@ -1018,7 +1098,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Pellworm, Anleger",
@@ -1044,7 +1126,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Nordstrandischmoor",
@@ -1064,7 +1148,9 @@
       "geographicStation": "Hallig Nordstrandischmoor",
       "geographicGroup": "hallig-nordstrandischmoor",
       "consolidationNote": "Geografische Pegelstelle; lokale Messpunkte nicht als getrennte Hallig-Standorte führen.",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Holmer Siel",
@@ -1081,7 +1167,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Strucklahnungshörn, Nordstrand, AP",
@@ -1107,7 +1195,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Südfall, Fahrwasserkante",
@@ -1124,7 +1214,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Everschopsiel",
@@ -1150,7 +1242,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "St. Peter-Ording, Bad",
@@ -1167,7 +1261,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Eider-Sperrwerk, Außenpegel",
@@ -1193,7 +1289,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Blauort, Norderpiep",
@@ -1220,7 +1318,9 @@
           "note": "In Bearbeitung; veröffentlichter Datenzeitraum endet laut Arbeitsmappe am 31.12.2025."
         }
       ],
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress_source_review",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Meldorf, Sperrwerk, Außenpegel",
@@ -1246,7 +1346,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Friedrichskoog, Spitze",
@@ -1263,7 +1365,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Trischen, West",
@@ -1280,7 +1384,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Mittelplate",
@@ -1307,7 +1413,9 @@
           "note": "In Bearbeitung; veröffentlichter Datenzeitraum endet laut Arbeitsmappe am 31.12.2025."
         }
       ],
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress_source_review",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Friedrichskoog, Hafen, Außenpegel",
@@ -1333,7 +1441,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Zehnerloch",
@@ -1359,7 +1469,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Sahlenburg",
@@ -1376,7 +1488,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Scharhörnriff, Bake A",
@@ -1402,7 +1516,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Scharhörn, Bake C",
@@ -1428,7 +1544,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Neuwerk, Anleger",
@@ -1445,7 +1563,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Kaiser-Wilhelm-Koog, Elbe",
@@ -1462,7 +1582,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Neufeld, Hafen",
@@ -1479,7 +1601,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Otterndorf, Elbe",
@@ -1496,7 +1620,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_productive_mapping",
+      "waterMappingStatusLabel": "Zugeordnet · keine produktive Wasserstandsmessstelle"
     },
     {
       "station_name": "Osteriff, Elbe",
@@ -1513,7 +1639,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Oberndorf, Oste",
@@ -1531,7 +1659,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Belum, Oste",
@@ -1557,7 +1687,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Hechthausen, Oste",
@@ -1574,7 +1706,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Bremervörde, Oste",
@@ -1591,7 +1725,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Brokdorf, Elbe",
@@ -1617,7 +1753,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Stör-Sperrwerk, Außenpegel",
@@ -1643,7 +1781,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Kasenort, Stör",
@@ -1669,7 +1809,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Itzehoe, Stör, Hafen",
@@ -1686,7 +1828,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Breitenberg, Stör",
@@ -1703,7 +1847,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Grönhude, Stör",
@@ -1720,7 +1866,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Glückstadt, Elbe",
@@ -1746,7 +1894,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Wischhafen, Elbe, Sperrwerk",
@@ -1763,7 +1913,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Krautsand, Elbe, Reede",
@@ -1780,7 +1932,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Kollmar, Kamperreihe, Elbe",
@@ -1806,7 +1960,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Krückau-Sperrwerk, Binnenpegel",
@@ -1833,7 +1989,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Elmshorn, Hafen, Krückau",
@@ -1851,7 +2009,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Grauerort, Elbe, Reede",
@@ -1868,7 +2028,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_productive_mapping",
+      "waterMappingStatusLabel": "Zugeordnet · keine produktive Wasserstandsmessstelle"
     },
     {
       "station_name": "Pinnau-Sperrwerk, Binnenpegel",
@@ -1895,7 +2057,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Uetersen, Pinnau",
@@ -1913,7 +2077,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Stadersand, Schwinge",
@@ -1939,7 +2105,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Stade, Schwinge",
@@ -1956,7 +2124,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Hetlingen, Elbe",
@@ -1982,7 +2152,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Lühort, Lühe",
@@ -2009,7 +2181,9 @@
           "note": "Kennung laut Arbeitsmappe vorhanden; Messparameter/UUID noch gesondert zu prüfen."
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Horneburg, Lühe",
@@ -2026,7 +2200,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Schulau, Elbe",
@@ -2052,7 +2228,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Hamburg, Blankenese, Elbe, Unterfeuer",
@@ -2069,7 +2247,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_productive_mapping",
+      "waterMappingStatusLabel": "Zugeordnet · keine produktive Wasserstandsmessstelle"
     },
     {
       "station_name": "Hamburg, Cranz, Este-Sperrwerk, AP",
@@ -2095,7 +2275,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Buxtehude, Este",
@@ -2112,7 +2294,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Hamburg, Seemannshöft, Elbe",
@@ -2129,7 +2313,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_productive_mapping",
+      "waterMappingStatusLabel": "Zugeordnet · keine produktive Wasserstandsmessstelle"
     },
     {
       "station_name": "Hamburg, Harburg, Elbe, Schleuse",
@@ -2146,7 +2332,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_productive_mapping",
+      "waterMappingStatusLabel": "Zugeordnet · keine produktive Wasserstandsmessstelle"
     },
     {
       "station_name": "Hamburg, Peute, Elbe",
@@ -2163,7 +2351,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Hamburg, Dove-Elbe, Elbe, Einfahrt",
@@ -2180,7 +2370,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Hamburg, Bunthaus, Elbe",
@@ -2197,7 +2389,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Ilmenau-Sperrwerk, Außenpegel",
@@ -2214,7 +2408,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Fahrenholz, Ilmenau",
@@ -2231,7 +2427,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Over, Elbe",
@@ -2248,7 +2446,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Hamburg, Zollenspieker, Elbe",
@@ -2274,7 +2474,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Hamburg, Altengamme, Elbe",
@@ -2291,7 +2493,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Geesthacht, Elbe, Wehr, Unterpegel",
@@ -2317,7 +2521,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Alte Weser, Leuchtturm",
@@ -2343,7 +2549,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Spieka Neufeld",
@@ -2369,7 +2577,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Wremertief",
@@ -2386,7 +2596,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Dwarsgat, Unterfeuer",
@@ -2412,7 +2624,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Robbensüdsteert",
@@ -2438,7 +2652,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Fedderwardersiel, Fedderwarder Priel",
@@ -2464,7 +2680,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Nordenham, Weser, Unterfeuer",
@@ -2490,7 +2708,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Rechtenfleth, Weser",
@@ -2516,7 +2736,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Brake, Weser",
@@ -2543,7 +2765,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Elsfleth Ohrt, Hunte",
@@ -2569,7 +2793,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Elsfleth, Weser",
@@ -2595,7 +2821,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Buttelerhörne, Hunte",
@@ -2612,7 +2840,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Huntebrück, Hunte",
@@ -2630,7 +2860,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Hollersiel, Hunte",
@@ -2647,7 +2879,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Reithörne, Hunte",
@@ -2664,7 +2898,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Oldenburg, Drielake, Hunte",
@@ -2690,7 +2926,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Bremen, Farge, Weser",
@@ -2716,7 +2954,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Bremen, Wasserhorst, Lesum",
@@ -2733,7 +2973,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Ritterhude, Hamme",
@@ -2750,7 +2992,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Bremen, Niederblockland, Wümme",
@@ -2767,7 +3011,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Bremen, Borgfeld, Wümme",
@@ -2784,7 +3030,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Ochtum, Sperrwerk, Außenpegel",
@@ -2801,7 +3049,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Bremen, Vegesack, Weser",
@@ -2827,7 +3077,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Bremen, Wilhelm-Kaisen-Brücke, Weser",
@@ -2853,7 +3105,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Bremen, Weserwehr, Weser",
@@ -2914,7 +3168,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Wangerooge, Ost",
@@ -2940,7 +3196,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Mellumplate, Leuchtturm",
@@ -2957,7 +3215,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Schillig",
@@ -2983,7 +3243,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Wangertief, Horumersiel",
@@ -3000,7 +3262,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Hooksielplate",
@@ -3026,7 +3290,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Hooksiel",
@@ -3043,7 +3309,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Jade-Weser-Port",
@@ -3069,7 +3337,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Wilhelmshaven, Neuer Vorhafen, Seeschleuse",
@@ -3095,7 +3365,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Eckwarderhörne",
@@ -3112,7 +3384,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Arngast, Leuchtturm",
@@ -3129,7 +3403,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Vareler Schleuse",
@@ -3155,7 +3431,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Wangerooge, Hafen",
@@ -3181,7 +3459,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Harlesiel, Hafen",
@@ -3198,7 +3478,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Spiekeroog, ehem. Landungsbrücke",
@@ -3224,7 +3506,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Neuharlingersiel",
@@ -3241,7 +3525,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Langeoog, Hafeneinfahrt",
@@ -3267,7 +3553,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Bensersiel",
@@ -3293,7 +3581,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Dornumer-Accumersiel",
@@ -3310,7 +3600,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Baltrum, Westende",
@@ -3327,7 +3619,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Neßmersiel",
@@ -3344,7 +3638,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Norddeich, Westerriede",
@@ -3361,7 +3657,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Juist, Seeseite",
@@ -3378,7 +3676,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Juist, Hafen",
@@ -3395,7 +3695,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Leyhörn, Leybucht",
@@ -3421,7 +3723,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Borkum, Südstrand",
@@ -3447,7 +3751,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Dukegat",
@@ -3473,7 +3779,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Emshörn",
@@ -3499,7 +3807,9 @@
       ],
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Knock, Ems",
@@ -3525,7 +3835,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Pogum, Ems",
@@ -3542,7 +3854,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Terborg, Ems",
@@ -3559,7 +3873,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Leerort, Ems",
@@ -3586,7 +3902,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Leda-Sperrwerk, Unterpegel",
@@ -3612,7 +3930,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Leer, Leda, Schleuse",
@@ -3629,7 +3949,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Nortmoor, Altarm Jümme",
@@ -3646,7 +3968,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Detern, Jümme",
@@ -3663,7 +3987,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Augustfehn, Aper Tief",
@@ -3680,7 +4006,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Westringaburg, Leda",
@@ -3697,7 +4025,9 @@
       },
       "assignmentStatus": "in_progress",
       "assignmentStatusLabel": "In Bearbeitung",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "in_progress",
+      "waterMappingStatusLabel": "In Bearbeitung"
     },
     {
       "station_name": "Dreyschloot, Leda",
@@ -3714,7 +4044,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Weener, Ems",
@@ -3731,7 +4063,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "preserve_existing",
+      "waterMappingStatusLabel": "Zugeordnet · bestehende Zuordnung beibehalten"
     },
     {
       "station_name": "Rhede, Ems",
@@ -3758,7 +4092,9 @@
           "note": "Kennung laut Arbeitsmappe vorhanden; Messparameter/UUID noch gesondert zu prüfen."
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Papenburg, Ems",
@@ -3784,7 +4120,9 @@
           "verificationStatus": "workbook_assigned"
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     },
     {
       "station_name": "Barßel, Soeste",
@@ -3801,7 +4139,9 @@
       },
       "assignmentStatus": "assigned",
       "assignmentStatusLabel": "Zugeordnet",
-      "links": []
+      "links": [],
+      "waterMappingStatus": "no_own_measurement",
+      "waterMappingStatusLabel": "Zugeordnet · keine eigene Messstelle"
     },
     {
       "station_name": "Herbrum, Ems, Hafendamm",
@@ -3828,7 +4168,9 @@
           "note": "Kennung laut Arbeitsmappe vorhanden; Messparameter/UUID noch gesondert zu prüfen."
         }
       ],
-      "sourceMappingStatus": "assigned_from_workbook"
+      "sourceMappingStatus": "assigned_from_workbook",
+      "waterMappingStatus": "assigned_source",
+      "waterMappingStatusLabel": "Wasserstand zugeordnet"
     }
   ],
   "mappingSync": {
