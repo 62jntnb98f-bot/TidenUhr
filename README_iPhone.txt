@@ -1,4 +1,4 @@
-TidenUhr v47.56 – iPhone / PWA
+TidenUhr v47.57 – iPhone / PWA
 ==============================
 
 Diese Datei beschreibt den produktiven GitHub-Pages-Stand.
