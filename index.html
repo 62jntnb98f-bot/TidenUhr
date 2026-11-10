@@ -1618,7 +1618,7 @@ body.light-mode .tabs button.favorites-open::first-letter {
 #tideOverviewWrap.wrap{width:100%;max-width:none;margin:0;padding:0}
 </style>
 <script>
-const TIDENUHR_VERSION="47.63";
+const TIDENUHR_VERSION="47.64";
 const LEGACY_BSH_METADATA=[{"id":"DE__510P","name":"Husum, Schleuse","region":"Nordsee","files":{"2026":"./DE__510P2026.json"},"years":[2026],"waterPegelNr":"9530020","pegelonlineNumber":"9530020"},{"id":"KIEL-HOLTENAU","name":"Kiel-Holtenau","region":"Ostsee","files":{},"years":[2026],"waterPegelNr":"9610066","pegelonlineNumber":"9610066","waterUuid":"3ad4013f-644b-47f5-a641-44b332bfecb2","bshAvailable":true,"bshUrl":"https://gezeiten.bsh.de/kiel_holtenau"}];
 // Jahresbezogene BSH-HW/NW-Daten werden bewusst nicht in die HTML eingebettet.
 </script>
@@ -1951,6 +1951,26 @@ function updateBshTxtDownload(){
  const currentYear=Number((typeof localDate==='function'?localDate():new Date().toISOString().slice(0,10)).slice(0,4));
  const years=[currentYear,currentYear+1];
  box.innerHTML=years.map(y=>'<section class="bshYearCard" data-bsh-year-card="'+y+'"><div class="bshYearCardHead">Datenjahr '+y+'</div><button class="btn" type="button" data-bsh-check>BSH-Datei für '+y+' prüfen</button><a class="btn" data-bsh-download target="_blank" rel="noopener noreferrer" href="#" hidden>BSH-TXT '+y+' herunterladen ↓</a><button class="btn" type="button" data-bsh-archive-select hidden>Direkt ins Archiv übernehmen</button><div class="small" data-bsh-status>Für '+y+' noch nicht geprüft.</div></section>').join('');
+ // Bereits geladene Archivjahre brauchen keine erneute Direktprüfung in der Oberfläche.
+ (async()=>{
+   try{
+     const candidate=currentBsh||(modeForSelection?.bsh||null)||(mode==='bsh'?current:null)||(poStation?findBshForPo(poStation):null);
+     if(!candidate)return;
+     const code=archiveCodeForBsh(candidate);
+     if(!/^[A-Z0-9]{3,12}$/.test(code))return;
+     const loaded=meta?.source==='Supabase BSH-Archiv'&&archiveCodeForBsh(currentBsh||candidate)===code&&Array.isArray(data)&&data.length>0;
+     if(!loaded)return;
+     const items=await getBshArchiveCatalog();
+     years.forEach(y=>{
+       const archived=items.some(x=>String(x.station_code||'').trim().toUpperCase()===code&&Number(x.datenjahr)===y&&x.archiv_status==='archiviert');
+       if(archived){
+         const card=box.querySelector('[data-bsh-year-card="'+y+'"]');
+         if(card)card.hidden=true;
+       }
+     });
+     if(years.every(y=>box.querySelector('[data-bsh-year-card="'+y+'"]')?.hidden))box.hidden=true;
+   }catch(error){console.warn('BSH-Jahresprüfung: Archivstatus konnte nicht automatisch abgeglichen werden.',error);}
+ })();
 }
 async function checkBshTxtDirectDownload(year){
  const y=Number(year);
