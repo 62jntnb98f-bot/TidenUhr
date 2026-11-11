@@ -1,5 +1,13 @@
 # TidenUhr – Änderungsprotokoll
 
+## 2026-11-11 – Arbeits- und Änderungssteuerung
+- Zentrales `AENDERUNGSREGISTER.md` für Anlass, Freigabe, Umfang, Commit, Sicherung und Prüfergebnis angelegt.
+- Projektstatus um GitHub-Branch-Bestand, Rollback-Mechanismen und Grenzen der automatischen Prüfungen ergänzt.
+- Testprotokoll um belegte historische Workflow-/Pages-/Rollback-Ergebnisse ergänzt; nicht durchgeführte Browserprüfungen bleiben ausdrücklich ungeprüft.
+- Release-Ablauf um verbindliche Änderungsfreigabe und getrennte Prüfschritte erweitert.
+- Keine Änderungen an `index.html`, `sw.js`, Supabase, Cloudflare oder produktiven Archivdaten.
+
+
 ## 2026-11-11 – Infrastruktur-Dokumentation
 - Cloudflare Turnstile als externe Sicherheitskomponente der BSH-Archivierung in der Projektakte dokumentiert.
 - Prüfanlässe für Cloudflare in den Release-Ablauf aufgenommen; gewöhnliche GitHub-Releases bleiben davon unabhängig.
