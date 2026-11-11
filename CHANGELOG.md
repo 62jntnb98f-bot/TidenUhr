@@ -1,5 +1,14 @@
 # TidenUhr – Änderungsprotokoll
 
+## 2026-11-11 – BSH-Archiv: vollständiger Verfügbarkeitsbestand 2026/2027
+- Nach Erweiterung der Kataloganzeige über 100 Einträge hinaus hat der Betreiber die Anzeige des BSH-Archivbestands geprüft.
+- Für 2026 werden 168 archivierte Textdateien angezeigt; für 2027 ebenfalls 168. Insgesamt sind damit 336 Dateien im Archivbestand sichtbar.
+- Der Betreiber bestätigt, dass damit der vollständige, von BSH Online für 2026 und 2027 bereitgestellte Textdateibestand im TidenUhr-BSH-Archiv enthalten ist.
+- Für vier Pegelstände stellt BSH Online laut Direktimport-Hinweis keine Textdateien bereit. Die TidenUhr meldet dies entsprechend; diese Fälle sind keine fehlgeschlagenen Downloads.
+- Prüfstatus: erfolgreiche Betreiberprüfung; keine unabhängige Einzelprüfung aller Dateien behauptet.
+- Erwarteter nächster Datenstand: Aktualisierung/Verfügbarkeit der BSH-Textdateien für 2028.
+- Dokumentation in `AENDERUNGSREGISTER.md` und `TESTPROTOKOLL.md` ergänzt. Keine Änderung an Anwendungscode, Supabase-Funktionen oder Archivobjekten.
+
 ## 2026-11-11 – Arbeits- und Änderungssteuerung
 - Zentrales `AENDERUNGSREGISTER.md` für Anlass, Freigabe, Umfang, Commit, Sicherung und Prüfergebnis angelegt.
 - Projektstatus um GitHub-Branch-Bestand, Rollback-Mechanismen und Grenzen der automatischen Prüfungen ergänzt.
