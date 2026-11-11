@@ -1,5 +1,11 @@
 # TidenUhr – Änderungsprotokoll
 
+## 2026-11-11 – Infrastruktur-Dokumentation
+- Cloudflare Turnstile als externe Sicherheitskomponente der BSH-Archivierung in der Projektakte dokumentiert.
+- Prüfanlässe für Cloudflare in den Release-Ablauf aufgenommen; gewöhnliche GitHub-Releases bleiben davon unabhängig.
+- Keine Änderungen an Anwendungscode, Supabase-Funktionen, Cloudflare-Einstellungen oder Archivdaten.
+
+
 ## 2026-11-11 – v47.68
 - NLWKN-Stationsverzeichnis und Stationsabgleich ergänzt bzw. erweitert.
 - Service Worker auf tiden-v47-68-2026 aktualisiert.
