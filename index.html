@@ -4328,27 +4328,63 @@ if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
       return;
     }
 
-    const params = new URLSearchParams();
-    if (q) params.set("q", q);
-    if (yearValue) params.set("year", yearValue);
-    params.set("limit", "100");
+    const pageSize = 100;
 
     status.style.color = "";
     status.textContent = "Archiv wird geladen …";
     results.replaceChildren();
 
     try {
-      const response = await fetch(`${api}?${params.toString()}`, {
-        method: "GET",
-        headers: { "Accept": "application/json" },
-        cache: "no-store"
-      });
-      const data = await response.json();
+      // Technischer Abruf in 100er-Seiten; die Darstellung bleibt eine
+      // einzige zusammenhängende Liste ohne sichtbare Blocktrennung.
+      const rawItems = [];
+      let offset = 0;
+      let total = null;
 
-      if (currentRequest !== requestNumber) return;
-      if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+      do {
+        const params = new URLSearchParams();
+        if (q) params.set("q", q);
+        if (yearValue) params.set("year", yearValue);
+        params.set("limit", String(pageSize));
+        params.set("offset", String(offset));
 
-      const rawItems = Array.isArray(data.items) ? data.items : [];
+        const response = await fetch(`${api}?${params.toString()}`, {
+          method: "GET",
+          headers: { "Accept": "application/json" },
+          cache: "no-store"
+        });
+        const data = await response.json();
+
+        if (currentRequest !== requestNumber) return;
+        if (!response.ok) throw new Error(data.error || `HTTP ${response.status}`);
+
+        if (!Array.isArray(data.items) ||
+            !Number.isInteger(Number(data.total)) ||
+            Number(data.total) < 0) {
+          throw new Error("Ungültige Antwort des BSH-Archivkatalogs.");
+        }
+        if (Number(data.offset ?? offset) !== offset) {
+          throw new Error("Unerwarteter Offset beim Laden des BSH-Archivs.");
+        }
+        if (total === null) total = Number(data.total);
+        else if (Number(data.total) !== total) {
+          throw new Error("Die Gesamtzahl des Archivs hat sich während des Ladens geändert.");
+        }
+        if (data.items.length === 0 && rawItems.length < total) {
+          throw new Error("Die Archivliste konnte nicht vollständig geladen werden.");
+        }
+
+        rawItems.push(...data.items);
+        offset += data.items.length;
+
+        if (offset < total && data.items.length < pageSize) {
+          throw new Error("Unvollständige Seite beim Laden des BSH-Archivs.");
+        }
+      } while (offset < total);
+
+      if (rawItems.length !== total) {
+        throw new Error(`Archivliste unvollständig: ${rawItems.length} von ${total} Einträgen geladen.`);
+      }
       // Archivdatensätze niemals stillschweigend zusammenfassen oder verbergen.
       // Vorhandene Dubletten werden einzeln angezeigt, damit gezielt eine davon
       // mit der token-geschützten Löschfunktion entfernt werden kann.
