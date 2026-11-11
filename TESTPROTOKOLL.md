@@ -45,5 +45,20 @@ Die folgenden Ergebnisse werden nur für die tatsächlich protokollierten Commit
 
 Der Betreiber bestätigte am 11.11.2026 zwei erfolgreiche Turnstile-Funktionstests. Das ist ein Betreiberbericht und kein automatischer GitHub-Browser-Test.
 
+## D. BSH-Archiv – Verfügbarkeit 2026/2027 (Betreiberprüfung, 11.11.2026)
+Der Betreiber hat nach der Erweiterung der Kataloganzeige über 100 Einträge hinaus die Jahresbestände in der TidenUhr geprüft und folgende Anzeige bestätigt:
+
+| Jahr | Angezeigte archivierte BSH-Textdateien |
+|---|---:|
+| 2026 | 168 |
+| 2027 | 168 |
+| **Summe** | **336** |
+
+- Die Anzeige über 100 Einträge hinaus funktionierte nach Betreiberprüfung erfolgreich.
+- Der Betreiber bestätigt, dass der vollständige, von BSH Online für 2026 und 2027 bereitgestellte Textdateibestand im TidenUhr-BSH-Archiv enthalten und sichtbar ist.
+- Für vier Pegelstände stellt BSH Online nach der Direktimport-Meldung keine Textdateien bereit. Diese vier Fälle werden daher nicht als fehlgeschlagene Archivimporte gewertet.
+- Die Direktimport-Meldung weist auf die fehlende Bereitstellung durch BSH Online hin.
+- Prüfstatus: **durch Betreiber geprüft und bestätigt**. Keine unabhängige Einzelprüfung aller 336 Dateien durch ChatGPT behauptet.
+
 ## Regel für neue Testeinträge
 Für jeden neuen Änderungsvorgang einen eigenen Datensatz im Änderungsregister führen. Browserprüfungen nur mit Datum, Gerät/Browser, geprüften Funktionen und tatsächlichem Ergebnis als bestanden markieren. „Pages erfolgreich“ ist kein Ersatz für „Funktional bestätigt“.
