@@ -1,0 +1,46 @@
+name: BSH external provider audit
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/check-bsh-external-providers.py'
+      - '.github/workflows/check-bsh-external-providers.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: "37 6 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: bsh-external-provider-audit
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+      - name: Run read-only provider audit
+        run: python3 scripts/check-bsh-external-providers.py
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bsh-external-provider-audit-${{ github.run_number }}
+          path: |
+            audit-output/bsh-external-provider-audit.json
+            audit-output/bsh-external-provider-audit.md
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Add report to job summary
+        if: always()
+        run: |
+          if [ -f audit-output/bsh-external-provider-audit.md ]; then
+            cat audit-output/bsh-external-provider-audit.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Prüfung fehlgeschlagen; siehe Job-Log." >> "$GITHUB_STEP_SUMMARY"
+          fi

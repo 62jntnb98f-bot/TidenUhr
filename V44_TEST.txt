@@ -1,0 +1,22 @@
+TidenUhr V44 – BSH-TXT-Import Test
+===================================
+
+Testdatei:
+incoming/DE__632P2027.txt
+
+Erwartetes Ergebnis:
+1. TidenUhr V44 starten.
+2. „BSH-Dateien importieren“ öffnen.
+3. DE__632P2027.txt auswählen.
+4. „BSH-TXT importieren“ anklicken.
+5. Keine Meldung „scheint nicht zu Kiel-Holtenau“.
+6. Importmeldung muss Wyk, Föhr / DE__632P und 2027 anzeigen.
+7. Die Station Wyk, Föhr muss als BSH-Station verfügbar sein.
+8. Die importierten HW/NW-Ereignisse für 2027 müssen angezeigt werden.
+9. „BSH-Originaltabelle öffnen ↗“ muss direkt https://gezeiten.bsh.de/kiel_holtenau in einem neuen Tab öffnen.
+10. Nach einem Service-Worker-Update muss die App als TidenUhr v44 erscheinen.
+
+Technischer Test:
+- Der BSH-Parser erkennt die Testdatei als Wyk, Föhr / DE__632P / 2027.
+- Die Datei enthält 1362 HW/NW-Ereignisse.
+- JavaScript-Syntaxprüfung und Projektprüfung wurden durchgeführt.
