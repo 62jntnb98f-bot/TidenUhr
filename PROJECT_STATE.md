@@ -51,3 +51,18 @@ Momentaufnahme; vor Änderungen erneut live prüfen. Die paarweise inhaltliche Z
 
 ## Versionsregel
 Version in index.html, HTML-Titel, sichtbarer Versionshinweis und Cachekennung in sw.js müssen übereinstimmen. ZIP-Artefakte enthalten ausschließlich die geprüfte index.html.
+
+
+## Cloudflare Turnstile – BSH-Archivierung
+- Cloudflare Turnstile ist als externe Sicherheitskomponente vor der produktiven BSH-Archivierung eingebunden; es ersetzt weder GitHub noch Supabase.
+- Cloudflare-Widget: TidenUhr-Archiv.
+- Im Cloudflare-Dashboard bestätigter Hostname: `62jntnb98f-bot.github.io`.
+- Der im Dashboard angezeigte Site-Key stimmt mit dem Site-Key in der produktiven `index.html` überein.
+- Widget-Modus: Verwaltet (Managed); Vorabfreigabe ist ausgeschaltet.
+- Die Supabase-Funktion `bsh-archiv-upload-online` prüft Turnstile serverseitig über Cloudflare Siteverify. Das Secret bleibt ausschließlich serverseitig in Supabase; es wird nicht dokumentiert oder offengelegt.
+- Die BSH-Dateiprüfung und die Archivierung sind getrennte Schritte: `bsh-direktdownload-pruefen` prüft die BSH-Datei; die Upload-Funktion führt die Turnstile-Prüfung und anschließende Archivierung aus.
+- Dashboard und Code wurden am 11.11.2026 abgeglichen. Der Betreiber hat außerdem zwei erfolgreiche Funktionstests bestätigt. Es wurden bei dieser Dokumentationsarbeit keine Einstellungen, Schlüssel oder Funktionen geändert.
+- Die Cloudflare-Analytics zeigten bei der Einsicht am 11.11.2026 für die letzten 24 Stunden 216 ausgegebene und 199 gelöste Herausforderungen (92,13 %). Dies ist eine zeitgebundene Dashboard-Momentaufnahme, kein dauerhaftes Qualitätskriterium.
+- Cloudflare ist bei Änderungen an Turnstile-Einbindung, Hostnamen/Domain, Supabase-Upload-Funktion oder Archivierungs-Sicherheitsablauf erneut zu berücksichtigen. Für gewöhnliche Code-Commits und Releases ohne Bezug zu dieser Kette ist keine routinemäßige Cloudflare-Prüfung erforderlich.
+- Die GitHub-Versionshistorie, Commits und Release-Artefakte werden unabhängig von Cloudflare geführt. Cloudflare muss hierfür nicht in jedem Release-Schritt eingebunden werden.
+
