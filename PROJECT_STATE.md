@@ -66,3 +66,13 @@ Version in index.html, HTML-Titel, sichtbarer Versionshinweis und Cachekennung i
 - Cloudflare ist bei Änderungen an Turnstile-Einbindung, Hostnamen/Domain, Supabase-Upload-Funktion oder Archivierungs-Sicherheitsablauf erneut zu berücksichtigen. Für gewöhnliche Code-Commits und Releases ohne Bezug zu dieser Kette ist keine routinemäßige Cloudflare-Prüfung erforderlich.
 - Die GitHub-Versionshistorie, Commits und Release-Artefakte werden unabhängig von Cloudflare geführt. Cloudflare muss hierfür nicht in jedem Release-Schritt eingebunden werden.
 
+
+## GitHub-Arbeitsumgebung und Bestandsaufnahme (11.11.2026)
+- Produktiver Arbeitszweig: `main`. Bei der Bestandsaufnahme standen vier weitere Branches im Repository: `feature/bsh-archiv-import`, `feature/integrated-month-year-picker`, `feature/online-bsh-archive-v46-98`, `fix/archive-scroll-container`. Diese sind Altbestand; nicht löschen, mergen oder verändern, solange keine gesonderte Prüfung und Freigabe vorliegt.
+- `main` war bei der Bestandsaufnahme nicht als geschützter Branch ausgewiesen. Eine Branch-Protection wurde bewusst noch nicht aktiviert, da zuerst die Auswirkungen auf den bestehenden direkten Arbeits- und GitHub-Actions-Releaseablauf geprüft werden müssen.
+- `rollback-backup.yml` erstellt nach jedem Push auf `main` einen annotierten Tag `rollback-<Commit-SHA>`.
+- `rollback-main.yml` ermöglicht eine manuell bestätigte Wiederherstellung als neuen Vorwärts-Commit und erstellt vorher einen zusätzlichen Sicherungstag. Vor einem Rollback muss der Ziel-Commit geprüft werden.
+- `release-check-and-zip.yml` prüft Versionskennung, Titel, sichtbare Versionskennung, Service-Worker-Cache und bestimmte Archiv-Paginierungsmerkmale; das ZIP wird bytegenau geprüft und enthält nur `index.html`.
+- Diese statischen Prüfungen beweisen keine vollständige Browserfunktion. GitHub-Pages-Deployment, MacBook-Safari-Test und iPhone-Test sind getrennt zu erfassen.
+- Zentrales Änderungsregister: `AENDERUNGSREGISTER.md`. Keine rückwirkende Ergänzung nicht belegter Testergebnisse.
+- Neueste geprüfte Commit-Kette am 11.11.2026: Commit `6f344d99a44fb557670aa724ffd45f4a96ad1d90`; Pages-Build/Deployment und automatischer Rollback-Punkt für diesen Commit wurden als erfolgreich gemeldet.
