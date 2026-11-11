@@ -1,5 +1,12 @@
 # TidenUhr – Änderungsprotokoll
 
+## 2026-11-11 – Gebündelte Änderungspakete
+- Verbindliche Arbeitsweise für mehrere zusammengehörige, einzeln freigegebene Änderungsschritte festgelegt.
+- Jeder Teilpunkt erhält eine eigene Änderungs-ID und wird nach der Umsetzung intern geprüft und laufend dokumentiert.
+- GitHub-Übertragung, Actions, Pages und Rollback-Prüfung werden grundsätzlich für das gemeinsam geprüfte Änderungspaket gebündelt, statt nach jedem Zwischenschritt unnötig neue Veröffentlichungsabläufe auszulösen.
+- Eine laufende GitHub-Prüfung verhindert nicht die Planung oder interne Bearbeitung weiterer freigegebener Punkte; eine neue produktive Veröffentlichung erfolgt erst nach Klärung des vorherigen Veröffentlichungslaufs.
+- Keine Änderungen an Anwendungscode, Supabase, Cloudflare oder produktiven Archivdaten.
+
 ## 2026-11-11 – BSH-Archiv: vollständiger Verfügbarkeitsbestand 2026/2027
 - Nach Erweiterung der Kataloganzeige über 100 Einträge hinaus hat der Betreiber die Anzeige des BSH-Archivbestands geprüft.
 - Für 2026 werden 168 archivierte Textdateien angezeigt; für 2027 ebenfalls 168. Insgesamt sind damit 336 Dateien im Archivbestand sichtbar.

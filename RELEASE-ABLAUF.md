@@ -43,6 +43,16 @@ Vor jeder produktiven Änderung:
 6. Die tatsächlichen Browser-/Gerätetests durchführen und im `TESTPROTOKOLL.md` dokumentieren. Nicht ausgeführte Tests bleiben „nicht geprüft“.
 7. Erst nach allen erforderlichen Prüfschritten den Eintrag im Änderungsregister auf „Abgeschlossen“ setzen.
 
+## Gebündelte Arbeitsweise für mehrere Änderungen
+1. Mehrere zusammengehörige Änderungsschritte werden als Änderungspaket geplant. Jeder Teilpunkt erhält eine eigene Änderungs-ID, einen klaren Umfang und eine ausdrückliche Freigabe.
+2. Die Teiländerungen können nacheinander umgesetzt werden. Nach jedem Schritt erfolgen Code-/Inhaltsprüfung und eine gezielte interne Prüfung, soweit sinnvoll.
+3. Die Dokumentation wird laufend aktualisiert; sie muss nicht auf den Abschluss der GitHub-Actions warten.
+4. Während der Paketbearbeitung werden keine unnötigen Zwischenstände auf den produktiven Branch `main` übertragen. Die freigegebenen Änderungen werden möglichst gesammelt in einem Commit bzw. einem Veröffentlichungsschritt eingebracht.
+5. Vor dem Push werden alle Paketänderungen gemeinsam geprüft: Wechselwirkungen, Versionskennung, Service Worker, betroffene Schnittstellen und Rückholpunkt.
+6. Nach dem gemeinsamen Push werden GitHub Actions, Pages-Deployment und Rollback-Sicherung geprüft. Erst danach folgen die vereinbarten Tests in MacBook Safari und iPhone Safari.
+7. Eine noch laufende GitHub-Prüfung blockiert nicht die Planung oder interne Bearbeitung weiterer freigegebener Punkte. Sie blockiert jedoch die Bestätigung einer erfolgreichen Veröffentlichung und grundsätzlich den nächsten produktiven Veröffentlichungsschritt, bis der aktuelle Stand geklärt ist.
+8. Bei einem dringenden Hotfix oder einer sicherheitsrelevanten Korrektur darf ein einzelner Schritt separat veröffentlicht werden, wenn Umfang und Freigabe dokumentiert sind.
+
 ## Branch- und Direktarbeitsregel
 - `main` bleibt der einzige produktive Arbeitszweig.
 - Vorhandene ältere Feature-/Fix-Branches sind Altbestand und werden nicht ohne separate Bestandsprüfung und ausdrückliche Freigabe gelöscht, gemergt oder verändert.
