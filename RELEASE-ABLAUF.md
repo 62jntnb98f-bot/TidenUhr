@@ -31,3 +31,19 @@ Eine erneute Cloudflare-Prüfung ist erforderlich, wenn eine Änderung Folgendes
 
 Bei gewöhnlichen Releases ohne Änderungen an diesen Bereichen ist keine zusätzliche Cloudflare-Prüfung notwendig. Bei relevanten Änderungen sind Widget-Hostname/Site-Key, serverseitige Secret-Konfiguration (ohne Offenlegung des Werts) und die erfolgreiche Turnstile-Verifizierung zu berücksichtigen. Ein Funktionstest ist nur dann neu einzuplanen, wenn die betroffene Kette geändert wurde oder ein konkreter Fehlerhinweis vorliegt.
 
+
+
+## Verbindliche Änderungs- und Freigabekontrolle
+Vor jeder produktiven Änderung:
+1. Aktuellen `main`-Commit und betroffene Dateien live abrufen; Ausgangsversion und SHA im `AENDERUNGSREGISTER.md` festhalten.
+2. Anlass, Ziel, konkrete Dateien/Systeme, Seiteneffekte und Rückholpunkt beschreiben.
+3. Ausdrückliche Freigabe für genau diesen Umfang abwarten. Eine Freigabe für GitHub-Dateien umfasst nicht automatisch Änderungen an Supabase, Cloudflare oder produktiven Archivdaten.
+4. Änderung eng begrenzt umsetzen und jeden Commit dokumentieren.
+5. Automatische Checks, Pages-Deployment und Rollback-Sicherung getrennt kontrollieren.
+6. Die tatsächlichen Browser-/Gerätetests durchführen und im `TESTPROTOKOLL.md` dokumentieren. Nicht ausgeführte Tests bleiben „nicht geprüft“.
+7. Erst nach allen erforderlichen Prüfschritten den Eintrag im Änderungsregister auf „Abgeschlossen“ setzen.
+
+## Branch- und Direktarbeitsregel
+- `main` bleibt der einzige produktive Arbeitszweig.
+- Vorhandene ältere Feature-/Fix-Branches sind Altbestand und werden nicht ohne separate Bestandsprüfung und ausdrückliche Freigabe gelöscht, gemergt oder verändert.
+- `main` war bei der Bestandsaufnahme nicht geschützt. Eine Branch-Protection wird nicht ohne Prüfung der Auswirkungen auf den bestehenden Arbeits- und Releaseablauf aktiviert. Insbesondere dürfen automatische Sicherungs- und Pages-Workflows nicht unbeabsichtigt blockiert werden.
